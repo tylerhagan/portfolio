@@ -1,0 +1,132 @@
+:root {
+    --black: #000000;
+    --off-black: #0a0a0a;
+    --dark-gray: #1a1a1a;
+    --mid-gray: #808080;
+    --light-gray: #e5e5e5;
+    --white: #ffffff;
+    --blue: #0066ff;
+    --blue-dark: #0052cc;
+    --blue-light: #3385ff;
+    --blue-pale: #e6f0ff;
+    
+    --bg-primary: var(--white);
+    --bg-secondary: var(--off-black);
+    --bg-card: var(--white);
+    --text-primary: var(--black);
+    --text-secondary: var(--mid-gray);
+    --border-color: var(--light-gray);
+    --nav-bg: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="dark"] {
+    --bg-primary: var(--off-black);
+    --bg-secondary: var(--dark-gray);
+    --bg-card: #111111;
+    --text-primary: var(--white);
+    --text-secondary: #a0a0a0;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --nav-bg: rgba(10, 10, 10, 0.8);
+    --blue-pale: rgba(0, 102, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.mono {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Scrollbar styling for dark mode */
+[data-theme="dark"]::-webkit-scrollbar {
+    width: 10px;
+}
+
+[data-theme="dark"]::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+[data-theme="dark"]::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 5px;
+}
+
+[data-theme="dark"]::-webkit-scrollbar-thumb:hover {
+    background: var(--mid-gray);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+@keyframes bounce {
+    0%, 100% { height: 40%; }
+    50% { height: 100%; }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Dark mode glow effects */
+[data-theme="dark"] .glow-blue {
+    box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+}
+
+[data-theme="dark"] .glow-subtle {
+    box-shadow: 0 0 40px rgba(0, 102, 255, 0.15);
+}
+
+/* Gradient backgrounds for dark mode */
+[data-theme="dark"] .gradient-overlay {
+    position: relative;
+}
+
+[data-theme="dark"] .gradient-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(0, 102, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
