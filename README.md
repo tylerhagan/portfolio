@@ -192,3 +192,4 @@ Build the project and upload the `dist` folder contents.
 
 © 2025 Tyler Hagan. All rights reserved.
 # portfolio
+# portfolio
