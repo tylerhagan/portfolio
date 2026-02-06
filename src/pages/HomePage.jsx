@@ -1,10 +1,34 @@
+import { useState, useEffect } from 'react';
+import Lightbox from '../components/Lightbox';
 import './HomePage.css';
 
 const HomePage = ({ onNavigate }) => {
+  const [rotatingWord, setRotatingWord] = useState('software');
+  const [lightboxImage, setLightboxImage] = useState(null);
+  const words = ['software', 'systems', 'websites', 'applications'];
+  
+  useEffect(() => {
+    let currentIndex = 0;
+    const interval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % words.length;
+      setRotatingWord(words[currentIndex]);
+    }, 3000); // Change every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const openLightbox = (imageSrc, imageAlt) => {
+    setLightboxImage({ src: imageSrc, alt: imageAlt });
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+  };
+
   const projects = [
     {
       id: 'offer-tool',
-      title: 'Offer Tool',
+      title: 'AI-Powered Offer Tool',
       year: '2025',
       type: 'Enterprise Software',
       description: 'Multi-national B2B/B2C offer tool for solar energy company. Drove design and research with integrated AI assistance for real-time recommendations.',
@@ -37,6 +61,33 @@ const HomePage = ({ onNavigate }) => {
       description: 'User-centric solar monitoring app for long-term customer retention. Designed with focus on analytics and engagement.',
       tags: ['React Native', 'Figma', 'Analytics', 'Token Studio'],
       icon: '⚡'
+    }
+  ];
+
+  const concepts = [
+    {
+      image: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/concepts/nuvio-05.png',
+      title: 'CRM App - System & Branding'
+    },
+    {
+      image: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/concepts/crypto-05.png',
+      title: 'Crypto App'
+    },
+    {
+      image: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/concepts/football-stats-preview.png',
+      title: 'Football Stats Modules'
+    },
+    {
+      image: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/concepts/bank-app.png',
+      title: 'Banking App'
+    },
+    {
+      image: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/concepts/smart-home-mockup.png',
+      title: 'Smart Home App'
+    },
+    {
+      image: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/concepts/placeholder.png',
+      title: 'Coming Soon'
     }
   ];
 
@@ -111,9 +162,15 @@ const HomePage = ({ onNavigate }) => {
               <span className="status-dot"></span>
               Available for projects
             </div>
-            <h1>Product designer crafting experiences from Berlin</h1>
+            <h1>
+              Product designer crafting experiences and{' '}
+              <span className="rotating-word" key={rotatingWord}>
+                {rotatingWord}
+              </span>{' '}
+              from Berlin
+            </h1>
             <p>
-             I am a jack-of-all-trades: product designer, front-end engineer, illustrator and design systems fanatic. I like building cool things and solving hard problems.
+              I am your jack-of-all-trades: product designer, front-end engineer, illustrator and design systems fanatic. I like building cool things and solving hard problems.
             </p>
             <div className="hero-cta">
               <a href="#work" className="btn btn-primary">View Work</a>
@@ -172,6 +229,29 @@ const HomePage = ({ onNavigate }) => {
           </div>
         </section>
 
+        <section id="concepts" className="section">
+          <div className="section-header">
+            <h2 className="section-title">Concepts & Unused Designs</h2>
+            <p className="section-subtitle">
+              Explorations, experiments, and concepts that showcase design thinking and creative direction.
+            </p>
+          </div>
+          <div className="concepts-grid">
+            {concepts.map((concept, index) => (
+              <div 
+                key={index} 
+                className="concept-card"
+                onClick={() => openLightbox(concept.image, concept.title)}
+              >
+                <div className="concept-image-wrapper">
+                  <img src={concept.image} alt={concept.title} className="concept-image" />
+                </div>
+                <p className="concept-title">{concept.title}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section id="toolkit" className="section">
           <div className="section-header">
             <h2 className="section-title">Toolkit & Approach</h2>
@@ -199,7 +279,7 @@ const HomePage = ({ onNavigate }) => {
           <div className="section-header">
             <h2 className="section-title">Design Process</h2>
             <p className="section-subtitle">
-              My process and how it integrates AI tools at every stage—from discovery to delivery—enabling rapid iteration and data-driven decision making.
+              My process integrates AI tools at every stage—from discovery to delivery—enabling rapid iteration and data-driven decision making.
             </p>
           </div>
           <div className="process-timeline">
@@ -215,6 +295,14 @@ const HomePage = ({ onNavigate }) => {
           </div>
         </section>
       </div>
+
+      {lightboxImage && (
+        <Lightbox 
+          imageSrc={lightboxImage.src} 
+          imageAlt={lightboxImage.alt} 
+          onClose={closeLightbox} 
+        />
+      )}
     </>
   );
 };

@@ -5,24 +5,38 @@ const AboutPage = () => {
     <>
       <section className="about-hero">
         <div className="container">
-          <div className="about-content">
-            <h1>About Me</h1>
-            <p className="about-intro">UK-born product designer based in Berlin, Germany. I'm intrigued by all types of design, beautiful UI to brutalist architecture and design thinking.<br />I translate this professionally into interfaces that aim to become an extension of the user. Functional, performant and enjoyable by default.</p>
-            <h2>Background</h2>
-            <p>I work well separate or deeply integrated with development teams, allowing me to ship products efficiently and effectively. My approach combines traditional design thinking with modern AI-assisted workflows, enabling rapid prototyping and iteration.</p>
-            <p>Outside of work I have been a professional esports competitor and lifelong artist, enjoying all types of creative outlets, especially music and painting. I love to learn new skills and explore new topics.</p>
+          <div className="about-layout">
+            <div className="about-content">
+              <h1>About Me</h1>
+              <p className="about-intro">UK-born product designer based in Berlin, Germany. I'm intrigued by all types of design, beautiful UI to brutalist architecture and design thinking.</p>
+              <h2>Background</h2>
+              <p>I work well separate or deeply integrated with development teams, allowing me to ship products efficiently and effectively. My approach combines traditional design thinking with modern AI-assisted workflows, enabling rapid prototyping and iteration.</p>
+              <p>Outside of work I have been a professional esports competitor and lifelong artist, enjoying all types of creative outlets, especially music and painting. I love to learn new skills and explore new topics.</p>
 
-            <h2>Approach</h2>
-            <p>My process leverages AI tools like Claude and Midjourney alongside traditional design tools like Figma to accelerate ideation, prototyping, and documentation. This hybrid approach allows me to explore more possibilities in less time whilst maintaining high design quality.</p>
-            <p>Design systems are at the core of my work; I'm passionate about creating scalable, maintainable component libraries that empower teams to build consistently across products.</p>
+              <h2>Approach</h2>
+              <p>My process leverages AI tools like Claude and Midjourney alongside traditional design tools like Figma to accelerate ideation, prototyping, and documentation. This hybrid approach allows me to explore more possibilities in less time whilst maintaining high design quality.</p>
+              <p>Design systems are at the core of my work; I'm passionate about creating scalable, maintainable component libraries that empower teams to build consistently across products.</p>
 
-            <h2>Philosophy</h2>
-            <p>I believe the best design happens when you're deeply embedded with the team building it. That's why I don't just hand off designs—I work alongside engineers, using tools like Storybook and design tokens to ensure what we build matches what we designed.</p>
-            <p>AI isn't replacing designers; it's amplifying what we can do. I use it to handle the tedious bits; generating content variations, documenting systems, analysing research; so I can focus on the creative problem-solving that actually matters.</p>
+              <h2>Philosophy</h2>
+              <p>I believe the best design happens when you're deeply embedded with the team building it. That's why I don't just hand off designs—I work alongside engineers, using tools like Storybook and design tokens to ensure what we build matches what we designed.</p>
+              <p>AI isn't replacing designers; it's amplifying what we can do. I use it to handle the tedious bits; generating content variations, documenting systems, analysing research; so I can focus on the creative problem-solving that actually matters.</p>
 
+            </div>
+            
+            <div className="about-portrait">
+              <div className="portrait-wrapper">
+                <img 
+                  src="https://tylerhagan.github.io/2024-25-Portfolio/assets/img/portrait-about.jpg" 
+                  alt="Tyler Hagan" 
+                  className="portrait-image"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="about-content-full">
             <div className="brands-section">
               <h2>Brands I've Worked With</h2>
-              <p>Over the years, I've had the privilege of optimising interfaces and creating experiences for:</p>
               <div className="brands-grid">
                 <div className="brand-item">Nike</div>
                 <div className="brand-item">Coca-Cola</div>
@@ -61,7 +75,7 @@ const AboutPage = () => {
                 <h3>Development</h3>
                 <ul className="skill-list">
                   <li>React</li>
-                  <li>Typescript</li>
+                  <li>React Native</li>
                   <li>HTML/CSS</li>
                   <li>JavaScript</li>
                   <li>Design Tokens</li>
@@ -74,7 +88,7 @@ const AboutPage = () => {
                   <li>User Testing</li>
                   <li>A/B Testing</li>
                   <li>Analytics</li>
-                  <li>Conversion Optimisation</li>
+                  <li>Agile/Scrum</li>
                   <li>Workshop Facilitation</li>
                   <li>Stakeholder Management</li>
                 </ul>
