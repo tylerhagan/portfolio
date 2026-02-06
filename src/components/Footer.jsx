@@ -5,7 +5,7 @@ const Footer = () => {
     <footer>
       <div className="container">
         <div className="footer-content">
-          <div className="copyright">© 2025 Tyler Hagan. All rights reserved.</div>
+          <div className="copyright">© 2026 Tyler Hagan. All rights reserved.</div>
           <ul className="footer-links">
             <li><a href="https://github.com/tylerhagan" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             <li><a href="https://www.linkedin.com/in/tylerhagan/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>

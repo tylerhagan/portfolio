@@ -4,7 +4,7 @@ const HomePage = ({ onNavigate }) => {
   const projects = [
     {
       id: 'offer-tool',
-      title: 'AI-Powered Offer Tool',
+      title: 'Offer Tool',
       year: '2025',
       type: 'Enterprise Software',
       description: 'Multi-national B2B/B2C offer tool for solar energy company. Drove design and research with integrated AI assistance for real-time recommendations.',
@@ -199,7 +199,7 @@ const HomePage = ({ onNavigate }) => {
           <div className="section-header">
             <h2 className="section-title">Design Process</h2>
             <p className="section-subtitle">
-              My process integrates AI tools at every stage—from discovery to delivery—enabling rapid iteration and data-driven decision making.
+              My process and how it integrates AI tools at every stage—from discovery to delivery—enabling rapid iteration and data-driven decision making.
             </p>
           </div>
           <div className="process-timeline">

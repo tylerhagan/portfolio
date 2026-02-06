@@ -196,6 +196,19 @@
     overflow: hidden;
 }
 
+.work-grid .work-card:first-child .work-image {
+    background: url('/src/img/ot-preview.png') center center no-repeat;
+}
+.work-grid .work-card:nth-child(2) .work-image {
+    background: url('/src/img/fs-preview.png') center center no-repeat;
+}
+.work-grid .work-card:nth-child(3) .work-image {
+    background: url('/src/img/sd-preview.png') center center no-repeat;
+}
+.work-grid .work-card:nth-child(4) .work-image {
+    background: url('/src/img/m-preview.png') center center no-repeat;
+}
+
 [data-theme="dark"] .work-image {
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
 }
