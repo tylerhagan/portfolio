@@ -138,8 +138,6 @@ Edit colour variables in `src/styles/globals.css`:
 
 ### Last.fm
 
-The API key is already configured. To use your own:
-
 Edit `src/utils/lastfm.js`:
 
 ```javascript
@@ -190,6 +188,4 @@ Build the project and upload the `dist` folder contents.
 
 ## License
 
-© 2025 Tyler Hagan. All rights reserved.
-# portfolio
-# portfolio
+© 2026 Tyler Hagan. All rights reserved.
