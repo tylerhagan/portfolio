@@ -13,8 +13,8 @@ const Navigation = ({ currentPage, onNavigate }) => {
   }, []);
 
   const logoSrc = theme === 'dark' 
-    ? 'https://tylerhagan.co.uk/assets/img/th-logomark-light.svg'
-    : 'https://tylerhagan.co.uk/assets/img/th-logomark-dark.svg';
+    ? '/src/img/th-logomark-light.svg'
+    : '/src/img/th-logomark-dark.svg';
 
   return (
     <nav className={scrolled ? 'scrolled' : ''}>

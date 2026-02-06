@@ -103,7 +103,7 @@ Output will be in `dist/` folder - upload this to your host.
 
 ## Notes
 
-- All images reference tylerhagan.co.uk (https://tylerhagan.co.uk/assets/img/...)
+- All images reference tylerhagan.co.uk (/src/img/...)
 - Last.fm widget uses real API with your credentials
 - Dark mode uses localStorage for persistence
 - Smooth page transitions
