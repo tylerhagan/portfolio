@@ -7,11 +7,10 @@ const AboutPage = () => {
         <div className="container">
           <div className="about-content">
             <h1>About Me</h1>
-            <p className="about-intro">UK-born product designer based in Berlin, Germany. I'm a jack-of-all-trades: product designer, front-end engineer, illustrator, and design systems fanatic.</p>
-
+            <p className="about-intro">UK-born product designer based in Berlin, Germany. I'm intrigued by all types of design, beautiful UI to brutalist architecture and design thinking.<br />I translate this professionally into interfaces that aim to become an extension of the user. Functional, performant and enjoyable by default.</p>
             <h2>Background</h2>
             <p>I work well separate or deeply integrated with development teams, allowing me to ship products efficiently and effectively. My approach combines traditional design thinking with modern AI-assisted workflows, enabling rapid prototyping and iteration.</p>
-            <p>Over the years, I've had the privilege of optimising interfaces and creating experiences for notable brands including Nike, Coca-Cola, Intel Security, News UK, News Corp Australia, and The Wall Street Journal.</p>
+            <p>Outside of work I have been a professional esports competitor and lifelong artist, enjoying all types of creative outlets, especially music and painting. I love to learn new skills and explore new topics.</p>
 
             <h2>Approach</h2>
             <p>My process leverages AI tools like Claude and Midjourney alongside traditional design tools like Figma to accelerate ideation, prototyping, and documentation. This hybrid approach allows me to explore more possibilities in less time whilst maintaining high design quality.</p>
@@ -23,6 +22,7 @@ const AboutPage = () => {
 
             <div className="brands-section">
               <h2>Brands I've Worked With</h2>
+              <p>Over the years, I've had the privilege of optimising interfaces and creating experiences for:</p>
               <div className="brands-grid">
                 <div className="brand-item">Nike</div>
                 <div className="brand-item">Coca-Cola</div>
