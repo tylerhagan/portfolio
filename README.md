@@ -4,12 +4,12 @@ A modern, React-based portfolio website with dark mode, Last.fm integration, and
 
 ## Features
 
-- 🌓 **Dark/Light Mode** - Seamless theme switching with localStorage persistence
-- 🎵 **Last.fm Integration** - Real-time "Now Playing" widget showing current or last played track
-- 📱 **Responsive Design** - Fully responsive across all devices
-- ⚡ **Fast & Modern** - Built with React and Vite for optimal performance
-- 🎨 **Clean Design** - Inspired by AuthKit with subtle animations and gradients
-- 📄 **Project Case Studies** - Detailed pages for Offer Tool, Field Service, Solar Designer, and Energy Monitoring projects
+- **Dark/Light Mode** - Seamless theme switching with localStorage persistence
+- **Last.fm Integration** - Real-time "Now Playing" widget showing current or last played track
+- **Responsive Design** - Fully responsive across all devices
+- **Fast & Modern** - Built with React and Vite for optimal performance
+- **Clean Design** - Inspired by AuthKit with subtle animations and gradients
+- **Project Case Studies** - Detailed pages for Offer Tool, Field Service, Solar Designer, and Energy Monitoring projects
 
 ## Tech Stack
 
@@ -36,6 +36,8 @@ tyler-portfolio/
     │   ├── NowPlaying.css
     │   ├── Footer.jsx
     │   └── Footer.css
+    ├── img/
+        └── # img assets
     ├── pages/
     │   ├── HomePage.jsx       # Main landing page
     │   ├── HomePage.css
@@ -157,21 +159,9 @@ Edit project data in `src/utils/projectsData.js` to add or modify projects.
 2. Import to Vercel
 3. Deploy automatically
 
-### Netlify
-
-1. Build the project: `npm run build`
-2. Deploy the `dist` folder
-
 ### Other Hosts
 
 Build the project and upload the `dist` folder contents.
-
-## Browser Support
-
-- Chrome/Edge (latest)
-- Firefox (latest)
-- Safari (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
 
 ## Performance
 
