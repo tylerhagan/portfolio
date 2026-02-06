@@ -7,21 +7,15 @@ const AboutPage = () => {
         <div className="container">
           <div className="about-content">
             <h1>About Me</h1>
-            <p className="about-intro">
-              UK-born product designer based in Berlin, Germany. I'm a jack-of-all-trades: product designer, front-end engineer, illustrator, and design systems fanatic.
-            </p>
+            <p className="about-intro">UK-born product designer based in Berlin, Germany. I'm a jack-of-all-trades: product designer, front-end engineer, illustrator, and design systems fanatic.</p>
 
             <h2>Background</h2>
             <p>I work well separate or deeply integrated with development teams, allowing me to ship products efficiently and effectively. My approach combines traditional design thinking with modern AI-assisted workflows, enabling rapid prototyping and iteration.</p>
-            <p>
-              Over the years, I've had the privilege of optimising interfaces and creating experiences for notable brands including Nike, Coca-Cola, Intel Security, News UK, News Corp Australia, and The Wall Street Journal.
-            </p>
+            <p>Over the years, I've had the privilege of optimising interfaces and creating experiences for notable brands including Nike, Coca-Cola, Intel Security, News UK, News Corp Australia, and The Wall Street Journal.</p>
 
             <h2>Approach</h2>
-            <p>I believe in building cool things and solving hard problems. My process leverages AI tools like Claude and Midjourney alongside traditional design tools like Figma to accelerate ideation, prototyping, and documentation. This hybrid approach allows me to explore more possibilities in less time whilst maintaining high design quality.</p>
-            <p>
-              Design systems are at the core of my work; I'm passionate about creating scalable, maintainable component libraries that empower teams to build consistently across products.
-            </p>
+            <p>My process leverages AI tools like Claude and Midjourney alongside traditional design tools like Figma to accelerate ideation, prototyping, and documentation. This hybrid approach allows me to explore more possibilities in less time whilst maintaining high design quality.</p>
+            <p>Design systems are at the core of my work; I'm passionate about creating scalable, maintainable component libraries that empower teams to build consistently across products.</p>
 
             <h2>Philosophy</h2>
             <p>I believe the best design happens when you're deeply embedded with the team building it. That's why I don't just hand off designs—I work alongside engineers, using tools like Storybook and design tokens to ensure what we build matches what we designed.</p>
