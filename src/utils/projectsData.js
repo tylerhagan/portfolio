@@ -43,7 +43,6 @@ export const projectsData = {
           title: 'Pitch Section',
           description: 'Sales reps are supported with structured, persuasive content—tailored by market. Utilising 3D assets, and slick animations. I worked closely with the marketing team to ensure messaging aligned with brand standards and customer expectations.',
           images: [
-            'https://tylerhagan.co.uk/assets/img/offer-tool/pitch-recording.mp4',
             'https://tylerhagan.co.uk/assets/img/offer-tool/ot-breakdown.png',
             'https://tylerhagan.co.uk/assets/img/offer-tool/heartbeat-breakdown-pitch.png'
           ]
