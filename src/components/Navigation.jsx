@@ -13,8 +13,8 @@ const Navigation = ({ currentPage, onNavigate }) => {
   }, []);
 
   const logoSrc = theme === 'dark' 
-    ? '/src/img/th-logomark-light.svg'
-    : '/src/img/th-logomark-dark.svg';
+    ? '/img/th-logomark-light.svg'
+    : '/img/th-logomark-dark.svg';
 
   return (
     <nav className={scrolled ? 'scrolled' : ''}>

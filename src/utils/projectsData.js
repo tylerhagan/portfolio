@@ -35,31 +35,31 @@ export const projectsData = {
           title: 'Customer Portal',
           description: 'Enables quick creation and management of customer profiles, integrated directly with ZohoCRM.',
           images: [
-            '/src/img/ot-customerlist.png',
-            '/src/img/ot-customer-add.png'
+            '/img/ot-customerlist.png',
+            '/img/ot-customer-add.png'
           ]
         },
         {
           title: 'Pitch Section',
           description: 'Sales reps are supported with structured, persuasive content—tailored by market. Utilising 3D assets, and slick animations. I worked closely with the marketing team to ensure messaging aligned with brand standards and customer expectations.',
           images: [
-            '/src/img/ot-breakdown.png',
-            '/src/img/heartbeat-breakdown-pitch.png'
+            '/img/ot-breakdown.png',
+            '/img/heartbeat-breakdown-pitch.png'
           ]
         },
         {
           title: 'System Builder',
           description: 'A visual, interactive module resembling a web store. Agents select from pre-configured templates (customised per country) to speed up offer creation. Live values (e.g. production, consumption, ROI) are dynamically calculated based on customer data.',
           images: [
-            '/src/img/ot-concept.png',
-            '/src/img/ot-multi-site-offer.png',
-            '/src/img/ot-configuration.jpg'
+            '/img/ot-concept.png',
+            '/img/ot-multi-site-offer.png',
+            '/img/ot-configuration.jpg'
           ]
         },
         {
           title: 'Cockpit and Automations',
           description: 'Make everything available from the system builder allowed us to keep the user in the flow, reducing interruptions to sales. A robust configurable rules system; alerting and warning or preventing sales users from creating packages or systems that do not work or are not possible.',
-          images: ['/src/img/sidebars.png']
+          images: ['/img/sidebars.png']
         }
       ]
     },
@@ -109,7 +109,7 @@ export const projectsData = {
       { step: '10', title: 'Post Project', description: 'Beta build testing, reviews. Limited potential iteration. Future goals established.' }
     ],
     definition: 'With a heuristic review, a definition map on the project was critical to start the design process with all key issues and pain points in one place. This allows the team and I a holistic view from which to build the best approach.',
-    definitionImage: '/src/img/journey-map.png',
+    definitionImage: '/img/journey-map.png',
     solution: {
       objectives: [
         'Operational Efficiency: The primary focus was on streamlining internal processes related to installation tracking, performance monitoring, and customer management to improve overall operational efficiency.',
@@ -117,9 +117,9 @@ export const projectsData = {
         'Data Accuracy Improvement: Accurate data entry and management were crucial for ensuring the reliability of system performance metrics and customer information. The new application incorporated validation checks and guided flows to minimise errors and discrepancies.'
       ],
       images: [
-        { src: '/src/img/preview-one.png', caption: 'Navigation and Dashboard' },
-        { src: '/src/img/preview-two.png', caption: 'Installation Checks and Photo Upload' },
-        { src: '/src/img/preview-three.png', caption: 'Preparation Checklist and Reports' }
+        { src: '/img/preview-one.png', caption: 'Navigation and Dashboard' },
+        { src: '/img/preview-two.png', caption: 'Installation Checks and Photo Upload' },
+        { src: '/img/preview-three.png', caption: 'Preparation Checklist and Reports' }
       ]
     },
     results: 'The design and prototyping of the application exemplify the transformative impact of strategic design interventions in addressing complex operational challenges. By focusing on efficiency, cost reduction, data accuracy, and gamification, we delivered a solution that not only met but exceeded expectations.'
@@ -141,17 +141,17 @@ export const projectsData = {
       understanding: 'In our pursuit of creating a user-centric app, we conducted comprehensive competitor analysis and gathered insights through colleague interviews. These efforts were instrumental in identifying key factors crucial for enhancing user experience and maximising app utility.',
       differentiation: 'Early in the development process, we delineated our differentiation strategy from competitors, specifically targeting a user base distinct from those catered to by existing advanced-level apps. Our approach centred on presenting essential data points in a user-friendly format, prioritising simplicity and accessibility.',
       trust: 'Recognising the technical nature of our product, we placed a strong emphasis on fostering trust and confidence amongst users. To achieve this, we implemented robust systems health indicators, comprehensive FAQ sections, and intuitive energy flow interfaces.',
-      wireframeImage: '/src/img/top-level-wireframes-snippet-preview.png',
-      flowImage: '/src/img/user-flow.png'
+      wireframeImage: '/img/top-level-wireframes-snippet-preview.png',
+      flowImage: '/img/user-flow.png'
     },
     design: {
       approach: 'Adhering to foundational principles in mobile design, I implemented thumb-sized, rounded, and responsive elements for all interactions within the app. By leveraging native iOS and Android interface elements and behaviours, such as swiping and drawers, instead of reinventing established patterns, we ensured an intuitive user experience.',
       feedback: 'Feedback from our early testers underscored the success of these design choices. They particularly appreciated the ability to quickly gauge their system\'s performance with a glance, emphasising the importance of easily accessible data for optimising their appliance usage.',
       energyFlow: 'We employed variable speeds of animation within the energy flow diagram to represent the intensity of energy flows. This dynamic feature, coupled with straightforward breakdowns of production versus consumption, ensured that users could quickly grasp complex energy dynamics with just a glance.',
-      energyFlowImage: '/src/img/energy-flow2x.jpg',
+      energyFlowImage: '/img/energy-flow2x.jpg',
       prototypeImages: [
-        { src: '/src/img/early-prototype-dark-thumbnail.png', caption: 'Dashboard prototype (alpha test)' },
-        { src: '/src/img/early-prototype-light-thumbnail.png', caption: 'Daily graph prototype (beta test)' }
+        { src: '/img/early-prototype-dark-thumbnail.png', caption: 'Dashboard prototype (alpha test)' },
+        { src: '/img/early-prototype-light-thumbnail.png', caption: 'Daily graph prototype (beta test)' }
       ],
       colours: 'Our colour palette was meticulously chosen to optimise user experience. Following extensive research into colour psychology, we settled on a teal base due to its associations with calmness, serenity, and balance.'
     },
