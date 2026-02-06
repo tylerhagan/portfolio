@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import { projectsData } from '../utils/projectsData';
+import Lightbox from '../components/Lightbox';
 import './ProjectPage.css';
 
 const ProjectPage = ({ projectId, onNavigate }) => {
+  const [lightboxImage, setLightboxImage] = useState(null);
   const project = projectsData[projectId];
   
   if (!project) {
@@ -14,6 +17,14 @@ const ProjectPage = ({ projectId, onNavigate }) => {
       </div>
     );
   }
+
+  const openLightbox = (imageSrc, imageAlt) => {
+    setLightboxImage({ src: imageSrc, alt: imageAlt });
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+  };
 
   return (
     <>
@@ -101,7 +112,13 @@ const ProjectPage = ({ projectId, onNavigate }) => {
                   {feature.images && (
                     <div className="project-images">
                       {feature.images.map((img, i) => (
-                        <img key={i} src={img} alt={feature.title} className="project-image" />
+                        <img 
+                          key={i} 
+                          src={img} 
+                          alt={feature.title} 
+                          className="project-image clickable" 
+                          onClick={() => openLightbox(img, feature.title)}
+                        />
                       ))}
                     </div>
                   )}
@@ -165,7 +182,12 @@ const ProjectPage = ({ projectId, onNavigate }) => {
               <h2>Definition</h2>
               <p>{project.definition}</p>
               {project.definitionImage && (
-                <img src={project.definitionImage} alt="Journey Map" className="project-image-full" />
+                <img 
+                  src={project.definitionImage} 
+                  alt="Journey Map" 
+                  className="project-image-full clickable" 
+                  onClick={() => openLightbox(project.definitionImage, 'Journey Map')}
+                />
               )}
             </div>
 
@@ -182,7 +204,12 @@ const ProjectPage = ({ projectId, onNavigate }) => {
               <div className="project-images">
                 {project.solution.images.map((img, i) => (
                   <div key={i} className="captioned-image">
-                    <img src={img.src} alt={img.caption} className="project-image" />
+                    <img 
+                      src={img.src} 
+                      alt={img.caption} 
+                      className="project-image clickable" 
+                      onClick={() => openLightbox(img.src, img.caption)}
+                    />
                     <p className="image-caption">{img.caption}</p>
                   </div>
                 ))}
@@ -214,13 +241,23 @@ const ProjectPage = ({ projectId, onNavigate }) => {
               <p>{project.research.trust}</p>
               {project.research.wireframeImage && (
                 <div className="captioned-image">
-                  <img src={project.research.wireframeImage} alt="Wireframes" className="project-image-full" />
+                  <img 
+                    src={project.research.wireframeImage} 
+                    alt="Wireframes" 
+                    className="project-image-full clickable" 
+                    onClick={() => openLightbox(project.research.wireframeImage, 'Wireframes')}
+                  />
                   <p className="image-caption">Top level wireframe pages</p>
                 </div>
               )}
               {project.research.flowImage && (
                 <div className="captioned-image">
-                  <img src={project.research.flowImage} alt="User Flow" className="project-image-full" />
+                  <img 
+                    src={project.research.flowImage} 
+                    alt="User Flow" 
+                    className="project-image-full clickable" 
+                    onClick={() => openLightbox(project.research.flowImage, 'User Flow')}
+                  />
                   <p className="image-caption">Application Map / User Flow</p>
                 </div>
               )}
@@ -235,7 +272,12 @@ const ProjectPage = ({ projectId, onNavigate }) => {
               <p>{project.design.energyFlow}</p>
               {project.design.energyFlowImage && (
                 <div className="captioned-image">
-                  <img src={project.design.energyFlowImage} alt="Energy Flow" className="project-image-full" />
+                  <img 
+                    src={project.design.energyFlowImage} 
+                    alt="Energy Flow" 
+                    className="project-image-full clickable" 
+                    onClick={() => openLightbox(project.design.energyFlowImage, 'Energy Flow')}
+                  />
                   <p className="image-caption">Early mockups to final energy flow diagram</p>
                 </div>
               )}
@@ -243,7 +285,12 @@ const ProjectPage = ({ projectId, onNavigate }) => {
                 <div className="project-images">
                   {project.design.prototypeImages.map((img, i) => (
                     <div key={i} className="captioned-image">
-                      <img src={img.src} alt={img.caption} className="project-image" />
+                      <img 
+                        src={img.src} 
+                        alt={img.caption} 
+                        className="project-image clickable" 
+                        onClick={() => openLightbox(img.src, img.caption)}
+                      />
                       <p className="image-caption">{img.caption}</p>
                     </div>
                   ))}
@@ -284,6 +331,14 @@ const ProjectPage = ({ projectId, onNavigate }) => {
           </button>
         </div>
       </div>
+
+      {lightboxImage && (
+        <Lightbox 
+          imageSrc={lightboxImage.src} 
+          imageAlt={lightboxImage.alt} 
+          onClose={closeLightbox} 
+        />
+      )}
     </>
   );
 };
