@@ -51,7 +51,17 @@ const NowPlaying = () => {
       </button>
       
       <div className="now-playing-header">
+        {track.isPlaying && (
+            <div className="playing-indicator">
+              <div className="bar"></div>
+              <div className="bar"></div>
+              <div className="bar"></div>
+              <div className="bar"></div>
+            </div>
+          )}
+        {!track.isPlaying && (
         <div className="music-icon">♫</div>
+        )}
         <div className="now-playing-title">
           {track.isPlaying ? 'Now Playing' : 'Last Played'}
         </div>
@@ -76,14 +86,6 @@ const NowPlaying = () => {
             <div className="track-artist">{track.artist}</div>
             {!track.isPlaying && track.date && (
               <div className="track-time">{getTimeAgo(track.date)}</div>
-            )}
-            {track.isPlaying && (
-              <div className="playing-indicator">
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
-              </div>
             )}
           </div>
         </div>

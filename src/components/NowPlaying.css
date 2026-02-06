@@ -27,12 +27,16 @@
 }
 
 .now-playing.collapsed {
-    width: 180px;
+    width: 200px;
     padding: 1rem;
 }
 
 .now-playing.collapsed .track-info {
     display: none;
+}
+
+.now-playing.collapsed .now-playing-header {
+    margin-bottom: 0;
 }
 
 .close-button {

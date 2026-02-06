@@ -113,7 +113,7 @@ const HomePage = ({ onNavigate }) => {
             </div>
             <h1>Product designer crafting experiences from Berlin</h1>
             <p>
-              I design and build digital products with a focus on design systems, rapid prototyping, and AI-assisted workflows. Currently working at the intersection of B2B and B2C for sustainable energy solutions.
+             I am a jack-of-all-trades: product designer, front-end engineer, illustrator and design systems fanatic. I like building cool things and solving hard problems.
             </p>
             <div className="hero-cta">
               <a href="#work" className="btn btn-primary">View Work</a>

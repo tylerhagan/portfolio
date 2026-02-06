@@ -12,28 +12,20 @@ const AboutPage = () => {
             </p>
 
             <h2>Background</h2>
-            <p>
-              I work deeply integrated with development teams, which allows me to ship products efficiently and effectively. My approach combines traditional design thinking with modern AI-assisted workflows, enabling rapid prototyping and iteration.
-            </p>
+            <p>I work well separate or deeply integrated with development teams, allowing me to ship products efficiently and effectively. My approach combines traditional design thinking with modern AI-assisted workflows, enabling rapid prototyping and iteration.</p>
             <p>
               Over the years, I've had the privilege of optimising interfaces and creating experiences for notable brands including Nike, Coca-Cola, Intel Security, News UK, News Corp Australia, and The Wall Street Journal.
             </p>
 
             <h2>Approach</h2>
+            <p>I believe in building cool things and solving hard problems. My process leverages AI tools like Claude and Midjourney alongside traditional design tools like Figma to accelerate ideation, prototyping, and documentation. This hybrid approach allows me to explore more possibilities in less time whilst maintaining high design quality.</p>
             <p>
-              I believe in building cool things and solving hard problems. My process leverages AI tools like Claude and Midjourney alongside traditional design tools like Figma to accelerate ideation, prototyping, and documentation. This hybrid approach allows me to explore more possibilities in less time whilst maintaining high design quality.
-            </p>
-            <p>
-              Design systems are at the core of my work—I'm passionate about creating scalable, maintainable component libraries that empower teams to build consistently across products.
+              Design systems are at the core of my work; I'm passionate about creating scalable, maintainable component libraries that empower teams to build consistently across products.
             </p>
 
             <h2>Philosophy</h2>
-            <p>
-              I believe the best design happens when you're deeply embedded with the team building it. That's why I don't just hand off designs—I work alongside engineers, using tools like Storybook and design tokens to ensure what we build matches what we designed.
-            </p>
-            <p>
-              AI isn't replacing designers; it's amplifying what we can do. I use it to handle the tedious bits—generating content variations, documenting systems, analysing research—so I can focus on the creative problem-solving that actually matters.
-            </p>
+            <p>I believe the best design happens when you're deeply embedded with the team building it. That's why I don't just hand off designs—I work alongside engineers, using tools like Storybook and design tokens to ensure what we build matches what we designed.</p>
+            <p>AI isn't replacing designers; it's amplifying what we can do. I use it to handle the tedious bits; generating content variations, documenting systems, analysing research; so I can focus on the creative problem-solving that actually matters.</p>
 
             <div className="brands-section">
               <h2>Brands I've Worked With</h2>
@@ -75,7 +67,7 @@ const AboutPage = () => {
                 <h3>Development</h3>
                 <ul className="skill-list">
                   <li>React</li>
-                  <li>React Native</li>
+                  <li>Typescript</li>
                   <li>HTML/CSS</li>
                   <li>JavaScript</li>
                   <li>Design Tokens</li>
@@ -88,7 +80,7 @@ const AboutPage = () => {
                   <li>User Testing</li>
                   <li>A/B Testing</li>
                   <li>Analytics</li>
-                  <li>Agile/Scrum</li>
+                  <li>Conversion Optimisation</li>
                   <li>Workshop Facilitation</li>
                   <li>Stakeholder Management</li>
                 </ul>
