@@ -36,6 +36,8 @@ tyler-portfolio/
     │   ├── NowPlaying.css
     │   ├── Footer.jsx
     │   └── Footer.css
+    ├── img/
+        └── # img assets
     ├── pages/
     │   ├── HomePage.jsx       # Main landing page
     │   ├── HomePage.css
@@ -157,21 +159,9 @@ Edit project data in `src/utils/projectsData.js` to add or modify projects.
 2. Import to Vercel
 3. Deploy automatically
 
-### Netlify
-
-1. Build the project: `npm run build`
-2. Deploy the `dist` folder
-
 ### Other Hosts
 
 Build the project and upload the `dist` folder contents.
-
-## Browser Support
-
-- Chrome/Edge (latest)
-- Firefox (latest)
-- Safari (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
 
 ## Performance
 
