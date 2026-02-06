@@ -4,12 +4,12 @@ A modern, React-based portfolio website with dark mode, Last.fm integration, and
 
 ## Features
 
-- 🌓 **Dark/Light Mode** - Seamless theme switching with localStorage persistence
-- 🎵 **Last.fm Integration** - Real-time "Now Playing" widget showing current or last played track
-- 📱 **Responsive Design** - Fully responsive across all devices
-- ⚡ **Fast & Modern** - Built with React and Vite for optimal performance
-- 🎨 **Clean Design** - Inspired by AuthKit with subtle animations and gradients
-- 📄 **Project Case Studies** - Detailed pages for Offer Tool, Field Service, Solar Designer, and Energy Monitoring projects
+- **Dark/Light Mode** - Seamless theme switching with localStorage persistence
+- **Last.fm Integration** - Real-time "Now Playing" widget showing current or last played track
+- **Responsive Design** - Fully responsive across all devices
+- **Fast & Modern** - Built with React and Vite for optimal performance
+- **Clean Design** - Inspired by AuthKit with subtle animations and gradients
+- **Project Case Studies** - Detailed pages for Offer Tool, Field Service, Solar Designer, and Energy Monitoring projects
 
 ## Tech Stack
 
