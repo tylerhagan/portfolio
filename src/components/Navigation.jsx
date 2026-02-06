@@ -49,7 +49,7 @@ const Navigation = ({ currentPage, onNavigate }) => {
               </a>
             </li>
             <li>
-              <a href="tylerhagan@gmail.com">Contact</a>
+              <a href="mailto:tylerhagan@gmail.com">Contact</a>
             </li>
           </ul>
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">

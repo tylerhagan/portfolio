@@ -93,21 +93,9 @@ Output will be in `dist/` folder - upload this to your host.
 2. Connect to Vercel
 3. Auto-deploys on push
 
-**Netlify**:
-1. Run `npm run build`
-2. Upload `dist` folder
-
 **Traditional Host**:
 1. Run `npm run build`
 2. Upload contents of `dist` to server
-
-## Notes
-
-- All images reference tylerhagan.co.uk (https://tylerhagan.github.io/2024-25-Portfolio/assets/img/...)
-- Last.fm widget uses real API with your credentials
-- Dark mode uses localStorage for persistence
-- Smooth page transitions
-- Fully responsive
 
 ## Need Help?
 
