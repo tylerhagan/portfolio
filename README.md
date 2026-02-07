@@ -1,4 +1,4 @@
-# Tyler Hagan Portfolio
+# Portfolio
 
 A modern, React-based portfolio website with dark mode, Last.fm integration, and comprehensive project case studies.
 
