@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { projectsData } from '../utils/projectsData';
 import Lightbox from '../components/Lightbox';
+import ProtectedProject from '../components/ProtectedProject';
 import './ProjectPage.css';
 
 const ProjectPage = ({ projectId, onNavigate }) => {
@@ -26,7 +27,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
     setLightboxImage(null);
   };
 
-  return (
+  const projectContent = (
     <>
       <section className="project-hero">
         <div className="container">
@@ -341,6 +342,18 @@ const ProjectPage = ({ projectId, onNavigate }) => {
       )}
     </>
   );
+
+  // Wrap offer-tool project with password protection
+  if (projectId === 'offer-tool') {
+    return (
+      <ProtectedProject projectId={projectId} onNavigate={onNavigate}>
+        {projectContent}
+      </ProtectedProject>
+    );
+  }
+
+  // Return unprotected content for other projects
+  return projectContent;
 };
 
 export default ProjectPage;

@@ -1,0 +1,172 @@
+.protected-project {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: var(--bg-primary);
+}
+
+.protected-container {
+    max-width: 500px;
+    width: 100%;
+}
+
+.protected-content {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .protected-content {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 102, 255, 0.1);
+}
+
+.lock-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.protected-content h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+    animation: fadeInUp 0.6s ease-out 0.1s backwards;
+}
+
+.protected-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    animation: fadeInUp 0.6s ease-out 0.2s backwards;
+}
+
+.password-form {
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.6s ease-out 0.3s backwards;
+}
+
+.password-form.shake {
+    animation: shake 0.5s ease-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+
+.input-wrapper {
+    margin-bottom: 1.5rem;
+}
+
+.password-input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.password-input:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+}
+
+.password-input.error {
+    border-color: #dc3545;
+    animation: shake 0.5s ease-out;
+}
+
+[data-theme="dark"] .password-input:focus {
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.2);
+}
+
+.password-input::placeholder {
+    color: var(--text-secondary);
+    letter-spacing: normal;
+}
+
+.error-message {
+    display: block;
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.protected-content .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.protected-content .btn-primary {
+    background: var(--blue);
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+.protected-content .btn-primary:hover {
+    background: var(--blue-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 102, 255, 0.25);
+}
+
+[data-theme="dark"] .protected-content .btn-primary:hover {
+    box-shadow: 0 8px 30px rgba(0, 102, 255, 0.4);
+}
+
+.protected-content .btn-secondary {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    font-size: 0.9rem;
+}
+
+.protected-content .btn-secondary:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.back-button {
+    animation: fadeInUp 0.6s ease-out 0.4s backwards;
+}
+
+@media (max-width: 640px) {
+    .protected-content {
+        padding: 2rem;
+    }
+    
+    .lock-icon {
+        font-size: 3rem;
+    }
+    
+    .protected-content h1 {
+        font-size: 1.75rem;
+    }
+}
