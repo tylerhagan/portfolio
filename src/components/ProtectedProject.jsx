@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './ProtectedProject.css';
 
 const ProtectedProject = ({ projectId, children, onNavigate }) => {
@@ -7,13 +7,26 @@ const ProtectedProject = ({ projectId, children, onNavigate }) => {
   const [error, setError] = useState(false);
 
   // Set your password here
-  const PROTECTED_PASSWORD = 'unlockProject';
+  const PROTECTED_PASSWORD = 'unlockProject'; // Change this to your desired password
+  
+  // Create a unique storage key for this project
+  const STORAGE_KEY = `project_access_${projectId}`;
+
+  // Check localStorage on component mount
+  useEffect(() => {
+    const storedAccess = localStorage.getItem(STORAGE_KEY);
+    if (storedAccess === 'granted') {
+      setIsUnlocked(true);
+    }
+  }, [STORAGE_KEY]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === PROTECTED_PASSWORD) {
       setIsUnlocked(true);
       setError(false);
+      // Store access in localStorage
+      localStorage.setItem(STORAGE_KEY, 'granted');
     } else {
       setError(true);
       setPassword('');
