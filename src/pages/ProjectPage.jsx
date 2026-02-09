@@ -313,10 +313,39 @@ const ProjectPage = ({ projectId, onNavigate }) => {
           <>
             <div className="project-section">
               <p>{project.overview.description}</p>
+              
               <h3>Challenge</h3>
               <p>{project.overview.challenge}</p>
+              
+              {/* Challenge Images - 2 images in grid */}
+              {project.overview.challengeImages && (
+                <div className="project-images">
+                  {project.overview.challengeImages.map((img, i) => (
+                    <div key={i} className="captioned-image">
+                      <img 
+                        src={img.src} 
+                        alt={img.caption} 
+                        className="project-image clickable" 
+                        onClick={() => openLightbox(img.src, img.caption)}
+                      />
+                      <p className="image-caption">{img.caption}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+              
               <h3>Solution</h3>
               <p>{project.overview.solution}</p>
+              
+              {/* Solution Image - Full width */}
+              {project.overview.solutionImage && (
+                <img 
+                  src={project.overview.solutionImage} 
+                  alt="Solar Designer Solution" 
+                  className="project-image-full clickable" 
+                  onClick={() => openLightbox(project.overview.solutionImage, 'Solar Designer Solution')}
+                />
+              )}
             </div>
 
             <div className="project-section">
