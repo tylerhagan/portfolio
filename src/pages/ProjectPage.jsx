@@ -290,7 +290,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
                         src={img.src} 
                         alt={img.caption} 
                         className="project-image clickable" 
-                        onClick={() => openLightbox(img.src, img.caption)}
+                        onClick={() => openLightbox(img.srcFull, img.caption)}
                       />
                       <p className="image-caption">{img.caption}</p>
                     </div>

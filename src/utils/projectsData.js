@@ -150,8 +150,8 @@ export const projectsData = {
       energyFlow: 'We employed variable speeds of animation within the energy flow diagram to represent the intensity of energy flows. This dynamic feature, coupled with straightforward breakdowns of production versus consumption, ensured that users could quickly grasp complex energy dynamics with just a glance.',
       energyFlowImage: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/eigen-app/energy-flow2x.jpg',
       prototypeImages: [
-        { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/eigen-app/early-prototype-dark-thumbnail.png', caption: 'Dashboard prototype (alpha test)' },
-        { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/eigen-app/early-prototype-light-thumbnail.png', caption: 'Daily graph prototype (beta test)' }
+        { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/eigen-app/early-prototype-dark-thumbnail.png', srcFull: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/eigen-app/early-prototype.png', caption: 'Dashboard prototype (alpha test)' },
+        { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/eigen-app/early-prototype-light-thumbnail.png', srcFull: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/eigen-app/early-prototype-light.png', caption: 'Daily graph prototype (beta test)' }
       ],
       colours: 'Our colour palette was meticulously chosen to optimise user experience. Following extensive research into colour psychology, we settled on a teal base due to its associations with calmness, serenity, and balance.'
     },
