@@ -318,6 +318,8 @@ const ProjectPage = ({ projectId, onNavigate }) => {
               <p>{project.overview.challenge}</p>
               
               {/* Challenge Images - 2 images in grid */}
+              <h4>Screens</h4>
+              <p>Loading directly from the customer/order in the CRM &#40;Salesforce&#41;.</p>
               {project.overview.challengeImages && (
                 <div className="project-images">
                   {project.overview.challengeImages.map((img, i) => (

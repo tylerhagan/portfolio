@@ -172,7 +172,8 @@ export const projectsData = {
       // Add dummy images for challenge section
       challengeImages: [
         { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/solar-designer/loading.png', caption: 'Designer Loading from Customer Data' },
-        { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/solar-designer/select-planning.png', caption: 'Existing Offer or New Offer with Photo' }
+        { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/solar-designer/select-planning.png', caption: 'Existing Offer or New Offer with Photo' },
+        { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/solar-designer/quote-component.png', caption: 'Example quote item component' }
       ],
       solution: 'Designed a full-screen immersive interface with guided workflows. Leveraged AI tools to generate multiple design variations quickly. Built extensive prototype in Figma to validate interaction patterns.',
       // Add dummy image for solution section
