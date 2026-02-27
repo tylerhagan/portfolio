@@ -186,6 +186,18 @@
     gap: 2rem;
     margin: 2rem 0;
 }
+.container .project-section:nth-child(4) .feature-block > .project-images > img:nth-child(1),
+.container .project-section:nth-child(4) .feature-block > .project-images > img:nth-child(3) {
+    min-width: 300px;
+    width: 100%;
+    height: 282px;
+    object-fit: cover;
+    object-position: 0% 0%;
+}
+
+#root > div > div > div:nth-child(4) > div:nth-child(6) > div > img {
+    height: 400px;
+}
 
 .image-caption {
     text-align: center;

@@ -110,6 +110,16 @@ const ProjectPage = ({ projectId, onNavigate }) => {
                 <div key={idx} className="feature-block">
                   <h3>{feature.title}</h3>
                   <p>{feature.description}</p>
+                  {feature.title === 'Pitch Section' && (
+                    <video
+                      src="https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/pitch-recording.mp4"
+                      controls
+                      style={{ width: '100%', borderRadius: '12px', marginTop: '1.5rem', marginBottom: '1rem' }}
+                    />
+                  )}
+                  {feature.title === 'Pitch Section' && (
+                    <p><strong>Video:</strong> Version 1 of the Pitch Section for Sweden</p>
+                  ) }
                   {feature.images && (
                     <div className="project-images">
                       {feature.images.map((img, i) => (

@@ -41,10 +41,11 @@ export const projectsData = {
         },
         {
           title: 'Pitch Section',
-          description: 'Sales reps are supported with structured, persuasive content—tailored by market. Utilising 3D assets, and slick animations. I worked closely with the marketing team to ensure messaging aligned with brand standards and customer expectations.',
+          description: 'Sales reps are supported with structured, persuasive content—tailored by market. Utilising 3D assets, and slick animations. I worked closely with the marketing team to ensure messaging aligned with brand standards and customer expectations. Utilising fundamental principles like progressive disclosure to take the user on a journey with a convincing story line. Click the images below to see the expanded full views.',
           images: [
-            'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/ot-breakdown.png',
-            'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/heartbeat-breakdown-pitch.png'
+            'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/ot-pitch.png',
+            'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/heartbeat-breakdown-pitch.png',
+            'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/ot-breakdown.png'
           ]
         },
         {
