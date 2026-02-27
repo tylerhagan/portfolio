@@ -54,7 +54,8 @@ export const projectsData = {
           images: [
             'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/ot-concept.png',
             'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/ot-multi-site-offer.png',
-            'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/ot-configuration.jpg'
+            'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/ot-configuration.jpg',
+            'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/ot-summary.png'
           ]
         },
         {
