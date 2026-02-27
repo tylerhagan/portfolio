@@ -171,14 +171,12 @@ export const projectsData = {
     overview: {
       description: 'Collaborated closely with engineering, planning, and sales teams to develop a premium solar design tool with tight Salesforce integration.',
       challenge: 'Sales teams needed a sophisticated design tool that felt approachable. The tool needed to be usable by power user planners, and by sales users in video and in-person sales calls.',
-      // Add dummy images for challenge section
       challengeImages: [
         { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/solar-designer/loading.png', caption: 'Designer Loading from Customer Data' },
         { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/solar-designer/select-planning.png', caption: 'Existing Offer or New Offer with Photo' },
         { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/solar-designer/quote-component.png', caption: 'Example quote item component' }
       ],
       solution: 'Designed a full-screen immersive interface with guided workflows. Leveraged AI tools to generate multiple design variations quickly. Built extensive prototype in Figma to validate interaction patterns.',
-      // Add dummy image for solution section
       solutionImage: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/solar-designer/main-layout.png'
     },
     impact: 'Significantly reduced error rates, increased sales call final conversion rates, reduced time to sale and improved NPS scores dramatically.'

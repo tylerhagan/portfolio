@@ -329,7 +329,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
               
               {/* Challenge Images - 2 images in grid */}
               <h4>Screens</h4>
-              <p>Loading directly from the customer/order in the CRM &#40;Salesforce&#41;.</p>
+              <p>Utilising 2 modes, one for sales and one for advanced planning users. To enable a simpler refined view for customer facing moments, without hindering the power users. Loading directly from the customer/order in the CRM &#40;Salesforce&#41;.</p>
               {project.overview.challengeImages && (
                 <div className="project-images">
                   {project.overview.challengeImages.map((img, i) => (
