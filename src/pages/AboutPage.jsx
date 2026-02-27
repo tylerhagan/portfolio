@@ -88,7 +88,7 @@ const AboutPage = () => {
                   <li>User Testing</li>
                   <li>A/B Testing</li>
                   <li>Analytics</li>
-                  <li>Agile/Scrum</li>
+                  <li>Agile/Lean</li>
                   <li>Workshop Facilitation</li>
                   <li>Stakeholder Management</li>
                 </ul>
