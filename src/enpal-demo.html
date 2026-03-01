@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enpal Energy — Meter Reading Prototype</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Poppins', sans-serif; background: #F4F5F7; }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type=number] { -moz-appearance: textfield; }
+    button:focus { outline: none; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    const COLORS = {
+      yellow: "#F5B800",
+      navy: "#0D2B4E",
+      dodger: "#3B7DE8",
+      green: "#2E7D4F",
+      greenLight: "#E8F5EE",
+      red: "#DC2626",
+      stone: "#6B7280",
+      bg: "#F4F5F7",
+      border: "#E5E7EB",
+      white: "#FFFFFF",
+      text: "#111827",
+    };
+
+    const PREV_READING = 12847;
+    const PREV_DATE = "Nov 28, 2025";
+    const TODAY = "Dec 28, 2025";
+    const MONTHLY_MIN = 160;
+    const MONTHLY_MAX = 220;
+
+    // ── Shared ────────────────────────────────────────────────────────────────
+
+    function PhoneShell({ children, statusLabel = "Enpal Energy" }) {
+      return (
+        <div style={{
+          width: 340,
+          background: COLORS.white,
+          borderRadius: 36,
+          boxShadow: "0 24px 60px rgba(13,43,78,0.2), 0 4px 12px rgba(13,43,78,0.1)",
+          overflow: "hidden",
+          border: `6px solid ${COLORS.navy}`,
+          display: "flex",
+          flexDirection: "column",
+          minHeight: 620,
+        }}>
+          <div style={{
+            background: COLORS.navy, color: "white",
+            fontSize: 11, fontWeight: 600,
+            padding: "10px 20px 8px",
+            display: "flex", justifyContent: "space-between", alignItems: "center",
+            letterSpacing: "0.02em", flexShrink: 0,
+          }}>
+            <span>9:41</span>
+            <span>{statusLabel}</span>
+            <span style={{ fontSize: 9 }}>●●● ▊</span>
+          </div>
+          {children}
+        </div>
+      );
+    }
+
+    function NavBar({ active, onNavigate }) {
+      const items = [
+        { icon: "🏠", label: "Home", id: "home" },
+        { icon: "📊", label: "Usage", id: "usage" },
+        { icon: "🔢", label: "Meter", id: "meter" },
+        { icon: "📄", label: "Contract", id: "contract" },
+      ];
+      return (
+        <div style={{
+          background: COLORS.white, borderTop: `1px solid ${COLORS.border}`,
+          padding: "8px 16px 10px", display: "flex", justifyContent: "space-around", flexShrink: 0,
+        }}>
+          {items.map(item => (
+            <div key={item.id} onClick={() => onNavigate(item.id)} style={{
+              display: "flex", flexDirection: "column", alignItems: "center",
+              gap: 2, cursor: "pointer", padding: "4px 8px", borderRadius: 8,
+            }}>
+              <span style={{ fontSize: 18 }}>{item.icon}</span>
+              <span style={{
+                fontSize: 9.5,
+                fontWeight: active === item.id ? 700 : 500,
+                color: active === item.id ? COLORS.navy : COLORS.stone,
+              }}>{item.label}</span>
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    function ScreenHeader({ title, onBack }) {
+      return (
+        <div style={{
+          background: COLORS.navy, padding: "14px 16px 16px",
+          display: "flex", alignItems: "center", gap: 10, flexShrink: 0,
+        }}>
+          {onBack && (
+            <button onClick={onBack} style={{
+              width: 30, height: 30, borderRadius: "50%",
+              background: "rgba(255,255,255,0.12)", border: "none",
+              color: "white", fontSize: 16, cursor: "pointer",
+              display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+            }}>←</button>
+          )}
+          <span style={{ fontSize: 15, fontWeight: 700, color: "white" }}>{title}</span>
+        </div>
+      );
+    }
+
+    function StepDots({ current, total }) {
+      return (
+        <div style={{
+          display: "flex", gap: 5, justifyContent: "center", padding: 10,
+          background: COLORS.bg, borderTop: `1px solid ${COLORS.border}`, flexShrink: 0,
+        }}>
+          {Array.from({ length: total }).map((_, i) => (
+            <div key={i} style={{
+              height: 6, width: i === current ? 18 : 6,
+              borderRadius: 3,
+              background: i === current ? COLORS.navy : COLORS.border,
+              transition: "all 0.2s",
+            }} />
+          ))}
+        </div>
+      );
+    }
+
+    // ── Screen 0: Home ────────────────────────────────────────────────────────
+
+    function HomeScreen({ onStartReading, onGoToMeter }) {
+      return (
+        <PhoneShell>
+          <div style={{
+            background: `linear-gradient(160deg, ${COLORS.navy} 0%, #1a4a7a 100%)`,
+            padding: "20px 20px 28px", position: "relative", overflow: "hidden", flexShrink: 0,
+          }}>
+            <div style={{ position: "absolute", bottom: -30, right: -30, width: 120, height: 120, borderRadius: "50%", background: COLORS.yellow, opacity: 0.1 }} />
+            <div style={{ position: "absolute", top: -20, right: 40, width: 80, height: 80, borderRadius: "50%", background: COLORS.yellow, opacity: 0.07 }} />
+            <div style={{ fontSize: 15, fontWeight: 800, color: COLORS.yellow, marginBottom: 20, display: "flex", alignItems: "center", gap: 6, position: "relative" }}>
+              <strong>Enpal</strong> <div style={{ width: 8, height: 8, borderRadius: "50%", background: COLORS.yellow }} /> <span style={{ fontSize: 12, fontWeight: 400, fontStyle: 'italic' }}>energy</span>
+            </div>
+            <div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)", marginBottom: 4, position: "relative" }}>Guten Morgen, Max</div>
+            <div style={{ fontSize: 22, fontWeight: 800, color: "white", lineHeight: 1.2, position: "relative" }}>
+              Your energy,<br />always clear.
+            </div>
+          </div>
+
+          <div style={{ background: COLORS.bg, flex: 1, padding: "16px 16px 20px", display: "flex", flexDirection: "column", gap: 12, overflowY: "auto" }}>
+            {/* Action card */}
+            <div onClick={onStartReading} style={{
+              background: COLORS.white, borderRadius: 16, padding: 16,
+              borderLeft: `4px solid ${COLORS.yellow}`,
+              boxShadow: "0 2px 8px rgba(0,0,0,0.06)", cursor: "pointer",
+            }}>
+              <div style={{
+                fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase",
+                color: COLORS.yellow, background: "#FFF8E1", borderRadius: 4, padding: "2px 7px",
+                display: "inline-block", marginBottom: 8,
+              }}>📋 Action needed</div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: COLORS.navy, marginBottom: 4 }}>Monthly meter reading due</div>
+              <div style={{ fontSize: 12, color: COLORS.stone, lineHeight: 1.5, marginBottom: 12 }}>
+                Takes ~30 seconds. Keeps your Abschläge accurate and avoids billing surprises at year end.
+              </div>
+              <div style={{
+                background: COLORS.yellow, color: COLORS.navy, fontSize: 13, fontWeight: 700,
+                borderRadius: 10, padding: "10px 18px", textAlign: "center",
+              }}>
+                Submit reading
+              </div>
+            </div>
+
+            {/* Abschlag status */}
+            <div style={{ background: COLORS.white, borderRadius: 16, padding: "14px 16px", boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}>
+              <div style={{ fontSize: 10, fontWeight: 600, color: COLORS.stone, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>
+                Current Abschlag
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 3 }}>
+                  <span style={{ fontSize: 22, fontWeight: 800, color: COLORS.navy }}>87</span>
+                  <span style={{ fontSize: 12, color: COLORS.stone }}>€ / month</span>
+                </div>
+                <div style={{ fontSize: 11, fontWeight: 600, color: COLORS.green, background: COLORS.greenLight, padding: "4px 9px", borderRadius: 20 }}>
+                  ✓ On track
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <NavBar active="home" onNavigate={(id) => id === "meter" && onGoToMeter()} />
+        </PhoneShell>
+      );
+    }
+
+    // ── Screen 1: Input ───────────────────────────────────────────────────────
+
+    function InputScreen({ onBack, onNext, reading, setReading }) {
+      const [photoTaken, setPhotoTaken] = useState(false);
+      const [inputVal, setInputVal] = useState(reading ? String(reading) : "");
+      const [validState, setValidState] = useState(null);
+      const [validMsg, setValidMsg] = useState("");
+      const [rangePct, setRangePct] = useState(0);
+
+      const validate = (val) => {
+        const num = parseInt(val);
+        if (!val || isNaN(num)) {
+          setValidState(null); setValidMsg(""); setRangePct(0); setReading(null); return;
+        }
+        const delta = num - PREV_READING;
+        setReading(num);
+        if (num < PREV_READING) {
+          setValidState("error");
+          setValidMsg("⚠ Reading is lower than last month's — please check your meter.");
+          setRangePct(0);
+        } else if (delta < MONTHLY_MIN * 0.5) {
+          setValidState("warning");
+          setValidMsg(`⚠ Only ${delta} kWh since last reading — lower than usual. Double-check if correct.`);
+          setRangePct(Math.max(2, (delta / MONTHLY_MAX) * 100));
+        } else if (delta > MONTHLY_MAX * 1.8) {
+          setValidState("warning");
+          setValidMsg(`⚠ ${delta} kWh is higher than usual — if correct, that's fine. Just double-check.`);
+          setRangePct(98);
+        } else {
+          setValidState("ok");
+          setValidMsg(`✓ ${delta} kWh — within your expected monthly range.`);
+          setRangePct(Math.max(5, Math.min(95, ((delta - MONTHLY_MIN) / (MONTHLY_MAX - MONTHLY_MIN)) * 100)));
+        }
+      };
+
+      const handlePhoto = () => {
+        setPhotoTaken(true);
+        setInputVal("13041");
+        validate("13041");
+      };
+
+      const canSubmit = reading && validState !== "error";
+      const validColor = validState === "ok" ? COLORS.green : validState === "warning" ? "#D97706" : COLORS.red;
+
+      return (
+        <PhoneShell>
+          <ScreenHeader title="Submit Meter Reading" onBack={onBack} />
+          <div style={{ flex: 1, overflowY: "auto", padding: "18px 16px", display: "flex", flexDirection: "column", gap: 16 }}>
+
+            {/* Previous reading */}
+            <div style={{ background: COLORS.navy, borderRadius: 12, padding: "12px 14px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <div>
+                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", marginBottom: 3 }}>Last reading</div>
+                <div style={{ fontSize: 18, fontWeight: 800, color: COLORS.yellow }}>
+                  {PREV_READING.toLocaleString()} <span style={{ fontSize: 11, color: "rgba(255,255,255,0.5)" }}>kWh</span>
+                </div>
+              </div>
+              <div style={{ textAlign: "right" }}>
+                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.45)" }}>{PREV_DATE}</div>
+                <div style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", marginTop: 2 }}>30 days ago</div>
+              </div>
+            </div>
+
+            {/* Photo zone */}
+            <div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: COLORS.navy, marginBottom: 8 }}>📷 Take a photo of your meter</div>
+              <div onClick={!photoTaken ? handlePhoto : undefined} style={{
+                border: `2px ${photoTaken ? "solid" : "dashed"} ${photoTaken ? COLORS.green : COLORS.border}`,
+                borderRadius: 14, padding: photoTaken ? "12px 14px" : "22px 16px",
+                textAlign: "center", cursor: photoTaken ? "default" : "pointer",
+                background: photoTaken ? COLORS.greenLight : "transparent", transition: "all 0.2s",
+              }}>
+                {!photoTaken ? (
+                  <>
+                    <div style={{ fontSize: 28, marginBottom: 8 }}>📸</div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: COLORS.navy, marginBottom: 4 }}>Tap to photograph meter</div>
+                    <div style={{ fontSize: 11, color: COLORS.stone }}>We'll read the number for you</div>
+                  </>
+                ) : (
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, background: COLORS.white, borderRadius: 10, padding: "10px 12px", border: "1px solid #A7F3D0" }}>
+                    <div>
+                      <div style={{ fontSize: 11, color: COLORS.stone }}>Reading detected by OCR</div>
+                      <div style={{ fontSize: 20, fontWeight: 800, color: COLORS.green }}>13,041 kWh</div>
+                    </div>
+                    <div style={{ marginLeft: "auto", fontSize: 20 }}>✅</div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 11, color: COLORS.stone }}>
+              <div style={{ flex: 1, height: 1, background: COLORS.border }} />
+              or enter manually
+              <div style={{ flex: 1, height: 1, background: COLORS.border }} />
+            </div>
+
+            {/* Manual input */}
+            <div>
+              <label style={{ fontSize: 12, fontWeight: 600, color: COLORS.navy, display: "block", marginBottom: 6 }}>
+                Meter reading (kWh)
+              </label>
+              <div style={{ position: "relative" }}>
+                <input
+                  type="number"
+                  value={inputVal}
+                  placeholder="12847"
+                  onChange={e => { setInputVal(e.target.value); validate(e.target.value); }}
+                  style={{
+                    width: "100%", fontFamily: "Poppins, sans-serif",
+                    fontSize: 22, fontWeight: 800, color: COLORS.navy,
+                    border: `2px solid ${validState === "ok" ? COLORS.green : validState === "error" ? COLORS.red : COLORS.border}`,
+                    borderRadius: 12, padding: "12px 55px 12px 14px", outline: "none",
+                    letterSpacing: "0.04em",
+                  }}
+                />
+                <span style={{ position: "absolute", right: 14, top: "50%", transform: "translateY(-50%)", fontSize: 13, fontWeight: 600, color: COLORS.stone }}>kWh</span>
+              </div>
+              {validMsg && <div style={{ fontSize: 11.5, marginTop: 6, lineHeight: 1.4, color: validColor }}>{validMsg}</div>}
+              {validState && (
+                <div style={{ marginTop: 10 }}>
+                  <div style={{ fontSize: 10, color: COLORS.stone, marginBottom: 5, display: "flex", justifyContent: "space-between" }}>
+                    <span>Expected range</span>
+                    <span>{(PREV_READING + MONTHLY_MIN).toLocaleString()} – {(PREV_READING + MONTHLY_MAX).toLocaleString()} kWh</span>
+                  </div>
+                  <div style={{ height: 6, borderRadius: 3, background: COLORS.border, position: "relative" }}>
+                    <div style={{ height: "100%", borderRadius: 3, background: `linear-gradient(90deg, #A7F3D0 0%, ${COLORS.green} 100%)`, width: `${rangePct}%`, transition: "width 0.4s ease" }} />
+                    <div style={{ position: "absolute", top: "50%", left: `${rangePct}%`, transform: "translate(-50%, -50%)", width: 14, height: 14, borderRadius: "50%", background: COLORS.navy, border: "2px solid white", boxShadow: "0 1px 4px rgba(0,0,0,0.2)", transition: "left 0.4s ease" }} />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div style={{ padding: "0 16px 16px", background: COLORS.white, flexShrink: 0 }}>
+            <button disabled={!canSubmit} onClick={canSubmit ? onNext : undefined} style={{
+              background: canSubmit ? COLORS.yellow : COLORS.border,
+              color: canSubmit ? COLORS.navy : COLORS.stone,
+              fontFamily: "Poppins, sans-serif", fontSize: 14, fontWeight: 800,
+              border: "none", borderRadius: 14, padding: 14, width: "100%",
+              cursor: canSubmit ? "pointer" : "default", letterSpacing: "0.02em",
+            }}>Review</button>
+          </div>
+          <StepDots current={0} total={3} />
+        </PhoneShell>
+      );
+    }
+
+    // ── Screen 2: Confirm ─────────────────────────────────────────────────────
+
+    function ConfirmScreen({ onBack, onConfirm, reading }) {
+      const delta = reading - PREV_READING;
+      const inRange = delta >= MONTHLY_MIN && delta <= MONTHLY_MAX;
+      return (
+        <PhoneShell>
+          <ScreenHeader title="Confirm Reading" onBack={onBack} />
+          <div style={{ flex: 1, overflowY: "auto", padding: "20px 16px", display: "flex", flexDirection: "column", gap: 12 }}>
+
+            <div style={{ background: COLORS.navy, borderRadius: 12, padding: "13px 14px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)" }}>New reading</div>
+              <div style={{ fontSize: 18, fontWeight: 800, color: COLORS.yellow }}>{reading.toLocaleString()} kWh</div>
+            </div>
+
+            {[
+              { label: "Previous reading", value: `${PREV_READING.toLocaleString()} kWh` },
+              { label: "Consumption this period", value: `${delta.toLocaleString()} kWh` },
+              { label: "Reading date", value: TODAY },
+            ].map(row => (
+              <div key={row.label} style={{ background: COLORS.bg, borderRadius: 12, padding: "13px 14px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ fontSize: 12, color: COLORS.stone }}>{row.label}</div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: COLORS.navy }}>{row.value}</div>
+              </div>
+            ))}
+
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 8, background: inRange ? COLORS.greenLight : "#FFF8E1", borderRadius: 12, padding: "10px 14px" }}>
+              <span style={{ fontSize: 18 }}>{inRange ? "📊" : "⚠️"}</span>
+              <div style={{ fontSize: 12, color: inRange ? COLORS.green : "#D97706", fontWeight: 600, lineHeight: 1.4 }}>
+                {inRange
+                  ? `${delta} kWh is within your typical monthly range (${MONTHLY_MIN}–${MONTHLY_MAX} kWh). Looks right!`
+                  : `${delta} kWh is outside your usual range. If correct, proceed — otherwise go back and check.`}
+              </div>
+            </div>
+
+            <div style={{ fontSize: 11, color: COLORS.stone, textAlign: "center", lineHeight: 1.5 }}>
+              Submitting confirms this reading is from your meter today.<br />If something looks off, tap Edit.
+            </div>
+
+            <div onClick={onBack} style={{ textAlign: "center", fontSize: 12, color: COLORS.dodger, fontWeight: 600, cursor: "pointer", padding: 8 }}>
+              Edit reading
+            </div>
+          </div>
+
+          <div style={{ padding: "0 16px 16px", background: COLORS.white, flexShrink: 0 }}>
+            <button onClick={onConfirm} style={{
+              background: COLORS.yellow, color: COLORS.navy,
+              fontFamily: "Poppins, sans-serif", fontSize: 14, fontWeight: 800,
+              border: "none", borderRadius: 14, padding: 14, width: "100%",
+              cursor: "pointer", letterSpacing: "0.02em",
+            }}>Confirm & Submit</button>
+          </div>
+          <StepDots current={1} total={3} />
+        </PhoneShell>
+      );
+    }
+
+    // ── Screen 3: Success ─────────────────────────────────────────────────────
+
+    function SuccessScreen({ onDone, reading }) {
+      const delta = reading - PREV_READING;
+      const cost = Math.round(delta * 0.38);
+      const [visible, setVisible] = useState(false);
+      useEffect(() => { const t = setTimeout(() => setVisible(true), 50); return () => clearTimeout(t); }, []);
+
+      return (
+        <PhoneShell>
+          <div style={{ flex: 1, background: COLORS.navy, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "24px 20px", gap: 8, overflowY: "auto" }}>
+            <div style={{ width: 72, height: 72, background: COLORS.yellow, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32, marginBottom: 10, transform: visible ? "scale(1)" : "scale(0.5)", opacity: visible ? 1 : 0, transition: "all 0.4s cubic-bezier(0.34,1.56,0.64,1)" }}>✓</div>
+
+            <div style={{ fontSize: 22, fontWeight: 800, color: "white", marginBottom: 4, textAlign: "center" }}>Reading submitted</div>
+            <div style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.5, marginBottom: 16, textAlign: "center" }}>
+              Your December reading is saved.<br />Here's what it means for your bill.
+            </div>
+
+            <div style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 16, padding: 16, width: "100%", marginBottom: 8 }}>
+              <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: 10 }}>Billing summary</div>
+              {[
+                { label: "This month's usage", value: `${delta.toLocaleString()} kWh`, color: "white" },
+                { label: "Estimated cost", value: `~€ ${cost}`, color: COLORS.yellow },
+                { label: "Current Abschlag", value: "€ 87 (on track)", color: "#6EE7B7" },
+              ].map(row => (
+                <div key={row.label} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                  <div style={{ fontSize: 12, color: "rgba(255,255,255,0.6)" }}>{row.label}</div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: row.color }}>{row.value}</div>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ background: "rgba(245,184,0,0.12)", border: "1px solid rgba(245,184,0,0.3)", borderRadius: 12, padding: "10px 14px", width: "100%", display: "flex", alignItems: "center", gap: 10 }}>
+              <span style={{ fontSize: 22 }}>🔥</span>
+              <div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: COLORS.yellow }}>3 months in a row</div>
+                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)" }}>You've submitted every month since October</div>
+              </div>
+            </div>
+
+            <button onClick={onDone} style={{ background: COLORS.yellow, color: COLORS.navy, fontFamily: "Poppins, sans-serif", fontSize: 14, fontWeight: 800, border: "none", borderRadius: 14, padding: 14, width: "100%", cursor: "pointer", letterSpacing: "0.02em", marginTop: 8 }}>
+              Done
+            </button>
+          </div>
+        </PhoneShell>
+      );
+    }
+
+    // ── Screen 4: History ─────────────────────────────────────────────────────
+
+    function HistoryScreen({ onBack, latestReading }) {
+      const entries = latestReading
+        ? [
+            { date: "Dec 28, 2025", method: "Photo verified · Just submitted", icon: "📷", reading: latestReading, delta: latestReading - 12847, isNew: true },
+            { date: "Nov 28, 2025", method: "Photo verified", icon: "📷", reading: 12847, delta: 201 },
+            { date: "Oct 30, 2025", method: "Manually entered", icon: "✏️", reading: 12646, delta: 188 },
+            { date: "Jan 15, 2025", method: "Annual reading · Estimated gap", icon: "⚠️", reading: 10458, delta: 2188, estimated: true },
+          ]
+        : [
+            { date: "Nov 28, 2025", method: "Photo verified", icon: "📷", reading: 12847, delta: 201 },
+            { date: "Oct 30, 2025", method: "Manually entered", icon: "✏️", reading: 12646, delta: 188 },
+            { date: "Jan 15, 2025", method: "Annual reading · Estimated gap", icon: "⚠️", reading: 10458, delta: 2188, estimated: true },
+          ];
+
+      return (
+        <PhoneShell>
+          <div style={{ background: COLORS.navy, padding: "14px 16px 18px", flexShrink: 0 }}>
+            <div style={{ fontSize: 16, fontWeight: 800, color: "white", marginBottom: 2 }}>Meter Readings</div>
+            <div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)" }}>MTR-48291 · Zähler Nr. 1001234</div>
+          </div>
+
+          <div style={{ flex: 1, overflowY: "auto", padding: 14, display: "flex", flexDirection: "column", gap: 10 }}>
+            <div style={{ background: COLORS.navy, borderRadius: 14, padding: 14, display: "flex", alignItems: "center", gap: 12 }}>
+              <span style={{ fontSize: 28 }}>🔥</span>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 14, fontWeight: 700, color: COLORS.yellow }}>{latestReading ? "3-month streak" : "2-month streak"}</div>
+                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)" }}>Keep going for no year-end surprises</div>
+              </div>
+              <div style={{ fontSize: 28, fontWeight: 800, color: COLORS.yellow }}>{latestReading ? "3" : "2"}</div>
+            </div>
+
+            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: COLORS.stone }}>Recent readings</div>
+
+            {entries.map((entry, i) => (
+              <div key={i} style={{ background: COLORS.white, borderRadius: 12, padding: "12px 14px", display: "flex", alignItems: "center", gap: 10, boxShadow: "0 1px 4px rgba(0,0,0,0.04)", border: entry.isNew ? `2px solid ${COLORS.green}` : "2px solid transparent" }}>
+                <div style={{ width: 34, height: 34, borderRadius: 10, background: entry.estimated ? "#FFF8E1" : COLORS.greenLight, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, flexShrink: 0 }}>{entry.icon}</div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: COLORS.navy }}>{entry.date}</div>
+                  <div style={{ fontSize: 11, color: COLORS.stone }}>{entry.method}</div>
+                </div>
+                <div style={{ textAlign: "right" }}>
+                  <div style={{ fontSize: 15, fontWeight: 800, color: COLORS.navy }}>{entry.reading.toLocaleString()}</div>
+                  <div style={{ fontSize: 10, color: entry.estimated ? COLORS.stone : COLORS.green }}>+{entry.delta.toLocaleString()} kWh</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <NavBar active="meter" onNavigate={(id) => id === "home" && onBack()} />
+        </PhoneShell>
+      );
+    }
+
+    // ── Annotation Panel ──────────────────────────────────────────────────────
+
+    function AnnotationPanel({ screen, onSelect }) {
+      const screens = ["Home", "Input", "Confirm", "Success", "History"];
+      const annotations = [
+        { dot: COLORS.yellow, text: <><strong>Entry point</strong> — Contextual card on home screen. Appears ~28th of month with plain-language value prop.</> },
+        { dot: COLORS.navy, text: <><strong>Photo-first input</strong> — Tap photo zone to simulate OCR auto-fill. Manual entry always available as fallback.</> },
+        { dot: COLORS.green, text: <><strong>Range validation</strong> — Visual bar + hint reacts live. Flags anomalies without blocking submission.</> },
+        { dot: COLORS.dodger, text: <><strong>Self-correction step</strong> — Delta shown so users spot typos themselves before confirming.</> },
+        { dot: COLORS.yellow, text: <><strong>Immediate value</strong> — Billing estimate shown right after submit. Makes the monthly effort tangible.</> },
+        { dot: "#E74C3C", text: <><strong>Streak (light)</strong> — Month counter only. Factual, not gamified. Reinforces habit without undermining trust.</> },
+      ];
+
+      return (
+        <div style={{ background: COLORS.white, borderRadius: 16, padding: 18, width: 230, boxShadow: "0 4px 16px rgba(0,0,0,0.06)", alignSelf: "flex-start", flexShrink: 0 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: COLORS.stone, marginBottom: 12 }}>Screens</div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 18 }}>
+            {screens.map((s, i) => (
+              <button key={s} onClick={() => onSelect(i)} style={{ fontFamily: "Poppins, sans-serif", fontSize: 11, fontWeight: 600, padding: "5px 11px", borderRadius: 8, border: `1.5px solid ${screen === i ? COLORS.navy : COLORS.border}`, background: screen === i ? COLORS.navy : COLORS.white, color: screen === i ? "white" : COLORS.navy, cursor: "pointer" }}>{s}</button>
+            ))}
+          </div>
+
+          <div style={{ height: 1, background: COLORS.border, marginBottom: 14, marginTop: 4 }} />
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: COLORS.stone, marginBottom: 8 }}>Demo notes</div>
+          {[
+            "Input: Click the photo area to simulate upload.",
+            "Change the reading value. Try something smaller or higher. (The value will impact the rest of the journey.)"
+          ].map((a, i) => (
+            <div key={i} style={{ fontSize: 11, color: COLORS.stone, lineHeight: 1.45, marginBottom: 5, paddingLeft: 10, position: "relative" }}>
+              <span style={{ position: "absolute", left: 0 }}>·</span>{a}
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    // ── Root App ──────────────────────────────────────────────────────────────
+
+    function App() {
+      const [screen, setScreen] = useState(0);
+      const [reading, setReading] = useState(null);
+
+      const screenLabels = ["Entry Point", "Input", "Confirm", "Success", "History"];
+
+      const renderScreen = () => {
+        switch (screen) {
+          case 0: return <HomeScreen onStartReading={() => setScreen(1)} onGoToMeter={() => setScreen(4)} />;
+          case 1: return <InputScreen onBack={() => setScreen(0)} onNext={() => setScreen(2)} reading={reading} setReading={setReading} />;
+          case 2: return <ConfirmScreen onBack={() => setScreen(1)} onConfirm={() => setScreen(3)} reading={reading || 13041} />;
+          case 3: return <SuccessScreen onDone={() => setScreen(0)} reading={reading || 13041} />;
+          case 4: return <HistoryScreen onBack={() => setScreen(0)} latestReading={null} />;
+          default: return null;
+        }
+      };
+
+      return (
+        <div style={{ minHeight: "100vh", background: "#F4F5F7", display: "flex", alignItems: "center", justifyContent: "center", padding: "32px 16px" }}>
+          <div style={{ display: "flex", gap: 32, alignItems: "flex-start", flexWrap: "wrap", justifyContent: "center", maxWidth: 1100 }}>
+            <AnnotationPanel screen={screen} onSelect={setScreen} />
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: COLORS.stone }}>
+                {screen + 1} / 5 — {screenLabels[screen]}
+              </div>
+              {renderScreen()}
+              <div style={{ fontSize: 11, color: COLORS.stone, textAlign: "center" }}>
+                Click the yellow card or CTA to navigate. Alternatively use the panel on the top left.
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>
