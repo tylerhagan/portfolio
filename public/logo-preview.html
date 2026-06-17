@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logo Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f5f5;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    h1 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #999;
+      margin-bottom: 1rem;
+    }
+
+    .option {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .option-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #999;
+      padding: 0.75rem 1.5rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .nav-mock {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .nav-links-mock {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    /* A — Weight contrast */
+    .logo-a {
+      font-size: 1.05rem;
+      letter-spacing: -0.5px;
+    }
+    .logo-a .first { font-weight: 300; color: #999; }
+    .logo-a .last  { font-weight: 700; color: #111; }
+
+    /* B — Monospace dot (current) */
+    .logo-b {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: -0.5px;
+      color: #111;
+    }
+    .logo-b .dot { color: #0066FF; }
+
+    /* D — Initials mark */
+    .logo-d {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border: 1.5px solid #111;
+      border-radius: 7px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #111;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .logo-d:hover {
+      background: #0066FF;
+      border-color: #0066FF;
+      color: #fff;
+    }
+
+    /* E — Split colour */
+    .logo-e {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+    .logo-e .first { color: #aaa; }
+    .logo-e .last  { color: #111; }
+  </style>
+</head>
+<body>
+  <h1>Logo treatments — tyler-portfolio</h1>
+
+  <div class="option">
+    <div class="option-label">A — Weight contrast</div>
+    <div class="nav-mock">
+      <span class="logo-a"><span class="first">Tyler</span><span class="last"> Hagan</span></span>
+      <div class="nav-links-mock"><span>Work</span><span>About</span><span>Contact</span></div>
+    </div>
+  </div>
+
+  <div class="option">
+    <div class="option-label">B — Monospace dot (current)</div>
+    <div class="nav-mock">
+      <span class="logo-b">tyler<span class="dot">.</span>hagan</span>
+      <div class="nav-links-mock"><span>Work</span><span>About</span><span>Contact</span></div>
+    </div>
+  </div>
+
+  <div class="option">
+    <div class="option-label">D — Initials mark (hover me)</div>
+    <div class="nav-mock">
+      <span class="logo-d">TH</span>
+      <div class="nav-links-mock"><span>Work</span><span>About</span><span>Contact</span></div>
+    </div>
+  </div>
+
+  <div class="option">
+    <div class="option-label">E — Split colour</div>
+    <div class="nav-mock">
+      <span class="logo-e"><span class="first">Tyler </span><span class="last">Hagan</span></span>
+      <div class="nav-links-mock"><span>Work</span><span>About</span><span>Contact</span></div>
+    </div>
+  </div>
+
+</body>
+</html>

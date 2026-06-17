@@ -6,22 +6,22 @@ const Navigation = ({ currentPage, onNavigate }) => {
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
+  const logoSrc = theme === 'dark'
+    ? '/img/th-logomark-light.svg'
+    : '/img/th-logomark-dark.svg';
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const logoSrc = theme === 'dark' 
-    ? 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/th-logomark-light.svg'
-    : 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/th-logomark-dark.svg';
-
   return (
     <nav className={scrolled ? 'scrolled' : ''}>
       <div className="nav-content">
         <div className="logo-container" onClick={() => onNavigate('home')}>
-          <img src={logoSrc} alt="Tyler Hagan" className="logo-image" />
-          <span className="logo-text">Tyler Hagan</span>
+          <img src={logoSrc} alt="" className="logo-image" aria-hidden="true" />
+          <span className="logo-text">tyler<span className="logo-dot">.</span>hagan</span>
         </div>
         <div className="nav-right">
           <ul className="nav-links">
