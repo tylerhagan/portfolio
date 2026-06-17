@@ -24,6 +24,131 @@
     margin-bottom: 3rem !important;
 }
 
+/* Current Chapter / Enpal role card */
+.current-chapter {
+    margin: 0 0 3.5rem;
+    padding: 1.75rem 2rem;
+    background: rgba(0, 200, 83, 0.05);
+    border: 1px solid rgba(0, 200, 83, 0.25);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.current-chapter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00c853 0%, transparent 70%);
+}
+
+[data-theme="dark"] .current-chapter {
+    box-shadow: 0 0 40px rgba(0, 200, 83, 0.06);
+}
+
+.chapter-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #00c853;
+    margin-bottom: 1.25rem;
+}
+
+[data-theme="light"] .chapter-label {
+    color: #00a847;
+}
+
+.chapter-card {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+.chapter-left {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.3rem;
+}
+
+.chapter-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #00c853;
+    box-shadow: 0 0 0 3px rgba(0, 200, 83, 0.2);
+    animation: pulse-green 2s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+.chapter-connector {
+    width: 2px;
+    flex: 1;
+    min-height: 50px;
+    background: linear-gradient(to bottom, rgba(0, 200, 83, 0.35), transparent);
+    margin-top: 6px;
+}
+
+.chapter-body {
+    flex: 1;
+}
+
+.chapter-period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: #00c853;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+[data-theme="light"] .chapter-period {
+    color: #00a847;
+}
+
+.chapter-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.875rem;
+    flex-wrap: wrap;
+}
+
+.chapter-role {
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
+    margin: 0 !important;
+    letter-spacing: -0.5px;
+}
+
+.chapter-company {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #00c853;
+    letter-spacing: -0.5px;
+}
+
+[data-theme="light"] .chapter-company {
+    color: #00a847;
+}
+
+.chapter-desc {
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
+    color: var(--text-secondary) !important;
+    margin: 0 !important;
+}
+
+@keyframes pulse-green {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(0, 200, 83, 0.2); }
+    50% { box-shadow: 0 0 0 6px rgba(0, 200, 83, 0.08); }
+}
+
 .about-content h2 {
     font-size: 2rem;
     font-weight: 600;

@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ProjectPage from './pages/ProjectPage';
+import NowPage from './pages/NowPage';
 import './styles/globals.css';
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
     
     if (path === '/about' || params.get('page') === 'about') {
       setCurrentPage('about');
+    } else if (path === '/now' || params.get('page') === 'now') {
+      setCurrentPage('now');
     } else if (path === '/project' || params.get('page') === 'project') {
       const id = params.get('id');
       if (id) {
@@ -67,6 +70,7 @@ function App() {
         <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
         {currentPage === 'home' && <HomePage onNavigate={handleNavigate} />}
         {currentPage === 'about' && <AboutPage />}
+        {currentPage === 'now' && <NowPage />}
         {currentPage === 'project' && <ProjectPage projectId={projectId} onNavigate={handleNavigate} />}
         <Footer />
         <NowPlaying />

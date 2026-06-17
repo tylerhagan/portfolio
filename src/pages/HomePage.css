@@ -7,8 +7,27 @@
     position: relative;
 }
 
+/* Grain texture overlay */
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Cursor-reactive glow (dark mode only) */
+[data-theme="dark"] .hero.gradient-overlay::before {
+    background: radial-gradient(800px circle at var(--glow-x, 50%) var(--glow-y, -10%), rgba(0, 102, 255, 0.18) 0%, transparent 60%);
+}
+
 .hero-content {
     max-width: 800px;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-label {
@@ -31,6 +50,28 @@
     background: var(--blue);
     border-radius: 50%;
     animation: pulse 2s ease-in-out infinite;
+}
+
+.enpal-badge {
+    background: rgba(0, 200, 83, 0.1);
+    color: #00c853;
+    border: 1px solid rgba(0, 200, 83, 0.2);
+}
+
+[data-theme="light"] .enpal-badge {
+    background: rgba(0, 168, 71, 0.08);
+    color: #00a847;
+    border-color: rgba(0, 168, 71, 0.2);
+}
+
+.enpal-dot {
+    background: #00c853 !important;
+    box-shadow: 0 0 6px rgba(0, 200, 83, 0.5);
+}
+
+[data-theme="light"] .enpal-dot {
+    background: #00a847 !important;
+    box-shadow: 0 0 6px rgba(0, 168, 71, 0.4);
 }
 
 .hero h1 {
@@ -191,6 +232,28 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     background: var(--bg-card);
     cursor: pointer;
+    position: relative;
+}
+
+/* Cursor spotlight effect */
+.work-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(500px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(0, 102, 255, 0.1), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.work-grid:hover .work-card::before {
+    opacity: 1;
+}
+
+.work-card > * {
+    position: relative;
+    z-index: 1;
 }
 
 .work-card:hover {
@@ -293,7 +356,7 @@
 /* Concepts Grid */
 .concepts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
 }
 

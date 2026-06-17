@@ -35,12 +35,21 @@ const Navigation = ({ currentPage, onNavigate }) => {
               </a>
             </li>
             <li>
-              <a 
-                href="#" 
-                className={currentPage === 'about' ? 'active' : ''} 
+              <a
+                href="#"
+                className={currentPage === 'about' ? 'active' : ''}
                 onClick={(e) => { e.preventDefault(); onNavigate('about'); }}
               >
                 About
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className={currentPage === 'now' ? 'active' : ''}
+                onClick={(e) => { e.preventDefault(); onNavigate('now'); }}
+              >
+                Now
               </a>
             </li>
             <li>
@@ -49,7 +58,7 @@ const Navigation = ({ currentPage, onNavigate }) => {
               </a>
             </li>
             <li>
-              <a href="mailto:tylerhagan@gmail.com">Contact</a>
+              <a href="mailto:hello@tylerhagan.co.uk">Contact</a>
             </li>
           </ul>
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">

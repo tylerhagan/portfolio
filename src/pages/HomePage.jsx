@@ -1,11 +1,45 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Lightbox from '../components/Lightbox';
 import './HomePage.css';
 
+const StatCard = ({ value, suffix, label }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
+          const steps = 50;
+          let step = 0;
+          const timer = setInterval(() => {
+            step++;
+            const eased = 1 - Math.pow(1 - step / steps, 3);
+            setCount(Math.round(eased * value));
+            if (step >= steps) clearInterval(timer);
+          }, 1400 / steps);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [value]);
+
+  return (
+    <div className="stat-card" ref={ref}>
+      <div className="stat-number">{count}{suffix}</div>
+      <div className="stat-label">{label}</div>
+    </div>
+  );
+};
+
 const HomePage = ({ onNavigate }) => {
-  const [rotatingWord, setRotatingWord] = useState('software');
+  const [rotatingWord, setRotatingWord] = useState('products');
   const [lightboxImage, setLightboxImage] = useState(null);
-  const words = ['software', 'systems', 'websites', 'applications'];
+  const words = ['products', 'systems', 'experiences', 'conversion flows'];
   
   useEffect(() => {
     let currentIndex = 0;
@@ -24,6 +58,25 @@ const HomePage = ({ onNavigate }) => {
   const closeLightbox = () => {
     setLightboxImage(null);
   };
+
+  const heroRef = useRef(null);
+  const handleHeroMouseMove = useCallback((e) => {
+    if (!heroRef.current) return;
+    const rect = heroRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    heroRef.current.style.setProperty('--glow-x', `${x}%`);
+    heroRef.current.style.setProperty('--glow-y', `${y}%`);
+  }, []);
+
+  const handleWorkGridMouseMove = useCallback((e) => {
+    const cards = e.currentTarget.querySelectorAll('.work-card');
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+    });
+  }, []);
 
   const projects = [
     {
@@ -84,10 +137,6 @@ const HomePage = ({ onNavigate }) => {
     {
       image: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/concepts/smart-home-mockup.png',
       title: 'Smart Home App'
-    },
-    {
-      image: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/concepts/placeholder.png',
-      title: 'Coming Soon'
     }
   ];
 
@@ -155,12 +204,12 @@ const HomePage = ({ onNavigate }) => {
 
   return (
     <>
-      <section className="hero gradient-overlay">
+      <section className="hero gradient-overlay" ref={heroRef} onMouseMove={handleHeroMouseMove}>
         <div className="container">
           <div className="hero-content">
-            <div className="hero-label">
-              <span className="status-dot"></span>
-              Available for projects
+            <div className="hero-label enpal-badge">
+              <span className="status-dot enpal-dot"></span>
+              Designer @ Enpal Energy
             </div>
             <h1>
               Product designer crafting experiences and{' '}
@@ -170,7 +219,7 @@ const HomePage = ({ onNavigate }) => {
               from Berlin
             </h1>
             <p>
-              I am your jack-of-all-trades: product designer, front-end engineer, illustrator and design systems fanatic. I like building cool things and solving hard problems.
+              CRO-trained designer and front-end engineer. I combine user research, design systems, and AI-augmented workflows to ship work that converts, not just looks good.
             </p>
             <div className="hero-cta">
               <a href="#work" className="btn btn-primary">View Work</a>
@@ -182,18 +231,9 @@ const HomePage = ({ onNavigate }) => {
 
       <div className="container">
         <div className="stats">
-          <div className="stat-card">
-            <div className="stat-number">10+</div>
-            <div className="stat-label">Years of experience</div>
-          </div>
-          <div className="stat-card">
-            <div className="stat-number">50+</div>
-            <div className="stat-label">Projects delivered</div>
-          </div>
-          <div className="stat-card">
-            <div className="stat-number">100%</div>
-            <div className="stat-label">Committed to excellence</div>
-          </div>
+          <StatCard value={10} suffix="+" label="Years of experience" />
+          <StatCard value={50} suffix="+" label="Projects delivered" />
+          <StatCard value={42} suffix="%" label="Avg. conversion lift" />
         </div>
 
         <section id="work" className="section">
@@ -203,7 +243,7 @@ const HomePage = ({ onNavigate }) => {
               Recent projects spanning enterprise software, mobile applications, and design systems. Deeply integrated with development teams for efficient delivery.
             </p>
           </div>
-          <div className="work-grid">
+          <div className="work-grid" onMouseMove={handleWorkGridMouseMove}>
             {projects.map(project => (
               <div 
                 key={project.id} 
@@ -231,9 +271,9 @@ const HomePage = ({ onNavigate }) => {
 
         <section id="concepts" className="section">
           <div className="section-header">
-            <h2 className="section-title">Concepts & Unused Designs</h2>
+            <h2 className="section-title">Creative Explorations</h2>
             <p className="section-subtitle">
-              Explorations, experiments, and concepts that showcase design thinking and creative direction.
+              Side projects, experiments, and concepts that showcase design thinking and creative direction outside of client work.
             </p>
           </div>
           <div className="concepts-grid">
@@ -279,7 +319,7 @@ const HomePage = ({ onNavigate }) => {
           <div className="section-header">
             <h2 className="section-title">Design Process</h2>
             <p className="section-subtitle">
-              My process integrates AI tools at every stage—from discovery to delivery—enabling rapid iteration and data-driven decision making.
+              My process integrates AI tools at every stage, from discovery to delivery, enabling rapid iteration and data-driven decision making.
             </p>
           </div>
           <div className="process-timeline">
