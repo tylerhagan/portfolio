@@ -17,7 +17,7 @@ const AboutPage = () => {
                     <div className="chapter-connector"></div>
                   </div>
                   <div className="chapter-body">
-                    <span className="chapter-period">2024 → present</span>
+                    <span className="chapter-period">2026 → present</span>
                     <div className="chapter-title-row">
                       <h3 className="chapter-role">Designer</h3>
                       <span className="chapter-company">@ Enpal Energy</span>
