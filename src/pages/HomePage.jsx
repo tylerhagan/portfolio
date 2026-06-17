@@ -39,7 +39,7 @@ const StatCard = ({ value, suffix, label }) => {
 const HomePage = ({ onNavigate }) => {
   const [rotatingWord, setRotatingWord] = useState('products');
   const [lightboxImage, setLightboxImage] = useState(null);
-  const words = ['products', 'systems', 'experiences', 'conversion flows'];
+  const words = ['products', 'systems', 'software'];
   
   useEffect(() => {
     let currentIndex = 0;
