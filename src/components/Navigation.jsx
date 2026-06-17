@@ -44,15 +44,6 @@ const Navigation = ({ currentPage, onNavigate }) => {
               </a>
             </li>
             <li>
-              <a
-                href="#"
-                className={currentPage === 'now' ? 'active' : ''}
-                onClick={(e) => { e.preventDefault(); onNavigate('now'); }}
-              >
-                Now
-              </a>
-            </li>
-            <li>
               <a href="https://www.linkedin.com/in/tylerhagan/" target="_blank" rel="noopener noreferrer">
                 LinkedIn
               </a>
