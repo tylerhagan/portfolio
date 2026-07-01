@@ -2,6 +2,17 @@ import { useState, useEffect } from 'react';
 import { useTheme } from '../utils/ThemeContext';
 import './Navigation.css';
 
+const ThemeIcon = ({ theme }) => (
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+    <circle cx="7" cy="7" r="6" stroke="currentColor" strokeWidth="1.2" />
+    {theme === 'light' ? (
+      <path d="M7 1 A6 6 0 0 1 7 13 Z" fill="currentColor" />
+    ) : (
+      <path d="M7 1 A6 6 0 0 0 7 13 Z" fill="currentColor" />
+    )}
+  </svg>
+);
+
 const Navigation = ({ currentPage, onNavigate }) => {
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
@@ -26,12 +37,12 @@ const Navigation = ({ currentPage, onNavigate }) => {
         <div className="nav-right">
           <ul className="nav-links">
             <li>
-              <a 
-                href="#" 
-                className={currentPage === 'home' ? 'active' : ''} 
+              <a
+                href="#"
+                className={currentPage === 'home' ? 'active' : ''}
                 onClick={(e) => { e.preventDefault(); onNavigate('home'); }}
               >
-                Work
+                /work
               </a>
             </li>
             <li>
@@ -40,20 +51,20 @@ const Navigation = ({ currentPage, onNavigate }) => {
                 className={currentPage === 'about' ? 'active' : ''}
                 onClick={(e) => { e.preventDefault(); onNavigate('about'); }}
               >
-                About
+                /about
               </a>
             </li>
             <li>
               <a href="https://www.linkedin.com/in/tylerhagan/" target="_blank" rel="noopener noreferrer">
-                LinkedIn
+                /linkedin<span className="link-ext">↗</span>
               </a>
             </li>
             <li>
-              <a href="mailto:hello@tylerhagan.co.uk">Contact</a>
+              <a href="mailto:hello@tylerhagan.co.uk">/contact</a>
             </li>
           </ul>
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-            {theme === 'light' ? '🌙' : '☀️'}
+            <ThemeIcon theme={theme} />
           </button>
         </div>
       </div>

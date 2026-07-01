@@ -13,7 +13,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
       <div className="container" style={{ paddingTop: '10rem' }}>
         <h1>Project not found</h1>
         <button className="btn btn-secondary" onClick={() => onNavigate('home')}>
-          ← Back to Work
+          ← back to /work
         </button>
       </div>
     );
@@ -369,7 +369,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
 
         <div className="project-section" style={{ textAlign: 'center', marginTop: '4rem' }}>
           <button className="btn btn-secondary" onClick={() => onNavigate('home')}>
-            ← Back to Work
+            ← back to /work
           </button>
         </div>
       </div>

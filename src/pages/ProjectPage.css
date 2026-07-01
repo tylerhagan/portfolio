@@ -4,9 +4,10 @@
 }
 
 .project-hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-family: var(--font-mono);
+    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
     font-weight: 600;
-    letter-spacing: -1px;
+    letter-spacing: -0.04em;
     margin-bottom: 1rem;
 }
 
@@ -31,14 +32,16 @@
 }
 
 .meta-label {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-faint);
     margin-bottom: 0.5rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.08em;
 }
 
 .meta-value {
+    font-family: var(--font-mono);
     font-weight: 600;
     color: var(--text-primary);
 }
@@ -52,11 +55,13 @@
 }
 
 .tool-badge {
-    padding: 0.5rem 1rem;
-    background: var(--blue-pale);
-    color: var(--blue);
-    border-radius: 6px;
-    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
     font-weight: 500;
 }
 
@@ -95,8 +100,8 @@
 .highlight-section {
     background: var(--blue-pale);
     padding: 2.5rem;
-    border-radius: 16px;
-    border-left: 4px solid var(--blue);
+    border-radius: var(--radius);
+    border-left: 2px solid var(--blue);
 }
 
 [data-theme="dark"] .highlight-section {
@@ -140,10 +145,10 @@
 
 .project-image {
     width: 100%;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    border: 1px solid var(--hairline);
     margin: 1.5rem 0;
-    transition: all 0.3s ease;
+    transition: transform var(--t-med) var(--ease);
 }
 
 .project-image.clickable {
@@ -152,19 +157,14 @@
 
 .project-image.clickable:hover {
     transform: scale(1.02);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-[data-theme="dark"] .project-image.clickable:hover {
-    box-shadow: 0 8px 24px rgba(0, 102, 255, 0.2);
 }
 
 .project-image-full {
     width: 100%;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    border: 1px solid var(--hairline);
     margin: 2rem 0;
-    transition: all 0.3s ease;
+    transition: transform var(--t-med) var(--ease);
 }
 
 .project-image-full.clickable {
@@ -173,11 +173,6 @@
 
 .project-image-full.clickable:hover {
     transform: scale(1.01);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-[data-theme="dark"] .project-image-full.clickable:hover {
-    box-shadow: 0 8px 24px rgba(0, 102, 255, 0.2);
 }
 
 .project-images {
@@ -217,35 +212,33 @@
 
 .kpi-card {
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
     padding: 2rem;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: border-color var(--t-fast) var(--ease);
 }
 
 .kpi-card:hover {
-    border-color: var(--blue);
-    transform: translateY(-5px);
-}
-
-[data-theme="dark"] .kpi-card:hover {
-    box-shadow: 0 10px 30px rgba(0, 102, 255, 0.2);
+    border-color: var(--text-secondary);
 }
 
 .kpi-value {
-    font-size: 3.5rem;
-    font-weight: 700;
+    font-family: var(--font-mono);
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
     color: var(--blue);
     line-height: 1;
     margin-bottom: 0.5rem;
 }
 
 .kpi-suffix {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-faint);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.08em;
     margin-bottom: 1rem;
 }
 
@@ -274,20 +267,13 @@
 
 .step-number {
     flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    background: var(--blue-pale);
-    color: var(--blue);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 1.2rem;
-}
-
-[data-theme="dark"] .step-number {
-    background: rgba(0, 102, 255, 0.15);
+    width: 3rem;
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    font-weight: 500;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    padding-top: 0.3rem;
 }
 
 .step-content {
