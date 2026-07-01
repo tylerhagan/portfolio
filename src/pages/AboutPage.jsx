@@ -7,6 +7,7 @@ const AboutPage = () => {
         <div className="container">
           <div className="about-layout">
             <div className="about-content">
+              <div className="label page-path">/about — th.2026</div>
               <h1>About Me</h1>
               <p className="about-intro">UK-born, Berlin-based product designer with a background in CRO, graphic design, and front-end engineering. I work best embedded with teams, somewhere between the Figma file and the pull request, shipping products that move metrics, not just look good.</p>
               <div className="current-chapter">

@@ -43,7 +43,7 @@ const ProtectedProject = ({ projectId, children, onNavigate }) => {
     <div className="protected-project">
       <div className="protected-container">
         <div className="protected-content">
-          <div className="lock-icon">🔒</div>
+          <div className="lock-icon" aria-hidden="true">[ 401 · access restricted ]</div>
           <h1>Protected Project</h1>
           <p className="protected-subtitle">
             This project contains confidential work. Please enter the password to view.
@@ -70,7 +70,7 @@ const ProtectedProject = ({ projectId, children, onNavigate }) => {
             className="btn btn-secondary back-button" 
             onClick={() => onNavigate('home')}
           >
-            ← Back to Work
+            ← back to /work
           </button>
         </div>
       </div>

@@ -10,10 +10,16 @@
     align-items: start;
 }
 
+.page-path {
+    display: block;
+    margin-bottom: 1.5rem;
+}
+
 .about-content h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-family: var(--font-mono);
+    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
     font-weight: 600;
-    letter-spacing: -1px;
+    letter-spacing: -0.04em;
     margin-bottom: 2rem;
 }
 
@@ -30,7 +36,7 @@
     padding: 1.75rem 2rem;
     background: rgba(0, 200, 83, 0.05);
     border: 1px solid rgba(0, 200, 83, 0.25);
-    border-radius: 16px;
+    border-radius: var(--radius);
     position: relative;
     overflow: hidden;
 }
@@ -174,25 +180,9 @@
     position: relative;
     width: 100%;
     aspect-ratio: 3/4;
-    border-radius: 16px;
+    border-radius: var(--radius);
     overflow: hidden;
-    border: 1px solid var(--border-color);
-    transform: rotate(-2deg);
-    transition: all 0.4s ease;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-}
-
-[data-theme="dark"] .portrait-wrapper {
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 102, 255, 0.1);
-}
-
-.portrait-wrapper:hover {
-    transform: rotate(0deg) scale(1.02);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
-}
-
-[data-theme="dark"] .portrait-wrapper:hover {
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 102, 255, 0.2);
+    border: 1px solid var(--hairline);
 }
 
 .portrait-image {
@@ -200,6 +190,12 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    filter: saturate(0.3);
+    transition: filter var(--t-slow) var(--ease);
+}
+
+.portrait-wrapper:hover .portrait-image {
+    filter: saturate(1);
 }
 
 .about-content-full {
@@ -231,20 +227,19 @@
 .brand-item {
     padding: 1.5rem;
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
     text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
     font-weight: 500;
-    transition: all 0.3s ease;
+    color: var(--text-secondary);
+    transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
 }
 
 .brand-item:hover {
-    border-color: var(--blue);
-    transform: translateY(-4px);
-}
-
-[data-theme="dark"] .brand-item:hover {
-    box-shadow: 0 8px 20px rgba(0, 102, 255, 0.15);
+    border-color: var(--text-secondary);
+    color: var(--text-primary);
 }
 
 .skills-grid {
@@ -285,8 +280,8 @@
     margin-top: 4rem;
     padding: 3rem;
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
     text-align: center;
 }
 
@@ -315,40 +310,38 @@
 
 .btn {
     display: inline-block;
-    padding: 0.875rem 1.75rem;
-    border-radius: 8px;
-    font-size: 0.95rem;
+    font-family: var(--font-mono);
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--radius);
+    font-size: 0.85rem;
     font-weight: 500;
+    letter-spacing: -0.01em;
     text-decoration: none;
-    transition: all 0.3s ease;
-    border: none;
+    transition: background-color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+    border: 1px solid transparent;
     cursor: pointer;
 }
 
 .btn-primary {
-    background: var(--blue);
-    color: var(--white);
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border-color: var(--text-primary);
 }
 
 .btn-primary:hover {
-    background: var(--blue-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 102, 255, 0.25);
-}
-
-[data-theme="dark"] .btn-primary:hover {
-    box-shadow: 0 8px 30px rgba(0, 102, 255, 0.4);
+    background: var(--blue);
+    border-color: var(--blue);
+    color: var(--white);
 }
 
 .btn-secondary {
     background: transparent;
     color: var(--text-primary);
-    border: 1px solid var(--border-color);
+    border-color: var(--hairline);
 }
 
 .btn-secondary:hover {
-    border-color: var(--blue);
-    color: var(--blue);
+    border-color: var(--text-primary);
 }
 
 @media (max-width: 1024px) {

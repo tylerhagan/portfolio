@@ -7,27 +7,48 @@
     --white: #ffffff;
     --blue: #0066ff;
     --blue-dark: #0052cc;
-    --blue-light: #3385ff;
-    --blue-pale: #e6f0ff;
-    
+    --green: #00a847;
+
+    /* Type */
+    --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+    --font-sans: 'Inter', -apple-system, sans-serif;
+
+    /* Motion system — one curve, three speeds */
+    --ease: cubic-bezier(0.25, 1, 0.5, 1);
+    --t-fast: 150ms;
+    --t-med: 300ms;
+    --t-slow: 600ms;
+
+    /* Shape */
+    --radius: 2px;
+
     --bg-primary: var(--white);
-    --bg-secondary: var(--off-black);
+    --bg-secondary: #f7f7f7;
     --bg-card: var(--white);
     --text-primary: var(--black);
-    --text-secondary: var(--mid-gray);
+    --text-secondary: #6b6b6b;
+    --text-faint: #a3a3a3;
     --border-color: var(--light-gray);
-    --nav-bg: rgba(255, 255, 255, 0.8);
+    --hairline: rgba(0, 0, 0, 0.12);
+    --nav-bg: rgba(255, 255, 255, 0.85);
+    --bar-bg: rgba(255, 255, 255, 0.9);
+    --accent-live: var(--green);
+    --blue-pale: #e6f0ff;
 }
 
 [data-theme="dark"] {
     --bg-primary: var(--off-black);
-    --bg-secondary: var(--dark-gray);
-    --bg-card: #111111;
-    --text-primary: var(--white);
-    --text-secondary: #a0a0a0;
+    --bg-secondary: #101010;
+    --bg-card: #0e0e0e;
+    --text-primary: #f2f2f2;
+    --text-secondary: #969696;
+    --text-faint: #5c5c5c;
     --border-color: rgba(255, 255, 255, 0.1);
-    --nav-bg: rgba(10, 10, 10, 0.8);
-    --blue-pale: rgba(0, 102, 255, 0.1);
+    --hairline: rgba(255, 255, 255, 0.14);
+    --nav-bg: rgba(10, 10, 10, 0.85);
+    --bar-bg: rgba(10, 10, 10, 0.9);
+    --accent-live: #00c853;
+    --blue-pale: rgba(0, 102, 255, 0.12);
 }
 
 * {
@@ -36,13 +57,20 @@
     box-sizing: border-box;
 }
 
+::selection {
+    background: var(--blue);
+    color: var(--white);
+}
+
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-sans);
     background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color var(--t-med) var(--ease), color var(--t-med) var(--ease);
+    /* Room for the fixed status bar */
+    padding-bottom: 40px;
 }
 
 .container {
@@ -52,24 +80,34 @@ body {
 }
 
 .mono {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-mono);
 }
 
-/* Scrollbar styling for dark mode */
-[data-theme="dark"]::-webkit-scrollbar {
+/* Mono microtype label — the workhorse of the system */
+.label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
     width: 10px;
 }
 
-[data-theme="dark"]::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: var(--bg-primary);
 }
 
-[data-theme="dark"]::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: var(--border-color);
     border-radius: 5px;
 }
 
-[data-theme="dark"]::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: var(--mid-gray);
 }
 
@@ -77,7 +115,7 @@ body {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(16px);
     }
     to {
         opacity: 1;
@@ -95,38 +133,15 @@ body {
     50% { height: 100%; }
 }
 
-@keyframes slideUp {
-    from {
-        transform: translateY(100%);
-        opacity: 0;
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Dark mode glow effects */
-[data-theme="dark"] .glow-blue {
-    box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
-}
-
-[data-theme="dark"] .glow-subtle {
-    box-shadow: 0 0 40px rgba(0, 102, 255, 0.15);
-}
-
-/* Gradient backgrounds for dark mode */
-[data-theme="dark"] .gradient-overlay {
-    position: relative;
-}
-
-[data-theme="dark"] .gradient-overlay::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 50% 0%, rgba(0, 102, 255, 0.1) 0%, transparent 50%);
-    pointer-events: none;
 }

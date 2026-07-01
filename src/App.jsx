@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ThemeProvider } from './utils/ThemeContext';
 import Navigation from './components/Navigation';
-import NowPlaying from './components/NowPlaying';
+import StatusBar from './components/StatusBar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -69,7 +69,7 @@ function App() {
         {currentPage === 'about' && <AboutPage />}
 {currentPage === 'project' && <ProjectPage projectId={projectId} onNavigate={handleNavigate} />}
         <Footer />
-        <NowPlaying />
+        <StatusBar />
       </div>
     </ThemeProvider>
   );

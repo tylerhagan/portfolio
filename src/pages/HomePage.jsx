@@ -1,55 +1,49 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import Lightbox from '../components/Lightbox';
 import './HomePage.css';
 
-const StatCard = ({ value, suffix, label }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const started = useRef(false);
+// Typewriter: types a word, holds, deletes, moves to the next
+const useTypewriter = (words, { typeMs = 70, deleteMs = 40, holdMs = 2600 } = {}) => {
+  const [text, setText] = useState('');
+  const [wordIndex, setWordIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !started.current) {
-          started.current = true;
-          const steps = 50;
-          let step = 0;
-          const timer = setInterval(() => {
-            step++;
-            const eased = 1 - Math.pow(1 - step / steps, 3);
-            setCount(Math.round(eased * value));
-            if (step >= steps) clearInterval(timer);
-          }, 1400 / steps);
-        }
-      },
-      { threshold: 0.5 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [value]);
+    const word = words[wordIndex];
+    let timeout;
 
-  return (
-    <div className="stat-card" ref={ref}>
-      <div className="stat-number">{count}{suffix}</div>
-      <div className="stat-label">{label}</div>
-    </div>
-  );
+    if (!deleting && text === word) {
+      timeout = setTimeout(() => setDeleting(true), holdMs);
+    } else if (deleting && text === '') {
+      setDeleting(false);
+      setWordIndex((wordIndex + 1) % words.length);
+    } else {
+      timeout = setTimeout(() => {
+        setText(word.slice(0, text.length + (deleting ? -1 : 1)));
+      }, deleting ? deleteMs : typeMs);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [text, deleting, wordIndex, words, typeMs, deleteMs, holdMs]);
+
+  return text;
 };
 
-const HomePage = ({ onNavigate }) => {
-  const [rotatingWord, setRotatingWord] = useState('products');
-  const [lightboxImage, setLightboxImage] = useState(null);
-  const words = ['products', 'systems', 'software'];
-  
-  useEffect(() => {
-    let currentIndex = 0;
-    const interval = setInterval(() => {
-      currentIndex = (currentIndex + 1) % words.length;
-      setRotatingWord(words[currentIndex]);
-    }, 3000); // Change every 3 seconds
+const SectionHeader = ({ path, count, subtitle }) => (
+  <div className="section-header">
+    <div className="section-meta">
+      <h2 className="section-path">{path}</h2>
+      <span className="section-count">{count}</span>
+    </div>
+    <p className="section-subtitle">{subtitle}</p>
+  </div>
+);
 
-    return () => clearInterval(interval);
-  }, []);
+const WORDS = ['products', 'systems', 'software'];
+
+const HomePage = ({ onNavigate }) => {
+  const typed = useTypewriter(WORDS);
+  const [lightboxImage, setLightboxImage] = useState(null);
 
   const openLightbox = (imageSrc, imageAlt) => {
     setLightboxImage({ src: imageSrc, alt: imageAlt });
@@ -59,25 +53,6 @@ const HomePage = ({ onNavigate }) => {
     setLightboxImage(null);
   };
 
-  const heroRef = useRef(null);
-  const handleHeroMouseMove = useCallback((e) => {
-    if (!heroRef.current) return;
-    const rect = heroRef.current.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    heroRef.current.style.setProperty('--glow-x', `${x}%`);
-    heroRef.current.style.setProperty('--glow-y', `${y}%`);
-  }, []);
-
-  const handleWorkGridMouseMove = useCallback((e) => {
-    const cards = e.currentTarget.querySelectorAll('.work-card');
-    cards.forEach(card => {
-      const rect = card.getBoundingClientRect();
-      card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-      card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
-    });
-  }, []);
-
   const projects = [
     {
       id: 'offer-tool',
@@ -86,7 +61,7 @@ const HomePage = ({ onNavigate }) => {
       type: 'Enterprise Software',
       description: 'Multi-national B2B/B2C offer tool for solar energy company. Drove design and research with integrated AI assistance for real-time recommendations.',
       tags: ['React', 'AI Integration', 'Figma', 'Lokalize', 'User Research'],
-      icon: '🔐'
+      image: '/img/ot-preview.png'
     },
     {
       id: 'field-service',
@@ -95,7 +70,7 @@ const HomePage = ({ onNavigate }) => {
       type: 'Mobile App',
       description: 'Complete reimagination of field service application with custom design system. Led cross-discipline initiative from research to deployment.',
       tags: ['iOS', 'Android', 'Figma', 'Design System', 'User Testing'],
-      icon: '📱'
+      image: '/img/fs-preview.png'
     },
     {
       id: 'solar-designer',
@@ -104,7 +79,7 @@ const HomePage = ({ onNavigate }) => {
       type: 'SaaS Platform',
       description: 'Premium solar design tool with Salesforce integration. Collaborated with engineering and sales to create intuitive design experience.',
       tags: ['React', 'Figma', 'Salesforce', 'Storybook'],
-      icon: '☀️'
+      image: '/img/sd-preview.png'
     },
     {
       id: 'monitoring-app',
@@ -113,14 +88,14 @@ const HomePage = ({ onNavigate }) => {
       type: 'Mobile App',
       description: 'User-centric solar monitoring app for long-term customer retention. Designed with focus on analytics and engagement.',
       tags: ['React Native', 'Figma', 'Analytics', 'Token Studio'],
-      icon: '⚡'
+      image: '/img/m-preview.png'
     }
   ];
 
   const concepts = [
     {
       image: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/concepts/nuvio-05.png',
-      title: 'CRM App - System & Branding'
+      title: 'CRM App — System & Branding'
     },
     {
       image: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/concepts/crypto-05.png',
@@ -142,193 +117,164 @@ const HomePage = ({ onNavigate }) => {
 
   const toolkit = [
     {
-      icon: '🎨',
       title: 'Figma & Design Systems',
       description: 'Building scalable, token-based design systems with comprehensive component libraries. Leveraging Auto Layout, variants, and plugins for maximum efficiency.',
       tags: ['Design Systems', 'Components', 'Prototyping']
     },
     {
-      icon: '🤖',
       title: 'AI-Assisted Workflows',
       description: 'Integrating Claude and ChatGPT for rapid ideation, content generation, and design documentation. Using AI as a collaborative partner throughout the design process.',
       tags: ['Ideation', 'Documentation', 'Content']
     },
     {
-      icon: '✨',
       title: 'Generative AI Tools',
       description: 'Creating concept art and visual explorations with Midjourney and DALL-E. Generating dozens of variations to explore design directions quickly.',
       tags: ['Concept Art', 'Visuals', 'Exploration']
     },
     {
-      icon: '⚡',
       title: 'Rapid Prototyping',
       description: 'Combining interactive prototypes with quick iteration cycles. Building functional demos in hours to validate concepts with stakeholders and users.',
       tags: ['Prototypes', 'Testing', 'Validation']
     },
     {
-      icon: '📊',
       title: 'Data-Driven Design',
       description: 'Leveraging analytics, user testing, and research to inform design decisions. Using tools like Clarity, Hotjar, and custom analytics.',
       tags: ['Analytics', 'Research', 'Insights']
     },
     {
-      icon: '💻',
       title: 'Front-End Development',
       description: 'Building with React, React Native, and modern web technologies. Collaborating closely with engineering teams for pixel-perfect implementation.',
       tags: ['React', 'CSS', 'Storybook']
     }
   ];
 
-  const processSteps = [
-    {
-      number: '01',
-      title: 'Discovery & Research',
-      description: 'Understanding user needs through research, interviews, and competitive analysis. Using AI tools to rapidly synthesise insights and generate initial concepts.'
-    },
-    {
-      number: '02',
-      title: 'Ideation & Prototyping',
-      description: 'Building interactive prototypes in Figma with AI-generated content. Creating multiple variations quickly to explore different approaches and gather feedback.'
-    },
-    {
-      number: '03',
-      title: 'Testing & Iteration',
-      description: 'Validating designs through user testing and analytics. Iterating based on data and feedback to optimise the experience before development.'
-    },
-    {
-      number: '04',
-      title: 'Development & Launch',
-      description: 'Working closely with engineering teams throughout development. Using design tokens and Storybook for seamless handoff and consistent implementation.'
+  const handleRowKeyDown = (e, id) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onNavigate('project', id);
     }
-  ];
+  };
 
   return (
     <>
-      <section className="hero gradient-overlay" ref={heroRef} onMouseMove={handleHeroMouseMove}>
+      <section className="hero">
         <div className="container">
           <div className="hero-content">
-            <div className="hero-label enpal-badge">
-              <span className="status-dot enpal-dot"></span>
-              Designer @ Enpal Energy
+            <div className="hero-meta">
+              <span className="label hero-file">TH — PORTFOLIO / REV.2026</span>
+              <span className="label hero-status">
+                <span className="status-dot"></span>
+                currently: designer @ enpal energy
+              </span>
             </div>
             <h1>
-              Product designer crafting experiences and{' '}
-              <span className="rotating-word" key={rotatingWord}>
-                {rotatingWord}
-              </span>{' '}
-              from Berlin
+              Product designer<br />
+              crafting <span className="typed-word">{typed}<span className="caret" aria-hidden="true">▮</span></span><br />
+              from Berlin.
             </h1>
             <p>
               CRO-trained designer and front-end engineer. I combine user research, design systems, and AI-augmented workflows to ship work that converts, not just looks good.
             </p>
             <div className="hero-cta">
-              <a href="#work" className="btn btn-primary">View Work</a>
-              <button className="btn btn-secondary" onClick={() => onNavigate('about')}>About Me</button>
+              <a href="#work" className="btn btn-primary">view work ↓</a>
+              <button className="btn btn-secondary" onClick={() => onNavigate('about')}>about me</button>
             </div>
           </div>
         </div>
       </section>
 
       <div className="container">
-        <div className="stats">
-          <StatCard value={10} suffix="+" label="Years of experience" />
-          <StatCard value={50} suffix="+" label="Projects delivered" />
-          <StatCard value={42} suffix="%" label="Avg. conversion lift" />
+        <div className="data-strip">
+          <div className="datum">
+            <span className="label">Experience</span>
+            <span className="datum-value">10+ yrs</span>
+          </div>
+          <div className="datum">
+            <span className="label">Projects shipped</span>
+            <span className="datum-value">50+</span>
+          </div>
+          <div className="datum">
+            <span className="label">Avg. conversion lift</span>
+            <span className="datum-value">+42% <span className="datum-arrow">↗</span></span>
+          </div>
         </div>
 
         <section id="work" className="section">
-          <div className="section-header">
-            <h2 className="section-title">Selected Work</h2>
-            <p className="section-subtitle">
-              Recent projects spanning enterprise software, mobile applications, and design systems. Deeply integrated with development teams for efficient delivery.
-            </p>
-          </div>
-          <div className="work-grid" onMouseMove={handleWorkGridMouseMove}>
-            {projects.map(project => (
-              <div 
-                key={project.id} 
-                className="work-card" 
+          <SectionHeader
+            path="/work"
+            count={`${String(projects.length).padStart(3, '0')} entries`}
+            subtitle="Selected projects spanning enterprise software, mobile applications, and design systems. Deeply integrated with development teams for efficient delivery."
+          />
+          <div className="work-index">
+            {projects.map((project, i) => (
+              <article
+                key={project.id}
+                className="work-row"
+                role="link"
+                tabIndex={0}
                 onClick={() => onNavigate('project', project.id)}
+                onKeyDown={(e) => handleRowKeyDown(e, project.id)}
               >
-                <div className="work-image">{project.icon}</div>
-                <div className="work-content">
-                  <div className="work-meta">
-                    <span className="work-year">{project.year}</span>
-                    <span className="work-type">{project.type}</span>
+                <div className="work-num label">{String(i + 1).padStart(3, '0')}</div>
+                <div className="work-body">
+                  <div className="work-meta-line label">
+                    {project.year} · {project.type}
                   </div>
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                  <div className="work-tags">
-                    {project.tags.map((tag, i) => (
-                      <span key={i} className="tag">{tag}</span>
-                    ))}
-                  </div>
+                  <h3 className="work-title">
+                    {project.title}
+                    <span className="work-arrow" aria-hidden="true">↗</span>
+                  </h3>
+                  <p className="work-desc">{project.description}</p>
+                  <div className="work-tags">{project.tags.join(', ').toLowerCase()}</div>
                 </div>
-              </div>
+                <div className="work-thumb">
+                  <img src={project.image} alt={`${project.title} preview`} loading="lazy" />
+                </div>
+              </article>
             ))}
           </div>
         </section>
 
         <section id="concepts" className="section">
-          <div className="section-header">
-            <h2 className="section-title">Creative Explorations</h2>
-            <p className="section-subtitle">
-              Side projects, experiments, and concepts that showcase design thinking and creative direction outside of client work.
-            </p>
-          </div>
+          <SectionHeader
+            path="/concepts"
+            count={`${String(concepts.length).padStart(3, '0')} entries`}
+            subtitle="Side projects, experiments, and concepts that showcase design thinking and creative direction outside of client work."
+          />
           <div className="concepts-grid">
             {concepts.map((concept, index) => (
-              <div 
-                key={index} 
+              <figure
+                key={index}
                 className="concept-card"
                 onClick={() => openLightbox(concept.image, concept.title)}
               >
                 <div className="concept-image-wrapper">
-                  <img src={concept.image} alt={concept.title} className="concept-image" />
+                  <img src={concept.image} alt={concept.title} className="concept-image" loading="lazy" />
+                  <span className="concept-zoom" aria-hidden="true">+</span>
                 </div>
-                <p className="concept-title">{concept.title}</p>
-              </div>
+                <figcaption className="concept-title">
+                  <span className="concept-num">C-{String(index + 1).padStart(2, '0')}</span>
+                  {concept.title}
+                </figcaption>
+              </figure>
             ))}
           </div>
         </section>
 
         <section id="toolkit" className="section">
-          <div className="section-header">
-            <h2 className="section-title">Toolkit & Approach</h2>
-            <p className="section-subtitle">
-              I leverage modern tools and AI-assisted workflows to design and ship products faster without compromising quality. Here's how I work.
-            </p>
-          </div>
-          <div className="toolkit-grid">
+          <SectionHeader
+            path="/toolkit"
+            count="approach"
+            subtitle="I leverage modern tools and AI-assisted workflows to design and ship products faster without compromising quality. Here's how I work."
+          />
+          <div className="toolkit-list">
             {toolkit.map((tool, index) => (
-              <div key={index} className="tool-card">
-                <div className="tool-icon">{tool.icon}</div>
-                <h3>{tool.title}</h3>
-                <p>{tool.description}</p>
-                <div className="tool-tags">
-                  {tool.tags.map((tag, i) => (
-                    <span key={i} className="tag">{tag}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="process" className="section">
-          <div className="section-header">
-            <h2 className="section-title">Design Process</h2>
-            <p className="section-subtitle">
-              My process integrates AI tools at every stage, from discovery to delivery, enabling rapid iteration and data-driven decision making.
-            </p>
-          </div>
-          <div className="process-timeline">
-            {processSteps.map((step, index) => (
-              <div key={index} className="timeline-item">
-                <div className="timeline-number">{step.number}</div>
-                <div className="timeline-content">
-                  <h3>{step.title}</h3>
-                  <p>{step.description}</p>
+              <div key={index} className="tool-item">
+                <div className="tool-num label">{String(index + 1).padStart(2, '0')}</div>
+                <div className="tool-body">
+                  <h3>{tool.title}</h3>
+                  <p>{tool.description}</p>
+                  <div className="tool-tags">{tool.tags.join(' · ').toLowerCase()}</div>
                 </div>
               </div>
             ))}
@@ -337,10 +283,10 @@ const HomePage = ({ onNavigate }) => {
       </div>
 
       {lightboxImage && (
-        <Lightbox 
-          imageSrc={lightboxImage.src} 
-          imageAlt={lightboxImage.alt} 
-          onClose={closeLightbox} 
+        <Lightbox
+          imageSrc={lightboxImage.src}
+          imageAlt={lightboxImage.alt}
+          onClose={closeLightbox}
         />
       )}
     </>
