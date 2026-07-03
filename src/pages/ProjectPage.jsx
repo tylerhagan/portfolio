@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { projectsData } from '../utils/projectsData';
 import Lightbox from '../components/Lightbox';
-import ProtectedProject from '../components/ProtectedProject';
+import LockedCaseStudy from '../components/LockedCaseStudy';
+import { useContact } from '../utils/ContactContext';
 import './ProjectPage.css';
 
 const ProjectPage = ({ projectId, onNavigate }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
+  const { openContact } = useContact();
   const project = projectsData[projectId];
   
   if (!project) {
@@ -26,6 +28,80 @@ const ProjectPage = ({ projectId, onNavigate }) => {
   const closeLightbox = () => {
     setLightboxImage(null);
   };
+
+  // In-progress work: meta + summary, full write-up pending
+  if (project.comingSoon) {
+    return (
+      <>
+        <section className="project-hero">
+          <div className="container">
+            <h1>{project.title}</h1>
+            <p className="project-subtitle">{project.subtitle}</p>
+            <div className="project-meta-bar">
+              <div className="meta-item">
+                <div className="meta-label">Year</div>
+                <div className="meta-value">{project.year}</div>
+              </div>
+              <div className="meta-item">
+                <div className="meta-label">Role</div>
+                <div className="meta-value">{project.role}</div>
+              </div>
+              <div className="meta-item">
+                <div className="meta-label">Timeline</div>
+                <div className="meta-value">{project.timeline}</div>
+              </div>
+              <div className="meta-item">
+                <div className="meta-label">Status</div>
+                <div className="meta-value">{project.status}</div>
+              </div>
+            </div>
+            <div className="project-tools">
+              {project.tools.map((tool, i) => (
+                <span key={i} className="tool-badge">{tool}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <div className="container">
+          <div className="project-section">
+            <h2>Overview</h2>
+            <p>{project.brief}</p>
+            {project.highlights && (
+              <ul className="feature-list">
+                {project.highlights.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            )}
+            {project.streams && project.streams.map((stream, i) => (
+              <div key={i}>
+                <h3>{stream.title}</h3>
+                <p>{stream.brief}</p>
+              </div>
+            ))}
+          </div>
+          {project.locked ? (
+            <LockedCaseStudy encPath={project.encPath} storageKey={`cs_${projectId}`} />
+          ) : (
+            <div className="project-section">
+              <h2>Full case study in progress</h2>
+              <p>
+                This is current work and the full write-up is being prepared. Happy to walk
+                through it in detail —{' '}
+                <a href="#contact" onClick={(e) => { e.preventDefault(); openContact(); }}>get in touch</a>.
+              </p>
+            </div>
+          )}
+          <div className="project-section">
+            <button className="btn btn-secondary" onClick={() => onNavigate('home')}>
+              ← back to /work
+            </button>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   const projectContent = (
     <>
@@ -112,7 +188,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
                   <p>{feature.description}</p>
                   {feature.title === 'Pitch Section' && (
                     <video
-                      src="https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/pitch-recording.mp4"
+                      src="/img/offer-tool/pitch-recording.mp4"
                       controls
                       style={{ width: '100%', borderRadius: '12px', marginTop: '1.5rem', marginBottom: '1rem' }}
                     />
@@ -384,16 +460,6 @@ const ProjectPage = ({ projectId, onNavigate }) => {
     </>
   );
 
-  // Wrap offer-tool project with password protection
-  if (projectId === 'offer-tool') {
-    return (
-      <ProtectedProject projectId={projectId} onNavigate={onNavigate}>
-        {projectContent}
-      </ProtectedProject>
-    );
-  }
-
-  // Return unprotected content for other projects
   return projectContent;
 };
 

@@ -155,6 +155,91 @@
     50% { box-shadow: 0 0 0 6px rgba(0, 200, 83, 0.08); }
 }
 
+/* Past roles: quiet hairline continuation of the current chapter */
+.timeline {
+    margin: 0 0 3.5rem;
+    padding: 0 2rem;
+}
+
+.timeline-entry {
+    display: flex;
+    gap: 1.25rem;
+    align-items: stretch;
+}
+
+.timeline-left {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.45rem;
+    width: 12px;
+}
+
+.timeline-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1.5px solid var(--text-faint);
+    flex-shrink: 0;
+}
+
+.timeline-connector {
+    width: 1px;
+    flex: 1;
+    background: var(--hairline);
+    margin-top: 6px;
+}
+
+.timeline-body {
+    flex: 1;
+    padding-bottom: 2.25rem;
+}
+
+.timeline-period {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.timeline-role {
+    font-size: 1.15rem !important;
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
+    margin: 0 !important;
+    letter-spacing: -0.02em;
+}
+
+.timeline-company {
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    letter-spacing: -0.02em;
+}
+
+.timeline-desc {
+    font-size: 0.95rem !important;
+    line-height: 1.7 !important;
+    color: var(--text-secondary) !important;
+    margin: 0 !important;
+}
+
+.timeline-education {
+    color: var(--text-faint);
+    line-height: 1.8;
+    padding-left: calc(12px + 1.25rem);
+}
+
 .about-content h2 {
     font-size: 2rem;
     font-weight: 600;
@@ -215,6 +300,30 @@
     padding: 3rem 0;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
+}
+
+.brands-context {
+    color: var(--text-faint);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* Testimonial: quiet hairline blockquote */
+.testimonial {
+    margin: 3rem 0 0;
+    padding: 0 0 0 1.5rem;
+    border-left: 2px solid var(--hairline);
+}
+
+.testimonial-quote {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.testimonial-attr {
+    color: var(--text-faint);
 }
 
 .brands-grid {

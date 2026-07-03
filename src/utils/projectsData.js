@@ -1,4 +1,53 @@
 export const projectsData = {
+  // ——— Current work @ Enpal (comingSoon: rendered as "case study in progress") ———
+  'design-family': {
+    comingSoon: true,
+    locked: true,
+    encPath: '/data/design-family.enc.json',
+    title: 'Enpal Design Family',
+    subtitle: 'One foundation, four systems: Enpal DS, NEMO, VERSO & FOLIO',
+    year: '2026',
+    status: 'In active development',
+    role: 'Product Designer',
+    timeline: '2026 — present',
+    tools: ['Figma', 'Design Tokens', 'React', 'shadcn', 'Ant Design'],
+    // TODO(tyler): confirm role framing, team context, and what's shareable publicly.
+    // Live docs site exists (folio-ee.vercel.app) — deliberately not linked publicly yet.
+    brief: `Enpal's product surfaces span consumer mobile apps, marketing web, customer portals, and internal software — each with distinct needs, one brand. The design family unifies them: Enpal DS as the shared parent layer (colour ramps, typography, spacing, radius), with NEMO (mobile), VERSO (consumer marketing web), and FOLIO (dense, task-focused software UI) as product-focused systems built on top.`,
+    highlights: [
+      '170+ design tokens across semantic and primitive layers, delivered as CSS and JSON',
+      '25+ documented components with light and dark colour modes',
+      'Figma libraries with variables, a React/shadcn registry, and Ant Design themes',
+      'Documentation spanning foundations, components, patterns, templates, and brand guidelines'
+    ]
+  },
+  'enpal-product-work': {
+    comingSoon: true,
+    title: 'Portal, Web & Back Office',
+    subtitle: "Current product work across Enpal's customer and internal surfaces",
+    year: '2026',
+    status: 'In active development',
+    role: 'Product Designer',
+    timeline: '2026 — present',
+    tools: ['Figma', 'FOLIO DS', 'VERSO DS', 'React'],
+    brief: `Alongside the design family, I'm designing across three of Enpal's product surfaces — each built on the family's systems.`,
+    // TODO(tyler): fill in scope, role, and outcomes per stream when shareable.
+    streams: [
+      {
+        title: 'Customer Portal',
+        brief: `A self-service portal for Enpal's energy customers — account, contracts, and support — built on the FOLIO design system for dense, task-focused software UI.`
+      },
+      {
+        title: 'Marketing Website',
+        brief: `Enpal's consumer marketing web experience, built on the VERSO design system to mirror the product family's visual language.`
+      },
+      {
+        title: 'Hyperion Back Office',
+        brief: `Enpal's internal back-office platform for operations teams — dense, workflow-driven software UI.`
+      }
+    ]
+  },
+
   'offer-tool': {
     title: 'Offer Tool',
     subtitle: 'Sales enablement software for multi-national teams',
@@ -35,33 +84,33 @@ export const projectsData = {
           title: 'Customer Portal',
           description: 'Enables quick creation and management of customer profiles, integrated directly with ZohoCRM.',
           images: [
-            'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/ot-customerlist.png',
-            'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/ot-customer-add.png'
+            '/img/offer-tool/ot-customerlist.png',
+            '/img/offer-tool/ot-customer-add.png'
           ]
         },
         {
           title: 'Pitch Section',
           description: 'Sales reps are supported with structured, persuasive content—tailored by market. Utilising 3D assets, and slick animations. I worked closely with the marketing team to ensure messaging aligned with brand standards and customer expectations. Utilising fundamental principles like progressive disclosure to take the user on a journey with a convincing story line. Click the images below to see the expanded full views.',
           images: [
-            'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/ot-pitch.png',
-            'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/heartbeat-breakdown-pitch.png',
-            'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/ot-breakdown.png'
+            '/img/offer-tool/ot-pitch.webp',
+            '/img/offer-tool/heartbeat-breakdown-pitch.webp',
+            '/img/offer-tool/ot-breakdown.png'
           ]
         },
         {
           title: 'System Builder',
           description: 'A visual, interactive module resembling a web store. Agents select from pre-configured templates (customised per country) to speed up offer creation. Live values (e.g. production, consumption, ROI) are dynamically calculated based on customer data.',
           images: [
-            'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/ot-concept.png',
-            'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/ot-multi-site-offer.png',
-            'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/ot-configuration.jpg',
-            'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/ot-summary.png'
+            '/img/offer-tool/ot-concept.webp',
+            '/img/offer-tool/ot-multi-site-offer.png',
+            '/img/offer-tool/ot-configuration.webp',
+            '/img/offer-tool/ot-summary.png'
           ]
         },
         {
           title: 'Cockpit and Automations',
           description: 'Make everything available from the system builder allowed us to keep the user in the flow, reducing interruptions to sales. A robust configurable rules system; alerting and warning or preventing sales users from creating packages or systems that do not work or are not possible.',
-          images: ['https://tylerhagan.github.io/2024-25-Portfolio/assets/img/offer-tool/sidebars.png']
+          images: ['/img/offer-tool/sidebars.webp']
         }
       ]
     },
@@ -111,7 +160,7 @@ export const projectsData = {
       { step: '10', title: 'Post Project', description: 'Beta build testing, reviews. Limited potential iteration. Future goals established.' }
     ],
     definition: 'With a heuristic review, a definition map on the project was critical to start the design process with all key issues and pain points in one place. This allows the team and I a holistic view from which to build the best approach.',
-    definitionImage: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/field-service/journey-map.png',
+    definitionImage: '/img/field-service/journey-map.png',
     solution: {
       objectives: [
         'Operational Efficiency: The primary focus was on streamlining internal processes related to installation tracking, performance monitoring, and customer management to improve overall operational efficiency.',
@@ -119,9 +168,9 @@ export const projectsData = {
         'Data Accuracy Improvement: Accurate data entry and management were crucial for ensuring the reliability of system performance metrics and customer information. The new application incorporated validation checks and guided flows to minimise errors and discrepancies.'
       ],
       images: [
-        { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/field-service/preview-one.png', caption: 'Navigation and Dashboard' },
-        { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/field-service/preview-two.png', caption: 'Installation Checks and Photo Upload' },
-        { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/field-service/preview-three.png', caption: 'Preparation Checklist and Reports' }
+        { src: '/img/field-service/preview-one.webp', caption: 'Navigation and Dashboard' },
+        { src: '/img/field-service/preview-two.webp', caption: 'Installation Checks and Photo Upload' },
+        { src: '/img/field-service/preview-three.webp', caption: 'Preparation Checklist and Reports' }
       ]
     },
     results: 'The design and prototyping of the application exemplify the transformative impact of strategic design interventions in addressing complex operational challenges. By focusing on efficiency, cost reduction, data accuracy, and gamification, we delivered a solution that not only met but exceeded expectations.'
@@ -143,17 +192,17 @@ export const projectsData = {
       understanding: 'In our pursuit of creating a user-centric app, we conducted comprehensive competitor analysis and gathered insights through colleague interviews. These efforts were instrumental in identifying key factors crucial for enhancing user experience and maximising app utility.',
       differentiation: 'Early in the development process, we delineated our differentiation strategy from competitors, specifically targeting a user base distinct from those catered to by existing advanced-level apps. Our approach centred on presenting essential data points in a user-friendly format, prioritising simplicity and accessibility.',
       trust: 'Recognising the technical nature of our product, we placed a strong emphasis on fostering trust and confidence amongst users. To achieve this, we implemented robust systems health indicators, comprehensive FAQ sections, and intuitive energy flow interfaces.',
-      wireframeImage: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/eigen-app/top-level-wireframes-snippet-preview.png',
-      flowImage: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/eigen-app/user-flow.png'
+      wireframeImage: '/img/eigen-app/top-level-wireframes-snippet-preview.png',
+      flowImage: '/img/eigen-app/user-flow.webp'
     },
     design: {
       approach: 'Adhering to foundational principles in mobile design, I implemented thumb-sized, rounded, and responsive elements for all interactions within the app. By leveraging native iOS and Android interface elements and behaviours, such as swiping and drawers, instead of reinventing established patterns, we ensured an intuitive user experience.',
       feedback: 'Feedback from our early testers underscored the success of these design choices. They particularly appreciated the ability to quickly gauge their system\'s performance with a glance, emphasising the importance of easily accessible data for optimising their appliance usage.',
       energyFlow: 'We employed variable speeds of animation within the energy flow diagram to represent the intensity of energy flows. This dynamic feature, coupled with straightforward breakdowns of production versus consumption, ensured that users could quickly grasp complex energy dynamics with just a glance.',
-      energyFlowImage: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/eigen-app/energy-flow2x.jpg',
+      energyFlowImage: '/img/eigen-app/energy-flow2x.webp',
       prototypeImages: [
-        { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/eigen-app/early-prototype-dark-thumbnail.png', srcFull: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/eigen-app/early-prototype.png', caption: 'Dashboard prototype (alpha test)' },
-        { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/eigen-app/early-prototype-light-thumbnail.png', srcFull: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/eigen-app/early-prototype-light.png', caption: 'Daily graph prototype (beta test)' }
+        { src: '/img/eigen-app/early-prototype-dark-thumbnail.webp', srcFull: '/img/eigen-app/early-prototype.webp', caption: 'Dashboard prototype (alpha test)' },
+        { src: '/img/eigen-app/early-prototype-light-thumbnail.webp', srcFull: '/img/eigen-app/early-prototype-light.webp', caption: 'Daily graph prototype (beta test)' }
       ],
       colours: 'Our colour palette was meticulously chosen to optimise user experience. Following extensive research into colour psychology, we settled on a teal base due to its associations with calmness, serenity, and balance.'
     },
@@ -172,12 +221,12 @@ export const projectsData = {
       description: 'Collaborated closely with engineering, planning, and sales teams to develop a premium solar design tool with tight Salesforce integration.',
       challenge: 'Sales teams needed a sophisticated design tool that felt approachable. The tool needed to be usable by power user planners, and by sales users in video and in-person sales calls.',
       challengeImages: [
-        { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/solar-designer/loading.png', caption: 'Designer Loading from Customer Data' },
-        { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/solar-designer/select-planning.png', caption: 'Existing Offer or New Offer with Photo' },
-        { src: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/solar-designer/quote-component.png', caption: 'Example quote item component' }
+        { src: '/img/solar-designer/loading.png', caption: 'Designer Loading from Customer Data' },
+        { src: '/img/solar-designer/select-planning.webp', caption: 'Existing Offer or New Offer with Photo' },
+        { src: '/img/solar-designer/quote-component.png', caption: 'Example quote item component' }
       ],
       solution: 'Designed a full-screen immersive interface with guided workflows. Leveraged AI tools to generate multiple design variations quickly. Built extensive prototype in Figma to validate interaction patterns.',
-      solutionImage: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/solar-designer/main-layout.png'
+      solutionImage: '/img/solar-designer/main-layout.webp'
     },
     impact: 'Significantly reduced error rates, increased sales call final conversion rates, reduced time to sale and improved NPS scores dramatically.'
   }

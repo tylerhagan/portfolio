@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import { ThemeProvider } from './utils/ThemeContext';
+import { ContactProvider } from './utils/ContactContext';
+import ContactModal from './components/ContactModal';
+import { projectsData } from './utils/projectsData';
 import Navigation from './components/Navigation';
 import StatusBar from './components/StatusBar';
 import Footer from './components/Footer';
@@ -47,6 +50,17 @@ function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  // Keep the browser tab title in sync with the current page
+  useEffect(() => {
+    if (currentPage === 'about') {
+      document.title = 'About — Tyler Hagan';
+    } else if (currentPage === 'project' && projectsData[projectId]) {
+      document.title = `${projectsData[projectId].title} — Tyler Hagan`;
+    } else {
+      document.title = 'Tyler Hagan — Product Designer';
+    }
+  }, [currentPage, projectId]);
+
   const handleNavigate = (page, id = null) => {
     setCurrentPage(page);
     setProjectId(id);
@@ -63,14 +77,17 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="app">
-        <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
-        {currentPage === 'home' && <HomePage onNavigate={handleNavigate} />}
-        {currentPage === 'about' && <AboutPage />}
-{currentPage === 'project' && <ProjectPage projectId={projectId} onNavigate={handleNavigate} />}
-        <Footer />
-        <StatusBar />
-      </div>
+      <ContactProvider>
+        <div className="app">
+          <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
+          {currentPage === 'home' && <HomePage onNavigate={handleNavigate} />}
+          {currentPage === 'about' && <AboutPage />}
+          {currentPage === 'project' && <ProjectPage projectId={projectId} onNavigate={handleNavigate} />}
+          <Footer />
+          <StatusBar />
+          <ContactModal />
+        </div>
+      </ContactProvider>
     </ThemeProvider>
   );
 }

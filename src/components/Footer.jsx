@@ -8,7 +8,9 @@ const Footer = () => {
           <div className="footer-colophon">
             <span>© 2026 Tyler Hagan</span>
             <span className="footer-sep">·</span>
-            <span>built with react + vite, set in jetbrains mono & inter</span>
+            <span>designed & built by me — react + vite, set in jetbrains mono & inter</span>
+            <span className="footer-sep">·</span>
+            <a href="https://github.com/tylerhagan/portfolio" target="_blank" rel="noopener noreferrer" className="footer-source">source↗</a>
           </div>
           <a href="#top" className="footer-top">back to top ↑</a>
         </div>

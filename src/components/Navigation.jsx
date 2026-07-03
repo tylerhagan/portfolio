@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../utils/ThemeContext';
+import { useContact } from '../utils/ContactContext';
 import './Navigation.css';
 
 const ThemeIcon = ({ theme }) => (
@@ -16,6 +17,7 @@ const ThemeIcon = ({ theme }) => (
 const Navigation = ({ currentPage, onNavigate }) => {
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { openContact } = useContact();
 
   const logoSrc = theme === 'dark'
     ? '/img/th-logomark-light.svg'
@@ -60,7 +62,7 @@ const Navigation = ({ currentPage, onNavigate }) => {
               </a>
             </li>
             <li>
-              <a href="mailto:hello@tylerhagan.co.uk">/contact</a>
+              <a href="#contact" onClick={(e) => { e.preventDefault(); openContact(); }}>/contact</a>
             </li>
           </ul>
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">

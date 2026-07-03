@@ -27,6 +27,16 @@ footer {
     color: var(--hairline);
 }
 
+.footer-source {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--t-fast) var(--ease);
+}
+
+.footer-source:hover {
+    color: var(--blue);
+}
+
 .footer-top {
     color: var(--text-secondary);
     text-decoration: none;

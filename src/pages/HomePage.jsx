@@ -55,12 +55,30 @@ const HomePage = ({ onNavigate }) => {
 
   const projects = [
     {
+      id: 'design-family',
+      title: 'Enpal Design Family',
+      year: '2026',
+      type: 'Design Systems',
+      comingSoon: true,
+      description: 'One shared foundation across four systems — Enpal DS, NEMO, VERSO, and FOLIO. 170+ tokens and 25+ components serving mobile, web, portal, and internal software.',
+      tags: ['Design Tokens', 'Figma', 'React', 'Documentation']
+    },
+    {
+      id: 'enpal-product-work',
+      title: 'Portal, Web & Back Office',
+      year: '2026',
+      type: 'Product Surfaces',
+      comingSoon: true,
+      description: 'Current work across three Enpal surfaces — customer portal, consumer marketing web, and the Hyperion back office — each built on the design family.',
+      tags: ['FOLIO', 'VERSO', 'React', 'Figma']
+    },
+    {
       id: 'offer-tool',
       title: 'Offer Tool',
       year: '2025',
       type: 'Enterprise Software',
-      description: 'Multi-national B2B/B2C offer tool for solar energy company. Drove design and research with integrated AI assistance for real-time recommendations.',
-      tags: ['React', 'AI Integration', 'Figma', 'Lokalize', 'User Research'],
+      description: 'Multi-national B2B/B2C sales tool taken from on-the-ground field research to shipped MVP. Cut offer creation time by 72% and lifted sales conversion 42%.',
+      tags: ['React', 'AI Integration', 'Figma', 'Lokalise', 'User Research'],
       image: '/img/ot-preview.png'
     },
     {
@@ -68,7 +86,7 @@ const HomePage = ({ onNavigate }) => {
       title: 'Field Service App',
       year: '2023',
       type: 'Mobile App',
-      description: 'Complete reimagination of field service application with custom design system. Led cross-discipline initiative from research to deployment.',
+      description: 'Complete reimagination of a field service app with custom design system, from research to deployment. Raised critical data entry from 38% to 97%.',
       tags: ['iOS', 'Android', 'Figma', 'Design System', 'User Testing'],
       image: '/img/fs-preview.png'
     },
@@ -86,7 +104,7 @@ const HomePage = ({ onNavigate }) => {
       title: 'Energy Monitoring',
       year: '2022',
       type: 'Mobile App',
-      description: 'User-centric solar monitoring app for long-term customer retention. Designed with focus on analytics and engagement.',
+      description: 'Proprietary customer app designed from zero — energy monitoring, data breakdowns, and support — with a modular design system built for future releases.',
       tags: ['React Native', 'Figma', 'Analytics', 'Token Studio'],
       image: '/img/m-preview.png'
     }
@@ -94,23 +112,23 @@ const HomePage = ({ onNavigate }) => {
 
   const concepts = [
     {
-      image: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/concepts/nuvio-05.png',
+      image: '/img/concepts/nuvio-05.webp',
       title: 'CRM App — System & Branding'
     },
     {
-      image: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/concepts/crypto-05.png',
+      image: '/img/concepts/crypto-05.webp',
       title: 'Crypto App'
     },
     {
-      image: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/concepts/football-stats-preview.png',
+      image: '/img/concepts/football-stats-preview.webp',
       title: 'Football Stats Modules'
     },
     {
-      image: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/concepts/bank-app.png',
+      image: '/img/concepts/bank-app.webp',
       title: 'Banking App'
     },
     {
-      image: 'https://tylerhagan.github.io/2024-25-Portfolio/assets/img/concepts/smart-home-mockup.png',
+      image: '/img/concepts/smart-home-mockup.webp',
       title: 'Smart Home App'
     }
   ];
@@ -187,7 +205,7 @@ const HomePage = ({ onNavigate }) => {
         <div className="data-strip">
           <div className="datum">
             <span className="label">Experience</span>
-            <span className="datum-value">10+ yrs</span>
+            <span className="datum-value">15+ yrs</span>
           </div>
           <div className="datum">
             <span className="label">Projects shipped</span>
@@ -203,7 +221,7 @@ const HomePage = ({ onNavigate }) => {
           <SectionHeader
             path="/work"
             count={`${String(projects.length).padStart(3, '0')} entries`}
-            subtitle="Selected projects spanning enterprise software, mobile applications, and design systems. Deeply integrated with development teams for efficient delivery."
+            subtitle="Selected projects covering the full residential solar lifecycle — selling, installing, and monitoring — spanning enterprise software, mobile applications, and design systems, shipped hand-in-hand with engineering teams."
           />
           <div className="work-index">
             {projects.map((project, i) => (
@@ -218,7 +236,7 @@ const HomePage = ({ onNavigate }) => {
                 <div className="work-num label">{String(i + 1).padStart(3, '0')}</div>
                 <div className="work-body">
                   <div className="work-meta-line label">
-                    {project.year} · {project.type}
+                    {project.year} · {project.type}{project.comingSoon && ' · in progress'}
                   </div>
                   <h3 className="work-title">
                     {project.title}
@@ -228,7 +246,11 @@ const HomePage = ({ onNavigate }) => {
                   <div className="work-tags">{project.tags.join(', ').toLowerCase()}</div>
                 </div>
                 <div className="work-thumb">
-                  <img src={project.image} alt={`${project.title} preview`} loading="lazy" />
+                  {project.image ? (
+                    <img src={project.image} alt={`${project.title} preview`} loading="lazy" />
+                  ) : (
+                    <div className="work-thumb-soon label">case study soon</div>
+                  )}
                 </div>
               </article>
             ))}

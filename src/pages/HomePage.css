@@ -292,6 +292,16 @@
     background: var(--bg-secondary);
 }
 
+.work-thumb-soon {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-faint);
+    letter-spacing: 0.08em;
+}
+
 .work-thumb img {
     width: 100%;
     height: 100%;

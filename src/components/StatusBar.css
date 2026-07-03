@@ -115,8 +115,26 @@
     color: var(--blue);
 }
 
+.status-open {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.status-open-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-live);
+    flex-shrink: 0;
+}
+
 @media (max-width: 768px) {
     .status-coords {
+        display: none;
+    }
+
+    .status-open {
         display: none;
     }
 

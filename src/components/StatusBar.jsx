@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchRecentTrack, getTimeAgo } from '../utils/lastfm';
+import { useContact } from '../utils/ContactContext';
 import './StatusBar.css';
 
 const timeFormatter = new Intl.DateTimeFormat('en-GB', {
@@ -48,6 +49,7 @@ const useNowPlaying = () => {
 const StatusBar = () => {
   const time = useBerlinTime();
   const track = useNowPlaying();
+  const { openContact } = useContact();
 
   return (
     <div className="status-bar" role="contentinfo">
@@ -85,9 +87,13 @@ const StatusBar = () => {
       </div>
 
       <div className="status-group status-links">
+        <a href="#contact" className="status-open" onClick={(e) => { e.preventDefault(); openContact(); }}>
+          <span className="status-open-dot" aria-hidden="true"></span>
+          open to conversations
+        </a>
         <a href="https://github.com/tylerhagan" target="_blank" rel="noopener noreferrer">gh↗</a>
         <a href="https://www.linkedin.com/in/tylerhagan/" target="_blank" rel="noopener noreferrer">in↗</a>
-        <a href="mailto:hello@tylerhagan.co.uk">mail↗</a>
+        <a href="#contact" onClick={(e) => { e.preventDefault(); openContact(); }}>contact↗</a>
       </div>
     </div>
   );
