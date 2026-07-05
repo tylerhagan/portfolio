@@ -26,7 +26,7 @@ const NowPage = () => {
             <div className="now-card">
               <div className="now-card-label">Currently Building</div>
               <p>
-                Designing product experiences at <strong>Enpal Energy</strong>: tools that help solar installation
+                Designing product experiences at <strong>Enpal</strong>: tools that help solar installation
                 teams, sales agents, and homeowners interact with complex energy systems in ways that feel simple and human.
               </p>
               <p>

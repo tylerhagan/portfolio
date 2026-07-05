@@ -23,7 +23,7 @@ const AboutPage = () => {
                     <span className="chapter-period">mar 2026 → present</span>
                     <div className="chapter-title-row">
                       <h3 className="chapter-role">Designer</h3>
-                      <span className="chapter-company">@ Enpal Energy</span>
+                      <span className="chapter-company">@ Enpal</span>
                     </div>
                     <p className="chapter-desc">
                       Working at the intersection of design and engineering for Europe's leading

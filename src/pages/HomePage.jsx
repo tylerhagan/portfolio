@@ -39,7 +39,24 @@ const SectionHeader = ({ path, count, subtitle }) => (
   </div>
 );
 
+const PRINCIPLES = [
+  {
+    title: 'AI-native',
+    body: "Design and code in one motion. I build with Claude, Figma, and Framer — shipping in hours what used to take weeks. The gap between imagining and building collapsed, and I'm here for it.",
+  },
+  {
+    title: 'Conversion-led',
+    body: 'CRO-trained, so decisions are grounded in research and data, not instinct alone. I measure design by outcomes — what converts and earns trust — not just how it looks.',
+  },
+  {
+    title: 'Embedded',
+    body: 'I ship with engineers, not to them. I build reusable components, design tokens, and themes on the frameworks they already use — shadcn/ui, Ant Design — so what we design is what they build, and whole teams move faster.',
+  },
+];
+
 const WORDS = ['products', 'systems', 'software'];
+// Widest word reserves the line width so swaps never reflow the block
+const LONGEST_WORD = WORDS.reduce((a, b) => (b.length > a.length ? b : a), '');
 
 const HomePage = ({ onNavigate }) => {
   const typed = useTypewriter(WORDS);
@@ -182,16 +199,19 @@ const HomePage = ({ onNavigate }) => {
               <span className="label hero-file">TH — PORTFOLIO / REV.2026</span>
               <span className="label hero-status">
                 <span className="status-dot"></span>
-                currently: designer @ enpal energy
+                currently: designer @ enpal
               </span>
             </div>
             <h1>
               Product designer<br />
-              crafting <span className="typed-word">{typed}<span className="caret" aria-hidden="true">▮</span></span><br />
+              crafting <span className="typed-word">
+                <span className="typed-word-sizer" aria-hidden="true">{LONGEST_WORD}▮</span>
+                <span className="typed-word-value">{typed}<span className="caret" aria-hidden="true">▮</span></span>
+              </span><br />
               from Berlin.
             </h1>
             <p>
-              CRO-trained designer and front-end engineer. I combine user research, design systems, and AI-augmented workflows to ship work that converts, not just looks good.
+              CRO-trained designer and front-end engineer, thrilled by what building has become. AI collapsed the gap between design and code — so I work the whole stack: research, design systems, and product that converts.
             </p>
             <div className="hero-cta">
               <a href="#work" className="btn btn-primary">view work ↓</a>
@@ -212,10 +232,29 @@ const HomePage = ({ onNavigate }) => {
             <span className="datum-value">50+</span>
           </div>
           <div className="datum">
-            <span className="label">Avg. conversion lift</span>
-            <span className="datum-value">+42% <span className="datum-arrow">↗</span></span>
+            <span className="label">Discipline</span>
+            <span className="datum-value">Design × Code</span>
           </div>
         </div>
+
+        <section id="principles" className="section">
+          <SectionHeader
+            path="/principles"
+            count={`${String(PRINCIPLES.length).padStart(3, '0')} entries`}
+            subtitle="The throughline across everything below — how design, engineering, and conversion thinking come together in the work."
+          />
+          <div className="principles-list">
+            {PRINCIPLES.map((principle, i) => (
+              <div key={principle.title} className="principle-row">
+                <span className="principle-num label">{String(i + 1).padStart(2, '0')}</span>
+                <div className="principle-body">
+                  <h3 className="principle-title">{principle.title}</h3>
+                  <p className="principle-desc">{principle.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
         <section id="work" className="section">
           <SectionHeader

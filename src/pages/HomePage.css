@@ -65,11 +65,21 @@
 }
 
 .typed-word {
-    display: inline-block;
+    /* Stack a hidden sizer (longest word + caret) and the live text in one grid
+       cell so the block is always as wide as the widest word — never reflows. */
+    display: inline-grid;
     color: var(--blue);
-    /* Reserve longest word ("products"/"software" = 8ch) + caret so the line never reflows */
-    min-width: 9ch;
+}
+
+.typed-word-sizer,
+.typed-word-value {
+    grid-area: 1 / 1;
     text-align: left;
+    white-space: nowrap;
+}
+
+.typed-word-sizer {
+    visibility: hidden;
 }
 
 .caret {
@@ -163,14 +173,43 @@
     color: var(--text-primary);
 }
 
-.datum-arrow {
-    color: var(--accent-live);
-    font-size: 1.1rem;
-}
-
 /* ============ Sections ============ */
 .section {
     padding: 5rem 0;
+}
+
+/* ============ Principles ============ */
+.principle-row {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    padding: 2.25rem 0;
+    border-top: 1px solid var(--hairline);
+}
+
+.principle-row:last-child {
+    border-bottom: 1px solid var(--hairline);
+}
+
+.principle-num {
+    padding-top: 0.4rem;
+}
+
+.principle-title {
+    font-family: var(--font-mono);
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-transform: lowercase;
+    margin-bottom: 0.75rem;
+}
+
+.principle-desc {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 640px;
 }
 
 .section-header {
@@ -477,6 +516,15 @@
     }
 
     .work-num {
+        padding-top: 0;
+    }
+
+    .principle-row {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .principle-num {
         padding-top: 0;
     }
 

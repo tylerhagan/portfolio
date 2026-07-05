@@ -57,6 +57,12 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    /* Keep anchor targets clear of the fixed nav */
+    scroll-padding-top: 80px;
+}
+
 ::selection {
     background: var(--blue);
     color: var(--white);
@@ -143,5 +149,9 @@ body {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
     }
 }
