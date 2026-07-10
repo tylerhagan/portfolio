@@ -8,42 +8,44 @@ export const projectsData = {
     subtitle: 'One foundation, four systems: Enpal DS, NEMO, VERSO & FOLIO',
     year: '2026',
     status: 'In active development',
-    role: 'Product Designer',
-    timeline: '2026 — present',
+    role: 'Designer · Design Engineer',
+    timeline: '2026 – present',
     tools: ['Figma', 'Design Tokens', 'React', 'shadcn', 'Ant Design'],
-    // TODO(tyler): confirm role framing, team context, and what's shareable publicly.
     // Live docs site exists (folio-ee.vercel.app) — deliberately not linked publicly yet.
-    brief: `Enpal's product surfaces span consumer mobile apps, marketing web, customer portals, and internal software — each with distinct needs, one brand. The design family unifies them: Enpal DS as the shared parent layer (colour ramps, typography, spacing, radius), with NEMO (mobile), VERSO (consumer marketing web), and FOLIO (dense, task-focused software UI) as product-focused systems built on top.`,
+    // Full case study lives in content/design-family.content.json (gitignored), encrypted
+    // into public/data/design-family.enc.json via scripts/encrypt-case-study.mjs.
+    brief: `Enpal's surfaces run from consumer marketing to dense internal software: one brand, very different contexts. New products needed a system from day one, and design decisions needed to land in code without loss. The design family answers both: Enpal DS as the shared parent layer (colour ramps, typography, spacing, radii), with NEMO (mobile), VERSO (consumer marketing web) and FOLIO (dense, task-focused software UI) built on top. I initiated it, designed it, and built the delivery end to end.`,
     highlights: [
-      '170+ design tokens across semantic and primitive layers, delivered as CSS and JSON',
-      '25+ documented components with light and dark colour modes',
-      'Figma libraries with variables, a React/shadcn registry, and Ant Design themes',
-      'Documentation spanning foundations, components, patterns, templates, and brand guidelines'
+      '170+ design tokens across primitive and semantic layers, generated as CSS, JSON and Figma Variables from one source',
+      '25+ documented components and 11 product patterns, light and dark throughout',
+      'A React/shadcn registry and an Ant Design theme generated from the same tokens',
+      'AI-first documentation: each system ships a markdown brief that drops straight into AI coding workflows',
+      'Versioned releases with a changelog, plus documentation paths for designers, developers and product teams'
     ]
   },
   'enpal-product-work': {
     comingSoon: true,
     title: 'Portal, Web & Back Office',
-    subtitle: "Current product work across Enpal's customer and internal surfaces",
+    subtitle: "Current product work across Enpal Energy's customer and internal surfaces",
     year: '2026',
     status: 'In active development',
     role: 'Product Designer',
-    timeline: '2026 — present',
+    timeline: '2026 – present',
     tools: ['Figma', 'FOLIO DS', 'VERSO DS', 'React'],
-    brief: `Alongside the design family, I'm designing across three of Enpal's product surfaces — each built on the family's systems.`,
+    brief: `Alongside the design family, I'm designing across three of Enpal Energy's product surfaces, each built on the family's systems.`,
     // TODO(tyler): fill in scope, role, and outcomes per stream when shareable.
     streams: [
       {
         title: 'Customer Portal',
-        brief: `A self-service portal for Enpal's energy customers — account, contracts, and support — built on the FOLIO design system for dense, task-focused software UI.`
+        brief: `A self-service portal for Enpal Energy's customers (account, contracts, and support), built on the FOLIO design system for dense, task-focused software UI.`
       },
       {
         title: 'Marketing Website',
-        brief: `Enpal's consumer marketing web experience, built on the VERSO design system to mirror the product family's visual language.`
+        brief: `Enpal Energy's consumer marketing web experience, built on the VERSO design system to mirror the product family's visual language.`
       },
       {
         title: 'Hyperion Back Office',
-        brief: `Enpal's internal back-office platform for operations teams — dense, workflow-driven software UI.`
+        brief: `Enpal Energy's internal back-office platform for operations teams: dense, workflow-driven software UI.`
       }
     ]
   },
@@ -64,7 +66,7 @@ export const projectsData = {
     ],
     discovery: {
       title: 'Discovery & Definition',
-      content: `Our research process began on the ground with the local teams in Berlin and Hamburg, followed by a trip to Sweden—the pilot launch market.`,
+      content: `Our research process began on the ground with the local teams in Berlin and Hamburg, followed by a trip to Sweden, the pilot launch market.`,
       research: [
         '1-on-1 shadowing during both remote and on-site sales calls',
         'Workshops, surveys, and feedback sessions with sales agents and leadership',
@@ -90,7 +92,7 @@ export const projectsData = {
         },
         {
           title: 'Pitch Section',
-          description: 'Sales reps are supported with structured, persuasive content—tailored by market. Utilising 3D assets, and slick animations. I worked closely with the marketing team to ensure messaging aligned with brand standards and customer expectations. Utilising fundamental principles like progressive disclosure to take the user on a journey with a convincing story line. Click the images below to see the expanded full views.',
+          description: 'Sales reps are supported with structured, persuasive content, tailored by market. Utilising 3D assets, and slick animations. I worked closely with the marketing team to ensure messaging aligned with brand standards and customer expectations. Utilising fundamental principles like progressive disclosure to take the user on a journey with a convincing story line. Click the images below to see the expanded full views.',
           images: [
             '/img/offer-tool/ot-pitch.webp',
             '/img/offer-tool/heartbeat-breakdown-pitch.webp',

@@ -42,15 +42,15 @@ const SectionHeader = ({ path, count, subtitle }) => (
 const PRINCIPLES = [
   {
     title: 'AI-native',
-    body: "Design and code in one motion. I build with Claude, Figma, and Framer — shipping in hours what used to take weeks. The gap between imagining and building collapsed, and I'm here for it.",
+    body: "Design and code in one motion. I build with Claude, Figma, and Framer, shipping in hours what used to take weeks. The gap between imagining and building collapsed, and I'm here for it.",
   },
   {
     title: 'Conversion-led',
-    body: 'CRO-trained, so decisions are grounded in research and data, not instinct alone. I measure design by outcomes — what converts and earns trust — not just how it looks.',
+    body: 'CRO-trained, so decisions are grounded in research and data, not instinct alone. I measure design by outcomes, what converts and earns trust, not just how it looks.',
   },
   {
     title: 'Embedded',
-    body: 'I ship with engineers, not to them. I build reusable components, design tokens, and themes on the frameworks they already use — shadcn/ui, Ant Design — so what we design is what they build, and whole teams move faster.',
+    body: 'I ship with engineers, not to them. I build reusable components, design tokens, and themes on the frameworks they already use (shadcn/ui, Ant Design), so what we design is what they build, and whole teams move faster.',
   },
 ];
 
@@ -77,7 +77,7 @@ const HomePage = ({ onNavigate }) => {
       year: '2026',
       type: 'Design Systems',
       comingSoon: true,
-      description: 'One shared foundation across four systems — Enpal DS, NEMO, VERSO, and FOLIO. 170+ tokens and 25+ components serving mobile, web, portal, and internal software.',
+      description: 'One shared foundation across four systems: Enpal DS, NEMO, VERSO, and FOLIO. 170+ tokens and 25+ components serving mobile, web, portal, and internal software.',
       tags: ['Design Tokens', 'Figma', 'React', 'Documentation']
     },
     {
@@ -86,7 +86,7 @@ const HomePage = ({ onNavigate }) => {
       year: '2026',
       type: 'Product Surfaces',
       comingSoon: true,
-      description: 'Current work across three Enpal surfaces — customer portal, consumer marketing web, and the Hyperion back office — each built on the design family.',
+      description: 'Current work across three Enpal surfaces (customer portal, consumer marketing web, and the Hyperion back office), each built on the design family.',
       tags: ['FOLIO', 'VERSO', 'React', 'Figma']
     },
     {
@@ -121,7 +121,7 @@ const HomePage = ({ onNavigate }) => {
       title: 'Energy Monitoring',
       year: '2022',
       type: 'Mobile App',
-      description: 'Proprietary customer app designed from zero — energy monitoring, data breakdowns, and support — with a modular design system built for future releases.',
+      description: 'Proprietary customer app designed from zero (energy monitoring, data breakdowns, and support), with a modular design system built for future releases.',
       tags: ['React Native', 'Figma', 'Analytics', 'Token Studio'],
       image: '/img/m-preview.png'
     }
@@ -130,7 +130,7 @@ const HomePage = ({ onNavigate }) => {
   const concepts = [
     {
       image: '/img/concepts/nuvio-05.webp',
-      title: 'CRM App — System & Branding'
+      title: 'CRM App · System & Branding'
     },
     {
       image: '/img/concepts/crypto-05.webp',
@@ -196,7 +196,7 @@ const HomePage = ({ onNavigate }) => {
         <div className="container">
           <div className="hero-content">
             <div className="hero-meta">
-              <span className="label hero-file">TH — PORTFOLIO / REV.2026</span>
+              <span className="label hero-file">TH · PORTFOLIO / REV.2026</span>
               <span className="label hero-status">
                 <span className="status-dot"></span>
                 currently: designer @ enpal
@@ -211,7 +211,7 @@ const HomePage = ({ onNavigate }) => {
               from Berlin.
             </h1>
             <p>
-              CRO-trained designer and front-end engineer, thrilled by what building has become. AI collapsed the gap between design and code — so I work the whole stack: research, design systems, and product that converts.
+              CRO-trained designer and front-end engineer, thrilled by what building has become. AI collapsed the gap between design and code, so I work the whole stack: research, design systems, and product that converts.
             </p>
             <div className="hero-cta">
               <a href="#work" className="btn btn-primary">view work ↓</a>
@@ -241,7 +241,7 @@ const HomePage = ({ onNavigate }) => {
           <SectionHeader
             path="/principles"
             count={`${String(PRINCIPLES.length).padStart(3, '0')} entries`}
-            subtitle="The throughline across everything below — how design, engineering, and conversion thinking come together in the work."
+            subtitle="The throughline across everything below: how design, engineering, and conversion thinking come together in the work."
           />
           <div className="principles-list">
             {PRINCIPLES.map((principle, i) => (
@@ -260,7 +260,7 @@ const HomePage = ({ onNavigate }) => {
           <SectionHeader
             path="/work"
             count={`${String(projects.length).padStart(3, '0')} entries`}
-            subtitle="Selected projects covering the full residential solar lifecycle — selling, installing, and monitoring — spanning enterprise software, mobile applications, and design systems, shipped hand-in-hand with engineering teams."
+            subtitle="Selected projects covering the full residential solar lifecycle (selling, installing, and monitoring), spanning enterprise software, mobile applications, and design systems, shipped hand-in-hand with engineering teams."
           />
           <div className="work-index">
             {projects.map((project, i) => (

@@ -100,14 +100,14 @@ const ContactModal = () => {
           <div className="contact-sent">
             <div className="label contact-sent-code">[ 200 · message sent ]</div>
             <h2 id="contact-title">Thanks for reaching out.</h2>
-            <p>Your message is on its way — I'll get back to you soon.</p>
+            <p>Your message is on its way, I'll get back to you soon.</p>
             <button className="btn btn-secondary" onClick={handleClose}>close</button>
           </div>
         ) : !isFormConfigured() ? (
           <div className="contact-sent">
             <h2 id="contact-title">Let's talk</h2>
             <p>
-              The contact form is briefly offline — reach me on{' '}
+              The contact form is briefly offline, reach me on{' '}
               <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">LinkedIn</a>{' '}
               instead.
             </p>
@@ -117,7 +117,7 @@ const ContactModal = () => {
           <>
             <h2 id="contact-title">Let's talk</h2>
             <p className="contact-sub">
-              Roles, collaborations, or just design conversation — all welcome.
+              Roles, collaborations, or just design conversation: all welcome.
             </p>
             <form onSubmit={handleSubmit} className="contact-form">
               <label className="contact-field">
@@ -161,7 +161,7 @@ const ContactModal = () => {
 
               {status === 'error' && (
                 <div className="contact-error label">
-                  [ 500 · send failed ] — please try again, or find me on{' '}
+                  [ 500 · send failed ] please try again, or find me on{' '}
                   <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 </div>
               )}

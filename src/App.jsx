@@ -8,6 +8,8 @@ import StatusBar from './components/StatusBar';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
+import CVPage from './pages/CVPage';
+import ColophonPage from './pages/ColophonPage';
 import ProjectPage from './pages/ProjectPage';
 import './styles/globals.css';
 
@@ -22,6 +24,10 @@ function App() {
     
     if (path === '/about' || params.get('page') === 'about') {
       setCurrentPage('about');
+    } else if (path === '/cv' || params.get('page') === 'cv') {
+      setCurrentPage('cv');
+    } else if (path === '/colophon' || params.get('page') === 'colophon') {
+      setCurrentPage('colophon');
     } else if (path === '/project' || params.get('page') === 'project') {
       const id = params.get('id');
       if (id) {
@@ -53,11 +59,15 @@ function App() {
   // Keep the browser tab title in sync with the current page
   useEffect(() => {
     if (currentPage === 'about') {
-      document.title = 'About — Tyler Hagan';
+      document.title = 'About · Tyler Hagan';
+    } else if (currentPage === 'cv') {
+      document.title = 'CV · Tyler Hagan';
+    } else if (currentPage === 'colophon') {
+      document.title = 'Colophon · Tyler Hagan';
     } else if (currentPage === 'project' && projectsData[projectId]) {
-      document.title = `${projectsData[projectId].title} — Tyler Hagan`;
+      document.title = `${projectsData[projectId].title} · Tyler Hagan`;
     } else {
-      document.title = 'Tyler Hagan — Product Designer';
+      document.title = 'Tyler Hagan · Product Designer';
     }
   }, [currentPage, projectId]);
 
@@ -83,8 +93,10 @@ function App() {
           <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
           {currentPage === 'home' && <HomePage onNavigate={handleNavigate} />}
           {currentPage === 'about' && <AboutPage />}
+          {currentPage === 'cv' && <CVPage />}
+          {currentPage === 'colophon' && <ColophonPage />}
           {currentPage === 'project' && <ProjectPage projectId={projectId} onNavigate={handleNavigate} />}
-          <Footer />
+          <Footer onNavigate={handleNavigate} />
           <StatusBar />
           <ContactModal />
         </div>

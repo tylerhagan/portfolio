@@ -1,0 +1,29 @@
+# Tyler Hagan — Product Designer & Design Engineer
+
+> Personal portfolio of Tyler Hagan, a Berlin-based senior product designer and
+> design engineer with 15+ years across design and front-end development, the
+> last eight in the residential solar / energy space. Currently Designer at
+> Enpal Energy, where he initiated, designed and built the Enpal design family
+> (Enpal DS, NEMO, VERSO, FOLIO) end to end. Open to conversations about
+> senior and staff-level product design roles.
+
+## Pages
+
+- [Work](https://tylerhagan.co.uk/): case studies including the Enpal Design
+  Family (design systems, tokens, AI-first documentation), a multi-national
+  sales tool (72% faster offer creation, 42% higher conversion), a field
+  service app, and a customer monitoring app.
+- [About](https://tylerhagan.co.uk/about): background, approach, philosophy,
+  and career timeline.
+- [CV](https://tylerhagan.co.uk/cv): full CV as semantic HTML with schema.org
+  JSON-LD; also available as a two-page ATS-safe PDF at
+  https://tylerhagan.co.uk/tyler-hagan-cv.pdf
+- [Colophon](https://tylerhagan.co.uk/colophon): how the site itself is built —
+  one-source CV pipeline, client-side encrypted case studies, receipts.
+
+## Notes
+
+- Some case studies covering current employer work are encrypted client-side
+  (AES-256-GCM) and unlock with a password shared on request.
+- Contact is via the form on the site; no email address is published.
+- The site ships no analytics, cookies, or tracking.

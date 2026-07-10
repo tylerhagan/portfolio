@@ -9,7 +9,7 @@ const AboutPage = () => {
         <div className="container">
           <div className="about-layout">
             <div className="about-content">
-              <div className="label page-path">/about — th.2026</div>
+              <div className="label page-path">/about · th.2026</div>
               <h1>About Me</h1>
               <p className="about-intro">UK-born, Berlin-based product designer with a background in CRO, graphic design, and front-end engineering. I work best embedded with teams, somewhere between the Figma file and the pull request, shipping products that move metrics, not just look good.</p>
               <div className="current-chapter">
@@ -27,7 +27,7 @@ const AboutPage = () => {
                     </div>
                     <p className="chapter-desc">
                       Working at the intersection of design and engineering for Europe's leading
-                      residential solar company — taking ideas from concept to working product
+                      residential solar company, taking ideas from concept to working product
                       without the usual hand-off loss. Building the Enpal design family and
                       designing across the customer portal, marketing web, and back office.
                     </p>
@@ -38,34 +38,34 @@ const AboutPage = () => {
               <div className="timeline">
                 {[
                   {
-                    period: 'may 2024 — jan 2025',
+                    period: 'may 2024 – jan 2025',
                     role: 'Senior Product Designer',
                     company: '1KOMMA5°',
-                    desc: 'Led design for B2B and B2C products — including a multi-national sales tool taken from field research in Germany and Sweden to shipped MVP. Enhanced the design system and internationalisation workflow across design and engineering teams.'
+                    desc: 'Led design for B2B and B2C products, including a multi-national sales tool taken from field research in Germany and Sweden to shipped MVP. Enhanced the design system and internationalisation workflow across design and engineering teams.'
                   },
                   {
-                    period: 'jan 2020 — jan 2024',
+                    period: 'jan 2020 – jan 2024',
                     role: 'Senior Product Designer',
                     company: 'EIGENSONNE',
                     desc: 'Solo product designer through rapid scale-up. Designed the customer monitoring app, field service app, and solar design tooling; built modular design systems with tokens and Storybook support for engineering.'
                   },
                   {
-                    period: 'dec 2017 — jan 2020',
+                    period: 'dec 2017 – jan 2020',
                     role: 'Senior UX/UI Engineer',
                     company: 'EIGENSONNE',
-                    desc: 'Creative lead, designer, front-end developer, and website owner while growing the company and brand — a start-up minded, all-hands-on-deck role. Drove CRO for high-cost lead generation.'
+                    desc: 'Creative lead, designer, front-end developer, and website owner while growing the company and brand: a start-up minded, all-hands-on-deck role. Drove CRO for high-cost lead generation.'
                   },
                   {
-                    period: 'may 2017 — nov 2017',
+                    period: 'may 2017 – nov 2017',
                     role: 'Creative Lead / Senior Web Developer',
                     company: 'Sygns',
                     desc: 'Led the redesign of the multi-language company website and the neon sign configurator.'
                   },
                   {
-                    period: 'feb 2015 — nov 2016',
+                    period: 'feb 2015 – nov 2016',
                     role: 'Lead Developer',
                     company: 'House of Kaizen',
-                    desc: 'Led development at this multi-discipline digital agency and CRO consultancy in London, managing three developers. Helped win the Intel Security contract — building and running the European McAfee online store with continuous lean-UX optimisation.'
+                    desc: 'Led development at this multi-discipline digital agency and CRO consultancy in London, managing three developers. Helped win the Intel Security contract, building and running the European McAfee online store with continuous lean-UX optimisation.'
                   }
                 ].map((entry, i) => (
                   <div key={i} className="timeline-entry">
@@ -84,12 +84,12 @@ const AboutPage = () => {
                   </div>
                 ))}
                 <div className="timeline-education label">
-                  BSc Web Development — University of Greenwich · BND Graphic Design — Amersham College · Optimizely Developer & Platform Certified
+                  BSc Web Development, University of Greenwich · BND Graphic Design, Amersham College · Optimizely Developer & Platform Certified
                 </div>
               </div>
 
               <h2>Background</h2>
-              <p>I've spent the last several years in the energy space, designing every stage of the residential solar journey — selling, installing, monitoring, and long-term ownership.</p>
+              <p>I've spent the last several years in the energy space, designing every stage of the residential solar journey: selling, installing, monitoring, and long-term ownership.</p>
               <p>I work well separate or deeply integrated with development teams, allowing me to ship products efficiently and effectively. My approach combines traditional design thinking with modern AI-assisted workflows, enabling rapid prototyping and iteration.</p>
               <p>Outside of work I have been a professional esports competitor and lifelong artist, enjoying all types of creative outlets, especially music and painting. I love to learn new skills and explore new topics.</p>
 
@@ -106,11 +106,11 @@ const AboutPage = () => {
                 <p className="testimonial-quote">
                   "Tyler is one of those rare unicorns bridging Software Engineering skills and
                   UX/UI skills. Tyler has a diverse skillset, and has been the solo UX person in a
-                  fast-growing startup — an incredibly challenging position to hold that shows
+                  fast-growing startup, an incredibly challenging position to hold that shows
                   resilience and adaptability."
                 </p>
                 <footer className="testimonial-attr label">
-                  — petra kühnle · senior product designer, worked together at eigensonne
+                  petra kühnle · senior product designer, worked together at eigensonne
                 </footer>
               </blockquote>
 

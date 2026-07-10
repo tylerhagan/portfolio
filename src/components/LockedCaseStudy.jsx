@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useContact } from '../utils/ContactContext';
+import Lightbox from './Lightbox';
 import './LockedCaseStudy.css';
 
 // Decrypts an AES-GCM encrypted case-study JSON (see scripts/encrypt-case-study.mjs).
@@ -24,10 +25,27 @@ const decryptContent = async (encPath, password) => {
   return JSON.parse(new TextDecoder().decode(plaintext));
 };
 
-const Section = ({ section }) => (
+const Images = ({ images, onOpen }) => (
+  <div className={images.length > 1 ? 'project-images' : undefined}>
+    {images.map((img, i) => (
+      <div key={i} className="captioned-image">
+        <img
+          src={img.src}
+          alt={img.caption}
+          className={`${images.length > 1 ? 'project-image' : 'project-image-full'} clickable`}
+          onClick={() => onOpen(img.src, img.caption)}
+        />
+        <p className="image-caption">{img.caption}</p>
+      </div>
+    ))}
+  </div>
+);
+
+const Section = ({ section, onOpenImage }) => (
   <div className="project-section">
     <h2>{section.title}</h2>
     {section.paragraphs?.map((p, i) => <p key={i}>{p}</p>)}
+    {section.images && <Images images={section.images} onOpen={onOpenImage} />}
     {section.bullets && (
       <ul className="feature-list">
         {section.bullets.map((b, i) => <li key={i}>{b}</li>)}
@@ -37,6 +55,7 @@ const Section = ({ section }) => (
       <div key={i}>
         <h3>{sub.title}</h3>
         {sub.paragraphs?.map((p, j) => <p key={j}>{p}</p>)}
+        {sub.images && <Images images={sub.images} onOpen={onOpenImage} />}
         {sub.bullets && (
           <ul className="feature-list">
             {sub.bullets.map((b, j) => <li key={j}>{b}</li>)}
@@ -53,6 +72,9 @@ const LockedCaseStudy = ({ encPath, storageKey }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [lightbox, setLightbox] = useState(null);
+
+  const openImage = useCallback((src, alt) => setLightbox({ src, alt }), []);
 
   const tryUnlock = useCallback(async (pw, { remember }) => {
     setBusy(true);
@@ -89,7 +111,16 @@ const LockedCaseStudy = ({ encPath, storageKey }) => {
             <p>{content.intro}</p>
           </div>
         )}
-        {content.sections.map((section, i) => <Section key={i} section={section} />)}
+        {content.sections.map((section, i) => (
+          <Section key={i} section={section} onOpenImage={openImage} />
+        ))}
+        {lightbox && (
+          <Lightbox
+            imageSrc={lightbox.src}
+            imageAlt={lightbox.alt}
+            onClose={() => setLightbox(null)}
+          />
+        )}
       </>
     );
   }
@@ -97,10 +128,10 @@ const LockedCaseStudy = ({ encPath, storageKey }) => {
   return (
     <div className="project-section locked-section">
       <div className="locked-label label">[ 401 · access restricted ]</div>
-      <h2>Full case study — locked</h2>
+      <h2>Full case study · locked</h2>
       <p className="locked-subtitle">
         This section contains detail on current employer work, so it stays behind a
-        password — available on request,{' '}
+        password, available on request,{' '}
         <a href="#contact" onClick={(e) => { e.preventDefault(); openContact(); }}>get in touch</a>.
       </p>
       <form

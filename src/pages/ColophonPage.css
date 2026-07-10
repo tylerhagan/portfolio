@@ -1,0 +1,79 @@
+.colophon-page {
+  padding: 10rem 0 6rem;
+}
+
+.colophon-page .container {
+  max-width: 720px;
+}
+
+.colophon-header {
+  margin-bottom: 3.5rem;
+}
+
+.colophon-header h1 {
+  margin: 0.75rem 0 1.25rem;
+}
+
+.colophon-intro {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.colophon-section {
+  margin-bottom: 3rem;
+}
+
+.colophon-section h2 {
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  border-bottom: 1px solid var(--hairline);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.colophon-section p {
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.colophon-section a,
+.colophon-intro a {
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.colophon-section a:hover,
+.colophon-intro a:hover {
+  border-bottom-color: var(--text-primary);
+}
+
+.colophon-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.colophon-list li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.colophon-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--text-faint);
+}
+
+.colophon-signoff p {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}

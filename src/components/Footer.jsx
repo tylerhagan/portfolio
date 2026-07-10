@@ -1,6 +1,6 @@
 import './Footer.css';
 
-const Footer = () => {
+const Footer = ({ onNavigate }) => {
   return (
     <footer>
       <div className="container">
@@ -8,7 +8,15 @@ const Footer = () => {
           <div className="footer-colophon">
             <span>© 2026 Tyler Hagan</span>
             <span className="footer-sep">·</span>
-            <span>designed & built by me — react + vite, set in jetbrains mono & inter</span>
+            <span>designed & built by me</span>
+            <span className="footer-sep">·</span>
+            <a
+              href="/colophon"
+              className="footer-source"
+              onClick={(e) => { e.preventDefault(); onNavigate('colophon'); }}
+            >
+              colophon
+            </a>
             <span className="footer-sep">·</span>
             <a href="https://github.com/tylerhagan/portfolio" target="_blank" rel="noopener noreferrer" className="footer-source">source↗</a>
           </div>

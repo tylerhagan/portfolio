@@ -57,6 +57,15 @@ const Navigation = ({ currentPage, onNavigate }) => {
               </a>
             </li>
             <li>
+              <a
+                href="#"
+                className={currentPage === 'cv' ? 'active' : ''}
+                onClick={(e) => { e.preventDefault(); onNavigate('cv'); }}
+              >
+                /cv
+              </a>
+            </li>
+            <li>
               <a href="https://www.linkedin.com/in/tylerhagan/" target="_blank" rel="noopener noreferrer">
                 /linkedin<span className="link-ext">↗</span>
               </a>

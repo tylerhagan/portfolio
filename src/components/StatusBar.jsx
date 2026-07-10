@@ -75,9 +75,9 @@ const StatusBar = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="status-track-link"
-              title={`${track.name} — ${track.artist}`}
+              title={`${track.name} · ${track.artist}`}
             >
-              {track.name} — {track.artist}
+              {track.name} · {track.artist}
             </a>
             {!track.isPlaying && track.date && (
               <span className="status-track-time">{getTimeAgo(track.date).toLowerCase()}</span>
