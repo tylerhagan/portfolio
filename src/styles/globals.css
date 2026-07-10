@@ -49,6 +49,10 @@
     --bar-bg: rgba(10, 10, 10, 0.9);
     --accent-live: #00c853;
     --blue-pale: rgba(0, 102, 255, 0.12);
+    --blue: #3f8cff;
+    p a:not(li > a) {
+        color: var(--blue);
+    }
 }
 
 * {
