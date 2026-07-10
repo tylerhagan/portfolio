@@ -28,7 +28,7 @@ const CVPage = () => {
     <article className="cv-page">
       <div className="container">
         <header className="cv-header">
-          <div className="label page-path">/cv — th.2026</div>
+          <div className="label page-path">/cv · th.2026</div>
           <h1>{cvData.name}</h1>
           <p className="cv-title">{cvData.title}</p>
           <p className="cv-meta">
@@ -65,7 +65,7 @@ const CVPage = () => {
             <div key={i} className="cv-job">
               <div className="cv-job-head">
                 <h3>
-                  {job.role} <span className="cv-job-company">— {job.company}</span>
+                  {job.role} <span className="cv-job-company">· {job.company}</span>
                 </h3>
                 <div className="cv-job-meta label">
                   {job.start} – {job.end} · {job.location}
@@ -121,7 +121,7 @@ const CVPage = () => {
           <h2>Reference</h2>
           <blockquote>
             <p>"{cvData.praise.quote}"</p>
-            <div className="cv-praise-attr label">— {cvData.praise.attribution}</div>
+            <div className="cv-praise-attr label">{cvData.praise.attribution}</div>
           </blockquote>
         </section>
       </div>

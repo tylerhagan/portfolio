@@ -66,9 +66,15 @@
 
 .typed-word {
     /* Stack a hidden sizer (longest word + caret) and the live text in one grid
-       cell so the block is always as wide as the widest word — never reflows. */
+       cell so the block is always as wide as the widest word — never reflows.
+       The sizer must contain the same caret markup as the live text: the caret
+       carries a margin, and without it the cell grows when a word completes. */
     display: inline-grid;
     color: var(--blue);
+}
+
+.typed-word-sizer .caret {
+    animation: none;
 }
 
 .typed-word-sizer,

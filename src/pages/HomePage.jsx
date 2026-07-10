@@ -205,7 +205,7 @@ const HomePage = ({ onNavigate }) => {
             <h1>
               Product designer<br />
               crafting <span className="typed-word">
-                <span className="typed-word-sizer" aria-hidden="true">{LONGEST_WORD}▮</span>
+                <span className="typed-word-sizer" aria-hidden="true">{LONGEST_WORD}<span className="caret">▮</span></span>
                 <span className="typed-word-value">{typed}<span className="caret" aria-hidden="true">▮</span></span>
               </span><br />
               from Berlin.

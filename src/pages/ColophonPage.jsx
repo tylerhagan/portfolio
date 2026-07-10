@@ -11,7 +11,7 @@ const ColophonPage = () => {
     <article className="colophon-page">
       <div className="container">
         <header className="colophon-header">
-          <div className="label page-path">/colophon — how this site works</div>
+          <div className="label page-path">/colophon · how this site works</div>
           <h1>Colophon</h1>
           <p className="colophon-intro">
             I treat this site as a product, built with the same approach I bring to

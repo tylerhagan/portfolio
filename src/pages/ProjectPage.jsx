@@ -88,7 +88,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
               <h2>Full case study in progress</h2>
               <p>
                 This is current work and the full write-up is being prepared. Happy to walk
-                through it in detail —{' '}
+                through it in detail,{' '}
                 <a href="#contact" onClick={(e) => { e.preventDefault(); openContact(); }}>get in touch</a>.
               </p>
             </div>
