@@ -162,6 +162,52 @@ nav.scrolled .logo-text {
     color: var(--text-primary);
 }
 
+/* Hamburger toggle — hidden on desktop, shown on mobile */
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transition: border-color var(--t-fast) var(--ease);
+}
+
+.nav-toggle:hover {
+    border-color: var(--text-secondary);
+}
+
+.nav-toggle-bar {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: var(--text-primary);
+    transition: transform var(--t-med) var(--ease), opacity var(--t-fast) var(--ease);
+}
+
+.nav-toggle.open .nav-toggle-bar:nth-child(1) {
+    transform: translateY(5.5px) rotate(45deg);
+}
+
+.nav-toggle.open .nav-toggle-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.open .nav-toggle-bar:nth-child(3) {
+    transform: translateY(-5.5px) rotate(-45deg);
+}
+
+.nav-scrim {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .nav-links {
         gap: 1.25rem;
@@ -177,12 +223,73 @@ nav.scrolled .logo-text {
         display: none;
     }
 
-    .nav-links {
-        gap: 1rem;
+    .nav-toggle {
+        display: flex;
     }
 
-    .nav-links li:nth-child(3),
-    .nav-links li:nth-child(4) {
-        display: none;
+    /* Full menu becomes a dropdown panel under the bar */
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 0.5rem 1.5rem 1rem;
+        /* Opaque: nested inside nav's backdrop-filter context, a translucent
+           bg + blur wouldn't take effect and content would bleed through. */
+        background: var(--bg-primary);
+        border-bottom: 1px solid var(--hairline);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+
+        opacity: 0;
+        transform: translateY(-6px);
+        pointer-events: none;
+        transition: opacity var(--t-med) var(--ease), transform var(--t-med) var(--ease);
+    }
+
+    [data-theme="dark"] .nav-links {
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-links.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .nav-links li {
+        width: 100%;
+        border-top: 1px solid var(--hairline);
+    }
+
+    .nav-links li:first-child {
+        border-top: none;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 0.85rem 0.9rem;
+        font-size: 0.9rem;
+    }
+
+    /* The active caret is absolutely positioned for the inline desktop nav;
+       nudge it inside the padded panel row instead. */
+    .nav-links a.active::before {
+        left: 0.15em;
+    }
+
+    .nav-scrim {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /* Sits below the nav bar (z-index 1000) but above page content.
+           Rendered outside <nav> so nav's backdrop-filter doesn't trap its
+           fixed positioning to the bar's height. */
+        z-index: 900;
     }
 }
