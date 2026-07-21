@@ -78,16 +78,17 @@ const HomePage = ({ onNavigate }) => {
       type: 'Design Systems',
       comingSoon: true,
       description: 'One shared foundation across four systems: Enpal DS, NEMO, VERSO, and FOLIO. 170+ tokens and 25+ components serving mobile, web, portal, and internal software.',
-      tags: ['Design Tokens', 'Figma', 'React', 'Documentation']
+      tags: ['Design Tokens', 'Figma', 'React', 'Documentation'],
+      image: '/img/design-family/ds-docs-hero-light.webp'
     },
     {
       id: 'enpal-product-work',
       title: 'Portal, Web & Back Office',
       year: '2026',
       type: 'Product Surfaces',
-      comingSoon: true,
-      description: 'Current work across three Enpal surfaces (customer portal, consumer marketing web, and the Hyperion back office), each built on the design family.',
-      tags: ['FOLIO', 'VERSO', 'React', 'Figma']
+      description: 'Three Enpal Energy surfaces on one design foundation (customer portal, consumer marketing web, and the Hyperion back office), from high-fidelity prototypes through to a production-ready TypeScript scaffold.',
+      tags: ['FOLIO', 'VERSO', 'React', 'TypeScript', 'shadcn/ui'],
+      image: '/img/enpal-product-work/portal-proto-light.webp'
     },
     {
       id: 'offer-tool',

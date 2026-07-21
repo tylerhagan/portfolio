@@ -443,6 +443,46 @@ const ProjectPage = ({ projectId, onNavigate }) => {
           </>
         )}
 
+        {/* Portal, Web & Back Office (Enpal product surfaces) */}
+        {projectId === 'enpal-product-work' && (
+          <>
+            <div className="project-section">
+              <h2>Overview</h2>
+              <p>{project.brief}</p>
+              <button className="btn btn-secondary" onClick={() => onNavigate('project', 'design-family')}>
+                related · Enpal Design Family →
+              </button>
+            </div>
+            {project.sections.map((section, i) => (
+              <div key={i} className="project-section">
+                <h2>{section.title}</h2>
+                {section.paragraphs?.map((p, j) => <p key={j}>{p}</p>)}
+                {section.images && (
+                  <div className={section.images.length > 1 ? 'project-images' : undefined}>
+                    {section.images.map((img, j) => (
+                      <div key={j} className="captioned-image">
+                        <img
+                          src={img.src}
+                          alt={img.caption}
+                          className={`${section.images.length > 1 ? 'project-image' : 'project-image-full'} clickable`}
+                          onClick={() => openLightbox(img.src, img.caption)}
+                          loading="lazy"
+                        />
+                        <p className="image-caption">{img.caption}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {section.bullets && (
+                  <ul className="feature-list">
+                    {section.bullets.map((b, j) => <li key={j}>{b}</li>)}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </>
+        )}
+
         <div className="project-section" style={{ textAlign: 'center', marginTop: '4rem' }}>
           <button className="btn btn-secondary" onClick={() => onNavigate('home')}>
             ← back to /work
