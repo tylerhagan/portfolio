@@ -78,7 +78,8 @@ const HomePage = ({ onNavigate }) => {
       type: 'Design Systems',
       comingSoon: true,
       description: 'One shared foundation across four systems: Enpal DS, NEMO, VERSO, and FOLIO. 170+ tokens and 25+ components serving mobile, web, portal, and internal software.',
-      tags: ['Design Tokens', 'Figma', 'React', 'Documentation']
+      tags: ['Design Tokens', 'Figma', 'React', 'Documentation'],
+      image: '/img/design-family/ds-docs-hero-light.webp'
     },
     {
       id: 'enpal-product-work',
