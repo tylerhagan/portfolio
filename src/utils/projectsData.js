@@ -11,7 +11,7 @@ export const projectsData = {
     role: 'Designer · Design Engineer',
     timeline: '2026 – present',
     tools: ['Figma', 'Design Tokens', 'React', 'shadcn', 'Ant Design'],
-    // Live docs site exists (folio-ee.vercel.app) — deliberately not linked publicly yet.
+    // Live docs site exists (folio-ee.vercel.app), deliberately not linked publicly yet.
     // Full case study lives in content/design-family.content.json (gitignored), encrypted
     // into public/data/design-family.enc.json via scripts/encrypt-case-study.mjs.
     brief: `Enpal's surfaces run from consumer marketing to dense internal software: one brand, very different contexts. New products needed a system from day one, and design decisions needed to land in code without loss. The design family answers both: Enpal DS as the shared parent layer (colour ramps, typography, spacing, radii), with NEMO (mobile), VERSO (consumer marketing web) and FOLIO (dense, task-focused software UI) built on top. I initiated it, designed it, and built the delivery end to end.`,
@@ -31,75 +31,75 @@ export const projectsData = {
     role: 'Product Designer · Design Engineer',
     timeline: '2026 – present',
     tools: ['Figma', 'FOLIO DS', 'VERSO DS', 'React', 'TypeScript', 'shadcn/ui'],
-    brief: `Alongside building the Enpal design family, I designed and prototyped across three of Enpal Energy's product surfaces — the customer portal, the consumer marketing web, and Hyperion, the internal back office. Each is built on the family's systems, so the work was less about starting from scratch and more about composing a shared foundation into three very different contexts.`,
+    brief: `Alongside building the Enpal design family, I designed and prototyped across three of Enpal Energy's product surfaces: the customer portal, the consumer marketing web, and Hyperion, the internal back office. All three sit on the family's systems, so most of the work wasn't starting from scratch. It was composing one shared foundation into three fairly different contexts.`,
     sections: [
       {
         title: 'One foundation, three contexts',
         paragraphs: [
-          `The three surfaces sit at very different points on the same spectrum: a first-visit consumer deciding whether to switch, a returning customer managing their energy, and an operations team working through hundreds of accounts. Designing them independently invites drift; designing them on one system keeps them coherent and fast to build.`,
-          `The foundation is the Enpal design family — a shared parent layer (Enpal DS) with purpose-built sub-systems on top: VERSO for consumer web, FOLIO for dense product and internal UI. Colour, type, spacing and motion come from one source, and each sub-system decides what those primitives mean in its context. A handful of rules hold it together — chief among them, brand yellow is reserved for conversion, ink leads in work contexts, and paper carries most of every screen.`,
-          `Because the system ships as design tokens, a React/shadcn registry, an Ant Design theme and Figma variables generated from a single source, each surface below pulls the system in rather than re-implementing it. The full system deep-dive is a separate case.`
+          `The three surfaces sit at very different points on the same spectrum: a first-time visitor deciding whether to switch, a returning customer managing their energy, and an operations team working through hundreds of accounts. Build them separately and they drift apart. Build them on one system and they stay coherent, and they come together a lot faster.`,
+          `The foundation is the Enpal design family: a shared parent layer (Enpal DS) with purpose-built sub-systems on top. VERSO handles consumer web, FOLIO handles dense product and internal UI. Colour, type, spacing and motion all come from one source, and each sub-system decides what those primitives mean in its own context. A handful of rules keep it honest. The big ones: brand yellow is reserved for conversion, ink leads in work contexts, and paper carries most of every screen.`,
+          `Because the system ships as design tokens, a React/shadcn registry, an Ant Design theme and Figma variables, all generated from a single source, each surface below just pulls it in rather than rebuilding it. The full deep-dive on the system is a separate case.`
         ],
         images: [
-          { src: '/img/design-family/ds-docs-hero-light.webp', caption: 'The shared foundation — Enpal.design docs (light)' },
+          { src: '/img/design-family/ds-docs-hero-light.webp', caption: 'The shared foundation: Enpal.design docs (light)' },
           { src: '/img/design-family/ds-docs-hero-dark.webp', caption: 'The same system, dark mode' }
         ]
       },
       {
-        title: 'Consumer web — the marketing site (VERSO)',
+        title: 'Consumer web: the marketing site (VERSO)',
         paragraphs: [
-          `The brief was brand and tone: set a confident north-star for Enpal Energy's consumer web, not to win a conversion test. I designed a landing page in the VERSO language — expressive display type, a real-photo hero, pill buttons and borderless cards on a deep-ink surface warmed by the family's aurora wash.`,
-          `The tariff calculator is the single conversion moment on the page, so it earns the reserved brand yellow; everything else stays quiet around it. Trust signals — independent reviews, households served, certification — sit directly beneath the headline.`,
-          `It matters to the system because it proved the shared primitives could stretch from a calm product dashboard to an expressive consumer page without either feeling like a different brand. The move from landing page into the portal is a deliberate VERSO-to-FOLIO handoff.`
+          `The brief here was brand and tone: set a confident north star for Enpal Energy's consumer web, not win a conversion test. So I designed a landing page in the VERSO language, all expressive display type, a real-photo hero, pill buttons and borderless cards on a deep ink surface warmed by the family's aurora wash.`,
+          `The tariff calculator is the one conversion moment on the page, so it's the thing that earns the reserved brand yellow, and everything else stays quiet around it. The trust signals (independent reviews, households served, certification) sit right under the headline.`,
+          `It matters to the system because it proved the shared primitives could stretch from a calm product dashboard all the way to an expressive consumer page, without either one feeling like a different brand. The jump from landing page into the portal is a deliberate VERSO-to-FOLIO handoff.`
         ],
         images: [
-          { src: '/img/enpal-product-work/marketing-landing-hero.webp', caption: 'Consumer landing (VERSO) — real-photo hero, with the tariff calculator as the single conversion moment' }
+          { src: '/img/enpal-product-work/marketing-landing-hero.webp', caption: 'Consumer landing (VERSO): real-photo hero, with the tariff calculator as the one conversion moment' }
         ]
       },
       {
         title: 'The customer portal (FOLIO)',
         paragraphs: [
-          `The portal is where a customer manages their energy: consumption, meter readings (Zählerstand), tariff and billing. It's a returning-user surface, so it follows FOLIO's calm, dense conventions — ink primaries, status pills, one restrained upsell — in German, with full light and dark support.`,
-          `The overview brings together the next payment, the last meter reading, a live tariff timeline showing cheaper and standard windows, and a savings breakdown against the local basic supplier. Contextual nudges — a cheaper window tonight, a cold weekend ahead — surface only when they're useful.`,
-          `I took it from a high-fidelity interactive prototype to a production-ready TypeScript scaffold: React, Vite and React Router, consuming FOLIO as a shadcn registry with no vendored CSS, plus a typed API contract with mock fixtures — so backend and frontend could build the first version without re-litigating routes, contracts or design-system bindings.`
+          `The portal is where a customer manages their energy: consumption, meter readings (Zählerstand), tariff and billing. It's a returning-user surface, so it follows FOLIO's calm, dense conventions (ink primaries, status pills, one restrained upsell), in German, with full light and dark support.`,
+          `The overview pulls together the next payment, the last meter reading, a live tariff timeline showing the cheaper and standard windows, and a savings breakdown against the local basic supplier. Contextual nudges, like a cheaper window tonight or a cold weekend ahead, only show up when they're actually useful.`,
+          `I took it from a high-fidelity interactive prototype through to a production-ready TypeScript scaffold: React, Vite and React Router, consuming FOLIO as a shadcn registry with no vendored CSS, plus a typed API contract with mock fixtures. The idea was that backend and frontend could build the first version without having to re-argue routes, contracts or design-system bindings.`
         ],
         images: [
-          { src: '/img/enpal-product-work/portal-proto-light.webp', caption: 'Customer portal overview (FOLIO) — light' },
+          { src: '/img/enpal-product-work/portal-proto-light.webp', caption: 'Customer portal overview (FOLIO), light' },
           { src: '/img/enpal-product-work/portal-proto-dark.webp', caption: 'The same overview, dark mode' },
           { src: '/img/enpal-product-work/portal-mvp-light.webp', caption: 'Sign-in from the production TypeScript build' }
         ]
       },
       {
-        title: 'The back office — Hyperion',
+        title: 'The back office: Hyperion',
         paragraphs: [
-          `Hyperion is the operational counterpart to the portal — a focused customer-360 tool for the teams who run the energy business. It shares the exact same FOLIO tokens and components as the portal, with a thin back-office layer on top, which is the clearest proof that the foundation carries from a customer-facing product to dense internal software.`,
-          `The customer view uses a products-as-context pattern: pick a product or contract on the left and the Registration, Contract, Payment and Communications tabs update on the right, down to the regulated market identifiers (MaLo, MELO, DSO, TSO). Status pills are the universal language across customers, contracts and products; a two-tier navigation keeps top-level taxonomy and per-section context separate; and a ⌘K command palette is the global launcher. Everything shown here runs on fictional fixture data.`
+          `Hyperion is the operational counterpart to the portal, a focused customer-360 tool for the teams who actually run the energy business. It uses the exact same FOLIO tokens and components as the portal, with a thin back-office layer on top, which is probably the clearest proof that the foundation carries all the way from a customer-facing product to dense internal software.`,
+          `The customer view uses a products-as-context pattern: pick a product or contract on the left and the Registration, Contract, Payment and Communications tabs update on the right, right down to the regulated market identifiers (MaLo, MELO, DSO, TSO). Status pills are the shared language across customers, contracts and products, a two-tier navigation keeps top-level taxonomy and per-section context apart, and a ⌘K command palette is the global launcher. Everything shown here runs on fictional fixture data.`
         ],
         images: [
-          { src: '/img/enpal-product-work/hyperion-detail-light.webp', caption: 'Hyperion — customer-360 detail (light)' },
+          { src: '/img/enpal-product-work/hyperion-detail-light.webp', caption: 'Hyperion: customer-360 detail (light)' },
           { src: '/img/enpal-product-work/hyperion-detail-dark.webp', caption: 'Customer-360 detail, dark mode' },
-          { src: '/img/enpal-product-work/hyperion-dashboard-light.webp', caption: 'Operations dashboard — active customers and onboarding funnel' },
-          { src: '/img/enpal-product-work/hyperion-cmdk-light.webp', caption: 'The ⌘K command palette — search, jump, and run actions' }
+          { src: '/img/enpal-product-work/hyperion-dashboard-light.webp', caption: 'Operations dashboard: active customers and onboarding funnel' },
+          { src: '/img/enpal-product-work/hyperion-cmdk-light.webp', caption: 'The ⌘K command palette: search, jump and run actions' }
         ]
       },
       {
         title: 'Design-engineering craft',
         paragraphs: [
-          `A few decisions that don't show up in a screenshot but made the pace possible:`
+          `A few decisions that don't really show up in a screenshot but made the pace possible:`
         ],
         bullets: [
-          `Tokens are the single source of truth — the CSS, the shadcn registry, the Ant theme and the Figma variables are all generated from one token file, so a change propagates instead of forking.`,
-          `Products consume the system, they don't copy it — a shadcn registry or a single stylesheet link, nothing vendored.`,
-          `Theming without a flash — a shared storage key and a pre-paint script set the theme before CSS parses, and the View Transitions API drives the cross-fade; light and dark are equal citizens.`,
-          `Prototype to typed scaffold as a deliberate handoff — a single-file interactive demo to agree on feel, then a strict-TypeScript scaffold that freezes routes, contracts and design-system bindings.`,
-          `Governance as design — adoption is informed or requested, never forced, with a written propagation order from system to portal to web.`
+          `Tokens are the single source of truth. The CSS, the shadcn registry, the Ant theme and the Figma variables are all generated from one token file, so a change propagates everywhere instead of forking.`,
+          `Products consume the system, they don't copy it: a shadcn registry or a single stylesheet link, nothing vendored.`,
+          `Theming with no flash. A shared storage key and a pre-paint script set the theme before the CSS parses, and the View Transitions API handles the cross-fade. Light and dark are equal citizens.`,
+          `Prototype to typed scaffold as a deliberate handoff: a single-file interactive demo to agree on the feel, then a strict-TypeScript scaffold that locks down routes, contracts and design-system bindings.`,
+          `Governance as design: adoption is informed or requested, never forced, with a written propagation order from system to portal to web.`
         ]
       },
       {
         title: 'Where it stands',
         paragraphs: [
-          `One foundation now carries three surfaces: a consumer landing page, a customer portal (a prototype plus a production-ready TypeScript scaffold), and an internal customer-360 tool — all speaking the same visual language, in light and dark.`,
-          `This is current, in-progress product work rather than a finished, measured launch, so the story here is the design and the system leverage rather than headline metrics. The system deep-dive lives in the Enpal Design Family case.`
+          `One foundation now carries three surfaces: a consumer landing page, a customer portal (a prototype plus a production-ready TypeScript scaffold), and an internal customer-360 tool, all speaking the same visual language, in light and dark.`,
+          `This is current, in-progress product work rather than a finished, measured launch, so the story here is really the design and the leverage the system gives, rather than headline metrics. The full system deep-dive lives in the Enpal Design Family case.`
         ]
       }
     ]

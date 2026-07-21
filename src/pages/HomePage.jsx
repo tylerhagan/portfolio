@@ -85,7 +85,7 @@ const HomePage = ({ onNavigate }) => {
       title: 'Portal, Web & Back Office',
       year: '2026',
       type: 'Product Surfaces',
-      description: 'Three Enpal Energy surfaces (customer portal, consumer marketing web, and the Hyperion back office), each built on the design family. From high-fidelity prototypes to a production-ready TypeScript scaffold.',
+      description: 'Three Enpal Energy surfaces on one design foundation (customer portal, consumer marketing web, and the Hyperion back office), from high-fidelity prototypes through to a production-ready TypeScript scaffold.',
       tags: ['FOLIO', 'VERSO', 'React', 'TypeScript', 'shadcn/ui'],
       image: '/img/enpal-product-work/portal-proto-light.webp'
     },
