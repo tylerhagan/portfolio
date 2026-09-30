@@ -14,23 +14,23 @@ const AboutPage = () => {
               <h1>About Me</h1>
               <p className="about-intro">UK-born, Berlin-based product designer with a background in CRO, graphic design, and front-end engineering. I work best embedded with teams, somewhere between the Figma file and the pull request, shipping products that move metrics, not just look good.</p>
               <div className="current-chapter">
-                <div className="chapter-label">Current Chapter</div>
+                <div className="chapter-label">Latest Chapter</div>
                 <div className="chapter-card">
                   <div className="chapter-left">
                     <div className="chapter-dot"></div>
                     <div className="chapter-connector"></div>
                   </div>
                   <div className="chapter-body">
-                    <span className="chapter-period">mar 2026 → present</span>
+                    <span className="chapter-period">mar 2026 → aug 2026</span>
                     <div className="chapter-title-row">
                       <h3 className="chapter-role">Designer</h3>
                       <span className="chapter-company">@ Enpal</span>
                     </div>
                     <p className="chapter-desc">
-                      Working at the intersection of design and engineering for Europe's leading
+                      Worked at the intersection of design and engineering for Europe's leading
                       residential solar company, taking ideas from concept to working product
-                      without the usual hand-off loss. Building the Enpal design family and
-                      designing across the customer portal, marketing web, and back office.
+                      without the usual hand-off loss. Built the Enpal design family and
+                      designed across the customer portal, marketing web, and back office.
                     </p>
                   </div>
                 </div>

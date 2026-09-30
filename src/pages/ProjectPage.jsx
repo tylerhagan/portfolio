@@ -4,12 +4,10 @@ import Lightbox from '../components/Lightbox';
 import { responsive, SIZES } from '../utils/images';
 import RouteLink from '../components/RouteLink';
 import LockedCaseStudy from '../components/LockedCaseStudy';
-import { useContact } from '../utils/ContactContext';
 import './ProjectPage.css';
 
 const ProjectPage = ({ projectId, onNavigate }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
-  const { openContact } = useContact();
   const project = projectsData[projectId];
   
   if (!project) {
@@ -31,8 +29,8 @@ const ProjectPage = ({ projectId, onNavigate }) => {
     setLightboxImage(null);
   };
 
-  // In-progress work: meta + summary, full write-up pending
-  if (project.comingSoon) {
+  // Locked work: meta + summary, full write-up behind the password
+  if (project.locked) {
     return (
       <>
         <section className="project-hero">
@@ -83,18 +81,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
               </div>
             ))}
           </div>
-          {project.locked ? (
-            <LockedCaseStudy encPath={project.encPath} storageKey={`cs_${projectId}`} />
-          ) : (
-            <div className="project-section">
-              <h2>Full case study in progress</h2>
-              <p>
-                This is current work and the full write-up is being prepared. Happy to walk
-                through it in detail,{' '}
-                <a href="#contact" onClick={(e) => { e.preventDefault(); openContact(); }}>get in touch</a>.
-              </p>
-            </div>
-          )}
+          <LockedCaseStudy encPath={project.encPath} storageKey={`cs_${projectId}`} />
           <div className="project-section">
             <RouteLink page="home" onNavigate={onNavigate} className="btn btn-secondary">
               ← back to /work
