@@ -53,6 +53,11 @@ function App() {
     if (meta.path) {
       setMeta('link[rel="canonical"]', 'href', SITE_URL + meta.path);
     }
+
+    // Page view for Vercel Analytics (production only; see vite.config.js).
+    // Case studies share one route so they can be compared as a group.
+    const route = currentPage === 'project' ? '/work/[id]' : currentPage === 'notfound' ? '/404' : meta.path;
+    window.va?.('pageview', { route, path: window.location.pathname });
   }, [currentPage, projectId]);
 
   const handleNavigate = (page, id = null) => {
