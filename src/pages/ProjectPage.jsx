@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { projectsData } from '../utils/projectsData';
 import Lightbox from '../components/Lightbox';
+import RouteLink from '../components/RouteLink';
 import LockedCaseStudy from '../components/LockedCaseStudy';
 import { useContact } from '../utils/ContactContext';
 import './ProjectPage.css';
@@ -14,9 +15,9 @@ const ProjectPage = ({ projectId, onNavigate }) => {
     return (
       <div className="container" style={{ paddingTop: '10rem' }}>
         <h1>Project not found</h1>
-        <button className="btn btn-secondary" onClick={() => onNavigate('home')}>
+        <RouteLink page="home" onNavigate={onNavigate} className="btn btn-secondary">
           ← back to /work
-        </button>
+        </RouteLink>
       </div>
     );
   }
@@ -94,9 +95,9 @@ const ProjectPage = ({ projectId, onNavigate }) => {
             </div>
           )}
           <div className="project-section">
-            <button className="btn btn-secondary" onClick={() => onNavigate('home')}>
+            <RouteLink page="home" onNavigate={onNavigate} className="btn btn-secondary">
               ← back to /work
-            </button>
+            </RouteLink>
           </div>
         </div>
       </>
@@ -449,9 +450,9 @@ const ProjectPage = ({ projectId, onNavigate }) => {
             <div className="project-section">
               <h2>Overview</h2>
               <p>{project.brief}</p>
-              <button className="btn btn-secondary" onClick={() => onNavigate('project', 'design-family')}>
+              <RouteLink page="project" id="design-family" onNavigate={onNavigate} className="btn btn-secondary">
                 related · Enpal Design Family →
-              </button>
+              </RouteLink>
             </div>
             {project.sections.map((section, i) => (
               <div key={i} className="project-section">
@@ -484,9 +485,9 @@ const ProjectPage = ({ projectId, onNavigate }) => {
         )}
 
         <div className="project-section" style={{ textAlign: 'center', marginTop: '4rem' }}>
-          <button className="btn btn-secondary" onClick={() => onNavigate('home')}>
+          <RouteLink page="home" onNavigate={onNavigate} className="btn btn-secondary">
             ← back to /work
-          </button>
+          </RouteLink>
         </div>
       </div>
 

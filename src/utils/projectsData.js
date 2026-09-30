@@ -6,6 +6,8 @@ export const projectsData = {
     encPath: '/data/design-family.enc.json',
     title: 'Enpal Design Family',
     subtitle: 'One foundation, four systems: Enpal DS, NEMO, VERSO & FOLIO',
+    // Card copy on the home index, and the meta description for /work/<id>
+    summary: 'One shared foundation across four systems: Enpal DS, NEMO, VERSO, and FOLIO. 170+ tokens and 25+ components serving mobile, web, portal, and internal software.',
     year: '2026',
     status: 'In active development',
     role: 'Designer · Design Engineer',
@@ -26,6 +28,7 @@ export const projectsData = {
   'enpal-product-work': {
     title: 'Portal, Web & Back Office',
     subtitle: "Three Enpal Energy surfaces, one design foundation",
+    summary: 'Three Enpal Energy surfaces on one design foundation (customer portal, consumer marketing web, and the Hyperion back office), from high-fidelity prototypes through to a production-ready TypeScript scaffold.',
     year: '2026',
     status: 'In active development',
     role: 'Product Designer · Design Engineer',
@@ -108,6 +111,7 @@ export const projectsData = {
   'offer-tool': {
     title: 'Offer Tool',
     subtitle: 'Sales enablement software for multi-national teams',
+    summary: 'Multi-national B2B/B2C sales tool taken from on-the-ground field research to shipped MVP. Cut offer creation time by 72% and lifted sales conversion 42%.',
     year: '2025',
     status: 'Private Active Use',
     role: 'Product Designer',
@@ -195,6 +199,7 @@ export const projectsData = {
   'field-service': {
     title: 'Field Service App',
     subtitle: 'Mobile application for internal company use',
+    summary: 'Complete reimagination of a field service app with custom design system, from research to deployment. Raised critical data entry from 38% to 97%.',
     year: '2023',
     status: 'Private Active Use',
     role: 'Product Designer',
@@ -236,6 +241,7 @@ export const projectsData = {
   'monitoring-app': {
     title: 'Monitoring & Customer App',
     subtitle: 'Mobile app for long-term customer relationships',
+    summary: 'Proprietary customer app designed from zero (energy monitoring, data breakdowns, and support), with a modular design system built for future releases.',
     year: '2022',
     status: 'Released Q1 2024',
     role: 'Product Designer',
@@ -269,6 +275,7 @@ export const projectsData = {
   'solar-designer': {
     title: 'Solar Design Studio',
     subtitle: 'Premium solar design tool',
+    summary: 'Premium solar design tool with Salesforce integration. Collaborated with engineering and sales to create intuitive design experience.',
     year: '2023',
     status: 'Active Use',
     role: 'Product Designer',

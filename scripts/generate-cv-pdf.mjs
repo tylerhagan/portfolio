@@ -21,7 +21,7 @@ const page = await browser.newPage();
 await page.emulateMedia({ media: 'print', colorScheme: 'light' });
 // The site defaults to dark theme; print must derive from light-mode variables
 await page.addInitScript(() => localStorage.setItem('theme', 'light'));
-await page.goto(`${server}/?page=cv&email=${encodeURIComponent(email)}`, {
+await page.goto(`${server}/cv?email=${encodeURIComponent(email)}`, {
   waitUntil: 'networkidle'
 });
 await page.waitForSelector('.cv-page h1');
