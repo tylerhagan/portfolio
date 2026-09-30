@@ -11,7 +11,8 @@ import path from 'path';
 const IMG_DIR = 'public/img';
 const MANIFEST = 'src/utils/imageManifest.json';
 const SMALL_WIDTH = 800;
-const SKIP = new Set(['/img/og-card.png']); // share card: never displayed on the site
+// Share cards (og-card.png, og/*.png) are never displayed on the site
+const isShareCard = (src) => src === '/img/og-card.png' || src.startsWith('/img/og/');
 
 const walk = (dir) =>
   fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
@@ -20,7 +21,7 @@ const walk = (dir) =>
 
 const sources = walk(IMG_DIR)
   .map((f) => '/' + path.relative('public', f).split(path.sep).join('/'))
-  .filter((src) => /\.(png|jpe?g|webp)$/i.test(src) && !src.endsWith('.sm.webp') && !SKIP.has(src))
+  .filter((src) => /\.(png|jpe?g|webp)$/i.test(src) && !src.endsWith('.sm.webp') && !isShareCard(src))
   .sort();
 
 const smallPath = (src) => src.replace(/\.[^.]+$/, '.sm.webp');
