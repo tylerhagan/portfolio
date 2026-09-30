@@ -18,13 +18,13 @@ export const cvData = {
       company: 'Enpal Energy',
       role: 'Designer (in practice, Senior Product Design Engineer)',
       start: 'Mar 2026',
-      end: 'Present',
+      end: 'Aug 2026',
       location: 'Berlin',
       bullets: [
         'Initiated, designed and built the Enpal design family end to end: Enpal DS as the shared parent layer with NEMO (consumer mobile), VERSO (marketing web) and FOLIO (dense software UI). 170+ tokens and 25+ components, light and dark throughout, versioned releases with a changelog.',
-        'Built the delivery layer myself: a token pipeline generating CSS, JSON and Figma Variables from one source, a React/shadcn registry for the product surfaces, and an Ant Design theme so established teams across the wider org adopt the family without retooling. Versioned npm package distribution now in progress.',
+        'Built the delivery layer myself: a token pipeline generating CSS, JSON and Figma Variables from one source, a React/shadcn registry for the product surfaces, and an Ant Design theme so established teams across the wider org adopt the family without retooling. Scoped versioned npm distribution for the developer packages.',
         'Wrote the documentation AI-first: every system ships a markdown brief that drops straight into AI coding tools, so an assistant builds to the system’s rules without constant prompting.',
-        'Designing across three product surfaces in parallel on those systems: the customer portal, the consumer marketing website, and the Hyperion back office for the VPP energy space.'
+        'Designed across three product surfaces in parallel on those systems: the customer portal, the consumer marketing website, and the Hyperion back office for the VPP energy space.'
       ]
     },
     {

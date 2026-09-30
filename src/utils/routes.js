@@ -6,7 +6,7 @@ import { projectsData } from './projectsData.js';
 export const SITE_URL = 'https://tylerhagan.co.uk';
 
 const DEFAULT_DESCRIPTION =
-  'Tyler Hagan, CRO-trained product designer and front-end engineer based in Berlin. Currently Designer at Enpal Energy.';
+  'Tyler Hagan, CRO-trained product designer and front-end engineer based in Berlin. Open to senior and staff product design roles.';
 
 const STATIC_PAGES = {
   home: {

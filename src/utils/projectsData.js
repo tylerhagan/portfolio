@@ -1,7 +1,6 @@
 export const projectsData = {
-  // ——— Current work @ Enpal (comingSoon: rendered as "case study in progress") ———
+  // ——— Enpal work, Mar–Aug 2026 (locked: full case study is encrypted) ———
   'design-family': {
-    comingSoon: true,
     locked: true,
     encPath: '/data/design-family.enc.json',
     title: 'Enpal Design Family',
@@ -9,9 +8,9 @@ export const projectsData = {
     // Card copy on the home index, and the meta description for /work/<id>
     summary: 'One shared foundation across four systems: Enpal DS, NEMO, VERSO, and FOLIO. 170+ tokens and 25+ components serving mobile, web, portal, and internal software.',
     year: '2026',
-    status: 'In active development',
+    status: 'Shipped · in use at Enpal',
     role: 'Designer · Design Engineer',
-    timeline: '2026 – present',
+    timeline: 'Mar – Aug 2026',
     tools: ['Figma', 'Design Tokens', 'React', 'shadcn', 'Ant Design'],
     // Live docs site exists (folio-ee.vercel.app), deliberately not linked publicly yet.
     // Full case study lives in content/design-family.content.json (gitignored), encrypted
@@ -30,9 +29,9 @@ export const projectsData = {
     subtitle: "Three Enpal Energy surfaces, one design foundation",
     summary: 'Three Enpal Energy surfaces on one design foundation (customer portal, consumer marketing web, and the Hyperion back office), from high-fidelity prototypes through to a production-ready TypeScript scaffold.',
     year: '2026',
-    status: 'In active development',
+    status: 'Shipped · in use at Enpal',
     role: 'Product Designer · Design Engineer',
-    timeline: '2026 – present',
+    timeline: 'Mar – Aug 2026',
     tools: ['Figma', 'FOLIO DS', 'VERSO DS', 'React', 'TypeScript', 'shadcn/ui'],
     brief: `Alongside building the Enpal design family, I designed and prototyped across three of Enpal Energy's product surfaces: the customer portal, the consumer marketing web, and Hyperion, the internal back office. All three sit on the family's systems, so most of the work wasn't starting from scratch. It was composing one shared foundation into three fairly different contexts.`,
     sections: [
@@ -102,7 +101,7 @@ export const projectsData = {
         title: 'Where it stands',
         paragraphs: [
           `One foundation now carries three surfaces: a consumer landing page, a customer portal (a prototype plus a production-ready TypeScript scaffold), and an internal customer-360 tool, all speaking the same visual language, in light and dark.`,
-          `This is current, in-progress product work rather than a finished, measured launch, so the story here is really the design and the leverage the system gives, rather than headline metrics. The full system deep-dive lives in the Enpal Design Family case.`
+          `All three are now in use at Enpal. The story here is the design and the leverage the system gives rather than headline metrics. The full system deep-dive lives in the Enpal Design Family case.`
         ]
       }
     ]

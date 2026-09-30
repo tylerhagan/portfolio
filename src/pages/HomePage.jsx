@@ -75,11 +75,18 @@ const HomePage = ({ onNavigate }) => {
 
   const projects = [
     {
+      id: 'offer-tool',
+      title: 'Offer Tool',
+      year: '2025',
+      type: 'Enterprise Software',
+      tags: ['React', 'AI Integration', 'Figma', 'Lokalise', 'User Research'],
+      image: '/img/ot-preview.png'
+    },
+    {
       id: 'design-family',
       title: 'Enpal Design Family',
       year: '2026',
       type: 'Design Systems',
-      comingSoon: true,
       tags: ['Design Tokens', 'Figma', 'React', 'Documentation'],
       image: '/img/design-family/ds-docs-hero-light.webp'
     },
@@ -90,14 +97,6 @@ const HomePage = ({ onNavigate }) => {
       type: 'Product Surfaces',
       tags: ['FOLIO', 'VERSO', 'React', 'TypeScript', 'shadcn/ui'],
       image: '/img/enpal-product-work/portal-proto-light.webp'
-    },
-    {
-      id: 'offer-tool',
-      title: 'Offer Tool',
-      year: '2025',
-      type: 'Enterprise Software',
-      tags: ['React', 'AI Integration', 'Figma', 'Lokalise', 'User Research'],
-      image: '/img/ot-preview.png'
     },
     {
       id: 'field-service',
@@ -190,7 +189,7 @@ const HomePage = ({ onNavigate }) => {
               <span className="label hero-file">TH · PORTFOLIO / REV.2026</span>
               <span className="label hero-status">
                 <span className="status-dot"></span>
-                currently: designer @ enpal
+                currently: open to new roles
               </span>
             </div>
             <h1>
@@ -219,8 +218,8 @@ const HomePage = ({ onNavigate }) => {
             <span className="datum-value">15+ yrs</span>
           </div>
           <div className="datum">
-            <span className="label">Projects shipped</span>
-            <span className="datum-value">50+</span>
+            <span className="label">Conversion lift</span>
+            <span className="datum-value">+42%</span>
           </div>
           <div className="datum">
             <span className="label">Discipline</span>
@@ -265,7 +264,7 @@ const HomePage = ({ onNavigate }) => {
                 <div className="work-num label">{String(i + 1).padStart(3, '0')}</div>
                 <div className="work-body">
                   <div className="work-meta-line label">
-                    {project.year} · {project.type}{project.comingSoon && ' · in progress'}
+                    {project.year} · {project.type}{projectsData[project.id].locked && ' · locked'}
                   </div>
                   <h3 className="work-title">
                     {project.title}

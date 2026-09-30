@@ -89,7 +89,7 @@ const StatusBar = () => {
       <div className="status-group status-links">
         <a href="#contact" className="status-open" onClick={(e) => { e.preventDefault(); openContact(); }}>
           <span className="status-open-dot" aria-hidden="true"></span>
-          open to conversations
+          open to new roles
         </a>
         <a href="https://github.com/tylerhagan" target="_blank" rel="noopener noreferrer">gh↗</a>
         <a href="https://www.linkedin.com/in/tylerhagan/" target="_blank" rel="noopener noreferrer">in↗</a>
