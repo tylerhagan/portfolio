@@ -12,6 +12,7 @@ import CVPage from './pages/CVPage';
 import ColophonPage from './pages/ColophonPage';
 import ProjectPage from './pages/ProjectPage';
 import NotFoundPage from './pages/NotFoundPage';
+import './styles/fonts.css';
 import './styles/globals.css';
 
 // Resolve the current URL, swapping legacy ?page= links for their clean path

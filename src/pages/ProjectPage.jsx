@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { projectsData } from '../utils/projectsData';
 import Lightbox from '../components/Lightbox';
+import { responsive, SIZES } from '../utils/images';
 import RouteLink from '../components/RouteLink';
 import LockedCaseStudy from '../components/LockedCaseStudy';
 import { useContact } from '../utils/ContactContext';
@@ -191,6 +192,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
                     <video
                       src="/img/offer-tool/pitch-recording.mp4"
                       controls
+                      preload="metadata"
                       style={{ width: '100%', borderRadius: '12px', marginTop: '1.5rem', marginBottom: '1rem' }}
                     />
                   )}
@@ -202,7 +204,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
                       {feature.images.map((img, i) => (
                         <img 
                           key={i} 
-                          src={img} 
+                          {...responsive(img, SIZES.projectGrid)} 
                           alt={feature.title} 
                           className="project-image clickable" 
                           onClick={() => openLightbox(img, feature.title)}
@@ -271,7 +273,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
               <p>{project.definition}</p>
               {project.definitionImage && (
                 <img 
-                  src={project.definitionImage} 
+                  {...responsive(project.definitionImage, SIZES.projectFull)} 
                   alt="Journey Map" 
                   className="project-image-full clickable" 
                   onClick={() => openLightbox(project.definitionImage, 'Journey Map')}
@@ -293,7 +295,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
                 {project.solution.images.map((img, i) => (
                   <div key={i} className="captioned-image">
                     <img 
-                      src={img.src} 
+                      {...responsive(img.src, SIZES.projectGrid)} 
                       alt={img.caption} 
                       className="project-image clickable" 
                       onClick={() => openLightbox(img.src, img.caption)}
@@ -330,7 +332,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
               {project.research.wireframeImage && (
                 <div className="captioned-image">
                   <img 
-                    src={project.research.wireframeImage} 
+                    {...responsive(project.research.wireframeImage, SIZES.projectFull)} 
                     alt="Wireframes" 
                     className="project-image-full clickable" 
                     onClick={() => openLightbox(project.research.wireframeImage, 'Wireframes')}
@@ -341,7 +343,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
               {project.research.flowImage && (
                 <div className="captioned-image">
                   <img 
-                    src={project.research.flowImage} 
+                    {...responsive(project.research.flowImage, SIZES.projectFull)} 
                     alt="User Flow" 
                     className="project-image-full clickable" 
                     onClick={() => openLightbox(project.research.flowImage, 'User Flow')}
@@ -361,7 +363,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
               {project.design.energyFlowImage && (
                 <div className="captioned-image">
                   <img 
-                    src={project.design.energyFlowImage} 
+                    {...responsive(project.design.energyFlowImage, SIZES.projectFull)} 
                     alt="Energy Flow" 
                     className="project-image-full clickable" 
                     onClick={() => openLightbox(project.design.energyFlowImage, 'Energy Flow')}
@@ -374,7 +376,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
                   {project.design.prototypeImages.map((img, i) => (
                     <div key={i} className="captioned-image">
                       <img 
-                        src={img.src} 
+                        {...responsive(img.src, SIZES.projectGrid)} 
                         alt={img.caption} 
                         className="project-image clickable" 
                         onClick={() => openLightbox(img.srcFull, img.caption)}
@@ -412,7 +414,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
                   {project.overview.challengeImages.map((img, i) => (
                     <div key={i} className="captioned-image">
                       <img 
-                        src={img.src} 
+                        {...responsive(img.src, SIZES.projectGrid)} 
                         alt={img.caption} 
                         className="project-image clickable" 
                         onClick={() => openLightbox(img.src, img.caption)}
@@ -429,7 +431,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
               {/* Solution Image - Full width */}
               {project.overview.solutionImage && (
                 <img 
-                  src={project.overview.solutionImage} 
+                  {...responsive(project.overview.solutionImage, SIZES.projectFull)} 
                   alt="Solar Designer Solution" 
                   className="project-image-full clickable" 
                   onClick={() => openLightbox(project.overview.solutionImage, 'Solar Designer Solution')}
@@ -463,7 +465,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
                     {section.images.map((img, j) => (
                       <div key={j} className="captioned-image">
                         <img
-                          src={img.src}
+                          {...responsive(img.src, section.images.length > 1 ? SIZES.projectGrid : SIZES.projectFull)}
                           alt={img.caption}
                           className={`${section.images.length > 1 ? 'project-image' : 'project-image-full'} clickable`}
                           onClick={() => openLightbox(img.src, img.caption)}

@@ -5,22 +5,42 @@
   "redirects": [
     {
       "source": "/project",
-      "has": [{ "type": "query", "key": "id", "value": "(?<id>[a-z0-9-]+)" }],
-      "destination": "/work/:id",
-      "permanent": true
-    },
-    {
-      "source": "/",
       "has": [
-        { "type": "query", "key": "page", "value": "project" },
-        { "type": "query", "key": "id", "value": "(?<id>[a-z0-9-]+)" }
+        {
+          "type": "query",
+          "key": "id",
+          "value": "(?<id>[a-z0-9-]+)"
+        }
       ],
       "destination": "/work/:id",
       "permanent": true
     },
     {
       "source": "/",
-      "has": [{ "type": "query", "key": "page", "value": "(?<page>about|cv|colophon)" }],
+      "has": [
+        {
+          "type": "query",
+          "key": "page",
+          "value": "project"
+        },
+        {
+          "type": "query",
+          "key": "id",
+          "value": "(?<id>[a-z0-9-]+)"
+        }
+      ],
+      "destination": "/work/:id",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "page",
+          "value": "(?<page>about|cv|colophon)"
+        }
+      ],
       "destination": "/:page",
       "permanent": true
     }
@@ -28,7 +48,21 @@
   "headers": [
     {
       "source": "/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ]
 }

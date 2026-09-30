@@ -56,7 +56,9 @@ export const parseLocation = ({ pathname, search }) => {
   const work = path.match(/^\/work\/([^/]+)$/);
   if (work) {
     const id = decodeURIComponent(work[1]);
-    return { page: projectsData[id] ? 'project' : 'notfound', id };
+    // Leftover ?id= / ?page= from a legacy redirect: flag it so the URL gets cleaned
+    const legacy = params.has('id') || params.has('page');
+    return { page: projectsData[id] ? 'project' : 'notfound', id, legacy };
   }
   const page = Object.keys(STATIC_PAGES).find((key) => STATIC_PAGES[key].path === path);
   return { page: page ?? 'notfound', id: null };

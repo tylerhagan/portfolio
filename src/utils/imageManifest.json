@@ -1,0 +1,222 @@
+{
+  "/img/concepts/bank-app.webp": {
+    "w": 2400,
+    "sm": 800
+  },
+  "/img/concepts/crypto-05.webp": {
+    "w": 953,
+    "sm": 800
+  },
+  "/img/concepts/football-stats-preview.webp": {
+    "w": 1960,
+    "sm": 800
+  },
+  "/img/concepts/nuvio-05.webp": {
+    "w": 953,
+    "sm": 800
+  },
+  "/img/concepts/smart-home-mockup.webp": {
+    "w": 1775,
+    "sm": 800
+  },
+  "/img/design-family/ds-docs-dark.webp": {
+    "w": 2000,
+    "sm": 800
+  },
+  "/img/design-family/ds-docs-hero-dark.webp": {
+    "w": 2000,
+    "sm": 800
+  },
+  "/img/design-family/ds-docs-hero-light.webp": {
+    "w": 2000,
+    "sm": 800
+  },
+  "/img/design-family/ds-docs-light.webp": {
+    "w": 2000,
+    "sm": 800
+  },
+  "/img/eigen-app/early-prototype-dark-thumbnail.webp": {
+    "w": 888,
+    "sm": 800
+  },
+  "/img/eigen-app/early-prototype-light-thumbnail.webp": {
+    "w": 666,
+    "sm": 666
+  },
+  "/img/eigen-app/early-prototype-light.webp": {
+    "w": 867,
+    "sm": 800
+  },
+  "/img/eigen-app/early-prototype.webp": {
+    "w": 875,
+    "sm": 800
+  },
+  "/img/eigen-app/energy-flow2x.webp": {
+    "w": 1715,
+    "sm": 800
+  },
+  "/img/eigen-app/top-level-wireframes-snippet-preview.png": {
+    "w": 2500,
+    "sm": 800
+  },
+  "/img/eigen-app/user-flow.webp": {
+    "w": 2560,
+    "sm": 800
+  },
+  "/img/energy-flow.webp": {
+    "w": 1286,
+    "sm": 800
+  },
+  "/img/enpal-headshot.png": {
+    "w": 1024,
+    "sm": 800
+  },
+  "/img/enpal-product-work/hyperion-cmdk-light.webp": {
+    "w": 2000,
+    "sm": 800
+  },
+  "/img/enpal-product-work/hyperion-customers-light.webp": {
+    "w": 2000,
+    "sm": 800
+  },
+  "/img/enpal-product-work/hyperion-dashboard-dark.webp": {
+    "w": 2000,
+    "sm": 800
+  },
+  "/img/enpal-product-work/hyperion-dashboard-light.webp": {
+    "w": 2000,
+    "sm": 800
+  },
+  "/img/enpal-product-work/hyperion-detail-dark.webp": {
+    "w": 2000,
+    "sm": 800
+  },
+  "/img/enpal-product-work/hyperion-detail-light.webp": {
+    "w": 2000,
+    "sm": 800
+  },
+  "/img/enpal-product-work/marketing-landing-hero.webp": {
+    "w": 2000,
+    "sm": 800
+  },
+  "/img/enpal-product-work/portal-mvp-dark.webp": {
+    "w": 2000,
+    "sm": 800
+  },
+  "/img/enpal-product-work/portal-mvp-light.webp": {
+    "w": 2000,
+    "sm": 800
+  },
+  "/img/enpal-product-work/portal-proto-dark.webp": {
+    "w": 2000,
+    "sm": 800
+  },
+  "/img/enpal-product-work/portal-proto-light.webp": {
+    "w": 2000,
+    "sm": 800
+  },
+  "/img/field-service/journey-map.png": {
+    "w": 1680,
+    "sm": 800
+  },
+  "/img/field-service/preview-one.webp": {
+    "w": 2560,
+    "sm": 800
+  },
+  "/img/field-service/preview-three.webp": {
+    "w": 2500,
+    "sm": 800
+  },
+  "/img/field-service/preview-two.webp": {
+    "w": 2500,
+    "sm": 800
+  },
+  "/img/fs-preview.png": {
+    "w": 542,
+    "sm": 542
+  },
+  "/img/m-preview.png": {
+    "w": 542,
+    "sm": 542
+  },
+  "/img/mid-fidelity-thumb.jpg": {
+    "w": 1920,
+    "sm": 800
+  },
+  "/img/mid-fidelity.webp": {
+    "w": 1920,
+    "sm": 800
+  },
+  "/img/offer-tool/heartbeat-breakdown-pitch.webp": {
+    "w": 1512,
+    "sm": 800
+  },
+  "/img/offer-tool/ot-breakdown.png": {
+    "w": 716,
+    "sm": 716
+  },
+  "/img/offer-tool/ot-concept.webp": {
+    "w": 1512,
+    "sm": 800
+  },
+  "/img/offer-tool/ot-configuration.webp": {
+    "w": 1512,
+    "sm": 800
+  },
+  "/img/offer-tool/ot-customer-add.png": {
+    "w": 1440,
+    "sm": 800
+  },
+  "/img/offer-tool/ot-customerlist.png": {
+    "w": 1440,
+    "sm": 800
+  },
+  "/img/offer-tool/ot-multi-site-offer.png": {
+    "w": 1440,
+    "sm": 800
+  },
+  "/img/offer-tool/ot-pitch.webp": {
+    "w": 756,
+    "sm": 756
+  },
+  "/img/offer-tool/ot-summary.png": {
+    "w": 756,
+    "sm": 756
+  },
+  "/img/offer-tool/sidebars.webp": {
+    "w": 1690,
+    "sm": 800
+  },
+  "/img/ot-preview.png": {
+    "w": 542,
+    "sm": 542
+  },
+  "/img/sd-preview.png": {
+    "w": 542,
+    "sm": 542
+  },
+  "/img/sketches.jpg": {
+    "w": 350,
+    "sm": 350
+  },
+  "/img/solar-designer/loading.png": {
+    "w": 2000,
+    "sm": 800
+  },
+  "/img/solar-designer/main-layout.webp": {
+    "w": 1500,
+    "sm": 800
+  },
+  "/img/solar-designer/quote-component.png": {
+    "w": 901,
+    "sm": 800
+  },
+  "/img/solar-designer/select-planning.webp": {
+    "w": 2000,
+    "sm": 800
+  },
+  "/img/top-level-wireframes-snippet.webp": {
+    "w": 2560,
+    "sm": 800
+  }
+}

@@ -40,10 +40,10 @@ crawlers, a sitemap, and a note in the console for anyone who inspects.
 | | |
 |---|---|
 | App | React 18, Vite 7, client-side routing with real `<a href>` links |
-| Styling | Hand-written CSS on custom properties, no preprocessor |
+| Styling | Hand-written CSS on custom properties, no preprocessor; self-hosted variable fonts |
 | Contact | Modal form posting to Formspree ([`contactConfig.js`](src/utils/contactConfig.js)) |
 | Now playing | Last.fm API |
-| Tooling | Playwright (dev only) for the CV PDF and share-card scripts |
+| Tooling | Playwright and sharp (dev only) for the CV PDF, share-card and image scripts |
 | Hosting | Vercel, deployed from `main`; [`vercel.json`](vercel.json) sets clean URLs, legacy redirects and asset caching |
 
 ## Structure
@@ -63,11 +63,12 @@ src/
 
 scripts/
 ├── prerender-routes.mjs     post-build: per-route HTML, 404.html, sitemap.xml
+├── optimise-images.mjs      small WebP copy of each image + width manifest (for srcset)
 ├── generate-cv-pdf.mjs      /cv page → public/tyler-hagan-cv.pdf
 ├── generate-og-card.mjs     1200×630 share card → public/img/og-card.png
 └── encrypt-case-study.mjs   content/*.json → public/data/*.enc.json
 
-public/                      images, CV PDF, encrypted case data, llms.txt, robots.txt
+public/                      images, self-hosted fonts, CV PDF, encrypted case data, llms.txt
 content/                     gitignored: plaintext case studies, CV drafts, screenshots
 ```
 
@@ -78,7 +79,7 @@ Requires Node 20.19 or newer.
 ```bash
 npm install
 npm run dev        # http://localhost:5173
-npm run build      # vite build, then prerender routes, 404.html and sitemap.xml into dist/
+npm run build      # check image copies, vite build, then prerender routes, 404.html and sitemap.xml
 npm run preview    # serve the production build
 ```
 
@@ -90,6 +91,8 @@ Pushing to `main` deploys to production on Vercel; other branches get a preview 
   (its `summary` is used for both the home card and the page's meta description), then add it
   to the `projects` list in [`HomePage.jsx`](src/pages/HomePage.jsx). The route, prerendered HTML
   and sitemap entry come automatically.
+- **Add or replace an image** in `public/img`: run `node scripts/optimise-images.mjs` to
+  generate its small copy. The build fails until you do, so nothing ships unoptimised.
 - **Update the CV:** edit [`cvData.js`](src/utils/cvData.js), then regenerate the PDF against a
   running dev server:
   `node scripts/generate-cv-pdf.mjs http://localhost:5173 <email>`
