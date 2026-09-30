@@ -377,6 +377,20 @@
     cursor: zoom-in;
 }
 
+/* Live-site concepts link out rather than zooming */
+.concept-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.concept-live {
+    margin-left: auto;
+    color: var(--text-faint);
+    white-space: nowrap;
+}
+
 .concept-image-wrapper {
     width: 100%;
     aspect-ratio: 4 / 3;
