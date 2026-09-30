@@ -124,7 +124,13 @@ const HomePage = ({ onNavigate }) => {
     }
   ];
 
+  // Entries with an href are live sites: the card links out instead of opening the lightbox
   const concepts = [
+    {
+      image: '/img/concepts/skixo-site.webp',
+      title: 'skixO · Identity & Website',
+      href: 'https://www.skixo.uk'
+    },
     {
       image: '/img/concepts/nuvio-05.webp',
       title: 'CRM App · System & Branding'
@@ -292,22 +298,30 @@ const HomePage = ({ onNavigate }) => {
             subtitle="Side projects, experiments, and concepts that showcase design thinking and creative direction outside of client work."
           />
           <div className="concepts-grid">
-            {concepts.map((concept, index) => (
-              <figure
-                key={index}
-                className="concept-card"
-                onClick={() => openLightbox(concept.image, concept.title)}
-              >
-                <div className="concept-image-wrapper">
-                  <img {...responsive(concept.image, SIZES.concept)} alt={concept.title} className="concept-image" loading="lazy" />
-                  <span className="concept-zoom" aria-hidden="true">+</span>
-                </div>
-                <figcaption className="concept-title">
-                  <span className="concept-num">C-{String(index + 1).padStart(2, '0')}</span>
-                  {concept.title}
-                </figcaption>
-              </figure>
-            ))}
+            {concepts.map((concept, index) => {
+              const inner = (
+                <>
+                  <div className="concept-image-wrapper">
+                    <img {...responsive(concept.image, SIZES.concept)} alt={concept.title} className="concept-image" loading="lazy" />
+                    <span className="concept-zoom" aria-hidden="true">{concept.href ? '↗' : '+'}</span>
+                  </div>
+                  <figcaption className="concept-title">
+                    <span className="concept-num">C-{String(index + 1).padStart(2, '0')}</span>
+                    {concept.title}
+                    {concept.href && <span className="concept-live label">live site</span>}
+                  </figcaption>
+                </>
+              );
+              return concept.href ? (
+                <a key={index} className="concept-card concept-link" href={concept.href} target="_blank" rel="noopener noreferrer">
+                  <figure>{inner}</figure>
+                </a>
+              ) : (
+                <figure key={index} className="concept-card" onClick={() => openLightbox(concept.image, concept.title)}>
+                  {inner}
+                </figure>
+              );
+            })}
           </div>
         </section>
 
