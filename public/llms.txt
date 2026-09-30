@@ -9,10 +9,18 @@
 
 ## Pages
 
-- [Work](https://tylerhagan.co.uk/): case studies including the Enpal Design
-  Family (design systems, tokens, AI-first documentation), a multi-national
-  sales tool (72% faster offer creation, 42% higher conversion), a field
-  service app, and a customer monitoring app.
+- [Work](https://tylerhagan.co.uk/): index of case studies.
+  - [Enpal Design Family](https://tylerhagan.co.uk/work/design-family): design
+    systems, tokens, AI-first documentation.
+  - [Portal, Web & Back Office](https://tylerhagan.co.uk/work/enpal-product-work):
+    three Enpal Energy product surfaces on one design foundation.
+  - [Offer Tool](https://tylerhagan.co.uk/work/offer-tool): multi-national
+    sales tool (72% faster offer creation, 42% higher conversion).
+  - [Field Service App](https://tylerhagan.co.uk/work/field-service): critical
+    data entry raised from 38% to 97%.
+  - [Solar Design Studio](https://tylerhagan.co.uk/work/solar-designer)
+  - [Energy Monitoring](https://tylerhagan.co.uk/work/monitoring-app): customer
+    monitoring app.
 - [About](https://tylerhagan.co.uk/about): background, approach, philosophy,
   and career timeline.
 - [CV](https://tylerhagan.co.uk/cv): full CV as semantic HTML with schema.org

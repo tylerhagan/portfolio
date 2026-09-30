@@ -27,7 +27,9 @@ const ColophonPage = () => {
         <section className="colophon-section">
           <h2>Stack</h2>
           <p>
-            React 18 on Vite, deployed to GitHub Pages behind tylerhagan.co.uk. No UI
+            React 18 on Vite, deployed to Vercel behind tylerhagan.co.uk. Every route
+            gets its own prerendered HTML head at build time, so shared links preview
+            the right page and every URL is a real, crawlable address. No UI
             framework and no CSS library: the styling is hand-rolled on CSS custom
             properties, which act as the site's token layer and drive both light and
             dark themes from one set of semantic values. Type is set in Inter for prose
@@ -39,7 +41,7 @@ const ColophonPage = () => {
           <h2>The CV pipeline</h2>
           <p>
             The CV is a single data module compiled to three outputs: the{' '}
-            <a href="/?page=cv">web version</a>, an ATS-safe two-page PDF, and
+            <a href="/cv">web version</a>, an ATS-safe two-page PDF, and
             schema.org JSON-LD for the parsers recruiters actually run CVs through.
             The PDF is generated headlessly from the web page's print stylesheet, so
             the two can never drift. My email address never ships in the JavaScript

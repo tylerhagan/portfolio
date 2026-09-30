@@ -1,3 +1,4 @@
+import RouteLink from './RouteLink';
 import './Footer.css';
 
 const Footer = ({ onNavigate }) => {
@@ -10,13 +11,9 @@ const Footer = ({ onNavigate }) => {
             <span className="footer-sep">·</span>
             <span>designed & built by me</span>
             <span className="footer-sep">·</span>
-            <a
-              href="/colophon"
-              className="footer-source"
-              onClick={(e) => { e.preventDefault(); onNavigate('colophon'); }}
-            >
+            <RouteLink page="colophon" onNavigate={onNavigate} className="footer-source">
               colophon
-            </a>
+            </RouteLink>
             <span className="footer-sep">·</span>
             <a href="https://github.com/tylerhagan/portfolio" target="_blank" rel="noopener noreferrer" className="footer-source">source↗</a>
           </div>

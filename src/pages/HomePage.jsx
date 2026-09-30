@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import Lightbox from '../components/Lightbox';
+import RouteLink from '../components/RouteLink';
+import { projectsData } from '../utils/projectsData';
 import './HomePage.css';
 
 // Typewriter: types a word, holds, deletes, moves to the next
@@ -77,7 +79,6 @@ const HomePage = ({ onNavigate }) => {
       year: '2026',
       type: 'Design Systems',
       comingSoon: true,
-      description: 'One shared foundation across four systems: Enpal DS, NEMO, VERSO, and FOLIO. 170+ tokens and 25+ components serving mobile, web, portal, and internal software.',
       tags: ['Design Tokens', 'Figma', 'React', 'Documentation'],
       image: '/img/design-family/ds-docs-hero-light.webp'
     },
@@ -86,7 +87,6 @@ const HomePage = ({ onNavigate }) => {
       title: 'Portal, Web & Back Office',
       year: '2026',
       type: 'Product Surfaces',
-      description: 'Three Enpal Energy surfaces on one design foundation (customer portal, consumer marketing web, and the Hyperion back office), from high-fidelity prototypes through to a production-ready TypeScript scaffold.',
       tags: ['FOLIO', 'VERSO', 'React', 'TypeScript', 'shadcn/ui'],
       image: '/img/enpal-product-work/portal-proto-light.webp'
     },
@@ -95,7 +95,6 @@ const HomePage = ({ onNavigate }) => {
       title: 'Offer Tool',
       year: '2025',
       type: 'Enterprise Software',
-      description: 'Multi-national B2B/B2C sales tool taken from on-the-ground field research to shipped MVP. Cut offer creation time by 72% and lifted sales conversion 42%.',
       tags: ['React', 'AI Integration', 'Figma', 'Lokalise', 'User Research'],
       image: '/img/ot-preview.png'
     },
@@ -104,7 +103,6 @@ const HomePage = ({ onNavigate }) => {
       title: 'Field Service App',
       year: '2023',
       type: 'Mobile App',
-      description: 'Complete reimagination of a field service app with custom design system, from research to deployment. Raised critical data entry from 38% to 97%.',
       tags: ['iOS', 'Android', 'Figma', 'Design System', 'User Testing'],
       image: '/img/fs-preview.png'
     },
@@ -113,7 +111,6 @@ const HomePage = ({ onNavigate }) => {
       title: 'Solar Design Studio',
       year: '2023',
       type: 'SaaS Platform',
-      description: 'Premium solar design tool with Salesforce integration. Collaborated with engineering and sales to create intuitive design experience.',
       tags: ['React', 'Figma', 'Salesforce', 'Storybook'],
       image: '/img/sd-preview.png'
     },
@@ -122,7 +119,6 @@ const HomePage = ({ onNavigate }) => {
       title: 'Energy Monitoring',
       year: '2022',
       type: 'Mobile App',
-      description: 'Proprietary customer app designed from zero (energy monitoring, data breakdowns, and support), with a modular design system built for future releases.',
       tags: ['React Native', 'Figma', 'Analytics', 'Token Studio'],
       image: '/img/m-preview.png'
     }
@@ -184,13 +180,6 @@ const HomePage = ({ onNavigate }) => {
     }
   ];
 
-  const handleRowKeyDown = (e, id) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      onNavigate('project', id);
-    }
-  };
-
   return (
     <>
       <section className="hero">
@@ -216,7 +205,7 @@ const HomePage = ({ onNavigate }) => {
             </p>
             <div className="hero-cta">
               <a href="#work" className="btn btn-primary">view work ↓</a>
-              <button className="btn btn-secondary" onClick={() => onNavigate('about')}>about me</button>
+              <RouteLink page="about" onNavigate={onNavigate} className="btn btn-secondary">about me</RouteLink>
             </div>
           </div>
         </div>
@@ -265,13 +254,12 @@ const HomePage = ({ onNavigate }) => {
           />
           <div className="work-index">
             {projects.map((project, i) => (
-              <article
+              <RouteLink
                 key={project.id}
+                page="project"
+                id={project.id}
+                onNavigate={onNavigate}
                 className="work-row"
-                role="link"
-                tabIndex={0}
-                onClick={() => onNavigate('project', project.id)}
-                onKeyDown={(e) => handleRowKeyDown(e, project.id)}
               >
                 <div className="work-num label">{String(i + 1).padStart(3, '0')}</div>
                 <div className="work-body">
@@ -282,7 +270,7 @@ const HomePage = ({ onNavigate }) => {
                     {project.title}
                     <span className="work-arrow" aria-hidden="true">↗</span>
                   </h3>
-                  <p className="work-desc">{project.description}</p>
+                  <p className="work-desc">{projectsData[project.id].summary}</p>
                   <div className="work-tags">{project.tags.join(', ').toLowerCase()}</div>
                 </div>
                 <div className="work-thumb">
@@ -292,7 +280,7 @@ const HomePage = ({ onNavigate }) => {
                     <div className="work-thumb-soon label">case study soon</div>
                   )}
                 </div>
-              </article>
+              </RouteLink>
             ))}
           </div>
         </section>

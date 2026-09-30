@@ -32,6 +32,8 @@ nav.scrolled {
     display: flex;
     align-items: center;
     gap: 0.6rem;
+    color: inherit;
+    text-decoration: none;
     cursor: pointer;
     animation: logoEntrance 0.5s var(--ease) both;
 }

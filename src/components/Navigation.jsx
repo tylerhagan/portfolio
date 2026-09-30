@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../utils/ThemeContext';
 import { useContact } from '../utils/ContactContext';
+import RouteLink from './RouteLink';
 import './Navigation.css';
 
 const ThemeIcon = ({ theme }) => (
@@ -38,48 +39,50 @@ const Navigation = ({ currentPage, onNavigate }) => {
     return () => window.removeEventListener('keydown', handleKey);
   }, [menuOpen]);
 
-  // Navigate and close the menu in one step
-  const go = (page) => {
-    setMenuOpen(false);
-    onNavigate(page);
-  };
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
     <nav className={scrolled ? 'scrolled' : ''}>
       <div className="nav-content">
-        <div className="logo-container" onClick={() => go('home')}>
+        <RouteLink page="home" onNavigate={onNavigate} onClick={closeMenu} className="logo-container">
           <img src={logoSrc} alt="" className="logo-image" aria-hidden="true" />
           <span className="logo-text">tyler<span className="logo-dot">.</span>hagan</span>
-        </div>
+        </RouteLink>
         <div className="nav-right">
           <ul id="nav-menu" className={`nav-links${menuOpen ? ' open' : ''}`}>
             <li>
-              <a
-                href="#"
+              <RouteLink
+                page="home"
+                onNavigate={onNavigate}
+                onClick={closeMenu}
                 className={currentPage === 'home' ? 'active' : ''}
-                onClick={(e) => { e.preventDefault(); go('home'); }}
+                aria-current={currentPage === 'home' ? 'page' : undefined}
               >
                 /work
-              </a>
+              </RouteLink>
             </li>
             <li>
-              <a
-                href="#"
+              <RouteLink
+                page="about"
+                onNavigate={onNavigate}
+                onClick={closeMenu}
                 className={currentPage === 'about' ? 'active' : ''}
-                onClick={(e) => { e.preventDefault(); go('about'); }}
+                aria-current={currentPage === 'about' ? 'page' : undefined}
               >
                 /about
-              </a>
+              </RouteLink>
             </li>
             <li>
-              <a
-                href="#"
+              <RouteLink
+                page="cv"
+                onNavigate={onNavigate}
+                onClick={closeMenu}
                 className={currentPage === 'cv' ? 'active' : ''}
-                onClick={(e) => { e.preventDefault(); go('cv'); }}
+                aria-current={currentPage === 'cv' ? 'page' : undefined}
               >
                 /cv
-              </a>
+              </RouteLink>
             </li>
             <li>
               <a href="https://www.linkedin.com/in/tylerhagan/" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>
