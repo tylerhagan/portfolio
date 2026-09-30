@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { cvData, cvJsonLd } from '../utils/cvData';
 import { useContact } from '../utils/ContactContext';
 import './CVPage.css';
@@ -11,10 +11,10 @@ const CVPage = () => {
   const { openContact } = useContact();
 
   // Injected by scripts/generate-cv-pdf.mjs so the address never ships in the bundle
-  const email = useMemo(
-    () => new URLSearchParams(window.location.search).get('email'),
-    []
-  );
+  const [email, setEmail] = useState(null);
+  useEffect(() => {
+    setEmail(new URLSearchParams(window.location.search).get('email'));
+  }, []);
 
   useEffect(() => {
     const script = document.createElement('script');

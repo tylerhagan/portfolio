@@ -3,10 +3,12 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(() => {
-    const savedTheme = localStorage.getItem('theme');
-    return savedTheme || 'dark';
-  });
+  // index.html sets data-theme before first paint; start from it so nothing flips on load.
+  // No rendered markup depends on this value (logo and icon switch in CSS), so the
+  // prerendered HTML hydrates identically whatever the stored theme is.
+  const [theme, setTheme] = useState(() =>
+    (typeof document !== 'undefined' && document.documentElement.dataset.theme) || 'dark'
+  );
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);

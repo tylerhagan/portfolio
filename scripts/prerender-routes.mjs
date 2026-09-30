@@ -1,6 +1,7 @@
-// Post-build: write one HTML file per route with its own title, description,
-// canonical and share tags, so crawlers and link previews (LinkedIn, Slack, iMessage)
-// see the right page without running JS. The React app mounts on top as usual.
+// Post-build: write one HTML file per route with the page's full markup (rendered by React
+// via the SSR bundle) and its own title, description, canonical and share tags. Content is
+// visible before any JS runs, crawlers and link previews see the right page, and the app
+// hydrates the existing markup in the browser (src/main.jsx).
 //
 //   dist/index.html            /
 //   dist/about.html            /about        (served clean via cleanUrls in vercel.json)
@@ -8,10 +9,13 @@
 //   dist/404.html              anything else (noindex)
 //   dist/sitemap.xml
 //
-// Run after `vite build` (wired into `npm run build`).
+// Run after `vite build` and `vite build --ssr` (wired into `npm run build`).
 import fs from 'fs';
 import path from 'path';
-import { allRoutes, metaFor, SITE_URL } from '../src/utils/routes.js';
+import { pathToFileURL } from 'url';
+import { allRoutes, metaFor, routeKey, SITE_URL } from '../src/utils/routes.js';
+
+const { render: renderApp } = await import(pathToFileURL(path.resolve('dist-ssr/entry-server.js')).href);
 
 const DIST = 'dist';
 const template = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8');
@@ -67,6 +71,11 @@ const cardFor = (page, id, meta) => {
   return { url: SITE_URL + file, alt: `${meta.title.replace(' · Tyler Hagan', '')} · case study by Tyler Hagan` };
 };
 
+const ROOT = '<div id="root"></div>';
+if (!template.includes(ROOT)) throw new Error('prerender: empty #root not found in dist/index.html');
+const withBody = (html, page, id = null) =>
+  html.replace(ROOT, `<div id="root" data-route="${routeKey({ page, id })}">${renderApp(page, id)}</div>`);
+
 const urls = [];
 for (const { page, id } of allRoutes()) {
   const meta = metaFor(page, id);
@@ -75,12 +84,12 @@ for (const { page, id } of allRoutes()) {
   const html = page === 'home'
     ? setAttr(setAttr(template, 'meta property="og:url"', 'content', url), 'link rel="canonical"', 'href', url)
     : render({ title: meta.title, description: meta.description, url, image: cardFor(page, id, meta) });
-  write(meta.path === '/' ? 'index.html' : `${meta.path.slice(1)}.html`, html);
+  write(meta.path === '/' ? 'index.html' : `${meta.path.slice(1)}.html`, withBody(html, page, id));
   urls.push(url);
 }
 
 const notFound = metaFor('notfound');
-write('404.html', render({ title: notFound.title, description: notFound.description, noindex: true }));
+write('404.html', withBody(render({ title: notFound.title, description: notFound.description, noindex: true }), 'notfound'));
 
 write(
   'sitemap.xml',

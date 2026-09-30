@@ -85,6 +85,9 @@ export const allRoutes = () => [
   ...Object.keys(projectsData).map((id) => ({ page: 'project', id })),
 ];
 
+// Identifies which route a prerendered page holds, so the browser only hydrates matching markup
+export const routeKey = ({ page, id }) => (page === 'project' ? `project:${id}` : page);
+
 // Plain left-clicks become client-side navigation; modified clicks
 // (new tab, new window, download) fall through to the browser.
 export const isPlainClick = (e) =>

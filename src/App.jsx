@@ -33,8 +33,9 @@ const setMeta = (selector, attr, value) => {
   if (el) el.setAttribute(attr, value);
 };
 
-function App() {
-  const [route, setRoute] = useState(readLocation);
+// initialRoute is passed when prerendering (src/entry-server.jsx); in the browser the URL decides
+function App({ initialRoute }) {
+  const [route, setRoute] = useState(() => initialRoute ?? readLocation());
   const { page: currentPage, id: projectId } = route;
 
   // Handle browser back/forward buttons
