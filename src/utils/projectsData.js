@@ -1,6 +1,8 @@
 export const projectsData = {
   // ——— Enpal work, Mar–Aug 2026 (locked: full case study is encrypted) ———
   'design-family': {
+    // Headline figure for the share card (scripts/generate-og-card.mjs); only facts stated in the case
+    headline: '170+ tokens · 25+ components · 4 systems',
     locked: true,
     encPath: '/data/design-family.enc.json',
     title: 'Enpal Design Family',
@@ -25,6 +27,7 @@ export const projectsData = {
     ]
   },
   'enpal-product-work': {
+    headline: '3 product surfaces · 1 design foundation',
     title: 'Portal, Web & Back Office',
     subtitle: "Three Enpal Energy surfaces, one design foundation",
     summary: 'Three Enpal Energy surfaces on one design foundation (customer portal, consumer marketing web, and the Hyperion back office), from high-fidelity prototypes through to a production-ready TypeScript scaffold.',
@@ -108,6 +111,7 @@ export const projectsData = {
   },
 
   'offer-tool': {
+    headline: '−72% offer creation time · +42% conversion',
     title: 'Offer Tool',
     subtitle: 'Sales enablement software for multi-national teams',
     summary: 'Multi-national B2B/B2C sales tool taken from on-the-ground field research to shipped MVP. Cut offer creation time by 72% and lifted sales conversion 42%.',
@@ -196,6 +200,7 @@ export const projectsData = {
   },
   
   'field-service': {
+    headline: 'Critical data entry: 38% → 97%',
     title: 'Field Service App',
     subtitle: 'Mobile application for internal company use',
     summary: 'Complete reimagination of a field service app with custom design system, from research to deployment. Raised critical data entry from 38% to 97%.',

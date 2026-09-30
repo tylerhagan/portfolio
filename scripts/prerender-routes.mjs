@@ -26,13 +26,18 @@ const setAttr = (html, tagPattern, attr, value) => {
   return html.replace(re, `$1${escape(value)}$2`);
 };
 
-const render = ({ title, description, url, noindex = false }) => {
+const render = ({ title, description, url, image, noindex = false }) => {
   let html = template.replace(/<title>[^<]*<\/title>/, `<title>${escape(title)}</title>`);
   html = setAttr(html, 'meta name="description"', 'content', description);
   html = setAttr(html, 'meta property="og:title"', 'content', title);
   html = setAttr(html, 'meta property="og:description"', 'content', description);
   html = setAttr(html, 'meta name="twitter:title"', 'content', title);
   html = setAttr(html, 'meta name="twitter:description"', 'content', description);
+  if (image) {
+    html = setAttr(html, 'meta property="og:image"', 'content', image.url);
+    html = setAttr(html, 'meta name="twitter:image"', 'content', image.url);
+    html = setAttr(html, 'meta property="og:image:alt"', 'content', image.alt);
+  }
   if (url) {
     html = setAttr(html, 'meta property="og:url"', 'content', url);
     html = setAttr(html, 'link rel="canonical"', 'href', url);
@@ -51,6 +56,17 @@ const write = (file, html) => {
   fs.writeFileSync(out, html);
 };
 
+// Case studies share their own card from scripts/generate-og-card.mjs; other pages keep the site card
+const cardFor = (page, id, meta) => {
+  if (page !== 'project') return null;
+  const file = `/img/og/${id}.png`;
+  if (!fs.existsSync(path.join(DIST, file))) {
+    console.warn(`prerender: no share card for ${id}; run node scripts/generate-og-card.mjs`);
+    return null;
+  }
+  return { url: SITE_URL + file, alt: `${meta.title.replace(' · Tyler Hagan', '')} · case study by Tyler Hagan` };
+};
+
 const urls = [];
 for (const { page, id } of allRoutes()) {
   const meta = metaFor(page, id);
@@ -58,7 +74,7 @@ for (const { page, id } of allRoutes()) {
   // Keep the home share title as authored in index.html; other pages use their page title
   const html = page === 'home'
     ? setAttr(setAttr(template, 'meta property="og:url"', 'content', url), 'link rel="canonical"', 'href', url)
-    : render({ title: meta.title, description: meta.description, url });
+    : render({ title: meta.title, description: meta.description, url, image: cardFor(page, id, meta) });
   write(meta.path === '/' ? 'index.html' : `${meta.path.slice(1)}.html`, html);
   urls.push(url);
 }

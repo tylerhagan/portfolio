@@ -65,7 +65,7 @@ scripts/
 ├── prerender-routes.mjs     post-build: per-route HTML, 404.html, sitemap.xml
 ├── optimise-images.mjs      small WebP copy of each image + width manifest (for srcset)
 ├── generate-cv-pdf.mjs      /cv page → public/tyler-hagan-cv.pdf
-├── generate-og-card.mjs     1200×630 share card → public/img/og-card.png
+├── generate-og-card.mjs     1200×630 share cards: site card + one per case study (public/img/og/)
 └── encrypt-case-study.mjs   content/*.json → public/data/*.enc.json
 
 public/                      images, self-hosted fonts, CV PDF, encrypted case data, llms.txt
@@ -88,9 +88,10 @@ Pushing to `main` deploys to production on Vercel; other branches get a preview 
 ### Common changes
 
 - **Add or edit a case study:** add an entry to [`projectsData.js`](src/utils/projectsData.js)
-  (its `summary` is used for both the home card and the page's meta description), then add it
-  to the `projects` list in [`HomePage.jsx`](src/pages/HomePage.jsx). The route, prerendered HTML
-  and sitemap entry come automatically.
+  (its `summary` is used for both the home card and the page's meta description, and an optional
+  `headline` figure goes on its share card), then add it to the `projects` list in
+  [`HomePage.jsx`](src/pages/HomePage.jsx) and regenerate the share cards. The route, prerendered
+  HTML and sitemap entry come automatically.
 - **Add or replace an image** in `public/img`: run `node scripts/optimise-images.mjs` to
   generate its small copy. The build fails until you do, so nothing ships unoptimised.
 - **Update the CV:** edit [`cvData.js`](src/utils/cvData.js), then regenerate the PDF against a
@@ -98,7 +99,8 @@ Pushing to `main` deploys to production on Vercel; other branches get a preview 
   `node scripts/generate-cv-pdf.mjs http://localhost:5173 <email>`
 - **Re-encrypt a locked case study:**
   `node scripts/encrypt-case-study.mjs content/<name>.content.json public/data/<name>.enc.json <password>`
-- **Regenerate the share card:** `node scripts/generate-og-card.mjs`
+- **Regenerate the share cards:** `node scripts/generate-og-card.mjs`. Run it after adding a case
+  study or changing a title, subtitle or `headline` in `projectsData.js`.
 
 The Playwright scripts need a browser once: `npx playwright install chromium`.
 
