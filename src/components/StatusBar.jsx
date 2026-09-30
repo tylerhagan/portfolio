@@ -12,12 +12,13 @@ const timeFormatter = new Intl.DateTimeFormat('en-GB', {
 });
 
 const useBerlinTime = () => {
-  const [time, setTime] = useState(() => timeFormatter.format(new Date()));
+  // Placeholder matches the prerendered HTML; the real time fills in on mount
+  const [time, setTime] = useState('--:--:--');
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(timeFormatter.format(new Date()));
-    }, 1000);
+    const tick = () => setTime(timeFormatter.format(new Date()));
+    tick();
+    const interval = setInterval(tick, 1000);
     return () => clearInterval(interval);
   }, []);
 

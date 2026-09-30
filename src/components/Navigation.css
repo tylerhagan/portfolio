@@ -53,6 +53,16 @@ nav.scrolled {
     transition: all var(--t-med) var(--ease);
 }
 
+/* Theme-specific marks and icon are switched here, not in JS (keeps prerendered HTML theme-agnostic) */
+[data-theme="dark"] .logo-for-light,
+:root:not([data-theme="dark"]) .logo-for-dark {
+    display: none;
+}
+
+:root:not([data-theme="dark"]) .theme-icon {
+    transform: scaleX(-1);
+}
+
 nav.scrolled .logo-image {
     width: 20px;
     height: 20px;

@@ -21,10 +21,12 @@ bundle; it's injected only when the PDF is built.
 plaintext lives in the gitignored `content/` folder, and screenshots are inlined into the
 encrypted payload as data URIs rather than published as images. The password is shared on request.
 
-**Prerendered route heads.** It's a single-page React app, but every route
-(`/about`, `/work/<id>`, …) gets its own HTML file at build time with the right title, description,
-canonical URL and share tags. Shared links preview the right page, and every URL is a real,
-crawlable address. Routes and their metadata live in one module,
+**Prerendered pages.** It's a single-page React app, but every route (`/about`, `/work/<id>`, …)
+is rendered to a full HTML file at build time, with the right title, description, canonical URL
+and share tags. Content is visible before any JavaScript runs, shared links preview the right page,
+and every URL is a real, crawlable address. In the browser React hydrates that markup rather than
+rebuilding it; theme-specific details (logo, toggle icon) switch in CSS so the HTML is identical
+for every visitor. Routes and their metadata live in one module,
 [`src/utils/routes.js`](src/utils/routes.js), used by both the app and the build script.
 
 **Spec-sheet design system.** Monospace-led type (JetBrains Mono with Inter for prose), hairline
@@ -51,6 +53,7 @@ crawlers, a sitemap, and a note in the console for anyone who inspects.
 ```
 src/
 ├── App.jsx                  page switching, history, per-page meta
+├── entry-server.jsx         renders a route to HTML for the prerender step
 ├── components/              Navigation, StatusBar, Footer, ContactModal, Lightbox,
 │                            LockedCaseStudy (decrypt + render), RouteLink
 ├── pages/                   Home, About, CV, Colophon, Project, NotFound
@@ -62,7 +65,7 @@ src/
     └── lastfm.js, ThemeContext.jsx, ContactContext.jsx, contactConfig.js
 
 scripts/
-├── prerender-routes.mjs     post-build: per-route HTML, 404.html, sitemap.xml
+├── prerender-routes.mjs     post-build: renders each route to HTML, plus 404.html, sitemap.xml
 ├── optimise-images.mjs      small WebP copy of each image + width manifest (for srcset)
 ├── generate-cv-pdf.mjs      /cv page → public/tyler-hagan-cv.pdf
 ├── generate-og-card.mjs     1200×630 share cards: site card + one per case study (public/img/og/)
@@ -79,7 +82,7 @@ Requires Node 20.19 or newer.
 ```bash
 npm install
 npm run dev        # http://localhost:5173
-npm run build      # check image copies, vite build, then prerender routes, 404.html and sitemap.xml
+npm run build      # check images, build client + SSR bundle, prerender every route, sitemap.xml
 npm run preview    # serve the production build
 ```
 

@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      // Apply the saved theme before first paint (ThemeContext reads it back from here)
+      try { document.documentElement.dataset.theme = localStorage.getItem('theme') || 'dark'; } catch (e) {}
+    </script>
     <title>Tyler Hagan · Product Designer</title>
     <meta name="description" content="Tyler Hagan, CRO-trained product designer and front-end engineer based in Berlin. Open to senior and staff product design roles.">
     <meta name="google-site-verification" content="nzRXphrN2djgbP3HGz7fE9HxpFb772kTvXII5OcNISQ">

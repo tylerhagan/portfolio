@@ -27,9 +27,10 @@ const ColophonPage = () => {
         <section className="colophon-section">
           <h2>Stack</h2>
           <p>
-            React 18 on Vite, deployed to Vercel behind tylerhagan.co.uk. Every route
-            gets its own prerendered HTML head at build time, so shared links preview
-            the right page and every URL is a real, crawlable address. No UI
+            React 18 on Vite, deployed to Vercel behind tylerhagan.co.uk. Every route is
+            prerendered to full HTML at build time and hydrated in the browser, so the
+            page is readable before any JavaScript runs, shared links preview the right
+            page, and every URL is a real, crawlable address. No UI
             framework and no CSS library: the styling is hand-rolled on CSS custom
             properties, which act as the site's token layer and drive both light and
             dark themes from one set of semantic values. Type is set in Inter for prose

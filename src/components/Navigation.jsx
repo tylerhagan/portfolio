@@ -4,26 +4,20 @@ import { useContact } from '../utils/ContactContext';
 import RouteLink from './RouteLink';
 import './Navigation.css';
 
-const ThemeIcon = ({ theme }) => (
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+// Left half filled; mirrored in light mode by CSS (see .theme-icon), so the markup
+// is the same for every theme and prerendered HTML never mismatches.
+const ThemeIcon = () => (
+  <svg className="theme-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
     <circle cx="7" cy="7" r="6" stroke="currentColor" strokeWidth="1.2" />
-    {theme === 'light' ? (
-      <path d="M7 1 A6 6 0 0 1 7 13 Z" fill="currentColor" />
-    ) : (
-      <path d="M7 1 A6 6 0 0 0 7 13 Z" fill="currentColor" />
-    )}
+    <path d="M7 1 A6 6 0 0 0 7 13 Z" fill="currentColor" />
   </svg>
 );
 
 const Navigation = ({ currentPage, onNavigate }) => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const { toggleTheme } = useTheme();
   const { openContact } = useContact();
-
-  const logoSrc = theme === 'dark'
-    ? '/img/th-logomark-light.svg'
-    : '/img/th-logomark-dark.svg';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -46,7 +40,9 @@ const Navigation = ({ currentPage, onNavigate }) => {
     <nav className={scrolled ? 'scrolled' : ''}>
       <div className="nav-content">
         <RouteLink page="home" onNavigate={onNavigate} onClick={closeMenu} className="logo-container">
-          <img src={logoSrc} alt="" className="logo-image" aria-hidden="true" />
+          {/* Both marks ship; CSS shows the one for the active theme */}
+          <img src="/img/th-logomark-light.svg" alt="" className="logo-image logo-for-dark" aria-hidden="true" />
+          <img src="/img/th-logomark-dark.svg" alt="" className="logo-image logo-for-light" aria-hidden="true" />
           <span className="logo-text">tyler<span className="logo-dot">.</span>hagan</span>
         </RouteLink>
         <div className="nav-right">
@@ -94,7 +90,7 @@ const Navigation = ({ currentPage, onNavigate }) => {
             </li>
           </ul>
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-            <ThemeIcon theme={theme} />
+            <ThemeIcon />
           </button>
           <button
             className={`nav-toggle${menuOpen ? ' open' : ''}`}

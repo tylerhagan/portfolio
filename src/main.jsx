@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
+import { parseLocation, routeKey } from './utils/routes'
 
 // For the people who inspect. You always inspect.
 console.log(
@@ -14,8 +15,19 @@ console.log(
   'font-family: monospace;'
 )
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const root = document.getElementById('root')
+const app = (
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
 )
+
+// Production pages arrive prerendered (scripts/prerender-routes.mjs): attach to that HTML when
+// it is the page this URL shows. Otherwise (dev server's empty root, or a legacy ?page= URL
+// served another page's HTML) render from scratch rather than hydrate mismatched markup.
+if (root.hasChildNodes() && root.dataset.route === routeKey(parseLocation(window.location))) {
+  ReactDOM.hydrateRoot(root, app)
+} else {
+  root.textContent = ''
+  ReactDOM.createRoot(root).render(app)
+}
