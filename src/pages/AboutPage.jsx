@@ -1,5 +1,6 @@
 import { useContact } from '../utils/ContactContext';
 import './AboutPage.css';
+import { responsive, SIZES } from '../utils/images';
 
 const AboutPage = () => {
   const { openContact } = useContact();
@@ -119,7 +120,7 @@ const AboutPage = () => {
             <div className="about-portrait">
               <div className="portrait-wrapper">
                 <img 
-                  src="/img/enpal-headshot.png"
+                  {...responsive('/img/enpal-headshot.png', SIZES.portrait)}
                   alt="Tyler Hagan" 
                   className="portrait-image"
                 />

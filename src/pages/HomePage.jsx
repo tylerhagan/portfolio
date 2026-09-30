@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Lightbox from '../components/Lightbox';
+import { responsive, SIZES } from '../utils/images';
 import RouteLink from '../components/RouteLink';
 import { projectsData } from '../utils/projectsData';
 import './HomePage.css';
@@ -275,7 +276,7 @@ const HomePage = ({ onNavigate }) => {
                 </div>
                 <div className="work-thumb">
                   {project.image ? (
-                    <img src={project.image} alt={`${project.title} preview`} loading="lazy" />
+                    <img {...responsive(project.image, SIZES.workThumb)} alt={`${project.title} preview`} loading="lazy" />
                   ) : (
                     <div className="work-thumb-soon label">case study soon</div>
                   )}
@@ -299,7 +300,7 @@ const HomePage = ({ onNavigate }) => {
                 onClick={() => openLightbox(concept.image, concept.title)}
               >
                 <div className="concept-image-wrapper">
-                  <img src={concept.image} alt={concept.title} className="concept-image" loading="lazy" />
+                  <img {...responsive(concept.image, SIZES.concept)} alt={concept.title} className="concept-image" loading="lazy" />
                   <span className="concept-zoom" aria-hidden="true">+</span>
                 </div>
                 <figcaption className="concept-title">
