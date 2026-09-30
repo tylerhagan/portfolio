@@ -5,8 +5,8 @@ Source for the portfolio of Tyler Hagan, product designer and design engineer in
 **[tylerhagan.co.uk](https://tylerhagan.co.uk)** · [colophon](https://tylerhagan.co.uk/colophon) · [cv](https://tylerhagan.co.uk/cv)
 
 The site is treated as a product rather than a template: designed and built by hand, two runtime
-dependencies (`react`, `react-dom`), about 70 KB of gzipped JavaScript, and no analytics, cookies or
-tracking. The [colophon](https://tylerhagan.co.uk/colophon) tells the story; this file covers how
+dependencies (`react`, `react-dom`), about 70 KB of gzipped JavaScript, no cookies and no cross-site
+tracking (page views are counted with cookie-free Vercel Web Analytics). The [colophon](https://tylerhagan.co.uk/colophon) tells the story; this file covers how
 it fits together.
 
 ## What's interesting in here

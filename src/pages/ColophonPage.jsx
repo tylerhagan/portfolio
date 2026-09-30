@@ -86,7 +86,7 @@ const ColophonPage = () => {
           <ul className="colophon-list">
             <li>Two runtime dependencies: react and react-dom. Everything else is mine.</li>
             <li>About 70 KB of gzipped JavaScript and 7 KB of CSS for the whole site.</li>
-            <li>No analytics, no cookies, no tracking. The only third-party request is the Last.fm status bar.</li>
+            <li>No cookies and no cross-site tracking: page views are counted with Vercel's cookie-free analytics, served from this domain. The only third-party request is the Last.fm status bar.</li>
           </ul>
         </section>
 

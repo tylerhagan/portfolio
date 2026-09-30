@@ -35,4 +35,5 @@
 - Some case studies covering current employer work are encrypted client-side
   (AES-256-GCM) and unlock with a password shared on request.
 - Contact is via the form on the site; no email address is published.
-- The site ships no analytics, cookies, or tracking.
+- The site sets no cookies and does no cross-site tracking. Page views are
+  counted with cookie-free, first-party Vercel Web Analytics.
