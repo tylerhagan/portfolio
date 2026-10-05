@@ -1,11 +1,11 @@
 // Single content source for the CV. Rendered by CVPage (web), printed to PDF by
 // scripts/generate-cv-pdf.mjs, and emitted as schema.org JSON-LD for machine readers.
-// Deliberately contains no email address — the web version routes contact through
+// Deliberately contains no email address: the web version routes contact through
 // the contact modal; the PDF generator injects an email at generation time.
 
 export const cvData = {
   name: 'Tyler Hagan',
-  title: 'Product Designer & Design Engineer',
+  title: 'Senior Product Designer',
   location: 'Berlin, Germany',
   website: 'https://tylerhagan.co.uk',
   linkedin: 'https://www.linkedin.com/in/tylerhagan/',
@@ -16,14 +16,14 @@ export const cvData = {
   experience: [
     {
       company: 'Enpal Energy',
-      role: 'Designer (in practice, Senior Product Design Engineer)',
+      role: 'Senior Product Designer / Engineer',
       start: 'Mar 2026',
-      end: 'Aug 2026',
+      end: 'Sep 2026',
       location: 'Berlin',
       bullets: [
-        'Initiated, designed and built the Enpal design family end to end: Enpal DS as the shared parent layer with NEMO (consumer mobile), VERSO (marketing web) and FOLIO (dense software UI). 170+ tokens and 25+ components, light and dark throughout, versioned releases with a changelog.',
+        'As founding designer, initiated, designed and built the Enpal design family end to end: Enpal DS as the shared parent layer with NEMO (consumer mobile), VERSO (marketing web) and FOLIO (dense software UI). 170+ tokens and 25+ components, light and dark throughout, versioned releases with a changelog.',
         'Built the delivery layer myself: a token pipeline generating CSS, JSON and Figma Variables from one source, a React/shadcn registry for the product surfaces, and an Ant Design theme so established teams across the wider org adopt the family without retooling. Scoped versioned npm distribution for the developer packages.',
-        'Wrote the documentation AI-first: every system ships a markdown brief that drops straight into AI coding tools, so an assistant builds to the system’s rules without constant prompting.',
+        "Wrote the documentation AI-first: every system ships a markdown brief that drops straight into AI coding tools, so an assistant builds to the system's rules without constant prompting.",
         'Designed across three product surfaces in parallel on those systems: the customer portal, the consumer marketing website, and the Hyperion back office for the VPP energy space.'
       ]
     },
@@ -107,7 +107,7 @@ export const cvData = {
     'Design Engineering',
     'Prototyping',
     'Conversion Rate Optimisation',
-    'Human-Centered AI Interfaces',
+    'Human-Centred AI Interfaces',
     'Information Architecture',
     'A/B Testing',
     'Quantitative Analysis',
@@ -125,7 +125,7 @@ export const cvData = {
     'Ant Design',
     'HTML/CSS',
     'JavaScript / TypeScript',
-    'Claude, Cursor, Codex, ChatGPT, Midjourney',
+    'AI-assisted design and coding workflows',
     'Clarity, Hotjar, FullStory',
     'Optimizely, VWO',
     'Git / GitHub'
@@ -133,7 +133,7 @@ export const cvData = {
 
   languages: [
     { language: 'English', level: 'Native' },
-    { language: 'German', level: 'Limited working proficiency' }
+    { language: 'German', level: 'B2' }
   ],
 
   praise: {
@@ -143,7 +143,7 @@ export const cvData = {
   }
 };
 
-// schema.org JSON-LD for AI/ATS readers — assembled from the same data.
+// schema.org JSON-LD for AI/ATS readers, assembled from the same data.
 export const cvJsonLd = () => ({
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -153,7 +153,10 @@ export const cvJsonLd = () => ({
   url: cvData.website,
   sameAs: [cvData.linkedin],
   description: cvData.profile,
-  worksFor: { '@type': 'Organization', name: cvData.experience[0].company },
+  // Only claim a current employer while the latest role is ongoing
+  ...(cvData.experience[0].end === 'Present' && {
+    worksFor: { '@type': 'Organization', name: cvData.experience[0].company }
+  }),
   alumniOf: cvData.education.map((e) => ({ '@type': 'EducationalOrganization', name: e.institution })),
   knowsAbout: cvData.skills,
   knowsLanguage: cvData.languages.map((l) => l.language),

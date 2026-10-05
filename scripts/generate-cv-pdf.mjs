@@ -25,10 +25,12 @@ await page.goto(`${server}/cv?email=${encodeURIComponent(email)}`, {
   waitUntil: 'networkidle'
 });
 await page.waitForSelector('.cv-page h1');
+// The static print fonts load lazily on first use; never print with a fallback face
+await page.evaluate(() => document.fonts.ready);
 await page.pdf({
   path: output,
   format: 'A4',
-  margin: { top: '18mm', bottom: '18mm', left: '16mm', right: '16mm' },
+  margin: { top: '15mm', bottom: '15mm', left: '20mm', right: '20mm' },
   printBackground: false
 });
 await browser.close();

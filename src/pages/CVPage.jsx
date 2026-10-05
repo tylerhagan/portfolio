@@ -4,8 +4,22 @@ import { useContact } from '../utils/ContactContext';
 import './CVPage.css';
 
 // The CV is deliberately machine-readable: semantic HTML with conventional
-// section names, standard date formats, and schema.org JSON-LD — so ATS and
-// AI screening tools parse it as cleanly as a human reads it.
+// section names, standard date formats, and schema.org JSON-LD, so ATS and
+// AI screening tools parse it as cleanly as a human reads it. DOM order stays
+// strictly linear; the print label column is CSS only.
+
+const city = cvData.location.split(',')[0];
+
+// No-break space before the dot keeps it on the line it follows, never leading a line
+const LIST_SEP = ' · ';
+
+// Real spaces between inline parts so extracted text never runs words together
+const Sep = () => (
+  <>
+    {' '}
+    <span className="cv-meta-sep" aria-hidden="true">·</span>{' '}
+  </>
+);
 
 const CVPage = () => {
   const { openContact } = useContact();
@@ -29,17 +43,19 @@ const CVPage = () => {
       <div className="container">
         <header className="cv-header">
           <div className="label page-path">/cv · th.2026</div>
-          <h1>{cvData.name}</h1>
-          <p className="cv-title">{cvData.title}</p>
+          <div className="cv-id">
+            <h1>{cvData.name}</h1>{' '}
+            <p className="cv-title">
+              {cvData.title}, {city}
+            </p>
+          </div>
           <p className="cv-meta">
-            <span>{cvData.location}</span>
-            <span className="cv-meta-sep">·</span>
             <a href={cvData.website}>tylerhagan.co.uk</a>
-            <span className="cv-meta-sep">·</span>
+            <Sep />
             <a href={cvData.linkedin}>linkedin.com/in/tylerhagan</a>
             {email && (
               <>
-                <span className="cv-meta-sep">·</span>
+                <Sep />
                 <a href={`mailto:${email}`}>{email}</a>
               </>
             )}
@@ -59,19 +75,21 @@ const CVPage = () => {
           <p className="cv-profile">{cvData.profile}</p>
         </section>
 
-        <section className="cv-section" aria-label="Experience">
+        <section className="cv-section cv-section-experience" aria-label="Experience">
           <h2>Experience</h2>
           {cvData.experience.map((job, i) => (
             <div key={i} className="cv-job">
               <div className="cv-job-head">
                 <h3>
-                  {job.role} <span className="cv-job-company">· {job.company}</span>
-                </h3>
-                <div className="cv-job-meta label">
-                  {job.start} – {job.end} · {job.location}
-                </div>
+                  <span className="cv-job-company">{job.company}</span>{' '}
+                  <span className="cv-job-role">{job.role}</span>
+                </h3>{' '}
+                <p className="cv-job-meta">
+                  {job.start} – {job.end}
+                  <span className="cv-job-location">, {job.location}</span>
+                </p>
               </div>
-              <ul>
+              <ul className="cv-bullets">
                 {job.bullets.map((b, j) => <li key={j}>{b}</li>)}
               </ul>
             </div>
@@ -83,7 +101,7 @@ const CVPage = () => {
           <ul className="cv-plain-list">
             {cvData.education.map((e, i) => (
               <li key={i}>
-                <strong>{e.qualification}</strong> — {e.institution}, {e.period}
+                <strong>{e.qualification}</strong>, {e.institution}, {e.period}
               </li>
             ))}
           </ul>
@@ -94,7 +112,7 @@ const CVPage = () => {
           <ul className="cv-plain-list">
             {cvData.certifications.map((c, i) => (
               <li key={i}>
-                <strong>{c.name}</strong> — {c.issuer}, {c.year}
+                <strong>{c.name}</strong>, {c.issuer}, {c.year}
               </li>
             ))}
           </ul>
@@ -102,26 +120,26 @@ const CVPage = () => {
 
         <section className="cv-section" aria-label="Skills">
           <h2>Skills</h2>
-          <p className="cv-inline-list">{cvData.skills.join(' · ')}</p>
+          <p className="cv-inline-list">{cvData.skills.join(LIST_SEP)}</p>
         </section>
 
         <section className="cv-section" aria-label="Tools">
           <h2>Tools</h2>
-          <p className="cv-inline-list">{cvData.tools.join(' · ')}</p>
+          <p className="cv-inline-list">{cvData.tools.join(LIST_SEP)}</p>
         </section>
 
         <section className="cv-section" aria-label="Languages">
           <h2>Languages</h2>
           <p className="cv-inline-list">
-            {cvData.languages.map((l) => `${l.language} (${l.level})`).join(' · ')}
+            {cvData.languages.map((l) => `${l.language} (${l.level})`).join(LIST_SEP)}
           </p>
         </section>
 
         <section className="cv-section cv-praise" aria-label="Reference">
           <h2>Reference</h2>
           <blockquote>
-            <p>"{cvData.praise.quote}"</p>
-            <div className="cv-praise-attr label">{cvData.praise.attribution}</div>
+            <p>“{cvData.praise.quote}”</p>
+            <div className="cv-praise-attr">{cvData.praise.attribution}</div>
           </blockquote>
         </section>
       </div>
