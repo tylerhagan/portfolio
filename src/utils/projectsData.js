@@ -1,5 +1,5 @@
 export const projectsData = {
-  // ——— Enpal work, Mar–Aug 2026 (locked: full case study is encrypted) ———
+  // ——— Enpal work, Mar–Sep 2026 (locked: full case study is encrypted) ———
   'design-family': {
     // Headline figure for the share card (scripts/generate-og-card.mjs); only facts stated in the case
     headline: '170+ tokens · 25+ components · 4 systems',
@@ -12,7 +12,7 @@ export const projectsData = {
     year: '2026',
     status: 'Shipped · in use at Enpal',
     role: 'Designer · Design Engineer',
-    timeline: 'Mar – Aug 2026',
+    timeline: 'Mar – Sep 2026',
     tools: ['Figma', 'Design Tokens', 'React', 'shadcn', 'Ant Design'],
     // Live docs site exists (folio-ee.vercel.app), deliberately not linked publicly yet.
     // Full case study lives in content/design-family.content.json (gitignored), encrypted
@@ -34,7 +34,7 @@ export const projectsData = {
     year: '2026',
     status: 'Shipped · in use at Enpal',
     role: 'Product Designer · Design Engineer',
-    timeline: 'Mar – Aug 2026',
+    timeline: 'Mar – Sep 2026',
     tools: ['Figma', 'FOLIO DS', 'VERSO DS', 'React', 'TypeScript', 'shadcn/ui'],
     brief: `Alongside building the Enpal design family, I designed and prototyped across three of Enpal Energy's product surfaces: the customer portal, the consumer marketing web, and Hyperion, the internal back office. All three sit on the family's systems, so most of the work wasn't starting from scratch. It was composing one shared foundation into three fairly different contexts.`,
     sections: [
