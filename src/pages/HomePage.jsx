@@ -57,7 +57,7 @@ const PRINCIPLES = [
   },
 ];
 
-const WORDS = ['products', 'systems', 'software'];
+const WORDS = ['software', 'systems', 'journeys'];
 // Widest word reserves the line width so swaps never reflow the block
 const LONGEST_WORD = WORDS.reduce((a, b) => (b.length > a.length ? b : a), '');
 
@@ -204,10 +204,10 @@ const HomePage = ({ onNavigate }) => {
                 <span className="typed-word-sizer" aria-hidden="true">{LONGEST_WORD}<span className="caret">▮</span></span>
                 <span className="typed-word-value">{typed}<span className="caret" aria-hidden="true">▮</span></span>
               </span><br />
-              from Berlin.
+              people choose.
             </h1>
             <p>
-              CRO-trained designer and front-end engineer, thrilled by what building has become. AI collapsed the gap between design and code, so I work the whole stack: research, design systems, and product that converts.
+              From discovery workshop to shipped code, in whatever domain, stack or team the work needs. I read how people think, then shape the product to meet them there.
             </p>
             <div className="hero-cta">
               <a href="#work" className="btn btn-primary">view work ↓</a>
