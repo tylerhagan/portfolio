@@ -44,12 +44,12 @@ const SectionHeader = ({ path, count, subtitle }) => (
 
 const PRINCIPLES = [
   {
-    title: 'AI-native',
-    body: "Design and code in one motion. I build with Claude, Figma, and Framer, shipping in hours what used to take weeks. The gap between imagining and building collapsed, and I'm here for it.",
+    title: 'Canvas to code',
+    body: 'Design and code in one motion. I move between workshop, canvas, prototype and production with whatever tools fit the team, AI included, so ideas reach real users in days, not quarters.',
   },
   {
-    title: 'Conversion-led',
-    body: 'CRO-trained, so decisions are grounded in research and data, not instinct alone. I measure design by outcomes, what converts and earns trust, not just how it looks.',
+    title: 'People-first',
+    body: 'I start from how people think and decide. Research, behavioural insight and testing shape every decision, and I measure design by outcomes: what people understand, trust and choose.',
   },
   {
     title: 'Embedded',
@@ -161,12 +161,12 @@ const HomePage = ({ onNavigate }) => {
     },
     {
       title: 'AI-Assisted Workflows',
-      description: 'Integrating Claude and ChatGPT for rapid ideation, content generation, and design documentation. Using AI as a collaborative partner throughout the design process.',
+      description: 'Using AI as a collaborative partner across ideation, content and design documentation, picking the right model for each job rather than one tool for everything.',
       tags: ['Ideation', 'Documentation', 'Content']
     },
     {
       title: 'Generative AI Tools',
-      description: 'Creating concept art and visual explorations with Midjourney and DALL-E. Generating dozens of variations to explore design directions quickly.',
+      description: 'Creating concept art and visual explorations with generative image tools. Producing dozens of variations to explore design directions quickly.',
       tags: ['Concept Art', 'Visuals', 'Exploration']
     },
     {

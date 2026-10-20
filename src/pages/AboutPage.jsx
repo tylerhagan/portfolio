@@ -95,8 +95,8 @@ const AboutPage = () => {
               <p>Outside of work I have been a professional esports competitor and lifelong artist, enjoying all types of creative outlets, especially music and painting. I love to learn new skills and explore new topics.</p>
 
               <h2>Approach</h2>
-              <p>My background in conversion rate optimisation (CRO) means design decisions are grounded in data, not instinct alone. I combine user research, A/B testing, and funnel analysis to understand why users do what they do, then design with that evidence at the centre.</p>
-              <p>My process leverages AI tools like Claude and Midjourney alongside traditional design tools like Figma to accelerate ideation, prototyping, and documentation. This hybrid approach allows me to explore more possibilities in less time whilst maintaining high design quality.</p>
+              <p>My background in conversion rate optimisation (CRO) taught me to design around how people actually think and decide. I combine user research, behavioural insight, A/B testing and funnel analysis to understand why people do what they do, then design with that evidence at the centre.</p>
+              <p>My process blends AI tooling with canvas work and discovery workshops to accelerate ideation, prototyping and documentation. I adapt to the tools and rituals each team already uses, exploring more possibilities in less time without compromising quality.</p>
               <p>Design systems are at the core of my work; I'm passionate about creating scalable, maintainable component libraries that empower teams to build consistently across products.</p>
 
               <h2>Philosophy</h2>
@@ -159,8 +159,8 @@ const AboutPage = () => {
                 <h3>Tools</h3>
                 <ul className="skill-list">
                   <li>Figma</li>
-                  <li>Claude & ChatGPT</li>
-                  <li>Midjourney & DALL-E</li>
+                  <li>LLMs & AI agents</li>
+                  <li>Generative image tools</li>
                   <li>Storybook</li>
                   <li>Token Studio</li>
                   <li>Adobe Creative Suite</li>
@@ -193,7 +193,7 @@ const AboutPage = () => {
             <div className="cta-section">
               <h2>Let's Work Together</h2>
               <p>
-                Always happy to connect, collaborate, or talk about design: CRO strategy, design systems, AI workflows, or just the craft. Feel free to reach out.
+                Always happy to connect, collaborate, or talk about design: user psychology, design systems, AI workflows, or just the craft. Feel free to reach out.
               </p>
               <div className="cta-buttons">
                 <button className="btn btn-primary" onClick={openContact}>Get in Touch</button>
