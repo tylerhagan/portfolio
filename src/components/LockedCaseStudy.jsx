@@ -130,8 +130,8 @@ const LockedCaseStudy = ({ encPath, storageKey }) => {
       <div className="locked-label label">[ 401 · access restricted ]</div>
       <h2>Full case study · locked</h2>
       <p className="locked-subtitle">
-        This section contains detail on current employer work, so it stays behind a
-        password, available on request,{' '}
+        This section covers confidential work for a former employer, so it stays behind
+        a password, available on request,{' '}
         <a href="#contact" onClick={(e) => { e.preventDefault(); openContact(); }}>get in touch</a>.
       </p>
       <form

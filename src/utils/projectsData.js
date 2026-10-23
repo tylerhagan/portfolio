@@ -11,7 +11,7 @@ export const projectsData = {
     summary: 'One shared foundation across four systems: Enpal DS, NEMO, VERSO, and FOLIO. 170+ tokens and 25+ components serving mobile, web, portal, and internal software.',
     year: '2026',
     status: 'Shipped · in use at Enpal',
-    role: 'Designer · Design Engineer',
+    role: 'Senior Product Designer / Engineer',
     timeline: 'Mar – Sep 2026',
     tools: ['Figma', 'Design Tokens', 'React', 'shadcn', 'Ant Design'],
     // Live docs site exists (folio-ee.vercel.app), deliberately not linked publicly yet.
@@ -33,7 +33,7 @@ export const projectsData = {
     summary: 'Three Enpal Energy surfaces on one design foundation (customer portal, consumer marketing web, and the Hyperion back office), from high-fidelity prototypes through to a production-ready TypeScript scaffold.',
     year: '2026',
     status: 'Shipped · in use at Enpal',
-    role: 'Product Designer · Design Engineer',
+    role: 'Senior Product Designer / Engineer',
     timeline: 'Mar – Sep 2026',
     tools: ['Figma', 'FOLIO DS', 'VERSO DS', 'React', 'TypeScript', 'shadcn/ui'],
     brief: `Alongside building the Enpal design family, I designed and prototyped across three of Enpal Energy's product surfaces: the customer portal, the consumer marketing web, and Hyperion, the internal back office. All three sit on the family's systems, so most of the work wasn't starting from scratch. It was composing one shared foundation into three fairly different contexts.`,
@@ -117,7 +117,7 @@ export const projectsData = {
     summary: 'Multi-national B2B/B2C sales tool taken from on-the-ground field research to shipped MVP. Cut offer creation time by 72% and lifted sales conversion 42%.',
     year: '2025',
     status: 'Private Active Use',
-    role: 'Product Designer',
+    role: 'Senior Product Designer',
     timeline: 'May 2024 - Jan 2025',
     tools: ['Figma', 'Storybook', 'React', 'Lokalise'],
     brief: `Our objective was to design a fit-for-purpose sales tool to enable 1KOMMA5°'s international teams to sell their solar and energy solutions more efficiently, reliably, and intuitively. Utilising a consistent design language, implementing a design system.`,
@@ -206,7 +206,7 @@ export const projectsData = {
     summary: 'Complete reimagination of a field service app with custom design system, from research to deployment. Raised critical data entry from 38% to 97%.',
     year: '2023',
     status: 'Private Active Use',
-    role: 'Product Designer',
+    role: 'Senior Product Designer',
     timeline: 'March - October 2023',
     tools: ['Figma', 'Token Studio', 'Storybook', 'React Native'],
     overview: {
@@ -248,7 +248,7 @@ export const projectsData = {
     summary: 'Proprietary customer app designed from zero (energy monitoring, data breakdowns, and support), with a modular design system built for future releases.',
     year: '2022',
     status: 'Released Q1 2024',
-    role: 'Product Designer',
+    role: 'Senior Product Designer',
     timeline: 'March - October 2022',
     tools: ['Figma', 'Analytics / Research / Clarity', 'React Native'],
     overview: {
@@ -282,7 +282,7 @@ export const projectsData = {
     summary: 'Premium solar design tool with Salesforce integration. Collaborated with engineering and sales to create intuitive design experience.',
     year: '2023',
     status: 'Active Use',
-    role: 'Product Designer',
+    role: 'Senior Product Designer',
     timeline: '2023',
     tools: ['React', 'Figma', 'Salesforce', 'Prototyping', 'Usage Analysis', 'Storybook'],
     overview: {

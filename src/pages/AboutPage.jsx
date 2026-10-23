@@ -13,31 +13,14 @@ const AboutPage = () => {
               <div className="label page-path">/about · th.2026</div>
               <h1>About Me</h1>
               <p className="about-intro">UK-born, Berlin-based product designer with a background in CRO, graphic design, and front-end engineering. I work best embedded with teams, somewhere between the Figma file and the pull request, shipping products that move metrics, not just look good.</p>
-              <div className="current-chapter">
-                <div className="chapter-label">Latest Chapter</div>
-                <div className="chapter-card">
-                  <div className="chapter-left">
-                    <div className="chapter-dot"></div>
-                    <div className="chapter-connector"></div>
-                  </div>
-                  <div className="chapter-body">
-                    <span className="chapter-period">mar 2026 → sep 2026</span>
-                    <div className="chapter-title-row">
-                      <h3 className="chapter-role">Designer</h3>
-                      <span className="chapter-company">@ Enpal</span>
-                    </div>
-                    <p className="chapter-desc">
-                      Worked at the intersection of design and engineering for Europe's leading
-                      residential solar company, taking ideas from concept to working product
-                      without the usual hand-off loss. Built the Enpal design family and
-                      designed across the customer portal, marketing web, and back office.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
               <div className="timeline">
                 {[
+                  {
+                    period: 'mar 2026 – sep 2026',
+                    role: 'Senior Product Designer / Engineer',
+                    company: 'Enpal',
+                    desc: "Founding designer at the intersection of design and engineering for Europe's leading residential solar company. Built the Enpal design family end to end and designed across the customer portal, marketing web, and back office."
+                  },
                   {
                     period: 'may 2024 – jan 2025',
                     role: 'Senior Product Designer',
