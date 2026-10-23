@@ -124,8 +124,14 @@ const HomePage = ({ onNavigate }) => {
     }
   ];
 
-  // Entries with an href are live sites: the card links out instead of opening the lightbox
+  // Entries with an href link out instead of opening the lightbox; `linkLabel` names the destination
   const concepts = [
+    {
+      image: '/img/concepts/stand-forest-change.webp',
+      title: 'Stand · Forest Change Explorer',
+      href: 'https://forest.tylerhagan.co.uk/case-study/',
+      linkLabel: 'case study'
+    },
     {
       image: '/img/concepts/skixo-site.webp',
       title: 'skixO · Identity & Website',
@@ -308,7 +314,7 @@ const HomePage = ({ onNavigate }) => {
                   <figcaption className="concept-title">
                     <span className="concept-num">C-{String(index + 1).padStart(2, '0')}</span>
                     {concept.title}
-                    {concept.href && <span className="concept-live label">live site</span>}
+                    {concept.href && <span className="concept-live label">{concept.linkLabel ?? 'live site'}</span>}
                   </figcaption>
                 </>
               );
