@@ -1,9 +1,6 @@
 /* ============ Hero ============ */
 .hero {
-    padding: 10rem 0 5rem;
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
+    padding: 10rem 0 4rem;
     position: relative;
 }
 
@@ -56,7 +53,7 @@
 
 .hero h1 {
     font-family: var(--font-mono);
-    font-size: clamp(2.2rem, 5.5vw, 4.25rem);
+    font-size: clamp(2.1rem, 4.6vw, 3.6rem);
     font-weight: 600;
     line-height: 1.15;
     letter-spacing: -0.04em;
@@ -70,7 +67,6 @@
        The sizer must contain the same caret markup as the live text: the caret
        carries a margin, and without it the cell grows when a word completes. */
     display: inline-grid;
-    color: var(--blue);
 }
 
 .typed-word-sizer .caret {
@@ -90,7 +86,7 @@
 
 .caret {
     display: inline-block;
-    color: var(--blue);
+    color: var(--text-primary);
     animation: blink 1.1s step-end infinite;
     margin-left: 0.05em;
 }
@@ -100,7 +96,7 @@
     color: var(--text-secondary);
     line-height: 1.7;
     max-width: 620px;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     animation: fadeInUp var(--t-slow) var(--ease) 0.2s backwards;
 }
 
@@ -455,46 +451,6 @@
     color: var(--text-faint);
 }
 
-/* ============ Toolkit ============ */
-.toolkit-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 4rem;
-}
-
-.tool-item {
-    display: grid;
-    grid-template-columns: 3rem 1fr;
-    gap: 1rem;
-    padding: 2rem 0;
-    border-top: 1px solid var(--hairline);
-}
-
-.tool-num {
-    padding-top: 0.3rem;
-}
-
-.tool-body h3 {
-    font-size: 1.05rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.6rem;
-}
-
-.tool-body p {
-    color: var(--text-secondary);
-    font-size: 0.92rem;
-    line-height: 1.7;
-    margin-bottom: 0.8rem;
-}
-
-.tool-tags {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--text-faint);
-    letter-spacing: 0.02em;
-}
-
 /* ============ Responsive ============ */
 @media (max-width: 900px) {
     .work-row {
@@ -505,17 +461,11 @@
     .work-thumb {
         grid-column: 2;
     }
-
-    .toolkit-list {
-        grid-template-columns: 1fr;
-        column-gap: 0;
-    }
 }
 
 @media (max-width: 640px) {
     .hero {
-        padding: 8rem 0 4rem;
-        min-height: 0;
+        padding: 8rem 0 3rem;
     }
 
     .data-strip {
