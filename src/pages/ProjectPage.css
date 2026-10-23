@@ -225,7 +225,7 @@
     content: '→';
     position: absolute;
     left: 0;
-    color: var(--blue);
+    color: var(--text-faint);
     font-weight: 600;
 }
 

@@ -237,7 +237,7 @@
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: var(--blue);
+    color: var(--text-primary);
 }
 
 .skill-list {

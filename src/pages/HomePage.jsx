@@ -151,39 +151,6 @@ const HomePage = ({ onNavigate }) => {
     }
   ];
 
-  const toolkit = [
-    {
-      title: 'Figma & Design Systems',
-      description: 'Building scalable, token-based design systems with comprehensive component libraries. Leveraging Auto Layout, variants, and plugins for maximum efficiency.',
-      tags: ['Design Systems', 'Components', 'Prototyping']
-    },
-    {
-      title: 'AI-Assisted Workflows',
-      description: 'Using AI as a collaborative partner across ideation, content and design documentation, picking the right model for each job rather than one tool for everything.',
-      tags: ['Ideation', 'Documentation', 'Content']
-    },
-    {
-      title: 'Generative AI Tools',
-      description: 'Creating concept art and visual explorations with generative image tools. Producing dozens of variations to explore design directions quickly.',
-      tags: ['Concept Art', 'Visuals', 'Exploration']
-    },
-    {
-      title: 'Rapid Prototyping',
-      description: 'Combining interactive prototypes with quick iteration cycles. Building functional demos in hours to validate concepts with stakeholders and users.',
-      tags: ['Prototypes', 'Testing', 'Validation']
-    },
-    {
-      title: 'Data-Driven Design',
-      description: 'Leveraging analytics, user testing, and research to inform design decisions. Using tools like Clarity, Hotjar, and custom analytics.',
-      tags: ['Analytics', 'Research', 'Insights']
-    },
-    {
-      title: 'Front-End Development',
-      description: 'Building with React, React Native, and modern web technologies. Collaborating closely with engineering teams for pixel-perfect implementation.',
-      tags: ['React', 'CSS', 'Storybook']
-    }
-  ];
-
   return (
     <>
       <section className="hero">
@@ -320,26 +287,6 @@ const HomePage = ({ onNavigate }) => {
                 </figure>
               );
             })}
-          </div>
-        </section>
-
-        <section id="toolkit" className="section">
-          <SectionHeader
-            path="/toolkit"
-            count="approach"
-            subtitle="I leverage modern tools and AI-assisted workflows to design and ship products faster without compromising quality. Here's how I work."
-          />
-          <div className="toolkit-list">
-            {toolkit.map((tool, index) => (
-              <div key={index} className="tool-item">
-                <div className="tool-num label">{String(index + 1).padStart(2, '0')}</div>
-                <div className="tool-body">
-                  <h3>{tool.title}</h3>
-                  <p>{tool.description}</p>
-                  <div className="tool-tags">{tool.tags.join(' · ').toLowerCase()}</div>
-                </div>
-              </div>
-            ))}
           </div>
         </section>
       </div>
