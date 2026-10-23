@@ -233,25 +233,6 @@ const HomePage = ({ onNavigate }) => {
           </div>
         </div>
 
-        <section id="principles" className="section">
-          <SectionHeader
-            path="/principles"
-            count={`${String(PRINCIPLES.length).padStart(3, '0')} entries`}
-            subtitle="The throughline across everything below: how design, engineering, and conversion thinking come together in the work."
-          />
-          <div className="principles-list">
-            {PRINCIPLES.map((principle, i) => (
-              <div key={principle.title} className="principle-row">
-                <span className="principle-num label">{String(i + 1).padStart(2, '0')}</span>
-                <div className="principle-body">
-                  <h3 className="principle-title">{principle.title}</h3>
-                  <p className="principle-desc">{principle.body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
         <section id="work" className="section">
           <SectionHeader
             path="/work"
@@ -287,6 +268,25 @@ const HomePage = ({ onNavigate }) => {
                   )}
                 </div>
               </RouteLink>
+            ))}
+          </div>
+        </section>
+
+        <section id="principles" className="section">
+          <SectionHeader
+            path="/principles"
+            count={`${String(PRINCIPLES.length).padStart(3, '0')} entries`}
+            subtitle="The throughline across the work: how design, engineering, and conversion thinking come together."
+          />
+          <div className="principles-list">
+            {PRINCIPLES.map((principle, i) => (
+              <div key={principle.title} className="principle-row">
+                <span className="principle-num label">{String(i + 1).padStart(2, '0')}</span>
+                <div className="principle-body">
+                  <h3 className="principle-title">{principle.title}</h3>
+                  <p className="principle-desc">{principle.body}</p>
+                </div>
+              </div>
             ))}
           </div>
         </section>
