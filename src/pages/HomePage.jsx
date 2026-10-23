@@ -124,8 +124,14 @@ const HomePage = ({ onNavigate }) => {
     }
   ];
 
-  // Entries with an href are live sites: the card links out instead of opening the lightbox
+  // Entries with an href link out instead of opening the lightbox; `linkLabel` names the destination
   const concepts = [
+    {
+      image: '/img/concepts/stand-forest-change.webp',
+      title: 'Stand · Forest Change Explorer',
+      href: 'https://forest.tylerhagan.co.uk/case-study/',
+      linkLabel: 'case study'
+    },
     {
       image: '/img/concepts/skixo-site.webp',
       title: 'skixO · Identity & Website',
@@ -233,25 +239,6 @@ const HomePage = ({ onNavigate }) => {
           </div>
         </div>
 
-        <section id="principles" className="section">
-          <SectionHeader
-            path="/principles"
-            count={`${String(PRINCIPLES.length).padStart(3, '0')} entries`}
-            subtitle="The throughline across everything below: how design, engineering, and conversion thinking come together in the work."
-          />
-          <div className="principles-list">
-            {PRINCIPLES.map((principle, i) => (
-              <div key={principle.title} className="principle-row">
-                <span className="principle-num label">{String(i + 1).padStart(2, '0')}</span>
-                <div className="principle-body">
-                  <h3 className="principle-title">{principle.title}</h3>
-                  <p className="principle-desc">{principle.body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
         <section id="work" className="section">
           <SectionHeader
             path="/work"
@@ -291,6 +278,25 @@ const HomePage = ({ onNavigate }) => {
           </div>
         </section>
 
+        <section id="principles" className="section">
+          <SectionHeader
+            path="/principles"
+            count={`${String(PRINCIPLES.length).padStart(3, '0')} entries`}
+            subtitle="The throughline across the work: how design, engineering, and conversion thinking come together."
+          />
+          <div className="principles-list">
+            {PRINCIPLES.map((principle, i) => (
+              <div key={principle.title} className="principle-row">
+                <span className="principle-num label">{String(i + 1).padStart(2, '0')}</span>
+                <div className="principle-body">
+                  <h3 className="principle-title">{principle.title}</h3>
+                  <p className="principle-desc">{principle.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section id="concepts" className="section">
           <SectionHeader
             path="/concepts"
@@ -308,7 +314,7 @@ const HomePage = ({ onNavigate }) => {
                   <figcaption className="concept-title">
                     <span className="concept-num">C-{String(index + 1).padStart(2, '0')}</span>
                     {concept.title}
-                    {concept.href && <span className="concept-live label">live site</span>}
+                    {concept.href && <span className="concept-live label">{concept.linkLabel ?? 'live site'}</span>}
                   </figcaption>
                 </>
               );

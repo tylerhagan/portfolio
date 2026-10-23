@@ -1,80 +1,192 @@
-.project-hero {
-    padding: 10rem 0 4rem;
-    text-align: center;
+/* ============ Case study header ============
+   Outcome-led title, a ruled spec panel in the site's spec-sheet language,
+   headline results and a hero image, all on the container's left edge. */
+.case-hero {
+    padding: 10rem 0 2rem;
 }
 
-.project-hero h1 {
+.case-path {
+    margin-bottom: 1.5rem;
+}
+
+.case-title {
     font-family: var(--font-mono);
-    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+    font-size: clamp(2rem, 4vw, 3.25rem);
     font-weight: 600;
     letter-spacing: -0.04em;
-    margin-bottom: 1rem;
+    line-height: 1.1;
+    max-width: 24ch;
+    text-wrap: balance;
+    margin: 0 0 1.25rem;
 }
 
-.project-subtitle {
-    font-size: 1.25rem;
+.case-subtitle {
+    font-size: 1.15rem;
     color: var(--text-secondary);
-    margin-top: 1rem;
+    max-width: 60ch;
+    margin: 0 0 3rem;
 }
 
-.project-meta-bar {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    margin-top: 3rem;
-    flex-wrap: wrap;
+/* Spec panel: hairline-ruled cells, label above value */
+.case-spec {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid var(--hairline);
+    margin: 0;
 }
 
-.meta-item {
+.case-spec-cell {
+    padding: 1.1rem 1.5rem 1.1rem 0;
+    border-bottom: 1px solid var(--hairline);
+}
+
+.case-spec-wide {
+    grid-column: span 2;
+}
+
+.case-spec dt {
+    margin-bottom: 0.45rem;
+}
+
+.case-spec dd {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+/* Headline results: same voice as the homepage data strip */
+.case-results {
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr));
+    border-bottom: 1px solid var(--hairline);
+}
+
+.case-result {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 0.45rem;
+    padding: 1.5rem 1.5rem 1.5rem 0;
 }
 
-.meta-label {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--text-faint);
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+.case-result + .case-result {
+    border-left: 1px solid var(--hairline);
+    padding-left: 1.5rem;
 }
 
-.meta-value {
+.case-result-value {
     font-family: var(--font-mono);
+    font-size: 2rem;
     font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1;
     color: var(--text-primary);
 }
 
-.project-tools {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 2rem;
+.case-result-note {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
 }
 
-.tool-badge {
-    padding: 0.4rem 0.8rem;
-    background: transparent;
-    color: var(--text-secondary);
+.case-hero-image {
+    display: block;
+    width: 100%;
+    margin-top: 3rem;
     border: 1px solid var(--hairline);
     border-radius: var(--radius);
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 500;
+    cursor: zoom-in;
+}
+
+/* ============ Case study body ============
+   Sections share the header's left edge. Headings use the mono voice with an
+   index number, like the homepage sections. */
+.case-body {
+    counter-reset: case-section;
 }
 
 .project-section {
     max-width: 900px;
-    margin: 4rem auto;
+    margin: 5rem 0;
+}
+
+.project-section > p,
+.project-section .feature-block > p {
+    max-width: 72ch;
 }
 
 .project-section h2 {
-    font-size: 2.5rem;
+    font-family: var(--font-mono);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
     font-weight: 600;
+    letter-spacing: -0.03em;
     margin-bottom: 1.5rem;
-    letter-spacing: -0.5px;
+}
+
+.case-body .project-section:not(.locked-section) > h2::before {
+    counter-increment: case-section;
+    content: counter(case-section, decimal-leading-zero);
+    display: block;
+    margin-bottom: 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--text-faint);
+}
+
+/* Key decisions: what was chosen, and the evidence behind it */
+.decision-list {
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    border-top: 1px solid var(--hairline);
+}
+
+.decision {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: 2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--hairline);
+}
+
+.project-section .decision h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.project-section .decision p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .case-hero {
+        padding-top: 7rem;
+    }
+
+    .case-spec {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .case-results {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .case-result:nth-child(odd) {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .case-result:nth-child(n + 3) {
+        border-top: 1px solid var(--hairline);
+    }
+
+    .decision {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
 }
 
 .project-section h3 {
@@ -95,18 +207,6 @@
     line-height: 1.8;
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
-}
-
-.highlight-section {
-    background: var(--blue-pale);
-    padding: 2.5rem;
-    border-radius: var(--radius);
-    border-left: 2px solid var(--blue);
-}
-
-[data-theme="dark"] .highlight-section {
-    background: rgba(0, 102, 255, 0.1);
-    border-left-color: var(--blue);
 }
 
 .feature-list {
@@ -181,17 +281,11 @@
     gap: 2rem;
     margin: 2rem 0;
 }
-.container .project-section:nth-child(4) .feature-block > .project-images > img:nth-child(1),
-.container .project-section:nth-child(4) .feature-block > .project-images > img:nth-child(3) {
-    min-width: 300px;
-    width: 100%;
-    height: 282px;
+/* Multi-image grids crop to a shared ratio so rows line up; the lightbox shows the full image */
+.project-images:has(> :nth-child(2)) > .project-image {
+    aspect-ratio: 16 / 10;
     object-fit: cover;
-    object-position: 0% 0%;
-}
-
-#root > div > div > div:nth-child(4) > div:nth-child(6) > div > img {
-    height: 400px;
+    object-position: top left;
 }
 
 .image-caption {
@@ -200,52 +294,6 @@
     color: var(--text-secondary);
     margin-top: 0.75rem;
     font-style: italic;
-}
-
-/* KPI Grid */
-.kpi-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin: 3rem 0;
-}
-
-.kpi-card {
-    background: var(--bg-card);
-    border: 1px solid var(--hairline);
-    border-radius: var(--radius);
-    padding: 2rem;
-    text-align: center;
-    transition: border-color var(--t-fast) var(--ease);
-}
-
-.kpi-card:hover {
-    border-color: var(--text-secondary);
-}
-
-.kpi-value {
-    font-family: var(--font-mono);
-    font-size: 3rem;
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    color: var(--blue);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-}
-
-.kpi-suffix {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--text-faint);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 1rem;
-}
-
-.kpi-label {
-    font-size: 0.95rem;
-    color: var(--text-primary);
-    font-weight: 500;
 }
 
 /* Process Steps */
@@ -289,15 +337,7 @@
 }
 
 @media (max-width: 768px) {
-    .project-meta-bar {
-        gap: 2rem;
-    }
-    
     .project-images {
         grid-template-columns: 1fr;
-    }
-    
-    .kpi-grid {
-        grid-template-columns: repeat(2, 1fr);
     }
 }

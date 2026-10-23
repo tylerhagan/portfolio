@@ -18,4 +18,5 @@ export const SIZES = {
   portrait: '400px',
   projectGrid: '(max-width: 768px) 100vw, 450px',
   projectFull: '(max-width: 960px) 100vw, 900px',
+  caseHero: '(max-width: 1200px) 100vw, 1136px',
 };

@@ -11,9 +11,13 @@ export const projectsData = {
     summary: 'One shared foundation across four systems: Enpal DS, NEMO, VERSO, and FOLIO. 170+ tokens and 25+ components serving mobile, web, portal, and internal software.',
     year: '2026',
     status: 'Shipped · in use at Enpal',
-    role: 'Designer · Design Engineer',
+    role: 'Senior Product Designer / Engineer',
     timeline: 'Mar – Sep 2026',
     tools: ['Figma', 'Design Tokens', 'React', 'shadcn', 'Ant Design'],
+    company: 'Enpal',
+    platform: 'Web, mobile & internal tools',
+    scope: 'System design, token pipeline, documentation',
+    heroImage: { src: '/img/design-family/ds-docs-hero-light.webp', alt: 'Enpal design family documentation site' },
     // Live docs site exists (folio-ee.vercel.app), deliberately not linked publicly yet.
     // Full case study lives in content/design-family.content.json (gitignored), encrypted
     // into public/data/design-family.enc.json via scripts/encrypt-case-study.mjs.
@@ -33,9 +37,13 @@ export const projectsData = {
     summary: 'Three Enpal Energy surfaces on one design foundation (customer portal, consumer marketing web, and the Hyperion back office), from high-fidelity prototypes through to a production-ready TypeScript scaffold.',
     year: '2026',
     status: 'Shipped · in use at Enpal',
-    role: 'Product Designer · Design Engineer',
+    role: 'Senior Product Designer / Engineer',
     timeline: 'Mar – Sep 2026',
     tools: ['Figma', 'FOLIO DS', 'VERSO DS', 'React', 'TypeScript', 'shadcn/ui'],
+    company: 'Enpal',
+    platform: 'Web',
+    scope: 'UX/UI, prototyping, TypeScript scaffold',
+    heroImage: { src: '/img/enpal-product-work/portal-proto-light.webp', alt: 'Customer portal overview built on FOLIO' },
     brief: `Alongside building the Enpal design family, I designed and prototyped across three of Enpal Energy's product surfaces: the customer portal, the consumer marketing web, and Hyperion, the internal back office. All three sit on the family's systems, so most of the work wasn't starting from scratch. It was composing one shared foundation into three fairly different contexts.`,
     sections: [
       {
@@ -117,9 +125,14 @@ export const projectsData = {
     summary: 'Multi-national B2B/B2C sales tool taken from on-the-ground field research to shipped MVP. Cut offer creation time by 72% and lifted sales conversion 42%.',
     year: '2025',
     status: 'Private Active Use',
-    role: 'Product Designer',
+    role: 'Senior Product Designer',
     timeline: 'May 2024 - Jan 2025',
     tools: ['Figma', 'Storybook', 'React', 'Lokalise'],
+    company: '1KOMMA5°',
+    platform: 'Web · tablet & screen-share',
+    scope: 'Field research, UX/UI, design system, build support',
+    outcomeTitle: 'Cutting offer creation time by 72% for a multi-market solar sales team',
+    heroImage: { src: '/img/offer-tool/ot-concept.webp', alt: 'System Builder: choosing a pre-configured energy concept' },
     brief: `Our objective was to design a fit-for-purpose sales tool to enable 1KOMMA5°'s international teams to sell their solar and energy solutions more efficiently, reliably, and intuitively. Utilising a consistent design language, implementing a design system.`,
     keyGoals: [
       'Reducing cognitive load and manual input errors',
@@ -178,6 +191,29 @@ export const projectsData = {
         }
       ]
     },
+    // Each decision is traced to a research insight or goal stated elsewhere in this case
+    decisions: [
+      {
+        title: 'Built for screen-share and tablet, not the desk',
+        why: 'Agents sell on video calls and face to face in showrooms and in the field, so every screen had to read well when shared and work by touch.'
+      },
+      {
+        title: 'Country templates instead of a blank configurator',
+        why: 'Configuring custom energy systems was one of the biggest frustrations in research. Pre-configured packages per market let agents start from a sensible offer and adjust from there.'
+      },
+      {
+        title: 'Stop impossible systems at configuration time',
+        why: 'Reducing manual input errors was a core goal, so a configurable rules system warns agents, or stops them, before they build a package that cannot work.'
+      },
+      {
+        title: 'A story-led pitch, built with marketing',
+        why: 'Agents struggled to build trust for a high-value purchase and lacked consistent materials. The pitch uses progressive disclosure and on-brand 3D assets, tailored by market.'
+      },
+      {
+        title: 'Localisation in the pipeline from day one',
+        why: 'Sweden was the pilot market, so multi-language content was needed from the start. Lokalise let non-technical teams update strings without engineering.'
+      }
+    ],
     development: `Once the prototype was validated, I worked closely with our engineering team to plan and develop an MVP. We maintained daily stand-ups and incremental usability tests. Lokalise was integrated early on to handle multi-language content, allowing non-technical team members to update strings without engineering overhead. Feedback from the Swedish team helped us refine the tool in real time, ensuring local needs were met ahead of rollout.`,
     results: {
       kpis: [
@@ -206,9 +242,15 @@ export const projectsData = {
     summary: 'Complete reimagination of a field service app with custom design system, from research to deployment. Raised critical data entry from 38% to 97%.',
     year: '2023',
     status: 'Private Active Use',
-    role: 'Product Designer',
+    role: 'Senior Product Designer',
     timeline: 'March - October 2023',
     tools: ['Figma', 'Token Studio', 'Storybook', 'React Native'],
+    company: 'EIGENSONNE',
+    platform: 'iOS & Android',
+    scope: 'Research, UX/UI, prototyping, design system',
+    outcomeTitle: 'Raising critical field data entry from 38% to 97%',
+    kpis: [{ label: 'Critical data entry', value: '97%', suffix: 'up from 38%' }],
+    heroImage: { src: '/img/field-service/preview-one.webp', alt: 'Field service app: navigation and installation dashboard' },
     overview: {
       problem: 'After utilising an off-the-shelf product for a number of years, many UX roadblocks were being hit, with required input being missed and communication requiring extra tooling.',
       outcome: 'I designed and prototyped a new application to better serve the business needs. Increasing efficiency, reducing costs and improving necessary data entry from 38% to 97%. With improved onboarding, utilised gamification techniques and ease of use. I also supported the development with storybook components and design tokens.'
@@ -248,9 +290,13 @@ export const projectsData = {
     summary: 'Proprietary customer app designed from zero (energy monitoring, data breakdowns, and support), with a modular design system built for future releases.',
     year: '2022',
     status: 'Released Q1 2024',
-    role: 'Product Designer',
+    role: 'Senior Product Designer',
     timeline: 'March - October 2022',
     tools: ['Figma', 'Analytics / Research / Clarity', 'React Native'],
+    company: 'EIGENSONNE',
+    platform: 'iOS & Android',
+    scope: 'Research, UX/UI, design system',
+    heroImage: { src: '/img/eigen-app/energy-flow2x.webp', alt: 'Energy flow diagram, from early mockups to the final design' },
     overview: {
       problem: 'After installation EIGENSONNE would usually say goodbye to the customer. How can they better establish an ongoing relationship with them? How can they offer more value to the customer.',
       outcome: 'I designed an intuitive & enjoyable proprietary app. Providing energy monitoring, unique data breakdowns, weather and support. Building a component based modular design system, and providing additional feature designs for later feature releases.'
@@ -282,9 +328,13 @@ export const projectsData = {
     summary: 'Premium solar design tool with Salesforce integration. Collaborated with engineering and sales to create intuitive design experience.',
     year: '2023',
     status: 'Active Use',
-    role: 'Product Designer',
+    role: 'Senior Product Designer',
     timeline: '2023',
     tools: ['React', 'Figma', 'Salesforce', 'Prototyping', 'Usage Analysis', 'Storybook'],
+    company: 'EIGENSONNE',
+    platform: 'Web (Salesforce)',
+    scope: 'UX/UI, prototyping, usage analysis',
+    heroImage: { src: '/img/solar-designer/main-layout.webp', alt: 'Solar Design Studio main planning layout' },
     overview: {
       description: 'Collaborated closely with engineering, planning, and sales teams to develop a premium solar design tool with tight Salesforce integration.',
       challenge: 'Sales teams needed a sophisticated design tool that felt approachable. The tool needed to be usable by power user planners, and by sales users in video and in-person sales calls.',
