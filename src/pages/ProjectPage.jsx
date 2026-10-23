@@ -6,6 +6,63 @@ import RouteLink from '../components/RouteLink';
 import LockedCaseStudy from '../components/LockedCaseStudy';
 import './ProjectPage.css';
 
+// Shared case-study header: outcome-led title, a ruled spec panel, headline
+// results and a hero image. Fields are optional; cells without data are skipped.
+const CaseHeader = ({ project, projectId, onImageClick }) => {
+  const kpis = project.kpis ?? project.results?.kpis;
+  const spec = [
+    ['Company', project.company],
+    ['Role', project.role],
+    ['Timeline', project.timeline],
+    ['Status', project.status],
+    ['Platform', project.platform],
+    ['Scope', project.scope],
+    ['Stack', project.tools?.join(', '), 'wide'],
+  ].filter(([, value]) => value);
+
+  return (
+    <section className="case-hero">
+      <div className="container">
+        <div className="label case-path">/work/{projectId}</div>
+        <h1 className="case-title">{project.outcomeTitle ?? project.title}</h1>
+        <p className="case-subtitle">
+          {project.outcomeTitle ? `${project.title}: ${project.subtitle}` : project.subtitle}
+        </p>
+
+        <dl className="case-spec">
+          {spec.map(([label, value, size]) => (
+            <div key={label} className={`case-spec-cell${size ? ` case-spec-${size}` : ''}`}>
+              <dt className="label">{label}</dt>
+              <dd>{value}</dd>
+            </div>
+          ))}
+        </dl>
+
+        {kpis && (
+          <div className="case-results" style={{ '--cols': kpis.length }}>
+            {kpis.map((kpi) => (
+              <div key={kpi.label} className="case-result">
+                <span className="label">{kpi.label}</span>
+                <span className="case-result-value">{kpi.value}</span>
+                <span className="case-result-note">{kpi.suffix}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {project.heroImage && (
+          <img
+            {...responsive(project.heroImage.src, SIZES.caseHero)}
+            alt={project.heroImage.alt}
+            className="case-hero-image clickable"
+            onClick={() => onImageClick(project.heroImage.src, project.heroImage.alt)}
+          />
+        )}
+      </div>
+    </section>
+  );
+};
+
 const ProjectPage = ({ projectId, onNavigate }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
   const project = projectsData[projectId];
@@ -33,37 +90,9 @@ const ProjectPage = ({ projectId, onNavigate }) => {
   if (project.locked) {
     return (
       <>
-        <section className="project-hero">
-          <div className="container">
-            <h1>{project.title}</h1>
-            <p className="project-subtitle">{project.subtitle}</p>
-            <div className="project-meta-bar">
-              <div className="meta-item">
-                <div className="meta-label">Year</div>
-                <div className="meta-value">{project.year}</div>
-              </div>
-              <div className="meta-item">
-                <div className="meta-label">Role</div>
-                <div className="meta-value">{project.role}</div>
-              </div>
-              <div className="meta-item">
-                <div className="meta-label">Timeline</div>
-                <div className="meta-value">{project.timeline}</div>
-              </div>
-              <div className="meta-item">
-                <div className="meta-label">Status</div>
-                <div className="meta-value">{project.status}</div>
-              </div>
-            </div>
-            <div className="project-tools">
-              {project.tools.map((tool, i) => (
-                <span key={i} className="tool-badge">{tool}</span>
-              ))}
-            </div>
-          </div>
-        </section>
+        <CaseHeader project={project} projectId={projectId} onImageClick={openLightbox} />
 
-        <div className="container">
+        <div className="container case-body">
           <div className="project-section">
             <h2>Overview</h2>
             <p>{project.brief}</p>
@@ -88,57 +117,22 @@ const ProjectPage = ({ projectId, onNavigate }) => {
             </RouteLink>
           </div>
         </div>
+
+        {lightboxImage && (
+          <Lightbox imageSrc={lightboxImage.src} imageAlt={lightboxImage.alt} onClose={closeLightbox} />
+        )}
       </>
     );
   }
 
   const projectContent = (
     <>
-      <section className="project-hero">
-        <div className="container">
-          <h1>{project.title}</h1>
-          <p className="project-subtitle">{project.subtitle}</p>
-          <div className="project-meta-bar">
-            <div className="meta-item">
-              <div className="meta-label">Year</div>
-              <div className="meta-value">{project.year}</div>
-            </div>
-            <div className="meta-item">
-              <div className="meta-label">Role</div>
-              <div className="meta-value">{project.role}</div>
-            </div>
-            <div className="meta-item">
-              <div className="meta-label">Timeline</div>
-              <div className="meta-value">{project.timeline}</div>
-            </div>
-            <div className="meta-item">
-              <div className="meta-label">Status</div>
-              <div className="meta-value">{project.status}</div>
-            </div>
-          </div>
-          <div className="project-tools">
-            {project.tools.map((tool, i) => (
-              <span key={i} className="tool-badge">{tool}</span>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CaseHeader project={project} projectId={projectId} onImageClick={openLightbox} />
 
-      <div className="container">
+      <div className="container case-body">
         {/* Offer Tool Content */}
         {projectId === 'offer-tool' && (
           <>
-            {project.aiUsage && (
-              <div className="project-section highlight-section">
-                <h2>How was AI used in this project?</h2>
-                <ul className="feature-list">
-                  {project.aiUsage.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
             <div className="project-section">
               <h2>Design Brief</h2>
               <p>{project.brief}</p>
@@ -153,18 +147,30 @@ const ProjectPage = ({ projectId, onNavigate }) => {
             <div className="project-section">
               <h2>{project.discovery.title}</h2>
               <p>{project.discovery.content}</p>
-              <h3>We conducted:</h3>
+              <h3>What we did</h3>
               <ul className="feature-list">
                 {project.discovery.research.map((item, i) => (
                   <li key={i}>{item}</li>
                 ))}
               </ul>
-              <h3>Key Insights:</h3>
+              <h3>Key insights</h3>
               <ul className="feature-list">
                 {project.discovery.insights.map((item, i) => (
                   <li key={i}>{item}</li>
                 ))}
               </ul>
+            </div>
+
+            <div className="project-section">
+              <h2>Key decisions</h2>
+              <ol className="decision-list">
+                {project.decisions.map((decision) => (
+                  <li key={decision.title} className="decision">
+                    <h3>{decision.title}</h3>
+                    <p>{decision.why}</p>
+                  </li>
+                ))}
+              </ol>
             </div>
 
             <div className="project-section">
@@ -180,7 +186,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
                       src="/img/offer-tool/pitch-recording.mp4"
                       controls
                       preload="metadata"
-                      style={{ width: '100%', borderRadius: '12px', marginTop: '1.5rem', marginBottom: '1rem' }}
+                      style={{ width: '100%', borderRadius: 'var(--radius)', marginTop: '1.5rem', marginBottom: '1rem' }}
                     />
                   )}
                   {feature.title === 'Pitch Section' && (
@@ -208,18 +214,19 @@ const ProjectPage = ({ projectId, onNavigate }) => {
               <p>{project.development}</p>
             </div>
 
-            <div className="project-section">
-              <h2>Results</h2>
-              <div className="kpi-grid">
-                {project.results.kpis.map((kpi, i) => (
-                  <div key={i} className="kpi-card">
-                    <div className="kpi-value">{kpi.value}</div>
-                    <div className="kpi-suffix">{kpi.suffix}</div>
-                    <div className="kpi-label">{kpi.label}</div>
-                  </div>
-                ))}
+            {project.aiUsage && (
+              <div className="project-section">
+                <h2>Where AI helped</h2>
+                <ul className="feature-list">
+                  {project.aiUsage.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
               </div>
-              <h3>Additional Wins:</h3>
+            )}
+
+            <div className="project-section">
+              <h2>Beyond the numbers</h2>
               <ul className="feature-list">
                 {project.results.additionalWins.map((win, i) => (
                   <li key={i}>{win}</li>
@@ -473,7 +480,7 @@ const ProjectPage = ({ projectId, onNavigate }) => {
           </>
         )}
 
-        <div className="project-section" style={{ textAlign: 'center', marginTop: '4rem' }}>
+        <div className="project-section">
           <RouteLink page="home" onNavigate={onNavigate} className="btn btn-secondary">
             ← back to /work
           </RouteLink>
