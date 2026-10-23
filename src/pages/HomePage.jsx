@@ -142,16 +142,8 @@ const HomePage = ({ onNavigate }) => {
       title: 'CRM App · System & Branding'
     },
     {
-      image: '/img/concepts/crypto-05.webp',
-      title: 'Crypto App'
-    },
-    {
       image: '/img/concepts/football-stats-preview.webp',
       title: 'Football Stats Modules'
-    },
-    {
-      image: '/img/concepts/bank-app.webp',
-      title: 'Banking App'
     },
     {
       image: '/img/concepts/smart-home-mockup.webp',
