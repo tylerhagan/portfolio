@@ -130,7 +130,7 @@ const HomePage = ({ onNavigate }) => {
       image: '/img/concepts/tend-prototype.webp',
       title: 'Tend · Home Energy Autopilot',
       href: 'https://tend.tylerhagan.co.uk',
-      linkLabel: 'prototype · ready to test'
+      linkLabel: 'prototype'
     },
     {
       image: '/img/concepts/stand-forest-change.webp',
