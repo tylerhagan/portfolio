@@ -445,6 +445,7 @@
 }
 
 .concept-num {
+    white-space: nowrap;
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.08em;
