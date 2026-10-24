@@ -144,6 +144,12 @@ const HomePage = ({ onNavigate }) => {
       href: 'https://www.skixo.uk'
     },
     {
+      image: '/img/concepts/skixo-visualiser.webp',
+      title: 'skixO · Music Video Visualiser',
+      href: 'https://visualiser.tylerhagan.co.uk/case-study/',
+      linkLabel: 'case study'
+    },
+    {
       image: '/img/concepts/nuvio-05.webp',
       title: 'CRM App · System & Branding'
     },
