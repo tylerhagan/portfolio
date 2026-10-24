@@ -145,7 +145,9 @@ const HomePage = ({ onNavigate }) => {
     },
     {
       image: '/img/concepts/skixo-visualiser.webp',
-      title: 'skixO · Music Video Visualiser'
+      title: 'skixO · Music Video Visualiser',
+      href: 'https://visualiser.tylerhagan.co.uk/case-study/',
+      linkLabel: 'case study'
     },
     {
       image: '/img/concepts/nuvio-05.webp',
