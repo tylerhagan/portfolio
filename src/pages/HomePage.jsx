@@ -156,10 +156,6 @@ const HomePage = ({ onNavigate }) => {
     {
       image: '/img/concepts/football-stats-preview.webp',
       title: 'Football Stats Modules'
-    },
-    {
-      image: '/img/concepts/smart-home-mockup.webp',
-      title: 'Smart Home App'
     }
   ];
 
