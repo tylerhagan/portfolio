@@ -127,6 +127,12 @@ const HomePage = ({ onNavigate }) => {
   // Entries with an href link out instead of opening the lightbox; `linkLabel` names the destination
   const concepts = [
     {
+      image: '/img/concepts/tend-prototype.webp',
+      title: 'Tend · Home Energy Autopilot',
+      href: 'https://tend.tylerhagan.co.uk',
+      linkLabel: 'prototype · ready to test'
+    },
+    {
       image: '/img/concepts/stand-forest-change.webp',
       title: 'Stand · Forest Change Explorer',
       href: 'https://forest.tylerhagan.co.uk/case-study/',
