@@ -109,10 +109,10 @@ const HomePage = ({ onNavigate }) => {
     {
       id: 'solar-designer',
       title: 'Solar Design Studio',
-      year: '2023',
-      type: 'SaaS Platform',
-      tags: ['React', 'Figma', 'Salesforce', 'Storybook'],
-      image: '/img/solar-designer/main-layout.webp'
+      year: '2026',
+      type: 'Sales & Planning Tool',
+      tags: ['Concept', 'Figma', 'Salesforce', 'Design System'],
+      image: '/img/solar-designer-v2/01-hero-planner-and-tablet.webp'
     },
     {
       id: 'monitoring-app',

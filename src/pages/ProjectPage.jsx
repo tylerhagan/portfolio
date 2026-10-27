@@ -307,57 +307,8 @@ const ProjectPage = ({ projectId, onNavigate }) => {
           </>
         )}
 
-        {/* Solar Designer Content */}
-        {projectId === 'solar-designer' && (
-          <>
-            <div className="project-section">
-              <p>{project.overview.description}</p>
-              
-              <h3>Challenge</h3>
-              <p>{project.overview.challenge}</p>
-              
-              {/* Challenge Images - 2 images in grid */}
-              <h4>Screens</h4>
-              <p>Utilising 2 modes, one for sales and one for advanced planning users. To enable a simpler refined view for customer facing moments, without hindering the power users. Loading directly from the customer/order in the CRM &#40;Salesforce&#41;.</p>
-              {project.overview.challengeImages && (
-                <div className="project-images">
-                  {project.overview.challengeImages.map((img, i) => (
-                    <div key={i} className="captioned-image">
-                      <img 
-                        {...responsive(img.src, SIZES.projectGrid)} 
-                        alt={img.caption} 
-                        className="project-image clickable" 
-                        onClick={() => openLightbox(img.src, img.caption)}
-                      />
-                      <p className="image-caption">{img.caption}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-              
-              <h3>Solution</h3>
-              <p>{project.overview.solution}</p>
-              
-              {/* Solution Image - Full width */}
-              {project.overview.solutionImage && (
-                <img 
-                  {...responsive(project.overview.solutionImage, SIZES.projectFull)} 
-                  alt="Solar Designer Solution" 
-                  className="project-image-full clickable" 
-                  onClick={() => openLightbox(project.overview.solutionImage, 'Solar Designer Solution')}
-                />
-              )}
-            </div>
-
-            <div className="project-section">
-              <h2>Impact</h2>
-              <p>{project.impact}</p>
-            </div>
-          </>
-        )}
-
-        {/* Sectioned case studies: Enpal product surfaces, EIGENAPP v2 */}
-        {(projectId === 'enpal-product-work' || projectId === 'monitoring-app') && (
+        {/* Sectioned case studies: Enpal product surfaces, EIGENAPP v2, Solar Design Studio v2 */}
+        {(projectId === 'enpal-product-work' || projectId === 'monitoring-app' || projectId === 'solar-designer') && (
           <>
             <div className="project-section">
               <h2>Overview</h2>
