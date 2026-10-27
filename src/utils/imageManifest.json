@@ -135,14 +135,6 @@
     "w": 2500,
     "sm": 800
   },
-  "/img/fs-preview.png": {
-    "w": 542,
-    "sm": 542
-  },
-  "/img/m-preview.png": {
-    "w": 542,
-    "sm": 542
-  },
   "/img/mid-fidelity-thumb.jpg": {
     "w": 1920,
     "sm": 800
@@ -190,14 +182,6 @@
   "/img/offer-tool/sidebars.webp": {
     "w": 1690,
     "sm": 800
-  },
-  "/img/ot-preview.png": {
-    "w": 542,
-    "sm": 542
-  },
-  "/img/sd-preview.png": {
-    "w": 542,
-    "sm": 542
   },
   "/img/sketches.jpg": {
     "w": 350,
