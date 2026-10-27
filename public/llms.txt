@@ -18,7 +18,8 @@
     sales tool (72% faster offer creation, 42% higher conversion).
   - [Field Service App](https://tylerhagan.co.uk/work/field-service): critical
     data entry raised from 38% to 97%.
-  - [Solar Design Studio](https://tylerhagan.co.uk/work/solar-designer)
+  - [Solar Design Studio](https://tylerhagan.co.uk/work/solar-designer): v2
+    concept for a solar sales and planning tool, one plan for planner and customer.
   - [Energy Monitoring](https://tylerhagan.co.uk/work/monitoring-app): customer
     monitoring app.
 - [About](https://tylerhagan.co.uk/about): background, approach, philosophy,
