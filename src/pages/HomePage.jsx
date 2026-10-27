@@ -117,10 +117,10 @@ const HomePage = ({ onNavigate }) => {
     {
       id: 'monitoring-app',
       title: 'Energy Monitoring',
-      year: '2022',
+      year: '2026',
       type: 'Mobile App',
       tags: ['React Native', 'Figma', 'Analytics', 'Token Studio'],
-      image: '/img/eigen-app/energy-flow2x.webp'
+      image: '/img/eigen-app-v2/01-hero-home-day-night.webp'
     }
   ];
 

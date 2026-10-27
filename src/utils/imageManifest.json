@@ -39,6 +39,54 @@
     "w": 2000,
     "sm": 800
   },
+  "/img/eigen-app-v2/01-hero-home-day-night.webp": {
+    "w": 2388,
+    "sm": 800
+  },
+  "/img/eigen-app-v2/02-v1-before.webp": {
+    "w": 2160,
+    "sm": 800
+  },
+  "/img/eigen-app-v2/03-exploration-a-to-d.webp": {
+    "w": 4120,
+    "sm": 800
+  },
+  "/img/eigen-app-v2/04-home-states.webp": {
+    "w": 4120,
+    "sm": 800
+  },
+  "/img/eigen-app-v2/05-headline-system.webp": {
+    "w": 2920,
+    "sm": 800
+  },
+  "/img/eigen-app-v2/06-live-across-the-day.webp": {
+    "w": 3168,
+    "sm": 800
+  },
+  "/img/eigen-app-v2/07-price-history-savings.webp": {
+    "w": 3036,
+    "sm": 800
+  },
+  "/img/eigen-app-v2/08-anlage-and-outage.webp": {
+    "w": 2128,
+    "sm": 800
+  },
+  "/img/eigen-app-v2/09-onboarding.webp": {
+    "w": 4120,
+    "sm": 800
+  },
+  "/img/eigen-app-v2/10-sonnenjahr.webp": {
+    "w": 2388,
+    "sm": 800
+  },
+  "/img/eigen-app-v2/11-widgets.webp": {
+    "w": 2520,
+    "sm": 800
+  },
+  "/img/eigen-app-v2/12-foundations.webp": {
+    "w": 2920,
+    "sm": 800
+  },
   "/img/eigen-app/early-prototype-dark-thumbnail.webp": {
     "w": 888,
     "sm": 800
