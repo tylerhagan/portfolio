@@ -286,7 +286,7 @@ export const projectsData = {
   
   'monitoring-app': {
     title: 'Monitoring & Customer App',
-    subtitle: 'EIGENAPP v2 concept and live prototype',
+    subtitle: 'concept and live prototype',
     summary: 'EIGENAPP v2 answers first and shows data second: a live house that follows the real sun, a plan until tomorrow morning, and clear guidance on dynamic prices. A full design system and a working prototype on a simulated home.',
     year: '2026',
     status: 'v1 released Q1 2024 · v2 unreleased, live prototype',
@@ -296,7 +296,8 @@ export const projectsData = {
     company: 'EIGENSONNE',
     platform: 'iOS & Android (prototype on the web)',
     scope: 'Concept, UX, UI, design system, illustration, prototype',
-    outcomeTitle: 'EIGENAPP v2: from data sheet to answer',
+    outcomeTitle: 'EIGENSONNE from data sheet to answer',
+    demo: { url: 'https://eigenapp.tylerhagan.co.uk', label: 'live prototype' },
     heroImage: { src: '/img/eigen-app-v2/01-hero-home-day-night.webp', alt: 'EIGENAPP v2 Home at midday and in the evening' },
     brief: `EIGENAPP v1 showed homeowners plenty of data about their solar system but left them to work out what it meant. It answered "what are the numbers?" when people were asking "is everything fine, and do I need to do anything?" v2 answers first and shows data second: a live house that changes from day to night with the real sun, a plan for the hours until tomorrow morning, and clear guidance on dynamic electricity prices. It is delivered as a full design system and a working prototype driven by a simulated home energy system.`,
     sections: [
@@ -358,7 +359,7 @@ export const projectsData = {
       {
         title: 'A headline system, not a headline',
         paragraphs: [
-          `The sentence at the top is generated from the system state using six rules in priority order, from "no data" to "the sun covers everything". At most one number per sentence, no exclamation marks, never blaming the user, and in the product it holds for five minutes so it never flickers.`
+          `The sentence at the top is generated from the system state by rules in priority order, from "no data" to "the sun covers everything". The design has six core states. Building the prototype showed two more were needed: the battery charging from cheap grid power at night, and importing at a middling price with the battery resting. Without them, parts of a winter day had no sentence at all. At most one number per sentence, no exclamation marks, never blaming the user, and in the product it holds for five minutes so it never flickers.`
         ],
         images: [
           { src: '/img/eigen-app-v2/05-headline-system.webp', caption: 'Headline system' }
@@ -412,7 +413,7 @@ export const projectsData = {
       {
         title: 'Widgets',
         paragraphs: [
-          `The same language at a glance: the house with live flows, the battery's runtime until morning, and a lock-screen strip.`
+          `The same language at a glance: the house with live flows, the battery's runtime until morning, a lock-screen strip and two notifications, one for expensive hours and one weekly recap. In the prototype they sit in a gallery driven by the same snapshot as the app, so they change as you scrub through the day.`
         ],
         images: [
           { src: '/img/eigen-app-v2/11-widgets.webp', caption: 'Widgets' }
@@ -422,8 +423,10 @@ export const projectsData = {
         title: 'The system behind it',
         bullets: [
           `Foundations: tokens for both themes, a type scale with tabular figures, a 24 px icon set, and rules for the isometric illustration and motion, so the scene can be redrawn without breaking the product.`,
-          `Accessibility: real controls throughout, 44 px touch targets, text contrast checked in both themes, and a reduced-motion mode where flows show direction with arrows instead of moving dots.`,
-          `A working prototype: one simulated energy model drives every screen. Scrub through a day and the headline, theme, flows and plan all update together.`
+          `Accessibility: real controls throughout, 44 px touch targets, a reduced-motion mode where flows show direction with arrows instead of moving dots, and text contrast checked in both themes by automated tests. The main screens score 100 in a Lighthouse accessibility audit.`,
+          `A working prototype: one simulated energy model drives every screen. Scrub through a day and the headline, theme, flows and plan all update together.`,
+          `Two scenarios and a few switches: a sunny May day and a cloudy January day, a dynamic tariff on or off, and an outage toggle that changes Home, the status pill and the system screen until "Verbindung prüfen" clears it. The demo runs in German and English and on phones.`,
+          `Built to be trusted: the energy model is plain TypeScript with unit tests for the energy balance, the battery limits and the headline rules, because those are the parts most likely to break quietly. It is a static site with self-hosted fonts, no backend, no accounts and no tracking, and all data is simulated.`
         ],
         images: [
           { src: '/img/eigen-app-v2/12-foundations.webp', caption: 'Foundations' }
