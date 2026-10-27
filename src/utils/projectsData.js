@@ -286,42 +286,170 @@ export const projectsData = {
   
   'monitoring-app': {
     title: 'Monitoring & Customer App',
-    subtitle: 'Mobile app for long-term customer relationships',
-    summary: 'Proprietary customer app designed from zero (energy monitoring, data breakdowns, and support), with a modular design system built for future releases.',
-    year: '2022',
-    status: 'Released Q1 2024',
+    subtitle: 'EIGENAPP v2 concept and live prototype',
+    summary: 'EIGENAPP v2 answers first and shows data second: a live house that follows the real sun, a plan until tomorrow morning, and clear guidance on dynamic prices. A full design system and a working prototype on a simulated home.',
+    year: '2026',
+    status: 'v1 released Q1 2024 · v2 unreleased, live prototype',
     role: 'Senior Product Designer',
-    timeline: 'March - October 2022',
-    tools: ['Figma', 'Analytics / Research / Clarity', 'React Native'],
+    timeline: 'v1 2022 · v2 started at EIGENSONNE',
+    tools: ['Figma', 'Design Tokens', 'React Native', 'Web prototype'],
     company: 'EIGENSONNE',
-    platform: 'iOS & Android',
-    scope: 'Research, UX/UI, design system',
-    heroImage: { src: '/img/eigen-app/energy-flow2x.webp', alt: 'Energy flow diagram, from early mockups to the final design' },
-    overview: {
-      problem: 'After installation EIGENSONNE would usually say goodbye to the customer. How can they better establish an ongoing relationship with them? How can they offer more value to the customer.',
-      outcome: 'I designed an intuitive & enjoyable proprietary app. Providing energy monitoring, unique data breakdowns, weather and support. Building a component based modular design system, and providing additional feature designs for later feature releases.'
-    },
-    research: {
-      understanding: 'In our pursuit of creating a user-centric app, we conducted comprehensive competitor analysis and gathered insights through colleague interviews. These efforts were instrumental in identifying key factors crucial for enhancing user experience and maximising app utility.',
-      differentiation: 'Early in the development process, we delineated our differentiation strategy from competitors, specifically targeting a user base distinct from those catered to by existing advanced-level apps. Our approach centred on presenting essential data points in a user-friendly format, prioritising simplicity and accessibility.',
-      trust: 'Recognising the technical nature of our product, we placed a strong emphasis on fostering trust and confidence amongst users. To achieve this, we implemented robust systems health indicators, comprehensive FAQ sections, and intuitive energy flow interfaces.',
-      wireframeImage: '/img/eigen-app/top-level-wireframes-snippet-preview.png',
-      flowImage: '/img/eigen-app/user-flow.webp'
-    },
-    design: {
-      approach: 'Adhering to foundational principles in mobile design, I implemented thumb-sized, rounded, and responsive elements for all interactions within the app. By leveraging native iOS and Android interface elements and behaviours, such as swiping and drawers, instead of reinventing established patterns, we ensured an intuitive user experience.',
-      feedback: 'Feedback from our early testers underscored the success of these design choices. They particularly appreciated the ability to quickly gauge their system\'s performance with a glance, emphasising the importance of easily accessible data for optimising their appliance usage.',
-      energyFlow: 'We employed variable speeds of animation within the energy flow diagram to represent the intensity of energy flows. This dynamic feature, coupled with straightforward breakdowns of production versus consumption, ensured that users could quickly grasp complex energy dynamics with just a glance.',
-      energyFlowImage: '/img/eigen-app/energy-flow2x.webp',
-      prototypeImages: [
-        { src: '/img/eigen-app/early-prototype-dark-thumbnail.webp', srcFull: '/img/eigen-app/early-prototype.webp', caption: 'Dashboard prototype (alpha test)' },
-        { src: '/img/eigen-app/early-prototype-light-thumbnail.webp', srcFull: '/img/eigen-app/early-prototype-light.webp', caption: 'Daily graph prototype (beta test)' }
-      ],
-      colours: 'Our colour palette was meticulously chosen to optimise user experience. Following extensive research into colour psychology, we settled on a teal base due to its associations with calmness, serenity, and balance.'
-    },
-    results: 'Feedback from testers was overwhelmingly positive. Their enthusiasm and confidence in the app surpassed that of competitors\' offerings and even the hardware manufacturer\'s own app. This project underscores the importance of early and frequent user engagement.'
+    platform: 'iOS & Android (prototype on the web)',
+    scope: 'Concept, UX, UI, design system, illustration, prototype',
+    outcomeTitle: 'EIGENAPP v2: from data sheet to answer',
+    heroImage: { src: '/img/eigen-app-v2/01-hero-home-day-night.webp', alt: 'EIGENAPP v2 Home at midday and in the evening' },
+    brief: `EIGENAPP v1 showed homeowners plenty of data about their solar system but left them to work out what it meant. It answered "what are the numbers?" when people were asking "is everything fine, and do I need to do anything?" v2 answers first and shows data second: a live house that changes from day to night with the real sun, a plan for the hours until tomorrow morning, and clear guidance on dynamic electricity prices. It is delivered as a full design system and a working prototype driven by a simulated home energy system.`,
+    sections: [
+      {
+        title: 'Context',
+        paragraphs: [
+          `I designed EIGENAPP v1 at EIGENSONNE in 2022. It was the company's first ongoing touchpoint after installation, and testers told us they could check their system at a glance and trusted it more than the hardware manufacturer's own app. It shipped in 2024.`,
+          `It was also one of my first full mobile products, and it shows. Work on a v2 started at EIGENSONNE alongside the feature designs for later releases, but it never got to ship. In 2026 I picked it back up, finished the concept with everything I have learned since, and built a working prototype. The prototype runs on simulated data.`
+        ]
+      },
+      {
+        title: 'What v1 got right, and where it fell short',
+        paragraphs: [
+          `v1 had the right instincts: a calm teal brand, an animated energy flow where speed showed intensity, and visible system health to build trust. Looking at it again:`
+        ],
+        bullets: [
+          `Everything had the same weight. The date, sunrise times and a large "System verbunden" tile took the best space. Connection status matters only when it breaks.`,
+          `The flow diagram showed values but not direction. You could see 1,4 kW on a line, but not whether it was going into the battery or out of it.`,
+          `The day chart plotted a percentage with a two-item legend for one line. It looked like analytics and explained very little.`,
+          `Nothing looked ahead. Solar owners plan around the sun, the battery and, increasingly, hourly electricity prices. v1 only showed the present and the past.`
+        ],
+        images: [
+          { src: '/img/eigen-app-v2/02-v1-before.webp', caption: 'v1 screens with three annotations' }
+        ]
+      },
+      {
+        title: 'Principles for v2',
+        bullets: [
+          `Answer first, data second. Every Home state opens with a plain sentence: what is happening, then what it means.`,
+          `One colour, one meaning. Sun is yellow, battery green, house petrol, grid blue. The same everywhere, in light and dark. Price uses a single orange scale where lighter means cheaper.`,
+          `Calm until it matters. Status is a small pill until something is wrong. Then it takes over, explains what happened in human terms and says what to do.`,
+          `The app follows the sun. Light while the panels produce, dark after sunset at the customer's location.`
+        ]
+      },
+      {
+        title: 'Exploring the Home screen',
+        paragraphs: [
+          `I kept the structure and the content decisions fixed and explored the identity in three directions, each in a midday and an evening state:`
+        ],
+        bullets: [
+          `A, calm: v1's structure, trimmed and refined. Clear and safe, but forgettable.`,
+          `B, your roof: an illustrated version of the customer's own house. The most memorable, but expensive to make real for every roof, and weak at showing what comes next.`,
+          `C, the sun's arc: the day as an arc with the night as a bar below the horizon. The best at showing the plan, but abstract on a grey winter day.`,
+          `D combines them: A's structure, B's sense of a real home as a generic isometric house that's believable to build, and C's plan as a strip from now until tomorrow morning. The energy hub from v1, with the house at the centre and every connection able to flow either way, became the hero, drawn with depth instead of flat lines.`
+        ],
+        images: [
+          { src: '/img/eigen-app-v2/03-exploration-a-to-d.webp', caption: 'Home explored in four directions, midday and evening' }
+        ]
+      },
+      {
+        title: 'Home: now and next',
+        paragraphs: [
+          `A headline, the isometric house, and "Bis morgen früh": a strip showing which source will power the home until sunrise, with expensive hours marked above it. Two next items underneath, and that's it. History moved to Verlauf, so Home fits on one screen.`
+        ],
+        images: [
+          { src: '/img/eigen-app-v2/04-home-states.webp', caption: 'Home in four states: midday, evening, January and night' }
+        ]
+      },
+      {
+        title: 'A headline system, not a headline',
+        paragraphs: [
+          `The sentence at the top is generated from the system state using six rules in priority order, from "no data" to "the sun covers everything". At most one number per sentence, no exclamation marks, never blaming the user, and in the product it holds for five minutes so it never flickers.`
+        ],
+        images: [
+          { src: '/img/eigen-app-v2/05-headline-system.webp', caption: 'Headline system' }
+        ]
+      },
+      {
+        title: 'Live: the same house across the day',
+        paragraphs: [
+          `The Live screen fills the width with the scene. Morning, now and an evening forecast show the house changing: the sun moves, the panels dim, the windows light up and the battery switches from charging to powering the home. Line width shows power and moving dots show direction, which fixes the ambiguity of v1's diagram.`
+        ],
+        images: [
+          { src: '/img/eigen-app-v2/06-live-across-the-day.webp', caption: 'Live screen at 8:00, now and 21:40' }
+        ]
+      },
+      {
+        title: 'Dynamic electricity prices',
+        paragraphs: [
+          `Hourly tariffs are becoming normal in Germany, and they are hard to read. The price screen shows today's hours on one scale, but leads with the plan: when the battery fills for free, which expensive hours it will cover, and when the cheapest grid hours are. A "good moment" card turns this into one action: run the washing machine now.`
+        ],
+        images: [
+          { src: '/img/eigen-app-v2/07-price-history-savings.webp', caption: 'Dynamic price, day history and savings' }
+        ]
+      },
+      {
+        title: 'Calm when something breaks',
+        paragraphs: [
+          `When the data stops, v2 says so plainly, reassures first ("Du verlierst dadurch kein Geld"), then gives three concrete steps and a promise: if it lasts more than a day, we contact you and your installer.`
+        ],
+        images: [
+          { src: '/img/eigen-app-v2/08-anlage-and-outage.webp', caption: 'System screen when all is well and when the connection drops' }
+        ]
+      },
+      {
+        title: 'Onboarding that already knows you',
+        paragraphs: [
+          `EIGENSONNE already had each customer's address, system size and battery from the sales process. Onboarding starts there: "Wir kennen dein Dach schon." The customer confirms instead of typing, connects the data logger, picks a tariff, and lands on a live reveal of their system working for the first time.`
+        ],
+        images: [
+          { src: '/img/eigen-app-v2/09-onboarding.webp', caption: 'Onboarding in four steps' }
+        ]
+      },
+      {
+        title: 'Dein Sonnenjahr',
+        paragraphs: [
+          `A yearly recap designed to be shared: the year's production as a sunburst, and the number of evenings the battery covered completely. For an installer, a happy customer sharing their numbers is the best kind of referral.`
+        ],
+        images: [
+          { src: '/img/eigen-app-v2/10-sonnenjahr.webp', caption: 'Dein Sonnenjahr story cards' }
+        ]
+      },
+      {
+        title: 'Widgets',
+        paragraphs: [
+          `The same language at a glance: the house with live flows, the battery's runtime until morning, and a lock-screen strip.`
+        ],
+        images: [
+          { src: '/img/eigen-app-v2/11-widgets.webp', caption: 'Widgets' }
+        ]
+      },
+      {
+        title: 'The system behind it',
+        bullets: [
+          `Foundations: tokens for both themes, a type scale with tabular figures, a 24 px icon set, and rules for the isometric illustration and motion, so the scene can be redrawn without breaking the product.`,
+          `Accessibility: real controls throughout, 44 px touch targets, text contrast checked in both themes, and a reduced-motion mode where flows show direction with arrows instead of moving dots.`,
+          `A working prototype: one simulated energy model drives every screen. Scrub through a day and the headline, theme, flows and plan all update together.`
+        ],
+        images: [
+          { src: '/img/eigen-app-v2/12-foundations.webp', caption: 'Foundations' }
+        ]
+      },
+      {
+        title: 'How I would measure it',
+        paragraphs: [
+          `As an unreleased v2 there are no results to report, so these are the measures I would set for a release:`
+        ],
+        bullets: [
+          `Fewer support contacts asking whether the system is working.`,
+          `How often people open the app during expensive price hours, and whether grid use in those hours drops.`,
+          `Onboarding completion and time to first live data.`,
+          `Sonnenjahr shares and the referrals that follow them.`
+        ]
+      },
+      {
+        title: 'Reflection',
+        paragraphs: [
+          `v1 taught me that monitoring is a trust product. v2 is what I would do with that lesson now: decide what the user needs to know before deciding what to show, make the system explain itself in plain language, and design the hard cases (a grey January day, an empty battery at 3 am, a lost connection) as carefully as the sunny screenshot.`
+        ]
+      }
+    ]
   },
-  
+
   'solar-designer': {
     title: 'Solar Design Studio',
     subtitle: 'Premium solar design tool',

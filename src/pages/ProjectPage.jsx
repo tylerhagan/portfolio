@@ -307,90 +307,6 @@ const ProjectPage = ({ projectId, onNavigate }) => {
           </>
         )}
 
-        {/* Monitoring App Content */}
-        {projectId === 'monitoring-app' && (
-          <>
-            <div className="project-section">
-              <h2>Overview</h2>
-              <h3>Problem</h3>
-              <p>{project.overview.problem}</p>
-              <h3>Outcome</h3>
-              <p>{project.overview.outcome}</p>
-            </div>
-
-            <div className="project-section">
-              <h2>UX Research</h2>
-              <p>{project.research.understanding}</p>
-              <p>{project.research.differentiation}</p>
-              <p>{project.research.trust}</p>
-              {project.research.wireframeImage && (
-                <div className="captioned-image">
-                  <img 
-                    {...responsive(project.research.wireframeImage, SIZES.projectFull)} 
-                    alt="Wireframes" 
-                    className="project-image-full clickable" 
-                    onClick={() => openLightbox(project.research.wireframeImage, 'Wireframes')}
-                  />
-                  <p className="image-caption">Top level wireframe pages</p>
-                </div>
-              )}
-              {project.research.flowImage && (
-                <div className="captioned-image">
-                  <img 
-                    {...responsive(project.research.flowImage, SIZES.projectFull)} 
-                    alt="User Flow" 
-                    className="project-image-full clickable" 
-                    onClick={() => openLightbox(project.research.flowImage, 'User Flow')}
-                  />
-                  <p className="image-caption">Application Map / User Flow</p>
-                </div>
-              )}
-            </div>
-
-            <div className="project-section">
-              <h2>Design</h2>
-              <h3>Approach</h3>
-              <p>{project.design.approach}</p>
-              <p>{project.design.feedback}</p>
-              <h3>Energy Flow</h3>
-              <p>{project.design.energyFlow}</p>
-              {project.design.energyFlowImage && (
-                <div className="captioned-image">
-                  <img 
-                    {...responsive(project.design.energyFlowImage, SIZES.projectFull)} 
-                    alt="Energy Flow" 
-                    className="project-image-full clickable" 
-                    onClick={() => openLightbox(project.design.energyFlowImage, 'Energy Flow')}
-                  />
-                  <p className="image-caption">Early mockups to final energy flow diagram</p>
-                </div>
-              )}
-              {project.design.prototypeImages && (
-                <div className="project-images">
-                  {project.design.prototypeImages.map((img, i) => (
-                    <div key={i} className="captioned-image">
-                      <img 
-                        {...responsive(img.src, SIZES.projectGrid)} 
-                        alt={img.caption} 
-                        className="project-image clickable" 
-                        onClick={() => openLightbox(img.srcFull, img.caption)}
-                      />
-                      <p className="image-caption">{img.caption}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-              <h3>Colours</h3>
-              <p>{project.design.colours}</p>
-            </div>
-
-            <div className="project-section">
-              <h2>Results</h2>
-              <p>{project.results}</p>
-            </div>
-          </>
-        )}
-
         {/* Solar Designer Content */}
         {projectId === 'solar-designer' && (
           <>
@@ -440,15 +356,17 @@ const ProjectPage = ({ projectId, onNavigate }) => {
           </>
         )}
 
-        {/* Portal, Web & Back Office (Enpal product surfaces) */}
-        {projectId === 'enpal-product-work' && (
+        {/* Sectioned case studies: Enpal product surfaces, EIGENAPP v2 */}
+        {(projectId === 'enpal-product-work' || projectId === 'monitoring-app') && (
           <>
             <div className="project-section">
               <h2>Overview</h2>
               <p>{project.brief}</p>
-              <RouteLink page="project" id="design-family" onNavigate={onNavigate} className="btn btn-secondary">
-                related · Enpal Design Family →
-              </RouteLink>
+              {projectId === 'enpal-product-work' && (
+                <RouteLink page="project" id="design-family" onNavigate={onNavigate} className="btn btn-secondary">
+                  related · Enpal Design Family →
+                </RouteLink>
+              )}
             </div>
             {project.sections.map((section, i) => (
               <div key={i} className="project-section">
