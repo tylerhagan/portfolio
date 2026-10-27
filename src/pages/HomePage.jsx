@@ -80,7 +80,7 @@ const HomePage = ({ onNavigate }) => {
       year: '2025',
       type: 'Enterprise Software',
       tags: ['React', 'AI Integration', 'Figma', 'Lokalise', 'User Research'],
-      image: '/img/ot-preview.png'
+      image: '/img/offer-tool/heartbeat-breakdown-pitch.webp'
     },
     {
       id: 'design-family',
@@ -96,7 +96,7 @@ const HomePage = ({ onNavigate }) => {
       year: '2026',
       type: 'Product Surfaces',
       tags: ['FOLIO', 'VERSO', 'React', 'TypeScript', 'shadcn/ui'],
-      image: '/img/enpal-product-work/portal-proto-light.webp'
+      image: '/img/enpal-product-work/marketing-landing-hero.webp'
     },
     {
       id: 'field-service',
@@ -104,7 +104,7 @@ const HomePage = ({ onNavigate }) => {
       year: '2023',
       type: 'Mobile App',
       tags: ['iOS', 'Android', 'Figma', 'Design System', 'User Testing'],
-      image: '/img/fs-preview.png'
+      image: '/img/field-service/preview-two.webp'
     },
     {
       id: 'solar-designer',
@@ -112,7 +112,7 @@ const HomePage = ({ onNavigate }) => {
       year: '2023',
       type: 'SaaS Platform',
       tags: ['React', 'Figma', 'Salesforce', 'Storybook'],
-      image: '/img/sd-preview.png'
+      image: '/img/solar-designer/main-layout.webp'
     },
     {
       id: 'monitoring-app',
@@ -120,7 +120,7 @@ const HomePage = ({ onNavigate }) => {
       year: '2022',
       type: 'Mobile App',
       tags: ['React Native', 'Figma', 'Analytics', 'Token Studio'],
-      image: '/img/m-preview.png'
+      image: '/img/eigen-app/energy-flow2x.webp'
     }
   ];
 
