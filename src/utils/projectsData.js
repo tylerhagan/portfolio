@@ -286,7 +286,7 @@ export const projectsData = {
   
   'monitoring-app': {
     title: 'Monitoring & Customer App',
-    subtitle: 'EIGENAPP v2 concept and live prototype',
+    subtitle: 'concept and live prototype',
     summary: 'EIGENAPP v2 answers first and shows data second: a live house that follows the real sun, a plan until tomorrow morning, and clear guidance on dynamic prices. A full design system and a working prototype on a simulated home.',
     year: '2026',
     status: 'v1 released Q1 2024 · v2 unreleased, live prototype',
@@ -296,7 +296,7 @@ export const projectsData = {
     company: 'EIGENSONNE',
     platform: 'iOS & Android (prototype on the web)',
     scope: 'Concept, UX, UI, design system, illustration, prototype',
-    outcomeTitle: 'EIGENAPP v2: from data sheet to answer',
+    outcomeTitle: 'EIGENSONNE from data sheet to answer',
     demo: { url: 'https://eigenapp.tylerhagan.co.uk', label: 'live prototype' },
     heroImage: { src: '/img/eigen-app-v2/01-hero-home-day-night.webp', alt: 'EIGENAPP v2 Home at midday and in the evening' },
     brief: `EIGENAPP v1 showed homeowners plenty of data about their solar system but left them to work out what it meant. It answered "what are the numbers?" when people were asking "is everything fine, and do I need to do anything?" v2 answers first and shows data second: a live house that changes from day to night with the real sun, a plan for the hours until tomorrow morning, and clear guidance on dynamic electricity prices. It is delivered as a full design system and a working prototype driven by a simulated home energy system.`,
