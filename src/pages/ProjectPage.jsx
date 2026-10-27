@@ -362,6 +362,11 @@ const ProjectPage = ({ projectId, onNavigate }) => {
             <div className="project-section">
               <h2>Overview</h2>
               <p>{project.brief}</p>
+              {project.demo && (
+                <a href={project.demo.url} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
+                  {project.demo.label} ↗
+                </a>
+              )}
               {projectId === 'enpal-product-work' && (
                 <RouteLink page="project" id="design-family" onNavigate={onNavigate} className="btn btn-secondary">
                   related · Enpal Design Family →
