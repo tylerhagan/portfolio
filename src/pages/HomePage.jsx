@@ -148,14 +148,6 @@ const HomePage = ({ onNavigate }) => {
       title: 'skixO · Music Video Visualiser',
       href: 'https://visualiser.tylerhagan.co.uk/case-study/',
       linkLabel: 'case study'
-    },
-    {
-      image: '/img/concepts/nuvio-05.webp',
-      title: 'CRM App · System & Branding'
-    },
-    {
-      image: '/img/concepts/football-stats-preview.webp',
-      title: 'Football Stats Modules'
     }
   ];
 
@@ -264,11 +256,11 @@ const HomePage = ({ onNavigate }) => {
           </div>
         </section>
 
-        <section id="concepts" className="section">
+        <section id="side-projects" className="section">
           <SectionHeader
-            path="/concepts"
+            path="/side-projects"
             count={`${String(concepts.length).padStart(3, '0')} entries`}
-            subtitle="Side projects, experiments, and concepts that showcase design thinking and creative direction outside of client work."
+            subtitle="Experiments and concepts built outside of client work, where I explore design thinking and creative direction on my own terms."
           />
           <div className="concepts-grid">
             {concepts.map((concept, index) => {
@@ -279,7 +271,7 @@ const HomePage = ({ onNavigate }) => {
                     <span className="concept-zoom" aria-hidden="true">{concept.href ? '↗' : '+'}</span>
                   </div>
                   <figcaption className="concept-title">
-                    <span className="concept-num">C-{String(index + 1).padStart(2, '0')}</span>
+                    <span className="concept-num">S-{String(index + 1).padStart(2, '0')}</span>
                     {concept.title}
                     {concept.href && <span className="concept-live label">{concept.linkLabel ?? 'live site'}</span>}
                   </figcaption>
