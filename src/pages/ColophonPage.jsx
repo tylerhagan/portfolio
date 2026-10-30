@@ -52,19 +52,6 @@ const ColophonPage = () => {
         </section>
 
         <section className="colophon-section">
-          <h2>Locked case studies</h2>
-          <p>
-            Current employer work needs detail to be worth reading and discretion to be
-            fair, so locked case studies are encrypted client-side: AES-256-GCM via the
-            Web Crypto API, with the key derived from a password through PBKDF2
-            (200,000 iterations, SHA-256). The repo is public, but only ciphertext is
-            committed; the plaintext never leaves my machine. Even the screenshots ship
-            inside the encrypted payload as data URIs rather than as public images.
-            The password is shared on request.
-          </p>
-        </section>
-
-        <section className="colophon-section">
           <h2>Details</h2>
           <ul className="colophon-list">
             <li>

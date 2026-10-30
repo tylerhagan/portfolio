@@ -83,20 +83,12 @@ const HomePage = ({ onNavigate }) => {
       image: '/img/offer-tool/heartbeat-breakdown-pitch.webp'
     },
     {
-      id: 'design-family',
-      title: 'Enpal Design Family',
-      year: '2026',
-      type: 'Design Systems',
-      tags: ['Design Tokens', 'Figma', 'React', 'Documentation'],
-      image: '/img/design-family/ds-docs-hero-light.webp'
-    },
-    {
       id: 'enpal-product-work',
-      title: 'Portal, Web & Back Office',
+      title: 'One Foundation, Three Products',
       year: '2026',
-      type: 'Product Surfaces',
-      tags: ['FOLIO', 'VERSO', 'React', 'TypeScript', 'shadcn/ui'],
-      image: '/img/enpal-product-work/marketing-landing-hero.webp'
+      type: 'Design Systems & Product',
+      tags: ['Design Systems', 'Figma', 'React', 'TypeScript'],
+      image: '/img/design-family/ds-docs-hero-light.webp'
     },
     {
       id: 'field-service',
@@ -185,12 +177,12 @@ const HomePage = ({ onNavigate }) => {
       <div className="container">
         <div className="data-strip">
           <div className="datum">
-            <span className="label">Experience</span>
-            <span className="datum-value">15+ yrs</span>
-          </div>
-          <div className="datum">
             <span className="label">Conversion lift</span>
             <span className="datum-value">+42%</span>
+          </div>
+          <div className="datum">
+            <span className="label">Kick-off time</span>
+            <span className="datum-value">−50%</span>
           </div>
           <div className="datum">
             <span className="label">Discipline</span>
@@ -202,7 +194,7 @@ const HomePage = ({ onNavigate }) => {
           <SectionHeader
             path="/work"
             count={`${String(projects.length).padStart(3, '0')} entries`}
-            subtitle="Selected projects covering the full residential solar lifecycle (selling, installing, and monitoring), spanning enterprise software, mobile applications, and design systems, shipped hand-in-hand with engineering teams."
+            subtitle="Selected work on products where trust decides the sale: high-ticket purchase journeys, sales and field tools, and design systems that help teams ship faster. Built hand in hand with engineering, from research to production."
           />
           <div className="work-index">
             {projects.map((project, i) => (
@@ -216,7 +208,7 @@ const HomePage = ({ onNavigate }) => {
                 <div className="work-num label">{String(i + 1).padStart(3, '0')}</div>
                 <div className="work-body">
                   <div className="work-meta-line label">
-                    {project.year} · {project.type}{projectsData[project.id].locked && ' · locked'}
+                    {project.year} · {project.type}
                   </div>
                   <h3 className="work-title">
                     {project.title}

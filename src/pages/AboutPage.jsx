@@ -17,9 +17,9 @@ const AboutPage = () => {
                 {[
                   {
                     period: 'mar 2026 – sep 2026',
-                    role: 'Senior Product Designer / Engineer',
-                    company: 'Enpal',
-                    desc: "Founding designer at the intersection of design and engineering for Europe's leading residential solar company. Built the Enpal design family end to end and designed across the customer portal, marketing web, and back office."
+                    role: 'Founding Designer / Design Engineer',
+                    company: 'Enpal Energy',
+                    desc: 'Founding designer of Enpal Energy, a new venture within the Enpal group, merged back into the parent company after its ways of working were adopted group-wide. Created the Enpal design family from scratch and designed the customer portal, marketing website and a back-office tool for virtual power plants on it.'
                   },
                   {
                     period: 'may 2024 – jan 2025',

@@ -39,6 +39,30 @@
     "w": 2000,
     "sm": 800
   },
+  "/img/design-family/system-brand.webp": {
+    "w": 2880,
+    "sm": 800
+  },
+  "/img/design-family/system-components.webp": {
+    "w": 2880,
+    "sm": 800
+  },
+  "/img/design-family/system-foundations.webp": {
+    "w": 2880,
+    "sm": 800
+  },
+  "/img/design-family/system-overview-dark.webp": {
+    "w": 2880,
+    "sm": 800
+  },
+  "/img/design-family/system-overview-light.webp": {
+    "w": 2880,
+    "sm": 800
+  },
+  "/img/design-family/system-patterns.webp": {
+    "w": 2880,
+    "sm": 800
+  },
   "/img/eigen-app-v2/01-hero-home-day-night.webp": {
     "w": 2388,
     "sm": 800

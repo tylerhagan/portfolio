@@ -30,7 +30,7 @@ const STATIC_PAGES = {
     path: '/colophon',
     title: 'Colophon · Tyler Hagan',
     description:
-      'How tylerhagan.co.uk is designed and built: the spec-sheet design system, one-source CV pipeline and client-side encrypted case studies.',
+      'How tylerhagan.co.uk is designed and built: the spec-sheet design system and the one-source CV pipeline.',
   },
 };
 

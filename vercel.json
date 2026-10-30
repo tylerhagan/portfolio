@@ -4,6 +4,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/work/design-family",
+      "destination": "/work/enpal-product-work",
+      "permanent": true
+    },
+    {
       "source": "/project",
       "has": [
         {
