@@ -10,10 +10,9 @@
 ## Pages
 
 - [Work](https://tylerhagan.co.uk/): index of case studies.
-  - [Enpal Design Family](https://tylerhagan.co.uk/work/design-family): design
-    systems, tokens, AI-first documentation.
-  - [Portal, Web & Back Office](https://tylerhagan.co.uk/work/enpal-product-work):
-    three Enpal Energy product surfaces on one design foundation.
+  - [One Foundation, Three Products](https://tylerhagan.co.uk/work/enpal-product-work):
+    the Enpal design family and the customer portal, marketing site and
+    back-office tool built on it (ship times −20%, kick-off times −50%).
   - [Offer Tool](https://tylerhagan.co.uk/work/offer-tool): multi-national
     sales tool (72% faster offer creation, 42% higher conversion).
   - [Field Service App](https://tylerhagan.co.uk/work/field-service): critical

@@ -66,7 +66,7 @@ const Section = ({ section, onOpenImage }) => (
   </div>
 );
 
-const LockedCaseStudy = ({ encPath, storageKey }) => {
+const LockedCaseStudy = ({ encPath, storageKey, title = 'Full case study · locked' }) => {
   const { openContact } = useContact();
   const [content, setContent] = useState(null);
   const [password, setPassword] = useState('');
@@ -128,7 +128,7 @@ const LockedCaseStudy = ({ encPath, storageKey }) => {
   return (
     <div className="project-section locked-section">
       <div className="locked-label label">[ 401 · access restricted ]</div>
-      <h2>Full case study · locked</h2>
+      <h2>{title}</h2>
       <p className="locked-subtitle">
         This section covers confidential work for a former employer, so it stays behind
         a password, available on request,{' '}

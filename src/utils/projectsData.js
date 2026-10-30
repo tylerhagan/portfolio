@@ -1,57 +1,46 @@
 export const projectsData = {
-  // ——— Enpal work, Mar–Sep 2026 (locked: full case study is encrypted) ———
-  'design-family': {
+  // ——— Enpal work, Mar–Sep 2026: the design family and the products built on it.
+  // The system deep-dive is encrypted: plaintext in content/design-family.content.json
+  // (gitignored), encrypted into public/data/design-family.enc.json via
+  // scripts/encrypt-case-study.mjs. /work/design-family redirects here (vercel.json). ———
+  'enpal-product-work': {
     // Headline figure for the share card (scripts/generate-og-card.mjs); only facts stated in the case
-    headline: '170+ tokens · 25+ components · 4 systems',
-    locked: true,
-    encPath: '/data/design-family.enc.json',
-    title: 'Enpal Design Family',
-    subtitle: 'One foundation, four systems: Enpal DS, NEMO, VERSO & FOLIO',
+    headline: 'Ship time −20% · Kick-off time −50%',
+    title: 'One Foundation, Three Products',
+    subtitle: 'The Enpal design family, and the portal, website and back office built on it',
     // Card copy on the home index, and the meta description for /work/<id>
-    summary: 'One shared foundation across four systems: Enpal DS, NEMO, VERSO, and FOLIO. 170+ tokens and 25+ components serving mobile, web, portal, and internal software.',
+    summary: 'As founding designer of a new venture, I built one shared design foundation and used it to ship a customer portal, a marketing site and a back-office tool. Cut ship times by 20% and kick-off times by 50%.',
     year: '2026',
     status: 'Shipped · in use at Enpal',
-    role: 'Senior Product Designer / Engineer',
+    role: 'Founding Designer / Design Engineer',
     timeline: 'Mar – Sep 2026',
-    tools: ['Figma', 'Design Tokens', 'React', 'shadcn', 'Ant Design'],
-    company: 'Enpal',
+    tools: ['Figma', 'Design Tokens', 'React', 'TypeScript', 'shadcn/ui', 'Ant Design'],
+    company: 'Enpal Energy',
     platform: 'Web, mobile & internal tools',
-    scope: 'System design, token pipeline, documentation',
+    scope: 'Design system, token pipeline, UX/UI, prototyping',
+    kpis: [
+      { label: 'Ship time', value: '−20%', suffix: 'across product teams' },
+      { label: 'Kick-off time', value: '−50%', suffix: 'for new projects' }
+    ],
     heroImage: { src: '/img/design-family/ds-docs-hero-light.webp', alt: 'Enpal design family documentation site' },
     // Live docs site exists (folio-ee.vercel.app), deliberately not linked publicly yet.
-    // Full case study lives in content/design-family.content.json (gitignored), encrypted
-    // into public/data/design-family.enc.json via scripts/encrypt-case-study.mjs.
-    brief: `Enpal's surfaces run from consumer marketing to dense internal software: one brand, very different contexts. New products needed a system from day one, and design decisions needed to land in code without loss. The design family answers both: Enpal DS as the shared parent layer (colour ramps, typography, spacing, radii), with NEMO (mobile), VERSO (consumer marketing web) and FOLIO (dense, task-focused software UI) built on top. I initiated it, designed it, and built the delivery end to end.`,
-    highlights: [
-      '170+ design tokens across primitive and semantic layers, generated as CSS, JSON and Figma Variables from one source',
-      '25+ documented components and 11 product patterns, light and dark throughout',
-      'A React/shadcn registry and an Ant Design theme generated from the same tokens',
-      'AI-first documentation: each system ships a markdown brief that drops straight into AI coding workflows',
-      'Versioned releases with a changelog, plus documentation paths for designers, developers and product teams'
-    ]
-  },
-  'enpal-product-work': {
-    headline: '3 product surfaces · 1 design foundation',
-    title: 'Portal, Web & Back Office',
-    subtitle: "Three Enpal Energy surfaces, one design foundation",
-    summary: 'Three Enpal Energy surfaces on one design foundation (customer portal, consumer marketing web, and the Hyperion back office), from high-fidelity prototypes through to a production-ready TypeScript scaffold.',
-    year: '2026',
-    status: 'Shipped · in use at Enpal',
-    role: 'Senior Product Designer / Engineer',
-    timeline: 'Mar – Sep 2026',
-    tools: ['Figma', 'FOLIO DS', 'VERSO DS', 'React', 'TypeScript', 'shadcn/ui'],
-    company: 'Enpal',
-    platform: 'Web',
-    scope: 'UX/UI, prototyping, TypeScript scaffold',
-    heroImage: { src: '/img/enpal-product-work/portal-proto-light.webp', alt: 'Customer portal overview built on FOLIO' },
-    brief: `Alongside building the Enpal design family, I designed and prototyped across three of Enpal Energy's product surfaces: the customer portal, the consumer marketing web, and Hyperion, the internal back office. All three sit on the family's systems, so most of the work wasn't starting from scratch. It was composing one shared foundation into three fairly different contexts.`,
+    encPath: '/data/design-family.enc.json',
+    lockedTitle: 'System deep dive · locked',
+    brief: `Enpal Energy was a new venture within the Enpal group, and I was its founding designer. Its products ran from consumer marketing to dense internal software: one brand, very different contexts. New products needed a system from day one, and design decisions needed to land in code without loss. So I built one shared foundation, the Enpal design family, and used it to ship a customer portal, a marketing site and a back-office tool in parallel. Teams shipped on brand from the start, cutting ship times by 20% and kick-off times by 50%.`,
     sections: [
       {
         title: 'One foundation, three contexts',
         paragraphs: [
           `The three surfaces sit at very different points on the same spectrum: a first-time visitor deciding whether to switch, a returning customer managing their energy, and an operations team working through hundreds of accounts. Build them separately and they drift apart. Build them on one system and they stay coherent, and they come together a lot faster.`,
           `The foundation is the Enpal design family: a shared parent layer (Enpal DS) with purpose-built sub-systems on top. VERSO handles consumer web, FOLIO handles dense product and internal UI. Colour, type, spacing and motion all come from one source, and each sub-system decides what those primitives mean in its own context. A handful of rules keep it honest. The big ones: brand yellow is reserved for conversion, ink leads in work contexts, and paper carries most of every screen.`,
-          `Because the system ships as design tokens, a React/shadcn registry, an Ant Design theme and Figma variables, all generated from a single source, each surface below just pulls it in rather than rebuilding it. The full deep-dive on the system is a separate case.`
+          `Because the system ships as design tokens, a React/shadcn registry, an Ant Design theme and Figma variables, all generated from a single source, each surface below just pulls it in rather than rebuilding it. The full deep-dive on the system is in the locked section at the end.`
+        ],
+        bullets: [
+          '170+ design tokens across primitive and semantic layers, generated as CSS, JSON and Figma Variables from one source',
+          '25+ documented components and 11 product patterns, light and dark throughout',
+          'A React/shadcn registry and an Ant Design theme generated from the same tokens',
+          'AI-first documentation: each system ships a markdown brief that drops straight into AI coding workflows',
+          'Versioned releases with a changelog, plus documentation paths for designers, developers and product teams'
         ],
         images: [
           { src: '/img/design-family/ds-docs-hero-light.webp', caption: 'The shared foundation: Enpal.design docs (light)' },
@@ -112,7 +101,7 @@ export const projectsData = {
         title: 'Where it stands',
         paragraphs: [
           `One foundation now carries three surfaces: a consumer landing page, a customer portal (a prototype plus a production-ready TypeScript scaffold), and an internal customer-360 tool, all speaking the same visual language, in light and dark.`,
-          `All three are now in use at Enpal. The story here is the design and the leverage the system gives rather than headline metrics. The full system deep-dive lives in the Enpal Design Family case.`
+          `All three are now in use at Enpal. With one foundation in place, product teams stopped building custom UI per project: ship times fell by 20% and new projects kicked off in half the time. The venture was later merged back into the parent company after its ways of working were adopted group-wide.`
         ]
       }
     ]

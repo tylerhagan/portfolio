@@ -318,11 +318,6 @@ const ProjectPage = ({ projectId, onNavigate }) => {
                   {project.demo.label} ↗
                 </a>
               )}
-              {projectId === 'enpal-product-work' && (
-                <RouteLink page="project" id="design-family" onNavigate={onNavigate} className="btn btn-secondary">
-                  related · Enpal Design Family →
-                </RouteLink>
-              )}
             </div>
             {project.sections.map((section, i) => (
               <div key={i} className="project-section">
@@ -351,6 +346,9 @@ const ProjectPage = ({ projectId, onNavigate }) => {
                 )}
               </div>
             ))}
+            {project.encPath && (
+              <LockedCaseStudy encPath={project.encPath} storageKey={`cs_${projectId}`} title={project.lockedTitle} />
+            )}
           </>
         )}
 
