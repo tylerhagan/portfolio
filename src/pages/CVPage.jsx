@@ -89,6 +89,7 @@ const CVPage = () => {
                   <span className="cv-job-location">, {job.location}</span>
                 </p>
               </div>
+              {job.summary && <p className="cv-job-summary">{job.summary}</p>}
               <ul className="cv-bullets">
                 {job.bullets.map((b, j) => <li key={j}>{b}</li>)}
               </ul>
@@ -101,7 +102,7 @@ const CVPage = () => {
           <ul className="cv-plain-list">
             {cvData.education.map((e, i) => (
               <li key={i}>
-                <strong>{e.qualification}</strong>, {e.institution}, {e.period}
+                <strong>{e.qualification}</strong>, {e.institution}
               </li>
             ))}
           </ul>

@@ -150,6 +150,13 @@
   display: none;
 }
 
+.cv-job-summary {
+  max-width: var(--cv-measure);
+  margin: 0 0 0.75rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
 .cv-bullets {
   margin: 0;
   padding-left: 1.1rem;
@@ -394,6 +401,13 @@
   .cv-job-meta {
     font-size: 9pt;
     color: var(--cv-grey) !important;
+  }
+
+  .cv-job-summary {
+    margin-bottom: 1.8mm;
+    font-size: 9.5pt;
+    line-height: 14.5pt;
+    color: var(--cv-body) !important;
   }
 
   .cv-bullets {

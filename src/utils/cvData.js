@@ -11,20 +11,22 @@ export const cvData = {
   linkedin: 'https://www.linkedin.com/in/tylerhagan/',
 
   profile:
-    'Senior end-to-end product designer working at the intersection of design and engineering, taking ideas from concept to working product without the usual hand-off loss. 15+ years across design and front-end development, the last eight in the energy space designing every stage of the residential solar journey: selling, installing, monitoring, and long-term ownership. I operate independently across product, brand, digital and print, with the technical depth to prototype and build, not just specify.',
+    'Senior product designer who builds what he designs. I take high-trust, high-ticket consumer and sales products from research to shipped product, with the engineering depth to prototype and build them myself. My work has lifted sales conversion by 42%, cut team ship times by 20% and raised critical field data entry from 38% to 97%. I’m most effective in small, fast-moving teams, owning product, brand and design systems end to end.',
 
   experience: [
     {
       company: 'Enpal Energy',
-      role: 'Senior Product Designer / Engineer',
+      role: 'Founding Designer / Design Engineer',
       start: 'Mar 2026',
       end: 'Sep 2026',
       location: 'Berlin',
+      summary:
+        'Founding designer of Enpal Energy, a new venture within the Enpal group. The venture was merged back into the parent company after its ways of working were adopted group-wide.',
       bullets: [
-        'As founding designer, initiated, designed and built the Enpal design family end to end: Enpal DS as the shared parent layer with NEMO (consumer mobile), VERSO (marketing web) and FOLIO (dense software UI). 170+ tokens and 25+ components, light and dark throughout, versioned releases with a changelog.',
-        'Built the delivery layer myself: a token pipeline generating CSS, JSON and Figma Variables from one source, a React/shadcn registry for the product surfaces, and an Ant Design theme so established teams across the wider org adopt the family without retooling. Scoped versioned npm distribution for the developer packages.',
-        "Wrote the documentation AI-first: every system ships a markdown brief that drops straight into AI coding tools, so an assistant builds to the system's rules without constant prompting.",
-        'Designed across three product surfaces in parallel on those systems: the customer portal, the consumer marketing website, and the Hyperion back office for the VPP energy space.'
+        'Created the Enpal design family from scratch: a shared core system with three products built on it for consumer mobile, marketing web and dense software UI, all in light and dark modes and released in versions.',
+        'Let multiple product teams ship on brand from day one, which sped up delivery and removed the need for custom UI on each project.',
+        'Built the delivery tooling myself, so that one source generates code and Figma assets for every team, including established teams on other stacks, with no retooling.',
+        'Designed the customer portal, the marketing website and a back-office tool for virtual power plants (VPPs) in parallel, all on the new systems.'
       ]
     },
     {
@@ -86,8 +88,8 @@ export const cvData = {
   ],
 
   education: [
-    { qualification: 'BSc Web Development', institution: 'University of Greenwich', period: '2007–2010' },
-    { qualification: 'BND Graphic Design', institution: 'Amersham & Wycombe College', period: '2005–2007' }
+    { qualification: 'BSc Web Development', institution: 'University of Greenwich' },
+    { qualification: 'BND Graphic Design', institution: 'Amersham & Wycombe College' }
   ],
 
   certifications: [
