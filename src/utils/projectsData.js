@@ -1,8 +1,6 @@
 export const projectsData = {
   // ——— Enpal work, Mar–Sep 2026: the design family and the products built on it.
-  // The system deep-dive is encrypted: plaintext in content/design-family.content.json
-  // (gitignored), encrypted into public/data/design-family.enc.json via
-  // scripts/encrypt-case-study.mjs. /work/design-family redirects here (vercel.json). ———
+  // /work/design-family redirects here (vercel.json). ———
   'enpal-product-work': {
     // Headline figure for the share card (scripts/generate-og-card.mjs); only facts stated in the case
     headline: 'Ship time −20% · Kick-off time −50%',
@@ -24,27 +22,111 @@ export const projectsData = {
     ],
     heroImage: { src: '/img/design-family/ds-docs-hero-light.webp', alt: 'Enpal design family documentation site' },
     // Live docs site exists (folio-ee.vercel.app), deliberately not linked publicly yet.
-    encPath: '/data/design-family.enc.json',
-    lockedTitle: 'System deep dive · locked',
-    brief: `Enpal Energy was a new venture within the Enpal group, and I was its founding designer. Its products ran from consumer marketing to dense internal software: one brand, very different contexts. New products needed a system from day one, and design decisions needed to land in code without loss. So I built one shared foundation, the Enpal design family, and used it to ship a customer portal, a marketing site and a back-office tool in parallel. Teams shipped on brand from the start, cutting ship times by 20% and kick-off times by 50%.`,
+    brief:`Enpal Energy was a new venture within the Enpal group, and I was its founding designer. Its products ran from consumer marketing to dense internal software: one brand, very different contexts. New products needed a system from day one, and design decisions needed to land in code without loss. So I built one shared foundation, the Enpal design family, and used it to ship a customer portal, a marketing site and a back-office tool in parallel. Teams shipped on brand from the start, cutting ship times by 20% and kick-off times by 50%.`,
     sections: [
       {
-        title: 'One foundation, three contexts',
+        title: 'Why a family, not a system',
         paragraphs: [
-          `The three surfaces sit at very different points on the same spectrum: a first-time visitor deciding whether to switch, a returning customer managing their energy, and an operations team working through hundreds of accounts. Build them separately and they drift apart. Build them on one system and they stay coherent, and they come together a lot faster.`,
-          `The foundation is the Enpal design family: a shared parent layer (Enpal DS) with purpose-built sub-systems on top. VERSO handles consumer web, FOLIO handles dense product and internal UI. Colour, type, spacing and motion all come from one source, and each sub-system decides what those primitives mean in its own context. A handful of rules keep it honest. The big ones: brand yellow is reserved for conversion, ink leads in work contexts, and paper carries most of every screen.`,
-          `Because the system ships as design tokens, a React/shadcn registry, an Ant Design theme and Figma variables, all generated from a single source, each surface below just pulls it in rather than rebuilding it. The full deep-dive on the system is in the locked section at the end.`
-        ],
-        bullets: [
-          '170+ design tokens across primitive and semantic layers, generated as CSS, JSON and Figma Variables from one source',
-          '25+ documented components and 11 product patterns, light and dark throughout',
-          'A React/shadcn registry and an Ant Design theme generated from the same tokens',
-          'AI-first documentation: each system ships a markdown brief that drops straight into AI coding workflows',
-          'Versioned releases with a changelog, plus documentation paths for designers, developers and product teams'
+          `The trigger was practical. Enpal Energy was standing up new surfaces, a customer portal and a back-office platform among them, and they needed a system from day one rather than a retrofit later. At the same time, design-to-code handoff was slower and lossier than it should have been: decisions made in Figma were being re-derived in code and drifting a little each time.`,
+          `The harder question was structural. A marketing page selling to homeowners, a returning customer managing their energy and an operations screen full of data tables have almost nothing in common visually, yet they belong to the same brand and often serve the same customer. One monolithic system would have flattened those contexts into a compromise that served neither. Fully separate systems would have fractured the brand and multiplied the maintenance. The answer I landed on was a family: one parent layer holding the primitives every surface shares, and product systems above it that are free to feel different precisely because the foundations underneath them are identical.`
+        ]
+      },
+      {
+        title: 'My role',
+        paragraphs: [
+          `My job title at Enpal was Designer. In practice this work was senior product design engineering: I made the case for the family, designed the token architecture and the systems themselves, and built the delivery end to end, including the documentation site, the token pipeline, the React/shadcn registry and the Ant Design theme. The mobile team owned NEMO day to day; it consumed the shared primitives like everything else.`,
+          `That last mile matters to me. A design system that stops at a Figma library is a picture of a system. The version teams actually adopt is the one that turns up in their codebase, so I chose to own that part rather than hand it over.`
+        ]
+      },
+      {
+        title: 'One parent, three dialects',
+        paragraphs: [
+          `Four systems, one hierarchy. The parent holds what everyone shares; each product system speaks its own dialect on top.`
         ],
         images: [
-          { src: '/img/design-family/ds-docs-hero-light.webp', caption: 'The shared foundation: Enpal.design docs (light)' },
-          { src: '/img/design-family/ds-docs-hero-dark.webp', caption: 'The same system, dark mode' }
+          { src: '/img/design-family/system-overview-light.webp', caption: `enpal.design: the family's home, with the system architecture front and centre` }
+        ],
+        subsections: [
+          {
+            title: 'Enpal DS, the parent layer',
+            paragraphs: [
+              `Five brand colour ramps, a two-family type system (Poppins for display, Inter for UI and data), a 14-step spacing scale on a 4pt grid, and six radius values. Every product system maps to these primitives under its own prefix: same values, different namespace. Cross-system consistency is enforced by construction rather than by review.`
+            ]
+          },
+          {
+            title: 'NEMO, consumer mobile',
+            paragraphs: [
+              `The system for the iOS and Android consumer apps. Native-feeling, touch-optimised patterns, maintained by the mobile team on top of the shared foundations.`
+            ]
+          },
+          {
+            title: 'VERSO, consumer web',
+            paragraphs: [
+              `Mirrors NEMO's warmth on the web for marketing surfaces: pill buttons, elevation cards, generous spacing, editorial layouts, and dark mode.`
+            ]
+          },
+          {
+            title: 'FOLIO, software UI',
+            paragraphs: [
+              `The dense end of the family, serving the customer portal and internal software. Built for data tables, forms and workflow screens where efficiency beats atmosphere. This is where the token architecture earns its keep: tabular numerals for column alignment, a chart palette kept deliberately separate from status colours, and a four-tier text hierarchy for layered information.`
+            ],
+            images: [
+              { src: '/img/design-family/system-patterns.webp', caption: `FOLIO's documented patterns: portal navigation and the live tariff dashboard` }
+            ]
+          }
+        ]
+      },
+      {
+        title: 'Decisions I would defend',
+        paragraphs: [
+          `A few of the calls that shaped the family, and the reasoning behind them.`
+        ],
+        subsections: [
+          {
+            title: 'Semantic tokens are the only public surface',
+            paragraphs: [
+              `The family carries 170+ tokens in two tiers: primitive scales and semantic roles. Components are only allowed to consume the semantic layer; raw primitives stay private to it. That one rule is what makes dark mode a mapping exercise instead of a redesign. Surfaces invert to ink-derived backgrounds, text inverts to paper, amber lifts one step for legibility, and shadows become soft inset glows, all without a single component changing.`
+            ],
+            images: [
+              { src: '/img/design-family/system-overview-dark.webp', caption: 'The same page in dark mode: a remap of semantic roles, not a redesign' }
+            ]
+          },
+          {
+            title: 'Yellow is for conversion, nothing else',
+            paragraphs: [
+              `The family holds to five written non-negotiables. The brand's yellow is reserved for conversion moments; in dense UI the default is ink; amber carries the secondary brand voice; paper dominates surfaces; and decoration gives way to restraint, soft glows and multi-stop shadows rather than borders and ornament. Writing these down gave design reviews a shared language. 'That button should not be yellow' stopped being an opinion and became a rule you could cite.`
+            ],
+            images: [
+              { src: '/img/design-family/system-components.webp', caption: 'The mixed CTA strategy in the component docs: yellow for conversion, ink for dense-UI primaries' }
+            ]
+          },
+          {
+            title: 'Meet teams in the framework they already use',
+            paragraphs: [
+              `My surfaces, the portal and back office in the VPP energy space, run on React with shadcn. But the wider organisation has internal dev teams with an established Ant Design stack, and a system those teams cannot consume is a system they will work around. So the family ships both: a React/shadcn registry for the product surfaces, and an Ant Design theme generated from the same tokens so existing teams elsewhere in the org can adopt the family without retooling.`,
+              `The pragmatism cuts both ways. shadcn had no real data table, so rather than build one from scratch the back office runs shadcn with Ant Design's table inside it, themed to match. Nobody has ever noticed the seam, which is rather the point. Purity lost, adoption won.`
+            ]
+          },
+          {
+            title: 'Motion that earns its place',
+            paragraphs: [
+              `Quiet by default: 220ms ease-out for standard transitions, instant response on hover and focus, entrance animation reserved for genuinely new content. One signature is allowed to breathe, a 2.4s amber pulse on live indicators, and it is the only ambient motion in the system. Reduced-motion preferences are respected throughout, with state still communicated through colour and opacity.`
+            ]
+          }
+        ]
+      },
+      {
+        title: 'The delivery layer',
+        paragraphs: [
+          `Everything flows from a single token source. It generates the CSS custom properties and JSON packages developers pull, and the Figma Variable collections designers work with, so both sides of the handoff read from the same file. When a value changes, it changes everywhere or nowhere.`,
+          `Documentation lives on a site I designed and built: foundations, components, patterns, templates, email, brand and assets, with getting-started paths for designers, developers and product teams.`,
+          `The family is also AI-first by design. Every system ships a written markdown brief covering the non-negotiables, palette logic, component conventions and, just as importantly, what not to do. The docs put this front and centre: drop FOLIO.md into a Claude project and an assistant can build portal surfaces to the system's rules without constant prompting. Guidelines written for machines turn out to be excellent guidelines for people too; the discipline of making rules explicit enough for an AI removes the ambiguity that humans were tripping over anyway.`,
+          `Releases are versioned with a changelog, v1.9.0 when I left. Consuming teams can see what changed and when. It sounds basic, and it is, but it is also the difference between a system teams trust and a system teams fork.`,
+          `Ownership ran hub and spoke. I owned the parent layer, FOLIO and VERSO; the mobile team owned NEMO. The non-negotiables and the token contract were the interface between us: full autonomy inside each system, agreement at the boundary.`
+        ],
+        images: [
+          { src: '/img/design-family/system-foundations.webp', caption: 'Foundations: colour scales, usage rules, and the AI brief given top billing' },
+          { src: '/img/design-family/system-brand.webp', caption: 'The brand rulebook: three marks, three contexts, with usage rules for each' }
         ]
       },
       {
@@ -98,10 +180,26 @@ export const projectsData = {
         ]
       },
       {
-        title: 'Where it stands',
+        title: 'Outcomes',
         paragraphs: [
-          `One foundation now carries three surfaces: a consumer landing page, a customer portal (a prototype plus a production-ready TypeScript scaffold), and an internal customer-360 tool, all speaking the same visual language, in light and dark.`,
-          `All three are now in use at Enpal. With one foundation in place, product teams stopped building custom UI per project: ship times fell by 20% and new projects kicked off in half the time. The venture was later merged back into the parent company after its ways of working were adopted group-wide.`
+          `One foundation now carries three surfaces: a consumer landing page, a customer portal (a prototype plus a production-ready TypeScript scaffold), and an internal customer-360 tool, all speaking the same visual language, in light and dark. All three are in use at Enpal.`,
+          `New surfaces start from the system rather than from a blank file, so product teams stopped building custom UI per project: ship times fell by 20% and new projects kicked off in half the time. Screens are assembled from documented components on shared tokens, with accessibility inherited rather than re-argued per screen (WCAG AA contrast, focus states and keyboard patterns are specified at system level).`,
+          `Design decisions land in code unchanged. Because the registry and the themes are generated from the token source, the gap between the Figma file and the shipped screen largely stopped being a review topic. And the brand holds from one end of the company to the other: the same ramps and type serve a marketing hero and an operations table without either pretending to be the other.`,
+          `The venture was later merged back into the parent company after its ways of working were adopted group-wide.`
+        ],
+        bullets: [
+          '170+ design tokens across primitive and semantic layers, generated as CSS, JSON and Figma Variables from one source',
+          '25+ documented components and 11 documented product patterns, light and dark throughout',
+          'Four systems on one parent layer, consumed across mobile, consumer web and internal software',
+          'Versioned releases with a changelog, v1.9.0 when I left'
+        ]
+      },
+      {
+        title: 'What I would do next',
+        paragraphs: [
+          `Some of it was already in motion. Proper package distribution for the developer artefacts (the shadcn theme and components and the Ant Design theme) was the next step when I left, with the DevOps approach already mapped out on a dedicated branch: versioned packages teams install rather than files they download.`,
+          `Beyond that, it is worth being clear about where the system was thin. When I left, adoption was ahead of governance: the contribution model was still 'talk to me', which worked at that scale and wouldn't at twice it. Next I'd have added usage analytics on tokens and components, so deprecation decisions are informed rather than felt, and continuous Figma-to-code parity checks, because drift between the library and the registry is the failure mode to watch.`,
+          `If you would like the tour, the documentation site is the best artefact. It is both the system's home and a demonstration of the system describing itself. Ask me for the link.`
         ]
       }
     ]

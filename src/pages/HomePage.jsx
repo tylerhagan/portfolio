@@ -177,16 +177,16 @@ const HomePage = ({ onNavigate }) => {
       <div className="container">
         <div className="data-strip">
           <div className="datum">
-            <span className="label">Experience</span>
-            <span className="datum-value">15+ yrs</span>
-          </div>
-          <div className="datum">
             <span className="label">Conversion lift</span>
             <span className="datum-value">+42%</span>
           </div>
           <div className="datum">
             <span className="label">Kick-off time</span>
             <span className="datum-value">−50%</span>
+          </div>
+          <div className="datum">
+            <span className="label">Discipline</span>
+            <span className="datum-value">Design × Code</span>
           </div>
         </div>
 
@@ -208,7 +208,7 @@ const HomePage = ({ onNavigate }) => {
                 <div className="work-num label">{String(i + 1).padStart(3, '0')}</div>
                 <div className="work-body">
                   <div className="work-meta-line label">
-                    {project.year} · {project.type}{projectsData[project.id].locked && ' · locked'}
+                    {project.year} · {project.type}
                   </div>
                   <h3 className="work-title">
                     {project.title}

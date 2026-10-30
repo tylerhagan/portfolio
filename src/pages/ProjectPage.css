@@ -122,7 +122,7 @@
     margin-bottom: 1.5rem;
 }
 
-.case-body .project-section:not(.locked-section) > h2::before {
+.case-body .project-section > h2::before {
     counter-increment: case-section;
     content: counter(case-section, decimal-leading-zero);
     display: block;

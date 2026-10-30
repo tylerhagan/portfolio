@@ -140,7 +140,7 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
 
-# Confidential case-study plaintext (encrypted copies live in public/data/)
+# Working drafts and source screenshots
 content/
 
 # SSR bundle used only by the prerender step

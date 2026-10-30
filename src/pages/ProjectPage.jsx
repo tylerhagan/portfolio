@@ -3,7 +3,6 @@ import { projectsData } from '../utils/projectsData';
 import Lightbox from '../components/Lightbox';
 import { responsive, SIZES } from '../utils/images';
 import RouteLink from '../components/RouteLink';
-import LockedCaseStudy from '../components/LockedCaseStudy';
 import './ProjectPage.css';
 
 // Shared case-study header: outcome-led title, a ruled spec panel, headline
@@ -63,6 +62,34 @@ const CaseHeader = ({ project, projectId, onImageClick }) => {
   );
 };
 
+// Paragraphs, captioned images and bullets of a case-study section or subsection
+const SectionBody = ({ block, onImageClick }) => (
+  <>
+    {block.paragraphs?.map((p, i) => <p key={i}>{p}</p>)}
+    {block.images && (
+      <div className={block.images.length > 1 ? 'project-images' : undefined}>
+        {block.images.map((img, i) => (
+          <div key={i} className="captioned-image">
+            <img
+              {...responsive(img.src, block.images.length > 1 ? SIZES.projectGrid : SIZES.projectFull)}
+              alt={img.caption}
+              className={`${block.images.length > 1 ? 'project-image' : 'project-image-full'} clickable`}
+              onClick={() => onImageClick(img.src, img.caption)}
+              loading="lazy"
+            />
+            <p className="image-caption">{img.caption}</p>
+          </div>
+        ))}
+      </div>
+    )}
+    {block.bullets && (
+      <ul className="feature-list">
+        {block.bullets.map((b, i) => <li key={i}>{b}</li>)}
+      </ul>
+    )}
+  </>
+);
+
 const ProjectPage = ({ projectId, onNavigate }) => {
   const [lightboxImage, setLightboxImage] = useState(null);
   const project = projectsData[projectId];
@@ -85,45 +112,6 @@ const ProjectPage = ({ projectId, onNavigate }) => {
   const closeLightbox = () => {
     setLightboxImage(null);
   };
-
-  // Locked work: meta + summary, full write-up behind the password
-  if (project.locked) {
-    return (
-      <>
-        <CaseHeader project={project} projectId={projectId} onImageClick={openLightbox} />
-
-        <div className="container case-body">
-          <div className="project-section">
-            <h2>Overview</h2>
-            <p>{project.brief}</p>
-            {project.highlights && (
-              <ul className="feature-list">
-                {project.highlights.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            )}
-            {project.streams && project.streams.map((stream, i) => (
-              <div key={i}>
-                <h3>{stream.title}</h3>
-                <p>{stream.brief}</p>
-              </div>
-            ))}
-          </div>
-          <LockedCaseStudy encPath={project.encPath} storageKey={`cs_${projectId}`} />
-          <div className="project-section">
-            <RouteLink page="home" onNavigate={onNavigate} className="btn btn-secondary">
-              ← back to /work
-            </RouteLink>
-          </div>
-        </div>
-
-        {lightboxImage && (
-          <Lightbox imageSrc={lightboxImage.src} imageAlt={lightboxImage.alt} onClose={closeLightbox} />
-        )}
-      </>
-    );
-  }
 
   const projectContent = (
     <>
@@ -322,33 +310,15 @@ const ProjectPage = ({ projectId, onNavigate }) => {
             {project.sections.map((section, i) => (
               <div key={i} className="project-section">
                 <h2>{section.title}</h2>
-                {section.paragraphs?.map((p, j) => <p key={j}>{p}</p>)}
-                {section.images && (
-                  <div className={section.images.length > 1 ? 'project-images' : undefined}>
-                    {section.images.map((img, j) => (
-                      <div key={j} className="captioned-image">
-                        <img
-                          {...responsive(img.src, section.images.length > 1 ? SIZES.projectGrid : SIZES.projectFull)}
-                          alt={img.caption}
-                          className={`${section.images.length > 1 ? 'project-image' : 'project-image-full'} clickable`}
-                          onClick={() => openLightbox(img.src, img.caption)}
-                          loading="lazy"
-                        />
-                        <p className="image-caption">{img.caption}</p>
-                      </div>
-                    ))}
+                <SectionBody block={section} onImageClick={openLightbox} />
+                {section.subsections?.map((sub, j) => (
+                  <div key={j}>
+                    <h3>{sub.title}</h3>
+                    <SectionBody block={sub} onImageClick={openLightbox} />
                   </div>
-                )}
-                {section.bullets && (
-                  <ul className="feature-list">
-                    {section.bullets.map((b, j) => <li key={j}>{b}</li>)}
-                  </ul>
-                )}
+                ))}
               </div>
             ))}
-            {project.encPath && (
-              <LockedCaseStudy encPath={project.encPath} storageKey={`cs_${projectId}`} title={project.lockedTitle} />
-            )}
           </>
         )}
 

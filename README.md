@@ -16,11 +16,6 @@ it fits together.
 schema.org JSON-LD. The web page and the PDF can't drift, and the email address never ships in the
 bundle; it's injected only when the PDF is built.
 
-**Encrypted case studies.** Current-employer work is encrypted client-side with AES-256-GCM
-(Web Crypto, PBKDF2 key derivation). The repo is public, but only ciphertext is committed:
-plaintext lives in the gitignored `content/` folder, and screenshots are inlined into the
-encrypted payload as data URIs rather than published as images. The password is shared on request.
-
 **Prerendered pages.** It's a single-page React app, but every route (`/about`, `/work/<id>`, …)
 is rendered to a full HTML file at build time, with the right title, description, canonical URL
 and share tags. Content is visible before any JavaScript runs, shared links preview the right page,
@@ -54,8 +49,7 @@ crawlers, a sitemap, and a note in the console for anyone who inspects.
 src/
 ├── App.jsx                  page switching, history, per-page meta
 ├── entry-server.jsx         renders a route to HTML for the prerender step
-├── components/              Navigation, StatusBar, Footer, ContactModal, Lightbox,
-│                            LockedCaseStudy (decrypt + render), RouteLink
+├── components/              Navigation, StatusBar, Footer, ContactModal, Lightbox, RouteLink
 ├── pages/                   Home, About, CV, Colophon, Project, NotFound
 ├── styles/globals.css       design tokens and themes
 └── utils/
@@ -68,11 +62,10 @@ scripts/
 ├── prerender-routes.mjs     post-build: renders each route to HTML, plus 404.html, sitemap.xml
 ├── optimise-images.mjs      small WebP copy of each image + width manifest (for srcset)
 ├── generate-cv-pdf.mjs      /cv page → public/tyler-hagan-cv.pdf
-├── generate-og-card.mjs     1200×630 share cards: site card + one per case study (public/img/og/)
-└── encrypt-case-study.mjs   content/*.json → public/data/*.enc.json
+└── generate-og-card.mjs     1200×630 share cards: site card + one per case study (public/img/og/)
 
-public/                      images, self-hosted fonts, CV PDF, encrypted case data, llms.txt
-content/                     gitignored: plaintext case studies, CV drafts, screenshots
+public/                      images, self-hosted fonts, CV PDF, llms.txt
+content/                     gitignored: working drafts, CV drafts, source screenshots
 ```
 
 ## Running it
@@ -100,8 +93,6 @@ Pushing to `main` deploys to production on Vercel; other branches get a preview 
 - **Update the CV:** edit [`cvData.js`](src/utils/cvData.js), then regenerate the PDF against a
   running dev server:
   `node scripts/generate-cv-pdf.mjs http://localhost:5173 <email>`
-- **Re-encrypt a locked case study:**
-  `node scripts/encrypt-case-study.mjs content/<name>.content.json public/data/<name>.enc.json <password>`
 - **Regenerate the share cards:** `node scripts/generate-og-card.mjs`. Run it after adding a case
   study or changing a title, subtitle or `headline` in `projectsData.js`.
 
