@@ -34,7 +34,7 @@ export const projectsData = {
       {
         title: 'My role',
         paragraphs: [
-          `My job title at Enpal was Designer. In practice this work was senior product design engineering: I made the case for the family, designed the token architecture and the systems themselves, and built the delivery end to end, including the documentation site, the token pipeline, the React/shadcn registry and the Ant Design theme. The mobile team owned NEMO day to day; it consumed the shared primitives like everything else.`,
+          `My official title at Enpal was Senior Product Designer. In practice this work was product design engineering: I made the case for the family, designed the token architecture and the systems themselves, and built the delivery end to end, including the documentation site, the token pipeline, the React/shadcn registry and the Ant Design theme. The mobile team owned NEMO day to day; it consumed the shared primitives like everything else.`,
           `That last mile matters to me. A design system that stops at a Figma library is a picture of a system. The version teams actually adopt is the one that turns up in their codebase, so I chose to own that part rather than hand it over.`
         ]
       },
