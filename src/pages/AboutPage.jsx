@@ -1,6 +1,5 @@
 import { useContact } from '../utils/ContactContext';
 import './AboutPage.css';
-import { responsive, SIZES } from '../utils/images';
 
 const AboutPage = () => {
   const { openContact } = useContact();
@@ -98,16 +97,6 @@ const AboutPage = () => {
                 </footer>
               </blockquote>
 
-            </div>
-            
-            <div className="about-portrait">
-              <div className="portrait-wrapper">
-                <img 
-                  {...responsive('/img/enpal-headshot.png', SIZES.portrait)}
-                  alt="Tyler Hagan" 
-                  className="portrait-image"
-                />
-              </div>
             </div>
           </div>
 
